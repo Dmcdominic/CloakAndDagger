@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6cc46ba6e9c9cc468bbc73ba91691a1, type: 3}
   m_Name: local_player_pos
   m_EditorClassIdentifier: 
-  use_constant: 1
+  use_constant: 0
   constant: {x: 0, y: 0}
-  value: {x: 0, y: 0}
+  value: {x: -1.0823714, y: 0.16744627}

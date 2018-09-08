@@ -27,7 +27,11 @@ GameObject:
   - component: {fileID: 114072292510557270}
   - component: {fileID: 114336950006474412}
   - component: {fileID: 114010382592215022}
-  - component: {fileID: 114589725735035912}
+  - component: {fileID: 114938384083110894}
+  - component: {fileID: 114038434851701454}
+  - component: {fileID: 114629117855251732}
+  - component: {fileID: 114157402318734050}
+  - component: {fileID: 114597311980453518}
   m_Layer: 0
   m_Name: character
   m_TagString: Untagged
@@ -79,12 +83,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cf15c439788e164ca9d10ab1fa49416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 039973cf0c0243d4d879ed91da1c803f, type: 2}
   _origin: {fileID: 11400000, guid: 276cb45050efbd24c925199d72e92b6b, type: 2}
   _dest: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
-  speed: 100
-  cast_buffer: 1
-  dagger_prefab: {fileID: 0}
+  speed: 500
+  cast_buffer: 2
+  dagger_prefab: {fileID: 1862537834978502, guid: f715f6ea0cc87e445a3b49fe4014a4c1,
+    type: 2}
+  trigger: {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
+--- !u!114 &114038434851701454
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479639472354148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee93fa71f65f09e49ad17831d1a41f05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 039973cf0c0243d4d879ed91da1c803f, type: 2}
+  to_trigger: {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
 --- !u!114 &114072292510557270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,6 +124,17 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114157402318734050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479639472354148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71523a8b37cec8048bf49cd64f43cf03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114336950006474412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,7 +179,7 @@ MonoBehaviour:
     i15: 67
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
---- !u!114 &114589725735035912
+--- !u!114 &114597311980453518
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,16 +187,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1479639472354148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cf15c439788e164ca9d10ab1fa49416, type: 3}
+  m_Script: {fileID: 11500000, guid: b34f8bd293314e94589ed59f9a3ef672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 039973cf0c0243d4d879ed91da1c803f, type: 2}
-  _origin: {fileID: 11400000, guid: 276cb45050efbd24c925199d72e92b6b, type: 2}
-  _dest: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
-  speed: 100
-  cast_buffer: 1
-  dagger_prefab: {fileID: 1862537834978502, guid: f715f6ea0cc87e445a3b49fe4014a4c1,
-    type: 2}
+  local_mat: {fileID: 2100000, guid: e8bf8d2dbacf1c747a09b365bd7b0b03, type: 2}
+  non_local_mat: {fileID: 2100000, guid: 452412745e77c11439780ad97074aa54, type: 2}
+--- !u!114 &114629117855251732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479639472354148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f17d7e010dacfd048b7118906c361068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throw_trigger: {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
+  stun_trigger: {fileID: 11400000, guid: c5f96aa6f184efe4b8cf9274dc80d234, type: 2}
+  time: 0.25
 --- !u!114 &114674665505827382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,6 +219,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 039973cf0c0243d4d879ed91da1c803f, type: 2}
   output: {fileID: 11400000, guid: 4bbc87b548ed62b4c957d33abd733964, type: 2}
+--- !u!114 &114938384083110894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479639472354148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 491193dcd56043c4086b2487356e096e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output: {fileID: 11400000, guid: 276cb45050efbd24c925199d72e92b6b, type: 2}
 --- !u!114 &114990156458923406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,6 +245,7 @@ MonoBehaviour:
   input_vec: {fileID: 11400000, guid: 4bbc87b548ed62b4c957d33abd733964, type: 2}
   trans: {fileID: 4336008036378410}
   move_speed: 100
+  stun_trigger: {fileID: 11400000, guid: c5f96aa6f184efe4b8cf9274dc80d234, type: 2}
 --- !u!212 &212318914461718598
 SpriteRenderer:
   m_ObjectHideFlags: 1
