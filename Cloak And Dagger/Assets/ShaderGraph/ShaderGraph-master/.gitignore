@@ -1,0 +1,10 @@
+artifacts/**
+build/**
+.vs
+.vscode
+.idea
+.DS_Store
+.npmrc
+DebugOutput.meta
+DebugOutput/**
+Testing/IntegrationTests/.Failed
