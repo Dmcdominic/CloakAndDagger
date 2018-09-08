@@ -32,6 +32,7 @@ GameObject:
   - component: {fileID: 114629117855251732}
   - component: {fileID: 114157402318734050}
   - component: {fileID: 114597311980453518}
+  - component: {fileID: 114499119803521540}
   m_Layer: 0
   m_Name: character
   m_TagString: Untagged
@@ -147,6 +148,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   output: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
+--- !u!114 &114499119803521540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479639472354148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520559190521c614488a97a9776bbe3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  is_stun: {fileID: 11400000, guid: 5fee8766116ae67479a661562c667c48, type: 2}
+  trigger: {fileID: 11400000, guid: 160fe5029c4947f4fbcaf28517de28b8, type: 2}
 --- !u!114 &114553111138379116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,8 +218,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throw_trigger: {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
-  stun_trigger: {fileID: 11400000, guid: c5f96aa6f184efe4b8cf9274dc80d234, type: 2}
-  time: 0.25
+  stun_trigger: {fileID: 11400000, guid: 160fe5029c4947f4fbcaf28517de28b8, type: 2}
+  time: 0.04
 --- !u!114 &114674665505827382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,7 +259,8 @@ MonoBehaviour:
   input_vec: {fileID: 11400000, guid: 4bbc87b548ed62b4c957d33abd733964, type: 2}
   trans: {fileID: 4336008036378410}
   move_speed: 100
-  stun_trigger: {fileID: 11400000, guid: c5f96aa6f184efe4b8cf9274dc80d234, type: 2}
+  is_stun: {fileID: 11400000, guid: 5fee8766116ae67479a661562c667c48, type: 2}
+  stun_trigger: {fileID: 11400000, guid: 160fe5029c4947f4fbcaf28517de28b8, type: 2}
 --- !u!212 &212318914461718598
 SpriteRenderer:
   m_ObjectHideFlags: 1

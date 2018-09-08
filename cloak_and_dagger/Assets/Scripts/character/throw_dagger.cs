@@ -26,10 +26,18 @@ public class throw_dagger : NetworkBehaviour {
 	[SerializeField]
 	event_object trigger;
 
+
 	public void throw_func() //too many times have I tried to name a func throw.
 	{
-			Vector3 position = _origin.val;
-			Vector3 dir = _dest.val - _origin.val;
+		Cmd_throw(_origin.val,_dest.val,cast_buffer);
+			
+	}
+
+	[Command]
+	public void Cmd_throw(Vector2 origin,Vector2 dest,float cast_buffer)
+	{
+			Vector3 position = origin;
+			Vector3 dir = dest - origin;
 			Quaternion rotation = Quaternion.Euler(0,0,Mathf.Rad2Deg * Mathf.Atan2(dir.y,dir.x));
 			GameObject my_dagger = Instantiate(dagger_prefab,position,rotation);
 			my_dagger.transform.position += my_dagger.transform.right * cast_buffer;
@@ -43,7 +51,10 @@ public class throw_dagger : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		trigger.e.AddListener(throw_func);
+		if(isLocalPlayer)
+			trigger.e.AddListener(throw_func);
+		else
+			print("hi");
 	}
 	
 	// Update is called once per frame

@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 
-public class On_Action_Button : MonoBehaviour {
+public class On_Action_Button : NetworkBehaviour {
 
 	[SerializeField]
 	input_config config;
@@ -19,7 +20,7 @@ public class On_Action_Button : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(config.dagger)
+		if(config.dagger && isLocalPlayer)
 		{
 			to_trigger.Invoke();
 		}

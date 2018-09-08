@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114247305520068176}
   - component: {fileID: 50301819326712060}
   - component: {fileID: 212187264656605594}
+  - component: {fileID: 114805709980555324}
   m_Layer: 0
   m_Name: dagger
   m_TagString: Untagged
@@ -114,8 +115,20 @@ MonoBehaviour:
     i13: 20
     i14: 164
     i15: 193
-  m_ServerOnly: 1
-  m_LocalPlayerAuthority: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
+--- !u!114 &114805709980555324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862537834978502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d372c2f00b74ea94285e67634c1aec9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1
 --- !u!212 &212187264656605594
 SpriteRenderer:
   m_ObjectHideFlags: 1
