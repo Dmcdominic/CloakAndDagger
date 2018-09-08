@@ -15,9 +15,11 @@ public class pmove : NetworkBehaviour {
 	float move_speed = 100;
 
 	[SerializeField]
+	bool_var is_stun;
+
+	[SerializeField]
 	float_event_object stun_trigger;
 
-	private float stun_time = 0;
 
 	Rigidbody2D rb;
 
@@ -31,7 +33,7 @@ public class pmove : NetworkBehaviour {
 		{
 			return;
 		}
-		if(stun_time > 0)
+		if(is_stun.val)
 		{
 			return;
 		}
@@ -39,32 +41,14 @@ public class pmove : NetworkBehaviour {
 
 	}
 
-	public void stun(float duration)
-	{
-		stun_time = Mathf.Max(stun_time,duration);
-	}
+
 
 	// Use this for initialization
 	void Start () { //can we please get forward declarations
 		if(!trans) trans = transform.root;
 		rb = trans.GetComponent<Rigidbody2D>();
-		StartCoroutine(stun_loop());
-		stun_trigger.e.AddListener(stun);
+
 	}
 
-	public void unstun()
-	{
-		stun_time = 0;
-	}
 
-	IEnumerator stun_loop()
-	{
-		
-		while(true)
-		{
-			if(stun_time > 0) stun_time -= Time.deltaTime;
-			yield return null;
-		}
-		
-	}
 }

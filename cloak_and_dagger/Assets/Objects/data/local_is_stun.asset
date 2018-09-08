@@ -8,7 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be48ad5a7708e9d4abd8666c1a6c8a38, type: 3}
-  m_Name: stun_local
+  m_Script: {fileID: 11500000, guid: 63584a48e8f60364ab657424f8d70e28, type: 3}
+  m_Name: local_is_stun
   m_EditorClassIdentifier: 
+  use_constant: 0
   constant: 0
+  value: 0
