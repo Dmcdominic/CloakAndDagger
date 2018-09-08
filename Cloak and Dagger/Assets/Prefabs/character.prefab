@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114072292510557270}
   - component: {fileID: 114336950006474412}
   - component: {fileID: 114010382592215022}
+  - component: {fileID: 114589725735035912}
   m_Layer: 0
   m_Name: character
   m_TagString: Untagged
@@ -41,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1479639472354148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.46, y: -1.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,8 +84,7 @@ MonoBehaviour:
   _dest: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
   speed: 100
   cast_buffer: 1
-  dagger_prefab: {fileID: 1862537834978502, guid: f715f6ea0cc87e445a3b49fe4014a4c1,
-    type: 2}
+  dagger_prefab: {fileID: 0}
 --- !u!114 &114072292510557270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,6 +150,24 @@ MonoBehaviour:
     i15: 67
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 1
+--- !u!114 &114589725735035912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479639472354148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf15c439788e164ca9d10ab1fa49416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 039973cf0c0243d4d879ed91da1c803f, type: 2}
+  _origin: {fileID: 11400000, guid: 276cb45050efbd24c925199d72e92b6b, type: 2}
+  _dest: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
+  speed: 100
+  cast_buffer: 1
+  dagger_prefab: {fileID: 1862537834978502, guid: f715f6ea0cc87e445a3b49fe4014a4c1,
+    type: 2}
 --- !u!114 &114674665505827382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,7 +210,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 452412745e77c11439780ad97074aa54, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -212,7 +230,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1637245298d2a0948914e23f66bdb2d0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d243bbeb69bccc045a5f19adc2da9232, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
