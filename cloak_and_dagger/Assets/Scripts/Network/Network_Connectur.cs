@@ -44,9 +44,9 @@ public class Network_Connectur : MonoBehaviour {
     	this.ip = ip;
     }
 
-    public void set_port(string port)
+    public void set_port(string in_port)
     {
-    	this.port = port;
+    	this.port = in_port;
     	port_int = int.Parse(port);
     }
 
