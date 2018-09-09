@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
-public class Network_Connectur : NetworkBehaviour {
+public class Network_Connectur : NetworkManager {
 
 
 
@@ -33,6 +33,7 @@ public class Network_Connectur : NetworkBehaviour {
 
 	public void Start()
 	{
+		DontDestroyOnLoad(gameObject);
 		ip_event.e.AddListener(set_ip);
 		port_event.e.AddListener(set_port);
 		connect_event.e.AddListener(connect);
@@ -60,24 +61,18 @@ public class Network_Connectur : NetworkBehaviour {
     {
     	_client = new NetworkClient();
     	_client.RegisterHandler(MsgType.Connect,connect_callback);
+    	if(ip == null) ip = "localhost";
     	_client.Connect(ip,port_int);
     	SceneManager.LoadScene(1);
-    	Cmd_spawn_character();
     }
 
-    [Command]
-    public void Cmd_spawn_character()
-    {
-    	GameObject my_char = GameObject.Instantiate(character);
-    	NetworkServer.Spawn(my_char);
-    }
+
 
     public void host()
     {
     	_client = ClientScene.ConnectLocalServer();
     	_client.RegisterHandler(MsgType.Connect,connect_callback);
     	SceneManager.LoadScene(1);
-    	GameObject.Instantiate(character);
 
     }
 
