@@ -11,6 +11,9 @@ public class Conditional_Rendering : NetworkBehaviour {
 	[SerializeField]
 	Material non_local_mat;
 
+	[SerializeField]
+	float_event_object reveal_trigger;
+
 	private SpriteRenderer sr;
 
 	// Use this for initialization

@@ -10,6 +10,7 @@
         [PerRendererData] _AlphaTex ("External Alpha", 2D) = "white" {}
         [PerRendererData] _EnableExternalAlpha ("Enable External Alpha", Float) = 0
         _MaxLight ("LightAtVisible", Range(0.01,10)) = 0.0
+        _RevealTime ("reveal_time",Float) = 0.0
     }
 
     SubShader
@@ -35,6 +36,7 @@
         #include "UnitySprites.cginc"
 
         half _MaxLight;
+        half _RevealTime;
 
         struct Input
         {
@@ -58,7 +60,7 @@
         {
             float intens = (_LightColor0.x + _LightColor0.y + _LightColor0.z) / _MaxLight;
             fixed4 c = SampleSpriteTexture (IN.uv_MainTex) * IN.color;
-            float a = clamp(intens,0,1);
+            float a = clamp(max(_RevealTime,intens),0,1);
             if(a < .1) a = 0;
             o.Albedo = c.rgb * a;
             o.Alpha = a;
