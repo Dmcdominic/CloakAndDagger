@@ -258,6 +258,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1deb4d20e22f5914ea6cc12a11c2c0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+    m_keys: 
+    m_values: []
+  on_triggers:
+    m_keys: 
+    m_values: []
+  off_triggers:
+    m_keys: 
+    m_values: []
+  times:
+    m_keys: 
+    m_values: []
 --- !u!114 &114990156458923406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -309,7 +321,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9b5afcb97789d014b8f9e3b4408791a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 17ea451e7ca982d46ae4669e6722195f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
