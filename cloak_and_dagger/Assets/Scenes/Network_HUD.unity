@@ -203,7 +203,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 570620919}
-  - component: {fileID: 570620921}
   - component: {fileID: 570620920}
   m_Layer: 0
   m_Name: connectur
@@ -313,38 +312,6 @@ MonoBehaviour:
   connect_event: {fileID: 11400000, guid: 19720c89e2851b347beb39fa635a7707, type: 2}
   host_event: {fileID: 11400000, guid: dc20c6b4771a29f49a6a27aa6b4bdbe3, type: 2}
   character: {fileID: 1479639472354148, guid: 409b4a96beb9eec4aae70c7407d93c43, type: 2}
---- !u!114 &570620921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 570620918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!1 &1197354554
 GameObject:
   m_ObjectHideFlags: 0
