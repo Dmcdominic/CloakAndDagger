@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
-public class Network_Connectur : MonoBehaviour {
+public class Network_Connectur : NetworkBehaviour {
 
 
 
@@ -26,7 +26,8 @@ public class Network_Connectur : MonoBehaviour {
     [SerializeField]
     event_object host_event;
 
-
+    [SerializeField]
+    GameObject character;
 
 
 
@@ -61,6 +62,14 @@ public class Network_Connectur : MonoBehaviour {
     	_client.RegisterHandler(MsgType.Connect,connect_callback);
     	_client.Connect(ip,port_int);
     	SceneManager.LoadScene(1);
+    	Cmd_spawn_character();
+    }
+
+    [Command]
+    public void Cmd_spawn_character()
+    {
+    	GameObject my_char = GameObject.Instantiate(character);
+    	NetworkServer.Spawn(my_char);
     }
 
     public void host()
@@ -68,6 +77,7 @@ public class Network_Connectur : MonoBehaviour {
     	_client = ClientScene.ConnectLocalServer();
     	_client.RegisterHandler(MsgType.Connect,connect_callback);
     	SceneManager.LoadScene(1);
+    	GameObject.Instantiate(character);
 
     }
 
