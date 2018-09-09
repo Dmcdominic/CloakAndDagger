@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using System.Collections;
 
 [CreateAssetMenu(menuName = "variables/event")]
 public class event_object : ScriptableObject {
