@@ -10,7 +10,10 @@ public class On_Action_Button : NetworkBehaviour {
 	input_config config;
 
 	[SerializeField]
-	event_object to_trigger;
+	event_object to_trigger_dagger;
+
+	[SerializeField]
+	event_object to_trigger_dash;
 
 
 	// Use this for initialization
@@ -20,10 +23,16 @@ public class On_Action_Button : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(config.dagger && isLocalPlayer)
+		if (isLocalPlayer && config)
 		{
-			to_trigger.Invoke();
+			if (config.dagger)
+			{
+				to_trigger_dagger.Invoke();
+			}
+			else if (config.dash)
+			{
+				to_trigger_dash.Invoke();
+			}
 		}
-		
 	}
 }

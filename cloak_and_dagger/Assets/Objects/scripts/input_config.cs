@@ -19,6 +19,12 @@ public class input_config : ScriptableObject {
 	{
 		get {return Input.GetKeyDown(dagger_key);}
 	}
+	[SerializeField]
+	KeyCode dash_key;
+	public bool dash
+	{
+		get { return Input.GetKeyDown(dash_key); }
+	}
 
 	[SerializeField]
 	string horizontal_axis;
