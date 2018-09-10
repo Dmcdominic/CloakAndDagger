@@ -11,3 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0174499ee4356947b3f0f95e95424a2, type: 3}
   m_Name: dagger_collision
   m_EditorClassIdentifier: 
+  e:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: collision_event_object+collision_event, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

@@ -58,6 +58,7 @@
 
         void surf (Input IN, inout SurfaceOutput o)
         {
+            _RevealTime -= unity_DeltaTime;
             float intens = (_LightColor0.x + _LightColor0.y + _LightColor0.z) / _MaxLight;
             fixed4 c = SampleSpriteTexture (IN.uv_MainTex) * IN.color;
             float a = clamp(max(_RevealTime,intens),0,1);
