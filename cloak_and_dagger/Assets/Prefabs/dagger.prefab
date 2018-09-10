@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 61037714204618394}
   - component: {fileID: 212187264656605594}
   - component: {fileID: 114805709980555324}
-  - component: {fileID: 114353888966341056}
+  - component: {fileID: 114921173148890606}
   m_Layer: 0
   m_Name: dagger
   m_TagString: Dagger
@@ -112,18 +112,6 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &114353888966341056
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1862537834978502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4223270e1a51bbc4499382c132de5877, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyOnWallCollision: 0
 --- !u!114 &114791960966589640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,6 +156,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
+--- !u!114 &114921173148890606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862537834978502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a685e9bccf38499880fdc8a0c3345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  to_trigger_on_collision: {fileID: 11400000, guid: ef0947f8fa6971e45ab308af9b561377,
+    type: 2}
 --- !u!212 &212187264656605594
 SpriteRenderer:
   m_ObjectHideFlags: 1
