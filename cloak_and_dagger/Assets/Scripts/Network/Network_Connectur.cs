@@ -59,10 +59,13 @@ public class Network_Connectur : NetworkManager {
 
     public void connect()
     {
-    	_client = new NetworkClient();
+    	_client = StartClient();
     	_client.RegisterHandler(MsgType.Connect,connect_callback);
+        _client.RegisterHandler(MsgType.Error,error_callback);
     	if(ip == null) ip = "localhost";
+        print(ip + " - " + port_int.ToString());
     	_client.Connect(ip,port_int);
+        print(_client.isConnected);
     	SceneManager.LoadScene(1);
     }
 
@@ -70,15 +73,29 @@ public class Network_Connectur : NetworkManager {
 
     public void host()
     {
-    	_client = ClientScene.ConnectLocalServer();
+    	_client = StartHost();
     	_client.RegisterHandler(MsgType.Connect,connect_callback);
     	SceneManager.LoadScene(1);
 
     }
 
+    public void error_callback(NetworkMessage msg)
+    {
+        string error_msg = "";
+        string temp = "";
+        temp = msg.reader.ReadString();
+        while(temp != "")
+        {
+            error_msg += temp;
+            temp = msg.reader.ReadString();
+            Debug.Log("oops");
+        }
+        Debug.Log("Error: " + error_msg);
+    }
+
     public void connect_callback(NetworkMessage msg)
     {
-    	print(msg);
+    	Debug.Log("connected");
     }
 
 }
