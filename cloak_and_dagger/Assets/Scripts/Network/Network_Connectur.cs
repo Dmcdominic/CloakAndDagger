@@ -78,7 +78,7 @@ public class Network_Connectur : NetworkManager {
 
     public void connect_callback(NetworkMessage msg)
     {
-    	print("connected to server");
+    	print(msg);
     }
 
 }
