@@ -47,7 +47,7 @@ public class MenuManager : MonoBehaviour {
 
         // Press 'b' on joystick or backspace on keyboard to go back
         backTimer += Time.deltaTime;
-        if (Input.GetAxisRaw("Cancel") > 0 && backButton != null && (backTimer >= 0.5f || PauseManager.paused)) {
+        if (Input.GetAxisRaw("Cancel") > 0 && backButton != null && (backTimer >= 0.5f /*|| PauseManager.paused*/)) {
             backButton.onClick.Invoke();
             backTimer = 0;
         }
@@ -126,7 +126,7 @@ public class MenuManager : MonoBehaviour {
 
     // Functions for buttons to call
     public void LoadMainMenu() {
-		PauseManager.Instance.resume();
+		//PauseManager.Instance.resume();
 		GM.changeToMainMenu();
     }
 

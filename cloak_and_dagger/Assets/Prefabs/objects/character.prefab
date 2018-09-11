@@ -405,11 +405,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - {fileID: 11400000, guid: 5fee8766116ae67479a661562c667c48, type: 2}
   on_triggers:
-    m_keys: 
-    m_values: []
+    m_keys: 00000000
+    m_values:
+    - {fileID: 11400000, guid: 160fe5029c4947f4fbcaf28517de28b8, type: 2}
   off_triggers:
     m_keys: 
     m_values: []
