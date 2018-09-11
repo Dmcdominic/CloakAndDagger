@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
+using UnityEngine.SceneManagement;
 
 
 public class display_connections : MonoBehaviour {
@@ -15,10 +16,20 @@ public class display_connections : MonoBehaviour {
 	int_var requestDomain;
 	[SerializeField]
 	connection_list_object connection_obj;
+	[SerializeField]
+	int_var port;
+	[SerializeField]
+	event_object host_event;
+	[SerializeField]
+	string_var host_name;
+	[SerializeField]
+	string_var host_password;
 
 	// Use this for initialization
 	void Start () {
 		refresh.e.AddListener(list_connections);
+		host_event.e.AddListener(host);
+		NetworkManager.singleton.StartMatchMaker();
 	}
 	
 
@@ -50,11 +61,20 @@ public class display_connections : MonoBehaviour {
 		connection_obj.rows.Add(r);
 	}
 
-	// Update is called once per frame
-	void Update () {
-		
+	void host()
+	{
+		print(NetworkManager.singleton.matchMaker);
+		NetworkManager.singleton.matchMaker.CreateMatch(host_name.val,20,true,host_password.val,"","",0,0,host_callback);
 	}
 
+	void host_callback(bool success,string extendedInfo,MatchInfo matchInfo)
+	{
+		if(success)
+		{
+			NetworkServer.Listen(matchInfo,port.val);
+			NetworkManager.singleton.StartHost(matchInfo);
+		}
+	}
 
 
 }
