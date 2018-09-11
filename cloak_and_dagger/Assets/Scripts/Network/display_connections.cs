@@ -30,6 +30,7 @@ public class display_connections : MonoBehaviour {
 		refresh.e.AddListener(list_connections);
 		host_event.e.AddListener(host);
 		NetworkManager.singleton.StartMatchMaker();
+		list_connections();
 	}
 	
 
