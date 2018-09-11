@@ -9,6 +9,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be48ad5a7708e9d4abd8666c1a6c8a38, type: 3}
-  m_Name: throw_dagger
+  m_Name: Throw_Dagger
   m_EditorClassIdentifier: 
   constant: 0

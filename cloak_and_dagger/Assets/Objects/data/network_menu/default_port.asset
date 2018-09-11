@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734fc9a47fa3469419a6fbe8ce717fdf, type: 3}
   m_Name: default_port
   m_EditorClassIdentifier: 
-  use_constant: 0
-  constant: 0
+  use_constant: 1
+  constant: 7777
   value: 7777

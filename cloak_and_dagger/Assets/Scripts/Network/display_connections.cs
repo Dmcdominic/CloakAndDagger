@@ -39,7 +39,7 @@ public class display_connections : MonoBehaviour {
 		int eloScore = 0;
 		bool filter_private = false;
 		int start = 0;
-		int size = 4;
+		int size = 20;
 		NetworkManager.singleton.matchMaker.ListMatches(start,size,name_filter.val,filter_private,eloScore,requestDomain.val,on_list);
 	}
 
