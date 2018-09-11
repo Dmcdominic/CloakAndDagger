@@ -17,15 +17,10 @@ public class pmove : NetworkBehaviour {
 	[SerializeField]
 	bool_var is_stun;
 
-	[SerializeField]
-	float_event_object stun_trigger;
-
 
 	Rigidbody2D rb;
 
 
-
-	
 	
 	// Update is called once per frame
 	void Update () {
@@ -40,7 +35,6 @@ public class pmove : NetworkBehaviour {
 		rb.AddForce(input_vec.val * move_speed,ForceMode2D.Force);
 
 	}
-
 
 
 	// Use this for initialization

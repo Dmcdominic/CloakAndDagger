@@ -16,7 +16,7 @@ public class dash : NetworkBehaviour {
 	float distance = 2f;
 
 	[SerializeField]
-	event_object trigger;
+	float_event_object trigger;
 
 	private Rigidbody2D rb;
 
@@ -28,7 +28,7 @@ public class dash : NetworkBehaviour {
 		}
 	}
 
-	public void dash_func() {
+	public void dash_func(float cooldown) {
 		Vector3 direction = (_target_dest.val - _origin.val).normalized;
 		Vector3 displacement = direction * distance;
 		rb.MovePosition(this.transform.position + displacement);
