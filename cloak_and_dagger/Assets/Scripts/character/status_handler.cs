@@ -10,30 +10,17 @@ public enum status {stun, revealed}
 
 public class status_handler : NetworkBehaviour {
 
-	[System.Serializable]
-	public class status_dict : SerializableDictionary<status,bool_var> {}
+	[SerializeField]
+	Status_BoolVar_Dict stats = new Status_BoolVar_Dict();
 
 	[SerializeField]
-	status_dict stats = new status_dict();
-
-	[System.Serializable]
-	public class float_event_dict : SerializableDictionary<status,float_event_object> {}
+	Status_FloatEventObject_Dict on_triggers = new Status_FloatEventObject_Dict();
 
 	[SerializeField]
-	float_event_dict on_triggers = new float_event_dict();
-
-
-	[System.Serializable]
-	public class event_dict : SerializableDictionary<status,event_object> {}
+	Status_EventObject_Dict off_triggers = new Status_EventObject_Dict();
 
 	[SerializeField]
-	event_dict off_triggers = new event_dict();
-
-	[System.Serializable]
-	public class float_dict : SerializableDictionary<status,float> {}
-
-	[SerializeField]
-	float_dict times = new float_dict();
+	Status_Float_Dict times = new Status_Float_Dict();
 
 
 	public UnityAction<float> set_status(status stat)
