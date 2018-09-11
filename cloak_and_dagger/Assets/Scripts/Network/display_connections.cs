@@ -72,7 +72,7 @@ public class display_connections : MonoBehaviour {
 	{
 		if(success)
 		{
-			NetworkServer.Listen(matchInfo,port.val);
+			NetworkServer.Listen(matchInfo,443);
 			NetworkManager.singleton.StartHost(matchInfo);
 		}
 	}
