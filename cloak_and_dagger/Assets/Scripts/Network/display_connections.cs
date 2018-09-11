@@ -55,10 +55,11 @@ public class display_connections : MonoBehaviour {
 	void make_row(string name,int cur_players,int max_players,bool locked,UnityEngine.Networking.Types.NetworkID connectID)
 	{
 		connection_list_object.row r = new connection_list_object.row();
+		r.cur_players = cur_players;
 		r.name = name;
 		r.max_players = max_players;
 		r.locked = locked;
-		r.connectID = (int)connectID;
+		r.connectID = (ulong)connectID;
 		connection_obj.rows.Add(r);
 	}
 
@@ -72,7 +73,7 @@ public class display_connections : MonoBehaviour {
 	{
 		if(success)
 		{
-			NetworkServer.Listen(matchInfo,443);
+			NetworkServer.Listen(matchInfo,port.val);
 			NetworkManager.singleton.StartHost(matchInfo);
 		}
 	}

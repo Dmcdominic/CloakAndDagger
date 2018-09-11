@@ -20,8 +20,8 @@ public class connection_list_object : ScriptableObject {
 		[SerializeField]
 		public bool locked;
 
-		[SerializeField]
-		public int connectID;
+		
+		public ulong connectID;
 
 	}
 

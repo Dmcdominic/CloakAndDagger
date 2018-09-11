@@ -44,6 +44,7 @@ public class connection_point : MonoBehaviour {
 			transform.GetChild(0).GetComponent<Text>().text = row.name;
 			transform.GetChild(1).GetComponent<Text>().text = row.cur_players.ToString() + "/" + row.max_players.ToString();
 			transform.GetChild(2).GetComponent<ui_match_lock_button>().is_locked = row.locked;
+			transform.GetChild(3).GetComponent<Button>().onClick.RemoveAllListeners();
 			transform.GetChild(3).GetComponent<Button>().onClick.AddListener(join);
 		}
 	}
@@ -52,6 +53,8 @@ public class connection_point : MonoBehaviour {
 	{
 		refresh();
 		if(password == null) password = "";
+		print((UnityEngine.Networking.Types.NetworkID)row.connectID);
+
 		NetworkManager.singleton.matchMaker.JoinMatch((UnityEngine.Networking.Types.NetworkID)row.connectID,password,"","",0,requestDomain.val,join_callback);
 	}
 
@@ -63,7 +66,7 @@ public class connection_point : MonoBehaviour {
 		}
 		else
 		{
-			print("failed connect");
+			print(extendedInfo);
 		}
 	}
 
