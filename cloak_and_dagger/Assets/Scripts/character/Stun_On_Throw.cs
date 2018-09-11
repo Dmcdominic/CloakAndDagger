@@ -5,18 +5,18 @@ using UnityEngine;
 public class Stun_On_Throw : MonoBehaviour {
 
 	[SerializeField]
-	event_object throw_trigger;
+	float_event_object throw_trigger;
 
 	[SerializeField]
 	float_event_object stun_trigger;
 
 	[SerializeField]
-	float time = 1;
+	dagger_config dagger_Config;
 
 	
-	void stun()
+	void stun(float cooldown)
 	{
-		stun_trigger.Invoke(time);
+		stun_trigger.Invoke(dagger_Config.stun_time);
 	}
 
 

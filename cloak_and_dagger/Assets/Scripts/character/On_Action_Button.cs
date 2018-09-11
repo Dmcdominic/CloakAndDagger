@@ -7,14 +7,22 @@ using UnityEngine.Networking;
 public class On_Action_Button : NetworkBehaviour {
 
 	[SerializeField]
-	input_config config;
+	input_config input_Config;
 
 	[SerializeField]
-	event_object to_trigger_dagger;
+	float_event_object to_trigger_dagger;
+	[SerializeField]
+	bool_var dagger_on_cooldown;
+	[SerializeField]
+	dagger_config dagger_Config;
 
 	[SerializeField]
-	event_object to_trigger_dash;
-
+	float_event_object to_trigger_dash;
+	[SerializeField]
+	bool_var dash_on_cooldown;
+	[SerializeField]
+	dash_config dash_Config;
+	
 
 	// Use this for initialization
 	void Start () {
@@ -23,15 +31,15 @@ public class On_Action_Button : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (isLocalPlayer && config)
+		if (isLocalPlayer && input_Config)
 		{
-			if (config.dagger)
+			if (input_Config.dagger && !dagger_on_cooldown.val)
 			{
-				to_trigger_dagger.Invoke();
+				to_trigger_dagger.Invoke(dagger_Config.cooldown);
 			}
-			else if (config.dash)
+			else if (input_Config.dash && !dash_on_cooldown.val)
 			{
-				to_trigger_dash.Invoke();
+				to_trigger_dash.Invoke(dash_Config.cooldown);
 			}
 		}
 	}

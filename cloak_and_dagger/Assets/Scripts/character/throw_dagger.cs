@@ -24,10 +24,10 @@ public class throw_dagger : NetworkBehaviour {
 	GameObject dagger_prefab;
 
 	[SerializeField]
-	event_object trigger;
+	float_event_object trigger;
 
 
-	public void throw_func() //too many times have I tried to name a func throw.
+	public void throw_func(float cooldown) //too many times have I tried to name a func throw.
 	{
 		Cmd_throw(_origin.val,_dest.val,cast_buffer);
 			

@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 using UnityEngine.Events;
 
 
-public enum status {stun, revealed}
+public enum status {stun, revealed, dagger_on_cooldown, dash_on_cooldown}
 
 public class status_handler : NetworkBehaviour {
 
@@ -19,24 +19,33 @@ public class status_handler : NetworkBehaviour {
 	[SerializeField]
 	Status_EventObject_Dict off_triggers = new Status_EventObject_Dict();
 
-	[SerializeField]
 	Status_Float_Dict times = new Status_Float_Dict();
 
 
-	public UnityAction<float> set_status(status stat)
-	{
-		return duration => {times[stat] = Mathf.Max(times[stat],duration);};
-	}
 
 	// Use this for initialization
 	void Start () {
+		init_times();
 		foreach(status stat in stats.Keys)
 		{
-			on_triggers[stat].e.AddListener(set_status(stat));
-			off_triggers[stat].e.AddListener(reset_status(stat));
+			if (on_triggers.ContainsKey(stat)) {
+				on_triggers[stat].e.AddListener(set_status(stat));
+			}
+			if (off_triggers.ContainsKey(stat)) {
+				off_triggers[stat].e.AddListener(reset_status(stat));
+			}
 		}
 	}
-	
+
+	private void init_times() {
+		foreach (status stat in stats.Keys) {
+			times.Add(stat, 0);
+		}
+	}
+
+	public UnityAction<float> set_status(status stat) {
+		return duration => { times[stat] = Mathf.Max(times[stat], duration); };
+	}
 
 	public UnityAction reset_status(status stat)
 	{
