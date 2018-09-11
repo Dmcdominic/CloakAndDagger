@@ -20,8 +20,8 @@ public class connection_list_object : ScriptableObject {
 		[SerializeField]
 		public bool locked;
 
-		//[SerializeField]
-		public UnityEngine.Networking.Types.NetworkID connectID;
+		[SerializeField]
+		public int connectID;
 
 	}
 

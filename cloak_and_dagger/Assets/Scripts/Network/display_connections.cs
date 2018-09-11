@@ -13,6 +13,8 @@ public class display_connections : MonoBehaviour {
 	string_var name_filter;
 	[SerializeField]
 	int_var requestDomain;
+	[SerializeField]
+	connection_list_object connection_obj;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +33,7 @@ public class display_connections : MonoBehaviour {
 
 	void on_list(bool success, string extendedInfo,List<MatchInfoSnapshot> matches)
 	{
+		connection_obj.rows = new List<connection_list_object.row>();
 		foreach(MatchInfoSnapshot snap in matches)
 		{
 			make_row(snap.name,snap.currentSize,snap.maxSize,snap.isPrivate,snap.networkId);
@@ -39,7 +42,12 @@ public class display_connections : MonoBehaviour {
 
 	void make_row(string name,int cur_players,int max_players,bool locked,UnityEngine.Networking.Types.NetworkID connectID)
 	{
-		
+		connection_list_object.row r = new connection_list_object.row();
+		r.name = name;
+		r.max_players = max_players;
+		r.locked = locked;
+		r.connectID = (int)connectID;
+		connection_obj.rows.Add(r);
 	}
 
 	// Update is called once per frame
