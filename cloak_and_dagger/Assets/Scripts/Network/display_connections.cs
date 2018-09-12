@@ -24,15 +24,26 @@ public class display_connections : MonoBehaviour {
 	string_var host_name;
 	[SerializeField]
 	string_var host_password;
+	[SerializeField]
+	int_var lobby_id;
+	[SerializeField]
+	event_object ready_up;
 
 	// Use this for initialization
 	void Start () {
 		refresh.e.AddListener(list_connections);
 		host_event.e.AddListener(host);
+		ready_up.e.AddListener(on_ready);
 		NetworkManager.singleton.StartMatchMaker();
 		list_connections();
 	}
 	
+
+	void on_ready()
+	{
+		
+	}
+
 
 	void list_connections()
 	{
@@ -74,9 +85,7 @@ public class display_connections : MonoBehaviour {
 		if(success)
 		{
 			NetworkServer.Listen(matchInfo,port.val);
-			NetworkManager.singleton.StartHost(matchInfo);
+			SceneManager.LoadScene(lobby_id.val);
 		}
 	}
-
-
 }
