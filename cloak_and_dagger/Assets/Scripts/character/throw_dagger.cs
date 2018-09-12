@@ -47,7 +47,8 @@ public class throw_dagger : NetworkBehaviour {
 			
 			if(rb)
 			{
-				rb.AddForce(my_dagger.transform.right * speed,ForceMode2D.Force);
+				//change this to a set velocity, forces don't apply instantly over the network
+				rb.velocity = my_dagger.transform.right * speed;
 			}
 	}
 

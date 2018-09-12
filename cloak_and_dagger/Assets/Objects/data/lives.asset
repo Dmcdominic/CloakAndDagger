@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 734fc9a47fa3469419a6fbe8ce717fdf, type: 3}
-  m_Name: match_scene
+  m_Name: lives
   m_EditorClassIdentifier: 
-  use_constant: 1
-  constant: 2
+  use_constant: 0
+  constant: 0
   value: 0

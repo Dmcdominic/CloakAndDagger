@@ -10,6 +10,10 @@ public class trigger_death : NetworkBehaviour {
 
 	[SerializeField]
 	bool_var spectator_reveal;
+	[SerializeField]
+	int_var lives;
+	[SerializeField]
+	event_object respawn_event;
 
 	// Use this for initialization
 	void Start () {
@@ -31,7 +35,11 @@ public class trigger_death : NetworkBehaviour {
 
 	private void die() {
 		if (isLocalPlayer) {
-			//spectator_reveal.val = true;
+			lives.val--;
+			if(lives.val > 0)
+				respawn_event.Invoke();
+			else
+				spectator_reveal.val = true; 
 			NetworkServer.Destroy(gameObject);
 		}
 	}

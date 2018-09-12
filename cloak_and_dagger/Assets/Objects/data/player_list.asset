@@ -8,9 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734fc9a47fa3469419a6fbe8ce717fdf, type: 3}
-  m_Name: match_scene
+  m_Script: {fileID: 11500000, guid: a0551a148bf09b94fac10c688f014b6b, type: 3}
+  m_Name: player_list
   m_EditorClassIdentifier: 
-  use_constant: 1
-  constant: 2
-  value: 0
+  roster: []

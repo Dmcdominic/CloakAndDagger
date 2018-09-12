@@ -2732,9 +2732,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1530441282}
-  - component: {fileID: 1530441280}
   - component: {fileID: 1530441281}
-  - component: {fileID: 1530441283}
+  - component: {fileID: 1530441280}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -2750,7 +2749,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1530441279}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -859942077, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 95ea7c99da7f5504191dc52dc8747b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_NetworkPort: 7777
@@ -2760,13 +2759,14 @@ MonoBehaviour:
   m_DontDestroyOnLoad: 1
   m_RunInBackground: 1
   m_ScriptCRCCheck: 1
-  m_MaxDelay: 0.01
+  m_MaxDelay: 0.2
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 0}
-  m_AutoCreatePlayer: 1
-  m_PlayerSpawnMethod: 0
-  m_OfflineScene: Lobby
-  m_OnlineScene: 
+  m_PlayerPrefab: {fileID: 1479639472354148, guid: 409b4a96beb9eec4aae70c7407d93c43,
+    type: 2}
+  m_AutoCreatePlayer: 0
+  m_PlayerSpawnMethod: 1
+  m_OfflineScene: Network_HUD
+  m_OnlineScene: Lobby
   m_SpawnPrefabs:
   - {fileID: 1862537834978502, guid: f715f6ea0cc87e445a3b49fe4014a4c1, type: 2}
   m_CustomConfig: 0
@@ -2811,7 +2811,7 @@ MonoBehaviour:
     m_MaxTimerTimeout: 12000
     m_MinNetSimulatorTimeout: 1
     m_MaxNetSimulatorTimeout: 12000
-  m_Channels: 0500000000000000
+  m_Channels: 
   m_UseWebSockets: 0
   m_UseSimulator: 0
   m_SimulatedLatency: 1
@@ -2824,17 +2824,7 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
-  m_ShowLobbyGUI: 0
-  m_MaxPlayers: 20
-  m_MaxPlayersPerConnection: 1
-  m_MinPlayers: 0
-  m_LobbyPlayerPrefab: {fileID: 114185983112889046, guid: b24e4049e439819448cc06f3665953a4,
-    type: 2}
-  m_GamePlayerPrefab: {fileID: 1479639472354148, guid: 409b4a96beb9eec4aae70c7407d93c43,
-    type: 2}
-  m_LobbyScene: Lobby
-  m_PlayScene: SampleScene
-  lobbySlots: []
+  players: {fileID: 11400000, guid: b0f89a996eee83642ac022d2015ef24e, type: 2}
 --- !u!114 &1530441281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2855,6 +2845,7 @@ MonoBehaviour:
   host_name: {fileID: 11400000, guid: e4be1d7eae42665499940683982febb9, type: 2}
   host_password: {fileID: 11400000, guid: 017ef247342cb994694ed7b72df1e246, type: 2}
   lobby_id: {fileID: 11400000, guid: 4b78bc2c1dfeb9244b0be866ddd32cab, type: 2}
+  net_obj: {fileID: 0}
 --- !u!4 &1530441282
 Transform:
   m_ObjectHideFlags: 0
@@ -2868,18 +2859,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1530441283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1530441279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1944582cbb51d50479836e017af7e530, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  net_obj: {fileID: 11400000, guid: ecdcc0912e61fb349b531ca5abe7fd81, type: 2}
 --- !u!1 &1679996374
 GameObject:
   m_ObjectHideFlags: 0

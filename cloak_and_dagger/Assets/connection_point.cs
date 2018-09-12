@@ -67,9 +67,9 @@ public class connection_point : MonoBehaviour {
 	{
 		if(success)
 		{
-			NetworkManager.singleton.StartClient(matchInfo);
-			SceneManager.LoadScene(lobby_scene.val);
-			//NetworkManager.singleton.OnMatchJoined(success,extendedInfo,matchInfo);
+			//NetworkManager.singleton.StartClient(matchInfo);
+			//SceneManager.LoadScene(lobby_scene.val);
+			NetworkManager.singleton.OnMatchJoined(success,extendedInfo,matchInfo);
 		}
 		else
 		{

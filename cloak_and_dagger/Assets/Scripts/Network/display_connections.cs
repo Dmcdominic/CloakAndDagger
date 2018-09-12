@@ -77,8 +77,8 @@ public class display_connections : MonoBehaviour {
 	{
 		if(success)
 		{
-			SceneManager.LoadScene(lobby_id.val);
-			//NetworkManager.singleton.OnMatchCreate(success,extendedInfo,matchInfo);
+			//SceneManager.LoadScene(lobby_id.val);
+			NetworkManager.singleton.OnMatchCreate(success,extendedInfo,matchInfo);
 		}
 	}
 }
