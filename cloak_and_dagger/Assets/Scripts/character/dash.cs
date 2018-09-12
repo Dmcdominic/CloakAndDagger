@@ -31,7 +31,20 @@ public class dash : NetworkBehaviour {
 	public void dash_func(float cooldown) {
 		Vector3 direction = (_target_dest.val - _origin.val).normalized;
 		Vector3 displacement = direction * distance;
-		rb.MovePosition(this.transform.position + displacement);
+		//rb.MovePosition(this.transform.position + displacement);
+		Cmd_update_pos_on_server(this.transform.position + displacement);
+	}
+
+	// Server is told that the player should be moved to the new position
+	[Command]
+	private void Cmd_update_pos_on_server(Vector2 new_pos) {
+		Rpc_update_pos_for_all_clients(new_pos);
+	}
+
+	// Server tells all clients to move this player's rb to the new position
+	[ClientRpc]
+	private void Rpc_update_pos_for_all_clients(Vector2 new_pos) {
+		rb.MovePosition(new_pos);
 	}
 
 }

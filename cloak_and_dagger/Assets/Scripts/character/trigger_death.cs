@@ -8,11 +8,19 @@ public class trigger_death : NetworkBehaviour {
 	[SerializeField]
 	collision_event_object trigger;
 
+	[SerializeField]
+	bool_var spectator_reveal;
+
 	// Use this for initialization
 	void Start () {
-		if (isLocalPlayer)
+		if (isLocalPlayer) {
 			trigger.e.AddListener(on_dagger_collision);
-			
+		}
+
+		// THIS vvv IS TEMPORARY. We will need a way to set spectator_reveal to false
+		// at the start of every match, so long as the player is alive,
+		// but set it/leave it as true if someone loaded in specifically as a spectator.
+		spectator_reveal.val = false;
 	}
 	
 	private void on_dagger_collision(GameObject dagger, Collision2D collision) {
@@ -22,6 +30,9 @@ public class trigger_death : NetworkBehaviour {
 	}
 
 	private void die() {
-		Destroy(this.gameObject);
+		if (isLocalPlayer) {
+			spectator_reveal.val = true;
+			NetworkServer.Destroy(gameObject);
+		}
 	}
 }

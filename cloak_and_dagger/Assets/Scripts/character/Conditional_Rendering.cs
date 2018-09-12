@@ -11,26 +11,33 @@ public class Conditional_Rendering : NetworkBehaviour {
 	[SerializeField]
 	Material non_local_mat;
 
+	//[SerializeField]
+	//float_event_object reveal_trigger;
+
 	[SerializeField]
-	float_event_object reveal_trigger;
+	bool_var spectator_reveal;
 
 	private SpriteRenderer sr;
 
 	// Use this for initialization
 	void Start () {
 		sr = GetComponent<SpriteRenderer>();
-		if(isLocalPlayer)
-		{
-			sr.material = local_mat;
+		update_material();
+	}
+
+	private void Update() {
+		update_material();
+	}
+
+	private void update_material() {
+		if (!sr) {
+			sr = GetComponent<SpriteRenderer>();
 		}
-		else
-		{
+		if (isLocalPlayer || spectator_reveal.val) {
+			sr.material = local_mat;
+		} else {
 			sr.material = non_local_mat;
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }
