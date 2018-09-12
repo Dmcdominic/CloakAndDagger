@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class connection_point : MonoBehaviour {
 
@@ -14,7 +16,10 @@ public class connection_point : MonoBehaviour {
 	connection_list_object conn_list;
 	[SerializeField]
 	int_var requestDomain;
-
+	[SerializeField]
+	int_var lobby_scene;
+	[SerializeField]
+	network_objects net_obj;
 
 	public string password {get;set;}
 
@@ -63,6 +68,8 @@ public class connection_point : MonoBehaviour {
 		if(success)
 		{
 			NetworkManager.singleton.StartClient(matchInfo);
+			SceneManager.LoadScene(lobby_scene.val);
+			//NetworkManager.singleton.OnMatchJoined(success,extendedInfo,matchInfo);
 		}
 		else
 		{

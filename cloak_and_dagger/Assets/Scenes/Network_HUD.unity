@@ -1435,6 +1435,12 @@ Prefab:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 114772038895802002, guid: d1c38ad57a621d04284c7652082cd1fd,
+        type: 2}
+      propertyPath: lobby_scene
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b78bc2c1dfeb9244b0be866ddd32cab,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1c38ad57a621d04284c7652082cd1fd, type: 2}
   m_IsPrefabAsset: 0
@@ -2164,7 +2170,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1199135221}
   - component: {fileID: 1199135223}
-  - component: {fileID: 1199135222}
   m_Layer: 5
   m_Name: connections
   m_TagString: Untagged
@@ -2195,21 +2200,6 @@ RectTransform:
   m_AnchoredPosition: {x: 28.49997, y: 23.712173}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1199135222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1199135220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a262fdd6e392a3c4aba9913b34621f24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  refresh: {fileID: 0}
-  row_obj: {fileID: 0}
-  conn_list: {fileID: 0}
-  requestDomain: {fileID: 0}
 --- !u!114 &1199135223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2744,6 +2734,7 @@ GameObject:
   - component: {fileID: 1530441282}
   - component: {fileID: 1530441280}
   - component: {fileID: 1530441281}
+  - component: {fileID: 1530441283}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -2772,7 +2763,7 @@ MonoBehaviour:
   m_MaxDelay: 0.01
   m_LogLevel: 2
   m_PlayerPrefab: {fileID: 0}
-  m_AutoCreatePlayer: 0
+  m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
   m_OfflineScene: Lobby
   m_OnlineScene: 
@@ -2834,7 +2825,7 @@ MonoBehaviour:
   isNetworkActive: 0
   matchMaker: {fileID: 0}
   m_ShowLobbyGUI: 0
-  m_MaxPlayers: 4
+  m_MaxPlayers: 20
   m_MaxPlayersPerConnection: 1
   m_MinPlayers: 0
   m_LobbyPlayerPrefab: {fileID: 114185983112889046, guid: b24e4049e439819448cc06f3665953a4,
@@ -2877,6 +2868,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1530441283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1530441279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1944582cbb51d50479836e017af7e530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  net_obj: {fileID: 11400000, guid: ecdcc0912e61fb349b531ca5abe7fd81, type: 2}
 --- !u!1 &1679996374
 GameObject:
   m_ObjectHideFlags: 0

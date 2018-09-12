@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class lobby_ui : MonoBehaviour {
 
+	[SerializeField]
+	network_objects net_obj;
 
 
-	// Use this for initialization
-	void Start () {
+	public void ready_up(bool b)
+	{
 		
+		if(net_obj.lobby_player)
+		{
+			if(b)
+			{
+				net_obj.lobby_player.SendReadyToBeginMessage();
+			}
+			else 
+			{
+				net_obj.lobby_player.SendNotReadyToBeginMessage();
+			}
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	void Start()
+	{
+		net_obj.lobby_player = Instantiate(net_obj.lobby_manager.lobbyPlayerPrefab);
 	}
+
+
 }
