@@ -31,7 +31,7 @@ public class trigger_death : NetworkBehaviour {
 
 	private void die() {
 		if (isLocalPlayer) {
-			spectator_reveal.val = true;
+			//spectator_reveal.val = true;
 			NetworkServer.Destroy(gameObject);
 		}
 	}
