@@ -1785,6 +1785,7 @@ MonoBehaviour:
   ready: {fileID: 11400000, guid: 77abbe27f25ecb84e83b52594179bc01, type: 2}
   players: {fileID: 11400000, guid: b0f89a996eee83642ac022d2015ef24e, type: 2}
   game_scene: {fileID: 11400000, guid: c7434fb98d9bfa841aa3bcbd37aafc93, type: 2}
+  spawn_on_scene: {fileID: 11400000, guid: 3419f96228fe9e04596708b5b78c8ad7, type: 2}
 --- !u!4 &1842725763
 Transform:
   m_ObjectHideFlags: 0

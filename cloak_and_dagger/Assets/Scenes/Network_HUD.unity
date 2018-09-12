@@ -2826,6 +2826,7 @@ MonoBehaviour:
   matchMaker: {fileID: 0}
   players: {fileID: 11400000, guid: b0f89a996eee83642ac022d2015ef24e, type: 2}
   client_conn: {fileID: 11400000, guid: 61b225a447ab4ba4993f8420f3d25571, type: 2}
+  spawn_on_scene: {fileID: 11400000, guid: 3419f96228fe9e04596708b5b78c8ad7, type: 2}
 --- !u!114 &1530441281
 MonoBehaviour:
   m_ObjectHideFlags: 0
