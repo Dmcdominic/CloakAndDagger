@@ -244,7 +244,7 @@ MonoBehaviour:
   m_LogLevel: 2
   m_PlayerPrefab: {fileID: 1479639472354148, guid: 409b4a96beb9eec4aae70c7407d93c43,
     type: 2}
-  m_AutoCreatePlayer: 1
+  m_AutoCreatePlayer: 0
   m_PlayerSpawnMethod: 0
   m_OfflineScene: Built-In_Networking
   m_OnlineScene: SampleScene

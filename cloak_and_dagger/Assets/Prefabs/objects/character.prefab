@@ -200,7 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _origin: {fileID: 11400000, guid: 276cb45050efbd24c925199d72e92b6b, type: 2}
   _dest: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
-  speed: 500
+  speed: 20
   cast_buffer: 2
   dagger_prefab: {fileID: 1862537834978502, guid: f715f6ea0cc87e445a3b49fe4014a4c1,
     type: 2}
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 2
-  m_SendInterval: 0.1
+  m_SendInterval: 0.033333335
   m_SyncRotationAxis: 3
   m_RotationSyncCompression: 0
   m_SyncSpin: 0

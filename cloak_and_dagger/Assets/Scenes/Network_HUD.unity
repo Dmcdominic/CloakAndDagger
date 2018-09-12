@@ -2825,6 +2825,7 @@ MonoBehaviour:
   isNetworkActive: 0
   matchMaker: {fileID: 0}
   players: {fileID: 11400000, guid: b0f89a996eee83642ac022d2015ef24e, type: 2}
+  client_conn: {fileID: 11400000, guid: 61b225a447ab4ba4993f8420f3d25571, type: 2}
 --- !u!114 &1530441281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2845,7 +2846,6 @@ MonoBehaviour:
   host_name: {fileID: 11400000, guid: e4be1d7eae42665499940683982febb9, type: 2}
   host_password: {fileID: 11400000, guid: 017ef247342cb994694ed7b72df1e246, type: 2}
   lobby_id: {fileID: 11400000, guid: 4b78bc2c1dfeb9244b0be866ddd32cab, type: 2}
-  net_obj: {fileID: 0}
 --- !u!4 &1530441282
 Transform:
   m_ObjectHideFlags: 0

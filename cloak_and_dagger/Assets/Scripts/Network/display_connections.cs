@@ -26,8 +26,6 @@ public class display_connections : MonoBehaviour {
 	string_var host_password;
 	[SerializeField]
 	int_var lobby_id;
-	[SerializeField]
-	network_objects net_obj;
 
 	// Use this for initialization
 	void Start () {

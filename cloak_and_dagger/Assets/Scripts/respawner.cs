@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-[RequireComponent(typeof(NetworkIdentity))]
-public class respawner : MonoBehaviour {
+public class respawner : NetworkBehaviour {
 
 	[SerializeField]
 	event_object respawn_event;
+	[SerializeField]
+	NetworkConnection_var conn;
 
 	private NetworkIdentity net_id;
 	private NetworkStartPosition[] points;
@@ -19,10 +20,7 @@ public class respawner : MonoBehaviour {
 		respawn_event.e.AddListener(respawn);	
 		character = NetworkManager.singleton.playerPrefab;
 		points = GetComponentsInChildren<NetworkStartPosition>();
-		net_id = GetComponent<NetworkIdentity>();
-		print(net_id);
-		print(net_id.playerControllerId);
-		ClientScene.AddPlayer(net_id.playerControllerId);
+		ClientScene.AddPlayer(conn.val,1);
 	}
 
 	void respawn(){

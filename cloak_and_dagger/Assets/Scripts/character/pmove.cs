@@ -28,7 +28,6 @@ public class pmove : NetworkBehaviour {
 		{
 			return;
 		}
-		print("local");
 		if(is_stun.val)
 		{
 			return;
