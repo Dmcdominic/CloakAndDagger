@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 using UnityEngine.Events;
 
 
-public enum status {stun, revealed, dagger_on_cooldown, dash_on_cooldown}
+public enum status {stun, dagger_on_cooldown, dash_on_cooldown}
 
 public class status_handler : NetworkBehaviour {
 
