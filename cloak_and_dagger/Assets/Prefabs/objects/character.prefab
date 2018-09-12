@@ -257,6 +257,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: {fileID: 11400000, guid: ef0947f8fa6971e45ab308af9b561377, type: 2}
   spectator_reveal: {fileID: 11400000, guid: 4ad75e48cfa56ae45ade9765d99053d9, type: 2}
+  lives: {fileID: 11400000, guid: 8da797a971da62748bc9e3615c651ab9, type: 2}
+  respawn_event: {fileID: 11400000, guid: fe3745e7c102fce40892e5e880a0e868, type: 2}
 --- !u!114 &114336950006474412
 MonoBehaviour:
   m_ObjectHideFlags: 1
