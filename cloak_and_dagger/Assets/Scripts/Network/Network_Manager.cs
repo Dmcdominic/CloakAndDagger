@@ -40,7 +40,7 @@ public class Network_Manager : NetworkManager {
 					no_player = false;
 				}
 			}
-			if(no_player)
+			if(no_player && ClientScene.localPlayers.Count != 0)
 			{
 				ClientScene.AddPlayer(0);
 			}
