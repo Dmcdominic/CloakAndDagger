@@ -32,18 +32,22 @@ public class Network_Manager : NetworkManager {
 			{
 				ClientScene.AddPlayer(0);		
 			}
-			bool no_player = true;
-			foreach(var playerController in ClientScene.localPlayers)
+			else 
 			{
-				if(playerController.gameObject != null)
+				bool no_player = true;
+				foreach(var playerController in ClientScene.localPlayers)
 				{
-					no_player = false;
+					if(playerController.gameObject != null)
+					{
+						no_player = false;
+					}
 				}
+				if(no_player)
+				{
+					ClientScene.AddPlayer(0);
+				}				
 			}
-			if(no_player && ClientScene.localPlayers.Count != 0)
-			{
-				ClientScene.AddPlayer(0);
-			}
+
 			spawn_on_scene.val = false;
 		}
 	}
