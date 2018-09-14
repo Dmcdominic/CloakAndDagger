@@ -28,9 +28,23 @@ public class Network_Manager : NetworkManager {
 		{
 			ClientScene.Ready(connection);
 
-			ClientScene.AddPlayer(0);	
+			if(ClientScene.localPlayers.Count == 0)
+			{
+				ClientScene.AddPlayer(0);		
+			}
+			bool no_player = true;
+			foreach(var playerController in ClientScene.localPlayers)
+			{
+				if(playerController.gameObject != null)
+				{
+					no_player = false;
+				}
+			}
+			if(no_player)
+			{
+				ClientScene.AddPlayer(0);
+			}
 			spawn_on_scene.val = false;
 		}
 	}
-	//volgar the viking
 }

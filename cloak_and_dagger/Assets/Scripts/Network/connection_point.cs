@@ -60,22 +60,10 @@ public class connection_point : MonoBehaviour {
 		if(password == null) password = "";
 		print((UnityEngine.Networking.Types.NetworkID)row.connectID);
 
-		NetworkManager.singleton.matchMaker.JoinMatch((UnityEngine.Networking.Types.NetworkID)row.connectID,password,"","",0,requestDomain.val,join_callback);
+		NetworkManager.singleton.matchMaker.JoinMatch((UnityEngine.Networking.Types.NetworkID)row.connectID,password,"","",0,requestDomain.val,NetworkManager.singleton.OnMatchJoined);
 	}
 
-	void join_callback(bool success, string extendedInfo, MatchInfo matchInfo)
-	{
-		if(success)
-		{
-			//NetworkManager.singleton.StartClient(matchInfo);
-			//SceneManager.LoadScene(lobby_scene.val);
-			NetworkManager.singleton.OnMatchJoined(success,extendedInfo,matchInfo);
-		}
-		else
-		{
-			print(extendedInfo);
-		}
-	}
+
 
 
 }

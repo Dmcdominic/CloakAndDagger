@@ -28,10 +28,10 @@ public class status_handler : NetworkBehaviour {
 		init_times();
 		foreach(status stat in stats.Keys)
 		{
-			if (on_triggers.ContainsKey(stat)) {
+			if (on_triggers.ContainsKey(stat) && on_triggers[stat]) {
 				on_triggers[stat].e.AddListener(set_status(stat));
 			}
-			if (off_triggers.ContainsKey(stat)) {
+			if (off_triggers.ContainsKey(stat) && off_triggers[stat]) {
 				off_triggers[stat].e.AddListener(reset_status(stat));
 			}
 		}

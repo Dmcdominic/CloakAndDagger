@@ -31,8 +31,9 @@ public class respawner : NetworkBehaviour {
 
 
 	void respawn(){
-		GameObject local_character = Instantiate(character,points[Random.Range(0, points.Length)].transform.position,Quaternion.identity);
-		NetworkServer.Spawn(local_character);
+		
+		//GameObject local_character = Instantiate(character,points[Random.Range(0, points.Length)].transform.position,Quaternion.identity);
+		//NetworkServer.Spawn(local_character);
 	}
 	
 	// Update is called once per frame

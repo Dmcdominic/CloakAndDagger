@@ -18,6 +18,7 @@ public class trigger_death : NetworkBehaviour {
 	// Use this for initialization
 	void Start () {
 		if (isLocalPlayer) {
+			lives.val = 10;
 			trigger.e.AddListener(on_dagger_collision);
 		}
 
@@ -40,7 +41,7 @@ public class trigger_death : NetworkBehaviour {
 				respawn_event.Invoke();
 			else
 				spectator_reveal.val = true; 
-			NetworkServer.Destroy(gameObject);
+			//NetworkServer.Destroy(gameObject);
 		}
 	}
 }
