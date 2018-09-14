@@ -17,7 +17,7 @@ public class destroy_dagger_on_collision : NetworkBehaviour {
 	}
 
 	private void on_player_collision(GameObject dagger, dagger_data dagger_Data, GameObject collided_with, string tag) {
-		if (this.GetComponent<NetworkIdentity>().netId != dagger.GetComponent<NetworkIdentity>().netId) {
+		if (!network_util.is_same_netId(this.gameObject, dagger)) {
 			return;
 		}
 
@@ -27,7 +27,7 @@ public class destroy_dagger_on_collision : NetworkBehaviour {
 	}
 
 	private void on_other_collision(GameObject dagger, dagger_data dagger_Data, GameObject collided_with, string tag) {
-		if (this.GetComponent<NetworkIdentity>().netId != dagger.GetComponent<NetworkIdentity>().netId) {
+		if (!network_util.is_same_netId(this.gameObject, dagger)) {
 			return;
 		}
 
