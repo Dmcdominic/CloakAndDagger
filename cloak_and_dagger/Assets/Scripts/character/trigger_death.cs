@@ -42,11 +42,12 @@ public class trigger_death : NetworkBehaviour {
 	private void die() {
 		if (isLocalPlayer) {
 			lives.val--;
+			ClientScene.RemovePlayer(net_id.playerControllerId);
 			if(lives.val > 0)
 				respawn_event.Invoke();
 			else
 				spectator_reveal.val = true; 
-			ClientScene.RemovePlayer(net_id.playerControllerId);
+			
 		}
 	}
 }
