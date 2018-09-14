@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: connections_scene
   m_EditorClassIdentifier: 
   use_constant: 1
-  constant: 0
+  constant: 1
   value: 0

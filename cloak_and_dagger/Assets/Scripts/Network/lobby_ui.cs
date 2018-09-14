@@ -20,13 +20,22 @@ public class lobby_ui : NetworkBehaviour {
 
 	public void ready_up()
 	{
-		players.ready_from_id(net_id);
+		Cmd_ready();
 	}
+
+	[Command]
+	public void Cmd_ready()
+	{
+		players.ready_from_id(0);
+	}
+
+
+
 
 	void Start()
 	{
 		net_id = GetComponent<NetworkIdentity>();
-		players.add(net_id);
+		players.add();
 		if(isServer) InvokeRepeating("ready_check",1,.5f);
 		spawn_on_scene.val = true;
 	}
