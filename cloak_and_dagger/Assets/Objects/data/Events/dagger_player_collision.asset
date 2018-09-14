@@ -8,11 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0174499ee4356947b3f0f95e95424a2, type: 3}
-  m_Name: dagger_collision
+  m_Script: {fileID: 11500000, guid: f3938debf9699124fae1c86afb90b473, type: 3}
+  m_Name: dagger_player_collision
   m_EditorClassIdentifier: 
   e:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: collision_event_object+collision_event, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: dagger_collision_event_object+dagger_collision_event, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null

@@ -205,6 +205,7 @@ MonoBehaviour:
   dagger_prefab: {fileID: 1862537834978502, guid: f715f6ea0cc87e445a3b49fe4014a4c1,
     type: 2}
   trigger: {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
+  dagger_Config: {fileID: 11400000, guid: 25b89998b0adbdb409733bd38c69eb36, type: 2}
 --- !u!114 &114038434851701454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -255,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71523a8b37cec8048bf49cd64f43cf03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: {fileID: 11400000, guid: ef0947f8fa6971e45ab308af9b561377, type: 2}
+  trigger: {fileID: 11400000, guid: 0f9847ced7d453448a50d59125e61655, type: 2}
   spectator_reveal: {fileID: 11400000, guid: 4ad75e48cfa56ae45ade9765d99053d9, type: 2}
   lives: {fileID: 11400000, guid: 8da797a971da62748bc9e3615c651ab9, type: 2}
   respawn_event: {fileID: 11400000, guid: fe3745e7c102fce40892e5e880a0e868, type: 2}

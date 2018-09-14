@@ -17,4 +17,10 @@ public class dagger_config : ScriptableObject {
 		get { return _stun_time; }
 	}
 
+	[SerializeField]
+	private bool _collaterals;
+	public bool collaterals {
+		get { return _collaterals; }
+	}
+
 }

@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class trigger_death : NetworkBehaviour {
 
 	[SerializeField]
-	collision_event_object trigger;
+	dagger_collision_event_object trigger;
 
 	[SerializeField]
 	bool_var spectator_reveal;
@@ -27,8 +27,8 @@ public class trigger_death : NetworkBehaviour {
 		spectator_reveal.val = false;
 	}
 	
-	private void on_dagger_collision(GameObject dagger, Collision2D collision) {
-		if (collision.gameObject.Equals(this.gameObject)) {
+	private void on_dagger_collision(GameObject dagger, dagger_data dagger_Data, GameObject player, string tag) {
+		if (player.Equals(this.gameObject)) {
 			die();
 		}
 	}

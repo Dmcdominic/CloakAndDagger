@@ -31,7 +31,6 @@ public class dash : NetworkBehaviour {
 	public void dash_func(float cooldown) {
 		Vector3 direction = (_target_dest.val - _origin.val).normalized;
 		Vector3 displacement = direction * distance;
-		//rb.MovePosition(this.transform.position + displacement);
 		Cmd_update_pos_on_server(this.transform.position + displacement);
 	}
 

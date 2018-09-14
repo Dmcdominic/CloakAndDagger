@@ -25,7 +25,9 @@ GameObject:
   - component: {fileID: 61037714204618394}
   - component: {fileID: 212187264656605594}
   - component: {fileID: 114805709980555324}
-  - component: {fileID: 114921173148890606}
+  - component: {fileID: 114026266421554374}
+  - component: {fileID: 114005111440912888}
+  - component: {fileID: 114500513551518450}
   m_Layer: 0
   m_Name: dagger
   m_TagString: Dagger
@@ -91,6 +93,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 0.2}
   m_EdgeRadius: 0
+--- !u!114 &114005111440912888
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862537834978502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561587b52ffd7bd4582f76b8bad8ed14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger_only_on: 2
+  to_trigger_on_collision: {fileID: 11400000, guid: ed9ef46757136204ebbd7032bde056b7,
+    type: 2}
+--- !u!114 &114026266421554374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862537834978502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2460ecb2f74cc7942bf8506b51544871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player_collision_trigger: {fileID: 11400000, guid: 0f9847ced7d453448a50d59125e61655,
+    type: 2}
+  other_collision_trigger: {fileID: 11400000, guid: ed9ef46757136204ebbd7032bde056b7,
+    type: 2}
 --- !u!114 &114247305520068176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,6 +143,17 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114500513551518450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862537834978502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3963576ec0bf1a2488077fb980e6f42c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114791960966589640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,19 +198,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
---- !u!114 &114921173148890606
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1862537834978502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98a685e9bccf38499880fdc8a0c3345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  to_trigger_on_collision: {fileID: 11400000, guid: ef0947f8fa6971e45ab308af9b561377,
-    type: 2}
 --- !u!212 &212187264656605594
 SpriteRenderer:
   m_ObjectHideFlags: 1
