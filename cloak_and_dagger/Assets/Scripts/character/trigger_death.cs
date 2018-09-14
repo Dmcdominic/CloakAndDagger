@@ -46,7 +46,7 @@ public class trigger_death : NetworkBehaviour {
 				respawn_event.Invoke();
 			else
 				spectator_reveal.val = true; 
-			ClientScene.RomovePlayer(net_id.playerControllerId);
+			ClientScene.RemovePlayer(net_id.playerControllerId);
 		}
 	}
 }
