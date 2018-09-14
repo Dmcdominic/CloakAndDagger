@@ -17,6 +17,7 @@ public class Network_Manager : NetworkManager {
 	{
 		players.roster = new List<player_list.player_info>();
 		spawn_on_scene.val = false;
+		//readyup reset
 	}
 
 	public override void OnClientSceneChanged(NetworkConnection connection)

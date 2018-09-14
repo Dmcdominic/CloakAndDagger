@@ -31,7 +31,7 @@ public class respawner : NetworkBehaviour {
 
 
 	void respawn(){
-		
+		ClientScene.AddPlayer(0);
 		//GameObject local_character = Instantiate(character,points[Random.Range(0, points.Length)].transform.position,Quaternion.identity);
 		//NetworkServer.Spawn(local_character);
 	}
