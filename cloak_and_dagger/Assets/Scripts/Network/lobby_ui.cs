@@ -14,35 +14,42 @@ public class lobby_ui : NetworkBehaviour {
 	NetworkIdentity net_id;
 	[SerializeField]
 	int_var game_scene;
+	[SerializeField]
+	bool_var spawn_on_scene;
 
 
 	public void ready_up()
 	{
-		players.ready_from_id(net_id);
+		Cmd_ready();
 	}
+
+	[Command]
+	public void Cmd_ready()
+	{
+		players.ready_from_id(0);
+	}
+
+
+
 
 	void Start()
 	{
 		net_id = GetComponent<NetworkIdentity>();
-		players.add(net_id);
+		players.add();
 		if(isServer) InvokeRepeating("ready_check",1,.5f);
+		spawn_on_scene.val = true;
 	}
 
 
 	void ready_check()
 	{
-		if(players.all_ready())
+		if(isServer && players.all_ready())
 		{
-			Rpc_start_game();
-
+			NetworkManager.singleton.ServerChangeScene("SampleScene");
+ 			//REPLACE ME
 		}
 	}
 
 
-	[ClientRpc]
-	void Rpc_start_game()
-	{
-		SceneManager.LoadScene(game_scene.val);
-	}
 
 }

@@ -14,12 +14,12 @@ public class player_list : ScriptableObject {
 		[SerializeField]
 		public bool ready;
 
-		public NetworkIdentity id;
+		public int id;
 	}
 
 	public List<player_info> roster;
 
-	public void ready_from_id(NetworkIdentity id)
+	public void ready_from_id(int id)
 	{
 		for(int i = 0; i < roster.Count;i++)
 		{
@@ -33,12 +33,12 @@ public class player_list : ScriptableObject {
 		}
 	}
 
-	public void add(NetworkIdentity net_id)
+	public void add()
 	{
 		player_info new_player = new player_info();
 		new_player.name = "player" + roster.Count.ToString();
 		new_player.ready = false;
-		new_player.id = net_id;
+		new_player.id = roster.Count;
 		roster.Add(new_player);
 	}
 

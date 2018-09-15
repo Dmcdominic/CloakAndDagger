@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: lobby_scene
   m_EditorClassIdentifier: 
   use_constant: 1
-  constant: 1
+  constant: 2
   value: 0

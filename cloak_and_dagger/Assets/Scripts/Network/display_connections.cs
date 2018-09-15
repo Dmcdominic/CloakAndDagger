@@ -68,15 +68,8 @@ public class display_connections : MonoBehaviour {
 	void host()
 	{
 		print(NetworkManager.singleton.matchMaker);
-		NetworkManager.singleton.matchMaker.CreateMatch(host_name.val,20,true,host_password.val,"","",0,0,host_callback);
+		NetworkManager.singleton.matchMaker.CreateMatch(host_name.val,20,true,host_password.val,"","",0,0,NetworkManager.singleton.OnMatchCreate);
 	}
 
-	void host_callback(bool success,string extendedInfo,MatchInfo matchInfo)
-	{
-		if(success)
-		{
-			//SceneManager.LoadScene(lobby_id.val);
-			NetworkManager.singleton.OnMatchCreate(success,extendedInfo,matchInfo);
-		}
-	}
+
 }

@@ -20,12 +20,20 @@ public class respawner : NetworkBehaviour {
 		respawn_event.e.AddListener(respawn);	
 		character = NetworkManager.singleton.playerPrefab;
 		points = GetComponentsInChildren<NetworkStartPosition>();
-		ClientScene.AddPlayer(conn.val,1);
+		//if(isClient) init_spawn();
 	}
 
+	void init_spawn()
+	{
+		ClientScene.Ready(ClientScene.readyConnection);
+		ClientScene.AddPlayer(ClientScene.readyConnection,1);
+	}
+
+
 	void respawn(){
-		GameObject local_character = Instantiate(character,points[Random.Range(0, points.Length)].transform.position,Quaternion.identity);
-		NetworkServer.Spawn(local_character);
+		ClientScene.AddPlayer(0);
+		//GameObject local_character = Instantiate(character,points[Random.Range(0, points.Length)].transform.position,Quaternion.identity);
+		//NetworkServer.Spawn(local_character);
 	}
 	
 	// Update is called once per frame
