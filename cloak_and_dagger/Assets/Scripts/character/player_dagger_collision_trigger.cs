@@ -10,13 +10,19 @@ public class player_dagger_collision_trigger : NetworkBehaviour {
 
 
 	private void OnCollisionEnter2D(Collision2D collision) {
-		string tag = collision.gameObject.tag;
-		if (!tag.Equals("Dagger") || !isLocalPlayer) {
+		string dagger_tag = collision.gameObject.tag;
+		if (!dagger_tag.Equals("Dagger") || !isLocalPlayer) {
 			return;
 		}
 
+		string tag = this.gameObject.tag; // Should be "Player"
 		dagger_data dagger_Data = collision.gameObject.GetComponent<dagger_data_carrier>().dagger_Data;
-		Rpc_trigger_collision(collision.gameObject, dagger_Data, tag);
+		Cmd_trigger_collision(collision.gameObject, dagger_Data, tag);
+	}
+
+	[Command]
+	private void Cmd_trigger_collision(GameObject dagger, dagger_data dagger_Data, string tag) {
+		Rpc_trigger_collision(dagger, dagger_Data, tag);
 	}
 
 	[ClientRpc]
