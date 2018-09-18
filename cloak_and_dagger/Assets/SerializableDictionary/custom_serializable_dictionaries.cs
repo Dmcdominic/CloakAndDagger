@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// ========== Status dictionaries ==========
 [System.Serializable]
 public class Status_BoolVar_Dict : SerializableDictionary<status, bool_var> { }
 
