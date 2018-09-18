@@ -11,7 +11,7 @@ using UnityEditor;
 // ========== Config object enum dictionaries ==========
 [CustomPropertyDrawer(typeof(GameplayOption_Bool_Dict))]
 [CustomPropertyDrawer(typeof(GameplayOption_Float_Dict))]
-[CustomPropertyDrawer(typeof(GameplayOption_Uint_Dict))]
+[CustomPropertyDrawer(typeof(GameplayOption_Int_Dict))]
 public class Custom_AnySerializableDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer { }
 
 //[CustomPropertyDrawer(typeof(ColorArrayStorage))]
