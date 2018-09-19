@@ -27,6 +27,12 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour	where
 	
 	// Create all UI input fields for config customization
 	public void create_fields() {
+
+		// STILL NEED TO IMPLEMENT:
+			// Dependencies
+			// Relative ordering
+			// Map specific options and win-condition specific options
+
 		// Create bool toggles
 		foreach (T0 option in System.Enum.GetValues(typeof(T0))) {
 			ui_bool_info<T0> ui_info;
@@ -83,8 +89,9 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour	where
 		}
 	}
 
-	// Remove all the 
+	// Remove all the fields
 	public void clear_fields() {
+		Debug.Log("Destroying ALL children of this fields controller");
 		foreach (Transform child in transform) {
 			Destroy(child.gameObject);
 		}
