@@ -21,9 +21,9 @@ public class config_object<T0, T1, T2> : ScriptableObject	where T0 : struct, Sys
 	public Dictionary<T2, ui_int_info<T0>> ui_int_parameters { get; protected set; }
 
 	// Default UI info structs
-	public ui_bool_info<T0> default_bool_info = new ui_bool_info<T0>(0, "");
-	public ui_float_info<T0> default_float_info = new ui_float_info<T0>(0, 0.01f, 20.0f, "");
-	public ui_int_info<T0> default_int_info = new ui_int_info<T0>(0, 1, 100, "");
+	//public ui_bool_info<T0> default_bool_info = new ui_bool_info<T0>(0, "");
+	//public ui_float_info<T0> default_float_info = new ui_float_info<T0>(0, 0.01f, 20.0f, "");
+	//public ui_int_info<T0> default_int_info = new ui_int_info<T0>(0, 1, 100, "");
 
 	public config_object() {
 		ui_bool_parameters = new Dictionary<T0, ui_bool_info<T0>>();
@@ -35,7 +35,7 @@ public class config_object<T0, T1, T2> : ScriptableObject	where T0 : struct, Sys
 
 }
 
-
+	
 // UI info structs
 public struct ui_bool_info<T0> {
 	public bool has_dependency; // Bool just to store whether or not the dependency should be used, since enums are non-nullable.

@@ -14,7 +14,11 @@ public class gameplay_config : config_object<gameplay_bool_option, gameplay_floa
 	public new GameplayOption_Float_Dict float_options = new GameplayOption_Float_Dict();
 	public new GameplayOption_Int_Dict int_options = new GameplayOption_Int_Dict();
 
-	public gameplay_config() {
+	public gameplay_config() : base() {
+		base.bool_options = bool_options;
+		base.float_options = float_options;
+		base.int_options = int_options;
+
 		// ========== Populate option UI parameters here ==========
 		// bool
 		ui_bool_parameters.Add(gameplay_bool_option.heartbeat, new ui_bool_info<gameplay_bool_option>(0, "All players are briefly revealed at regular intervals."));
@@ -27,6 +31,8 @@ public class gameplay_config : config_object<gameplay_bool_option, gameplay_floa
 
 }
 
+
+// Serializable dictionary declarations
 [System.Serializable]
 public class GameplayOption_Bool_Dict : Option_Bool_Dict<gameplay_bool_option> { }
 [System.Serializable]
