@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using UnityEngine;
 
 // See the "Code Notes" doc in Google Drive for usage details.
@@ -7,7 +8,7 @@ using UnityEngine;
 public class config_object<T0, T1, T2> : ScriptableObject	where T0 : struct, System.IConvertible
 															where T1 : struct, System.IConvertible
 															where T2 : struct, System.IConvertible {
-
+	
 	// Dicts to freely edit and read the option values.
 	public Dictionary<T0, bool> bool_options;
 	public Dictionary<T1, float> float_options;
@@ -16,21 +17,57 @@ public class config_object<T0, T1, T2> : ScriptableObject	where T0 : struct, Sys
 	// Dicts to store the parameters for each option within the editor.
 	// Should be set within the constructor of the particular config_object.
 	// See "UI info structs" below for details.
-	public Dictionary<T0, ui_bool_info<T0>> ui_bool_parameters { get; protected set; }
-	public Dictionary<T1, ui_float_info<T0>> ui_float_parameters { get; protected set; }
-	public Dictionary<T2, ui_int_info<T0>> ui_int_parameters { get; protected set; }
+	public OrderedDictionary ui_parameters_ordered = new OrderedDictionary();
+	public Dictionary<T0, OrderedDictionary> ui_dependents = new Dictionary<T0, OrderedDictionary>();
 
 	// Default UI info structs
-	//public ui_bool_info<T0> default_bool_info = new ui_bool_info<T0>(0, "");
-	//public ui_float_info<T0> default_float_info = new ui_float_info<T0>(0, 0.01f, 20.0f, "");
-	//public ui_int_info<T0> default_int_info = new ui_int_info<T0>(0, 1, 100, "");
+	public ui_bool_info<T0> default_bool_info = new ui_bool_info<T0>("");
+	public ui_float_info<T0> default_float_info = new ui_float_info<T0>(0.01f, 20.0f, "");
+	public ui_int_info<T0> default_int_info = new ui_int_info<T0>(1, 100, "");
 
-	public config_object() {
-		ui_bool_parameters = new Dictionary<T0, ui_bool_info<T0>>();
-		ui_float_parameters = new Dictionary<T1, ui_float_info<T0>>();
-		ui_int_parameters = new Dictionary<T2, ui_int_info<T0>>();
+	// Checks every option in ui_parameters_ordered for dependencies,
+	// adding them to ui_dependents and removing them from ui_parameters_ordered if so.
+	protected void populate_ui_dependents() {
+		Stack to_remove = new Stack();
+		foreach (object option in ui_parameters_ordered.Keys) {
+			object ui_info = ui_parameters_ordered[option];
+			if (ui_info is ui_bool_info<T0>) {
+				ui_bool_info<T0> ui_typed_info = (ui_bool_info<T0>)ui_info;
+				if (ui_typed_info.has_dependency) {
+					to_remove.Push(option);
+					add_dependent(ui_typed_info.dependency, option, ui_info);
+				}
+			} else if (ui_info is ui_float_info<T0>) {
+				ui_float_info<T0> ui_typed_info = (ui_float_info<T0>)ui_info;
+				if (ui_typed_info.has_dependency) {
+					to_remove.Push(option);
+					add_dependent(ui_typed_info.dependency, option, ui_info);
+				}
+			} else if (ui_info is ui_int_info<T0>) {
+				ui_int_info<T0> ui_typed_info = (ui_int_info<T0>)ui_info;
+				if (ui_typed_info.has_dependency) {
+					to_remove.Push(option);
+					add_dependent(ui_typed_info.dependency, option, ui_info);
+				}
+			}
+		}
+		while (to_remove.Count > 0) {
+			object remove = to_remove.Pop();
+			ui_parameters_ordered.Remove(remove);
+		}
+	}
 
-		//System.Enum.GetValues(typeof(T0));
+	// Makes sure that an ordered dictionary is in ui_dependents for the respective parent,
+	// and then adds option and ui_info.
+	private void add_dependent(T0 parent, object option, object ui_info) {
+		OrderedDictionary dependents;
+		if (!ui_dependents.ContainsKey(parent)) {
+			dependents = new OrderedDictionary();
+			ui_dependents.Add(parent, dependents);
+		} else {
+			dependents = ui_dependents[parent];
+		}
+		dependents[option] = ui_info;
 	}
 
 }
@@ -40,19 +77,16 @@ public class config_object<T0, T1, T2> : ScriptableObject	where T0 : struct, Sys
 public struct ui_bool_info<T0> {
 	public bool has_dependency; // Bool just to store whether or not the dependency should be used, since enums are non-nullable.
 	public T0 dependency; // Put this field directly under the field for (dependency), and hide it if (dependency) is toggled to false.
-	public int relative_order; // Use this to customize the ordering of all options in this category. Values are relative to those within the same dependency, with a default of 0.
 	public string description; // Describe the option here, to be used for its tooltip.
 
-	public ui_bool_info(int _relative_order, string _description) {
+	public ui_bool_info(string _description) {
 		this.has_dependency = false;
 		this.dependency = default(T0);
-		this.relative_order = _relative_order;
 		this.description = _description;
 	}
-	public ui_bool_info(T0 _dependency, int _relative_order, string _description) {
+	public ui_bool_info(T0 _dependency, string _description) {
 		this.has_dependency = true;
 		this.dependency = _dependency;
-		this.relative_order = _relative_order;
 		this.description = _description;
 	}
 }
@@ -60,23 +94,20 @@ public struct ui_bool_info<T0> {
 public struct ui_float_info<T0> {
 	public bool has_dependency;
 	public T0 dependency;
-	public int relative_order;
 	public float min; // Minimum value, inclusive.
 	public float max; // Maximum value, inclusive.
 	public string description;
 
-	public ui_float_info(int _relative_order, float _min, float _max, string _description) {
+	public ui_float_info(float _min, float _max, string _description) {
 		this.has_dependency = false;
 		this.dependency = default(T0);
-		this.relative_order = _relative_order;
 		this.min = _min;
 		this.max = _max;
 		this.description = _description;
 	}
-	public ui_float_info(T0 _dependency, int _relative_order, float _min, float _max, string _description) {
+	public ui_float_info(T0 _dependency, float _min, float _max, string _description) {
 		this.has_dependency = true;
 		this.dependency = _dependency;
-		this.relative_order = _relative_order;
 		this.min = _min;
 		this.max = _max;
 		this.description = _description;
@@ -86,23 +117,20 @@ public struct ui_float_info<T0> {
 public struct ui_int_info<T0> {
 	public bool has_dependency;
 	public T0 dependency;
-	public int relative_order;
 	public int min;
 	public int max;
 	public string description;
 
-	public ui_int_info(int _relative_order, int _min, int _max, string _description) {
+	public ui_int_info(int _min, int _max, string _description) {
 		this.has_dependency = false;
 		this.dependency = default(T0);
-		this.relative_order = _relative_order;
 		this.min = _min;
 		this.max = _max;
 		this.description = _description;
 	}
-	public ui_int_info(T0 _dependency, int _relative_order, int _min, int _max, string _description) {
+	public ui_int_info(T0 _dependency, int _min, int _max, string _description) {
 		this.has_dependency = true;
 		this.dependency = _dependency;
-		this.relative_order = _relative_order;
 		this.min = _min;
 		this.max = _max;
 		this.description = _description;
