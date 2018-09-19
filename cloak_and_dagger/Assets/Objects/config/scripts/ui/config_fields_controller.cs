@@ -5,33 +5,47 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour	where T0 : struct, System.IConvertible
-																	where T1 : struct, System.IConvertible
-																	where T2 : struct, System.IConvertible {
+public enum config_category { gameplay }
 
+public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour	where T0 : struct, System.IConvertible
+																			where T1 : struct, System.IConvertible
+																			where T2 : struct, System.IConvertible {
+
+	// This category must be set in each config controller subclass.
+	public abstract config_category config_Category { get; }
 	public config_object<T0, T1, T2> config;
 
-	// Clear fields event
-	public event_object clear_fields_trigger;
+	// Event to trigger population of the fields if the int arg is equal to this category, or to clear all fields otherwise.
+	// The arg should be cast between int and config_categories enum as needed.
+	public int_event_object update_fields_trigger;
 
 	// UI field prefabs
 	public bool_input bool_input_prefab;
 	public float_input float_input_prefab;
 	public int_input int_input_prefab;
 
-	// Use this for initialization
+	// Initialization
 	protected void Start () {
-		if (clear_fields_trigger) {
-			clear_fields_trigger.e.AddListener(clear_fields);
+		if (update_fields_trigger) {
+			update_fields_trigger.e.AddListener(update_fields);
 		}
+		create_all_fields();
+	}
+
+	// Wrapper to create all UI input fields for config customization
+	public void create_all_fields() {
 		create_fields(config.ui_parameters_ordered, 0, null);
 	}
-	
-	// Create all UI input fields for config customization
-	public void create_fields(OrderedDictionary ui_parameters, int dependency_depth, Toggle depends_on, bool enabled = true) {
+
+	// Helper function for instantiating all the fields and dependent fields of a particular ui_parameters dictionary.
+	// TODO - make depends_on a list instead, so that children toggles don't have to be set to false?
+	private void create_fields(OrderedDictionary ui_parameters, int dependency_depth, Toggle depends_on, bool enabled = true) {
 
 		// STILL NEED TO IMPLEMENT:
-		// Map specific options and win-condition specific options
+		// Map selection
+			// Map specific options, dependent on current map
+		// Win condition selection
+			// Win condition specific options, dependent on current win condition
 
 		foreach (object option in ui_parameters.Keys) {
 			if (option is T0) {
@@ -134,36 +148,45 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour	where
 	}
 
 
-	// Remove all the fields
-	public void clear_fields() {
-		Debug.Log("Destroying ALL children of this fields controller");
-		foreach (Transform child in transform) {
-			Destroy(child.gameObject);
-		}
-	}
-
-
 	// ========== Toggle & input field event listener higher-order-functions ==========
 
 	// Returns a function that will update the dictionary value for you.
-	public static UnityAction<bool> edit_bool(Dictionary<T0, bool> dict, T0 option) {
+	protected static UnityAction<bool> edit_bool(Dictionary<T0, bool> dict, T0 option) {
 		return val => { dict[option] = val; };
 	}
-	public static UnityAction<float> edit_float(Dictionary<T1, float> dict, T1 option) {
+	protected static UnityAction<float> edit_float(Dictionary<T1, float> dict, T1 option) {
 		return val => { dict[option] = val; };
 	}
-	public static UnityAction<float> edit_int(Dictionary<T2, int> dict, T2 option) {
+	protected static UnityAction<float> edit_int(Dictionary<T2, int> dict, T2 option) {
 		return val => { dict[option] = (int)val; };
 	}
 
 	// Returns a function that will switch a toggle off if the input is false.
-	public static UnityAction<bool> toggle_off(Toggle to_toggle) {
+	protected static UnityAction<bool> toggle_off(Toggle to_toggle) {
 		return val => { if (!val) { to_toggle.isOn = false; } };
 	}
 
 	// Returns a function that will enable/disable a gameObject depending on the input.
 	public static UnityAction<bool> gameObject_setActive(GameObject gameObject) {
 		return val => { gameObject.SetActive(val); };
+	}
+
+
+	// Event listener for updating the fields
+	public void update_fields(int category_index) {
+		config_category category = (config_category)category_index;
+		clear_fields();
+		if (category == config_Category) {
+			create_all_fields();
+		}
+	}
+
+	// Remove all the fields
+	public void clear_fields() {
+		Debug.Log("Destroying ALL children of this fields controller");
+		foreach (Transform child in transform) {
+			Destroy(child.gameObject);
+		}
 	}
 
 }
