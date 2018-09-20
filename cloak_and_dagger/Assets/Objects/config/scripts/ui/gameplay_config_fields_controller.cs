@@ -10,9 +10,9 @@ public class gameplay_config_fields_controller : config_fields_controller<gamepl
 	public new gameplay_config config;
 
 	// Initialization
-	private new void Start() {
+	protected new void Awake() {
 		base.config = config;
-		base.Start();
+		base.Awake();
 	}
 
 };
