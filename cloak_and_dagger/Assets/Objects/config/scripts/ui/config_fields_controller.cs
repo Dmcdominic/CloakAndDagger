@@ -26,10 +26,13 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour	where
 	public int_input int_input_prefab;
 
 	// Initialization
-	protected void Start () {
+	protected void Awake() {
 		if (update_fields_trigger) {
 			update_fields_trigger.e.AddListener(update_fields);
 		}
+	}
+	protected void Start () {
+		// TEMPORARY - TODO: REMOVE
 		create_all_fields();
 	}
 
