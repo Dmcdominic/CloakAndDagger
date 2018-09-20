@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Spacing: 5
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
 --- !u!114 &114550595955733232
 MonoBehaviour:
@@ -300,8 +300,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf3a86b51e89424288fdd94c714e477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toggle_dependencies: []
   title: {fileID: 114550595955733232}
   toggle: {fileID: 114471314632893462}
+  dependents: []
 --- !u!222 &222139255505232704
 CanvasRenderer:
   m_ObjectHideFlags: 1

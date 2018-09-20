@@ -42,7 +42,6 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour	where
 	}
 
 	// Helper function for instantiating all the fields and dependent fields of a particular ui_parameters dictionary.
-	// TODO - make depends_on a list instead, so that children toggles don't have to be set to false?
 	private void create_fields(OrderedDictionary ui_parameters, List<bool_input> dependencies) {
 
 		// STILL NEED TO IMPLEMENT:
@@ -87,12 +86,13 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour	where
 		new_input_object.transform.SetParent(this.transform);
 
 		new_input_object.title.text = option.ToString(); // Could instead add a Title property to each ui_(type)_info struct
-		new_input_object.toggle.isOn = value;
-		new_input_object.toggle.onValueChanged.AddListener(edit_bool(config.bool_options, option));
+		new_input_object.set_up_listeners();
+		new_input_object.on_value_changed.AddListener(edit_bool(config.bool_options, option));
 		foreach (bool_input parent in dependencies) {
 			parent.dependents.Add(new_input_object);
 			new_input_object.toggle_dependencies.Add(parent);
 		}
+		new_input_object.toggle.isOn = value;
 		return new_input_object;
 	}
 
@@ -112,14 +112,17 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour	where
 		new_input_object.transform.SetParent(this.transform);
 
 		new_input_object.title.text = option.ToString(); // Could instead add a Title property to each ui_(type)_info struct
-		new_input_object.slider.minValue = ui_info.min;
-		new_input_object.slider.maxValue = ui_info.max;
-		new_input_object.slider.value = value;
-		new_input_object.slider.onValueChanged.AddListener(edit_float(config.float_options, option));
+		new_input_object.min = ui_info.min;
+		new_input_object.max = ui_info.max;
+		new_input_object.slider.minValue = ui_info.slider_min;
+		new_input_object.slider.maxValue = ui_info.slider_max;
+		new_input_object.set_up_listeners();
+		new_input_object.on_value_changed.AddListener(edit_float(config.float_options, option));
 		foreach (bool_input parent in dependencies) {
 			parent.dependents.Add(new_input_object);
 			new_input_object.toggle_dependencies.Add(parent);
 		}
+		new_input_object.slider.value = value;
 	}
 
 	private void create_int_slider(T2 option, List<bool_input> dependencies) {
@@ -138,14 +141,17 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour	where
 		new_input_object.transform.SetParent(this.transform);
 
 		new_input_object.title.text = option.ToString(); // Could instead add a Title property to each ui_(type)_info struct
-		new_input_object.slider.minValue = ui_info.min;
-		new_input_object.slider.maxValue = ui_info.max;
-		new_input_object.slider.value = value;
-		new_input_object.slider.onValueChanged.AddListener(edit_int(config.int_options, option));
+		new_input_object.min = ui_info.min;
+		new_input_object.max = ui_info.max;
+		new_input_object.slider.minValue = ui_info.slider_min;
+		new_input_object.slider.maxValue = ui_info.slider_max;
+		new_input_object.set_up_listeners();
+		new_input_object.on_value_changed.AddListener(edit_int(config.int_options, option));
 		foreach (bool_input parent in dependencies) {
 			parent.dependents.Add(new_input_object);
 			new_input_object.toggle_dependencies.Add(parent);
 		}
+		new_input_object.value = value;
 	}
 
 
@@ -158,10 +164,9 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour	where
 	protected static UnityAction<float> edit_float(Dictionary<T1, float> dict, T1 option) {
 		return val => { dict[option] = val; };
 	}
-	protected static UnityAction<float> edit_int(Dictionary<T2, int> dict, T2 option) {
-		return val => { dict[option] = (int)val; };
+	protected static UnityAction<int> edit_int(Dictionary<T2, int> dict, T2 option) {
+		return val => { dict[option] = val; };
 	}
-
 
 	// Event listener for updating the fields
 	public void update_fields(int category_index) {

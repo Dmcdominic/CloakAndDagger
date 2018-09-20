@@ -21,11 +21,11 @@ public class gameplay_config : config_object<gameplay_bool_option, gameplay_floa
 
 		// ========== Populate option UI parameters here ==========
 		// NOTE - 
-		ui_parameters_ordered.Add(gameplay_int_option.int_test, new ui_int_info<gameplay_bool_option>(1, 20, "Test int parameter."));
-		ui_parameters_ordered.Add(gameplay_float_option.reflection_time, new ui_float_info<gameplay_bool_option>(0.1f, 5f, "Duration of the reflection ability."));
+		ui_parameters_ordered.Add(gameplay_int_option.int_test, new ui_int_info<gameplay_bool_option>(1, 20, 0, 50, "Test int parameter."));
+		ui_parameters_ordered.Add(gameplay_float_option.reflection_time, new ui_float_info<gameplay_bool_option>(0.1f, 5f, 0f, 100f, "Duration of the reflection ability."));
 		ui_parameters_ordered.Add(gameplay_bool_option.heartbeat, new ui_bool_info<gameplay_bool_option>("All players are briefly revealed at regular intervals."));
-		ui_parameters_ordered.Add(gameplay_float_option.heartbeat_interval, new ui_float_info<gameplay_bool_option>(gameplay_bool_option.heartbeat, 1f, 20f, "The interval between each heartbeat reveal, in seconds."));
-		ui_parameters_ordered.Add(gameplay_float_option.dagger_cooldown, new ui_float_info<gameplay_bool_option>(0.01f, 20f, "The cooldown for throwing a dagger."));
+		ui_parameters_ordered.Add(gameplay_float_option.heartbeat_interval, new ui_float_info<gameplay_bool_option>(gameplay_bool_option.heartbeat, 1f, 20f, 0f, 100f, "The interval between each heartbeat reveal, in seconds."));
+		ui_parameters_ordered.Add(gameplay_float_option.dagger_cooldown, new ui_float_info<gameplay_bool_option>(0.1f, 20f, 0f, 100f, "The cooldown for throwing a dagger."));
 
 		base.populate_ui_dependents();
 	}

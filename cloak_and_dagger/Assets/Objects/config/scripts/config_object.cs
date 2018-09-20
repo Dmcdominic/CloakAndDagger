@@ -22,8 +22,8 @@ public class config_object<T0, T1, T2> : ScriptableObject	where T0 : struct, Sys
 
 	// Default UI info structs
 	public ui_bool_info<T0> default_bool_info = new ui_bool_info<T0>("");
-	public ui_float_info<T0> default_float_info = new ui_float_info<T0>(0.01f, 20.0f, "");
-	public ui_int_info<T0> default_int_info = new ui_int_info<T0>(1, 100, "");
+	public ui_float_info<T0> default_float_info = new ui_float_info<T0>(0.01f, 20.0f, 0f, 100f, "");
+	public ui_int_info<T0> default_int_info = new ui_int_info<T0>(1, 20, 0, 100, "");
 
 	// Checks every option in ui_parameters_ordered for dependencies,
 	// adding them to ui_dependents and removing them from ui_parameters_ordered if so.
@@ -76,7 +76,7 @@ public class config_object<T0, T1, T2> : ScriptableObject	where T0 : struct, Sys
 // UI info structs
 public struct ui_bool_info<T0> {
 	public bool has_dependency; // Bool just to store whether or not the dependency should be used, since enums are non-nullable.
-	public T0 dependency; // Put this field directly under the field for (dependency), and hide it if (dependency) is toggled to false.
+	public T0 dependency; // Put this field directly under the field for (dependency), and hide it if (dependency) is toggled to false or collapsed.
 	public string description; // Describe the option here, to be used for its tooltip.
 
 	public ui_bool_info(string _description) {
@@ -94,20 +94,26 @@ public struct ui_bool_info<T0> {
 public struct ui_float_info<T0> {
 	public bool has_dependency;
 	public T0 dependency;
-	public float min; // Minimum value, inclusive.
-	public float max; // Maximum value, inclusive.
+	public float min; // Strict minimum value, inclusive.
+	public float max; // Strict maximum value, inclusive.
+	public float slider_min; // Bottom value on the slider.
+	public float slider_max; // Top value on the slider.
 	public string description;
 
-	public ui_float_info(float _min, float _max, string _description) {
+	public ui_float_info(float _slider_min, float _slider_max, float _min, float _max, string _description) {
 		this.has_dependency = false;
 		this.dependency = default(T0);
+		this.slider_min = _slider_min;
+		this.slider_max = _slider_max;
 		this.min = _min;
 		this.max = _max;
 		this.description = _description;
 	}
-	public ui_float_info(T0 _dependency, float _min, float _max, string _description) {
+	public ui_float_info(T0 _dependency, float _slider_min, float _slider_max, float _min, float _max, string _description) {
 		this.has_dependency = true;
 		this.dependency = _dependency;
+		this.slider_min = _slider_min;
+		this.slider_max = _slider_max;
 		this.min = _min;
 		this.max = _max;
 		this.description = _description;
@@ -119,18 +125,24 @@ public struct ui_int_info<T0> {
 	public T0 dependency;
 	public int min;
 	public int max;
+	public int slider_min;
+	public int slider_max;
 	public string description;
 
-	public ui_int_info(int _min, int _max, string _description) {
+	public ui_int_info(int _slider_min, int _slider_max, int _min, int _max, string _description) {
 		this.has_dependency = false;
 		this.dependency = default(T0);
+		this.slider_min = _slider_min;
+		this.slider_max = _slider_max;
 		this.min = _min;
 		this.max = _max;
 		this.description = _description;
 	}
-	public ui_int_info(T0 _dependency, int _min, int _max, string _description) {
+	public ui_int_info(T0 _dependency, int _slider_min, int _slider_max, int _min, int _max, string _description) {
 		this.has_dependency = true;
 		this.dependency = _dependency;
+		this.slider_min = _slider_min;
+		this.slider_max = _slider_max;
 		this.min = _min;
 		this.max = _max;
 		this.description = _description;
