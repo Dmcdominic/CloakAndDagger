@@ -17,6 +17,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour	where
 
 	// Event to trigger population of the fields if the int arg is equal to this category, or to clear all fields otherwise.
 	// The arg should be cast between int and config_categories enum as needed.
+	// Event can be invoked with -1 to clear ALL config fields.
 	public int_event_object update_fields_trigger;
 
 	// UI field prefabs
