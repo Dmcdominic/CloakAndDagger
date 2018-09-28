@@ -37,5 +37,7 @@ public abstract class config_input_field : MonoBehaviour {
 	public void update_dependency_styling() {
 		HLG.padding.left += 20 * toggle_dependencies.Count;
 	}
+
+	public abstract void set_up_listeners();
 	
 }

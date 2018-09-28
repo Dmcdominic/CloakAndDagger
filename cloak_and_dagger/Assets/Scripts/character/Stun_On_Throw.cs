@@ -11,12 +11,12 @@ public class Stun_On_Throw : MonoBehaviour {
 	float_event_object stun_trigger;
 
 	[SerializeField]
-	dagger_config dagger_Config;
+	readonly_gameplay_config readonly_gameplay_Config;
 
 	
 	void stun(float cooldown)
 	{
-		stun_trigger.Invoke(dagger_Config.stun_time);
+		stun_trigger.Invoke(readonly_gameplay_Config.float_options[readonly_gameplay_float_option.dagger_stun_time]);
 	}
 
 

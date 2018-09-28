@@ -24,7 +24,7 @@ public class int_input : config_input_field {
 	public int_event on_value_changed = new int_event();
 
 
-	public void set_up_listeners() {
+	public override void set_up_listeners() {
 		// UI input listeners
 		input_field.onEndEdit.AddListener(on_end_edit_action());
 		slider.onValueChanged.AddListener(on_slider_value_change());

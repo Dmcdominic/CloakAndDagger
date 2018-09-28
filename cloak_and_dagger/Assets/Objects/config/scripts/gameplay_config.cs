@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Add options here
-public enum gameplay_bool_option { heartbeat }
-public enum gameplay_float_option { heartbeat_interval, dagger_cooldown, reflection_time }
+public enum gameplay_bool_option { heartbeat, dagger_collaterals }
+public enum gameplay_float_option { heartbeat_interval, dagger_cooldown, dash_cooldown, dash_distance, reflection_time }
 public enum gameplay_int_option { int_test }
 
 [CreateAssetMenu(menuName = "config/gameplay")]
@@ -20,7 +20,8 @@ public class gameplay_config : config_object<gameplay_bool_option, gameplay_floa
 		base.int_options = int_options;
 
 		// ========== Populate option UI parameters here ==========
-		// NOTE - 
+		// NOTE - The order of options here will be reflected in-game in the config menu,
+		// except that depedendencies will be placed directly beneath their parent toggle.
 		ui_parameters_ordered.Add(gameplay_int_option.int_test, new ui_int_info<gameplay_bool_option>(1, 20, 0, 50, "Test int parameter."));
 		ui_parameters_ordered.Add(gameplay_float_option.reflection_time, new ui_float_info<gameplay_bool_option>(0.1f, 5f, 0f, 100f, "Duration of the reflection ability."));
 		ui_parameters_ordered.Add(gameplay_bool_option.heartbeat, new ui_bool_info<gameplay_bool_option>("All players are briefly revealed at regular intervals."));

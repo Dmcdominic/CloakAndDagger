@@ -26,7 +26,7 @@ public class bool_input : config_input_field {
 	public bool_event on_value_changed = new bool_event();
 
 
-	public void set_up_listeners() {
+	public override void set_up_listeners() {
 		// UI input listeners
 		toggle.onValueChanged.AddListener(on_toggle_value_change());
 

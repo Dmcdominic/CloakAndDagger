@@ -13,21 +13,14 @@ public class On_Action_Button : NetworkBehaviour {
 	float_event_object to_trigger_dagger;
 	[SerializeField]
 	bool_var dagger_on_cooldown;
-	[SerializeField]
-	dagger_config dagger_Config;
 
 	[SerializeField]
 	float_event_object to_trigger_dash;
 	[SerializeField]
 	bool_var dash_on_cooldown;
 	[SerializeField]
-	dash_config dash_Config;
+	gameplay_config gameplay_Config;
 	
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -35,11 +28,11 @@ public class On_Action_Button : NetworkBehaviour {
 		{
 			if (input_Config.dagger && !dagger_on_cooldown.val)
 			{
-				to_trigger_dagger.Invoke(dagger_Config.cooldown);
+				to_trigger_dagger.Invoke(gameplay_Config.float_options[gameplay_float_option.dagger_cooldown]);
 			}
 			else if (input_Config.dash && !dash_on_cooldown.val)
 			{
-				to_trigger_dash.Invoke(dash_Config.cooldown);
+				to_trigger_dash.Invoke(gameplay_Config.float_options[gameplay_float_option.dash_cooldown]);
 			}
 		}
 	}

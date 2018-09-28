@@ -14,7 +14,7 @@ public static class save_util {
 	}
 
 	// Save a data object to the persistent data path at file_name
-	public static void save_to(string subpath, string file_name, object data) {
+	public static void save_to<T>(string subpath, string file_name, T data) {
 		BinaryFormatter bf = new BinaryFormatter();
 		FileStream file;
 
@@ -30,7 +30,7 @@ public static class save_util {
 	}
 
 	// Load a data object from the persistent data path at file_name
-	public static object load_from(string subpath, string file_name) {
+	public static object load_from<T>(string subpath, string file_name) {
 		object data = null;
 		string path = get_full_path(subpath, file_name);
 		if (File.Exists(path)) {
@@ -41,8 +41,15 @@ public static class save_util {
 			file.Close();
 		} else {
 			Debug.LogError("No file: " + path + " found.");
+			return null;
 		}
-		return data;
+
+		if (data is T) {
+			return (T)data;
+		} else {
+			Debug.LogError("Object saved at path: " + path + " is not of the expected type.");
+			return null;
+		}
 	}
 
 	// Check if a certain file exists in the persistent data path

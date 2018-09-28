@@ -24,7 +24,7 @@ public class float_input : config_input_field {
 	public float_event on_value_changed = new float_event();
 
 
-	public void set_up_listeners() {
+	public override void set_up_listeners() {
 		// UI input listeners
 		input_field.onEndEdit.AddListener(on_end_edit_action());
 		slider.onValueChanged.AddListener(on_slider_value_change());
@@ -43,7 +43,6 @@ public class float_input : config_input_field {
 	private UnityAction<string> on_end_edit_action() {
 		return input => {
 			value = parse_and_clamp_string(input);
-			print("new value: " + value);
 		};
 	}
 	private UnityAction<float> on_slider_value_change() {

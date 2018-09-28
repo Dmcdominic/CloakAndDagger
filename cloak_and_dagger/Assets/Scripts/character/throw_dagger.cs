@@ -27,7 +27,7 @@ public class throw_dagger : NetworkBehaviour {
 	float_event_object trigger;
 
 	[SerializeField]
-	dagger_config dagger_Config;
+	gameplay_config gameplay_Config;
 
 
 	public void throw_func(float cooldown) //too many times have I tried to name a func throw.
@@ -65,7 +65,7 @@ public class throw_dagger : NetworkBehaviour {
 
 	// Edit the properties of the dagger here before throwing it
 	private dagger_data create_dagger_data() {
-		return new dagger_data(dagger_Config.collaterals);
+		return new dagger_data(gameplay_Config.bool_options[gameplay_bool_option.dagger_collaterals]);
 	}
 	
 }
