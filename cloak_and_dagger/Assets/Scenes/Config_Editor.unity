@@ -670,8 +670,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   editable_configs:
-    m_keys: 00000000
+    m_keys: 0000000001000000
     m_values:
+    - {fileID: 0}
     - {fileID: 0}
 --- !u!1 &1092680958
 GameObject:

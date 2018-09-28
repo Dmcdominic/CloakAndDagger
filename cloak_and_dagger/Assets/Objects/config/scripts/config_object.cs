@@ -70,6 +70,10 @@ public class config_object<T0, T1, T2> : ScriptableObject	where T0 : struct, Sys
 		dependents[option] = ui_info;
 	}
 
+	// Copies the values of the first config_object to the second
+	public static void copy_values(config_object<T0, T1, T2> obj1, config_object<T0, T1, T2> obj2) {
+		// TODO
+	}
 }
 
 	

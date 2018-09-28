@@ -30,25 +30,28 @@ public static class save_util {
 	}
 
 	// Load a data object from the persistent data path at file_name
-	public static object load_from<T>(string subpath, string file_name) {
-		object data = null;
+	public static bool try_load_from<T>(string subpath, string file_name, out T data) {
+		object generic_data = null;
 		string path = get_full_path(subpath, file_name);
 		if (File.Exists(path)) {
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream file = File.Open(path, FileMode.Open);
 
-			data = bf.Deserialize(file);
+			generic_data = bf.Deserialize(file);
 			file.Close();
 		} else {
 			Debug.LogError("No file: " + path + " found.");
-			return null;
+			data = default(T);
+			return false;
 		}
 
-		if (data is T) {
-			return (T)data;
+		if (generic_data is T) {
+			data = (T)generic_data;
+			return true;
 		} else {
 			Debug.LogError("Object saved at path: " + path + " is not of the expected type.");
-			return null;
+			data = default(T);
+			return false;
 		}
 	}
 
