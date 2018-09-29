@@ -14,11 +14,11 @@ public static class save_util {
 	}
 
 	// Save a data object to the persistent data path at file_name
-	public static void save_to<T>(string subpath, string file_name, T data) {
+	public static void save_to_binary<T>(string subpath, string file_name, T data) {
 		BinaryFormatter bf = new BinaryFormatter();
 		FileStream file;
 
-		string path = get_full_path(subpath, file_name);
+		string path = get_full_path_safe(subpath, file_name);
 		if (!File.Exists(path)) {
 			file = File.Create(path);
 		} else {
@@ -30,15 +30,10 @@ public static class save_util {
 	}
 
 	// Load a data object from the persistent data path at file_name
-	public static bool try_load_from<T>(string subpath, string file_name, out T data) {
+	public static bool try_load_from_binary<T>(string subpath, string file_name, out T data) {
 		object generic_data = null;
 
-		string directory_path = get_full_path(subpath, "");
-		if (!Directory.Exists(directory_path)) {
-			Directory.CreateDirectory(directory_path);
-		}
-
-		string path = get_full_path(subpath, file_name);
+		string path = get_full_path_safe(subpath, file_name);
 		if (File.Exists(path)) {
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream file = File.Open(path, FileMode.Open);
@@ -61,39 +56,73 @@ public static class save_util {
 		}
 	}
 
+	// Save an object as a .json to the persistent data path at file_name
+	public static void save_to_JSON(string subpath, string file_name, object data) {
+		string path = get_full_path_safe(subpath, file_name, ".json");
+		string data_json = JsonUtility.ToJson(data);
+
+		if (!File.Exists(path)) {
+			File.Create(path).Dispose();
+		}
+
+		File.WriteAllText(path, data_json);
+	}
+
+	// Try to load an object from its .json file in the persistent data path
+	public static bool try_load_from_JSON<T>(string subpath, string file_name, out T data) {
+		string path = get_full_path_safe(subpath, file_name, ".json");
+		if (File.Exists(path)) {
+			string data_json = File.ReadAllText(path);
+			data = JsonUtility.FromJson<T>(data_json);
+			return true;
+		} else {
+			Debug.Log("No json found at: " + path);
+			data = default(T);
+			return false;
+		}
+	}
+
 	// Get a list of all the files that exist in the root of a particular directory
-	public static List<string> get_files_in_dir(string subpath, bool full_file_paths = false) {
-		string directory_path = get_full_path(subpath, "");
-		Debug.Log("directory_path: " + directory_path);
-		if (!Directory.Exists(directory_path)) {
-			Directory.CreateDirectory(directory_path);
-		}
-
+	public static List<string> get_files_in_dir(string subpath, bool with_full_paths = false, bool with_extensions = false) {
+		string directory_path = get_full_path_safe(subpath, "");
 		string[] file_names = Directory.GetFiles(directory_path);
-		foreach (string file in file_names) {
-			Debug.Log("File: " + file);
-		}
-
 		List<string> files_list = new List<string>(file_names);
 
-		if (!full_file_paths) {
+		if (!with_full_paths) {
 			for (int i=0; i < files_list.Count; i++) {
-				files_list[i] = Path.GetFileName(files_list[i]);
+				string new_name = Path.GetFileName(files_list[i]);
+				if (!with_extensions) {
+					int extension_index = new_name.LastIndexOf(".");
+					if (extension_index > 0) {
+						files_list[i] = new_name.Substring(0, extension_index);
+					}
+				}
+				files_list[i] = new_name;
 			}
 		}
-		
+
 		return files_list;
 	}
 
 	// Check if a certain file exists in the persistent data path
 	public static bool file_exists(string subpath, string file_name) {
-		string path = get_full_path(subpath, file_name);
-		return (File.Exists(path));
+		string directory_path = Path.Combine(generalPath(), subpath);
+		string path = get_full_path_safe(subpath, file_name, "", false);
+		return Directory.Exists(directory_path) && File.Exists(path);
 	}
 
-	// Generates the full path from persistent data path, subpath, and file_name (which gets sanitized)
-	private static string get_full_path(string subpath, string file_name) {
+	// Generates the full path from persistent data path, subpath, and file_name (which gets sanitized).
+	// This will also create the directory path UP TO the file if it doesn't exist yet.
+	private static string get_full_path_safe(string subpath, string file_name, string extension = "", bool ensure_subpath = true) {
+		if (extension != "" && !file_name.ToLower().EndsWith(extension)) {
+			file_name += extension;
+		}
+
 		string directory_path = Path.Combine(generalPath(), subpath);
+		if (ensure_subpath && !Directory.Exists(directory_path)) {
+			Directory.CreateDirectory(directory_path);
+		}
+
 		return Path.Combine(directory_path, sanitize_file_name(file_name));
 	}
 

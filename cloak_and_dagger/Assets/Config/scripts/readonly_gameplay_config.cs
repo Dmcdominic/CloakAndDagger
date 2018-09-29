@@ -18,8 +18,6 @@ public class readonly_gameplay_config : config_object<readonly_gameplay_bool_opt
 		base.bool_options = bool_options;
 		base.float_options = float_options;
 		base.int_options = int_options;
-
-		// No UI parameters necessary for readonly configs
 	}
 
 }

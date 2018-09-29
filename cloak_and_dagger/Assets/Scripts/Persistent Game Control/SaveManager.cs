@@ -76,7 +76,7 @@ public class SaveManager : MonoBehaviour {
 	// Load level progress
 	private static void LoadLevelProgress() {
 		if (File.Exists(path())) {
-			BinaryFormatter bf = new BinaryFormatter();
+			//BinaryFormatter bf = new BinaryFormatter();
 			FileStream file = File.Open(path(), FileMode.Open);
 
 			//_saveData = (SaveData)bf.Deserialize(file);
