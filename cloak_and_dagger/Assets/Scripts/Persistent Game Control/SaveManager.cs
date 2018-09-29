@@ -17,15 +17,15 @@ public class SaveManager : MonoBehaviour {
 		return generalPath() + "/SaveData.dat";
 	}
 
-	private static SaveData _saveData;
-	public static SaveData saveData {
-		get {
-			if (_saveData == null) {
-				_saveData = new SaveData(-1);
-			}
-			return _saveData;
-		}
-	}
+	//private static SaveData _saveData;
+	//public static SaveData saveData {
+	//	get {
+	//		if (_saveData == null) {
+	//			_saveData = new SaveData(-1);
+	//		}
+	//		return _saveData;
+	//	}
+	//}
 
 	// Singleton instance setup
 	private static SaveManager _instance;
@@ -46,9 +46,9 @@ public class SaveManager : MonoBehaviour {
 
 	// Save level progress (where int level should be the index of the level completed, but 1-indexed)
 	public void saveLevelProgress(int level) {
-		if (level > saveData.levelProgress) {
-			Save(level);
-		}
+		//if (level > saveData.levelProgress) {
+		//	Save(level);
+		//}
 	}
 
 	// Resets saved level progress to -1
@@ -58,7 +58,7 @@ public class SaveManager : MonoBehaviour {
 
 	// Saves the highest beaten level
 	private static void Save(int level) {
-		saveData.levelProgress = level;
+		//saveData.levelProgress = level;
 
 		//BinaryFormatter bf = new BinaryFormatter();
 		//FileStream file;
@@ -79,19 +79,19 @@ public class SaveManager : MonoBehaviour {
 			BinaryFormatter bf = new BinaryFormatter();
 			FileStream file = File.Open(path(), FileMode.Open);
 
-			_saveData = (SaveData)bf.Deserialize(file);
+			//_saveData = (SaveData)bf.Deserialize(file);
 			file.Close();
 		} else {
-			_saveData = new SaveData(-1);
+			//_saveData = new SaveData(-1);
 		}
 	}
 
 }
 
-[Serializable]
-public class SaveData {
-	public int levelProgress;
-	public SaveData(int progress) {
-		levelProgress = progress;
-	}
-}
+//[Serializable]
+//public class SaveData {
+//	public int levelProgress;
+//	public SaveData(int progress) {
+//		levelProgress = progress;
+//	}
+//}

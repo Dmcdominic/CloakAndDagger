@@ -8,6 +8,7 @@ public enum gameplay_float_option { heartbeat_interval, dagger_cooldown, dash_co
 public enum gameplay_int_option { int_test }
 
 [CreateAssetMenu(menuName = "config/gameplay")]
+[System.Serializable]
 public class gameplay_config : config_object<gameplay_bool_option, gameplay_float_option, gameplay_int_option> {
 
 	public new GameplayOption_Bool_Dict bool_options = new GameplayOption_Bool_Dict();

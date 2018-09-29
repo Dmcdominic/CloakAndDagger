@@ -6,19 +6,29 @@ public enum config_category { gameplay, readonly_gameplay }
 
 public class save_and_load_presets : MonoBehaviour {
 
+	private static string presets_subpath = "gamemode_presets/";
+
 	// All editable configs, to be saved and loaded, should be serialized in this dictionary
 	public ConfigCat_ScriptableObj_Dict editable_configs = new ConfigCat_ScriptableObj_Dict();
 
 
+	private void Start() {
+		// FOR TESTING
+		// TODO - REMOVE
+		save_preset("test_preset");
+		get_available_presets();
+	}
+
 	public void save_preset(string preset_name) {
 		preset config_data = new preset(preset_name, editable_configs);
-		save_util.save_to<preset>("gamemode_presets", preset_name, config_data);
+		save_util.save_to<preset>(presets_subpath, preset_name, config_data);
 	}
 
 	public void load_preset(string preset_name) {
 		preset config_data;
-		if (!save_util.try_load_from<preset>("gamemode_presets", preset_name, out config_data)) {
+		if (!save_util.try_load_from<preset>(presets_subpath, preset_name, out config_data)) {
 			Debug.Log("Failed to load preset: " + preset_name);
+			// TODO - ingame feedback on failed load
 			return;
 		}
 
@@ -28,8 +38,7 @@ public class save_and_load_presets : MonoBehaviour {
 	}
 
 	public List<string> get_available_presets() {
-		// TODO
-		return null;
+		return save_util.get_files_in_dir(presets_subpath);
 	}
 
 }
