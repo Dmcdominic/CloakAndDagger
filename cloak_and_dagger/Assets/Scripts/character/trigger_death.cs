@@ -8,6 +8,8 @@ public class trigger_death : NetworkBehaviour {
 
 	[SerializeField]
 	dagger_collision_event_object trigger;
+    [SerializeField]
+    death_event_object trigger_on_death;
 
 	[SerializeField]
 	bool_var spectator_reveal;
@@ -35,19 +37,27 @@ public class trigger_death : NetworkBehaviour {
 	
 	private void on_dagger_collision(GameObject dagger, dagger_data dagger_Data, GameObject player, string tag) {
 		if (player.Equals(this.gameObject)) {
-			die();
+			die(dagger_Data.thrower);
 		}
 	}
 
-	private void die() {
+	private void die(sbyte killerID) {
 		if (isLocalPlayer) {
 			lives.val--;
 			ClientScene.RemovePlayer(net_id.playerControllerId);
-			if(lives.val > 0)
-				respawn_event.Invoke();
-			else
-				spectator_reveal.val = true; 
-			
+
+            sbyte playerID = this.gameObject.GetComponent<Player_data_carrier>().player_Data.tempID;
+            death_event_data death_Event_Data = new death_event_data(playerID, death_type.dagger, killerID);
+            trigger_on_death.e.Invoke(death_Event_Data);
+            if (lives.val > 0) {
+                respawn_event.Invoke();
+                //TODO: broadcast "You have been slain"
+                //TODO: show on screen you and the killer
+            } else {
+                spectator_reveal.val = true;
+                //TODO: broadcast "You have been terminated"
+                //TODO: show on screen you and the terminator
+            }
 		}
 	}
 }

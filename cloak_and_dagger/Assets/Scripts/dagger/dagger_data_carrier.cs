@@ -10,11 +10,12 @@ public class dagger_data_carrier : MonoBehaviour {
 
 public struct dagger_data {
 
-	public dagger_data(bool collaterals) {
+	public dagger_data(bool collaterals, sbyte thrower) {
 		this.collaterals = collaterals;
+        this.thrower = thrower;
 	}
-
+    
 	// Add more dagger_data properties here, and include them in the constructor
 	public bool collaterals;
-
+    public sbyte thrower;
 }
