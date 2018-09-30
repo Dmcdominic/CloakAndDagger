@@ -24,6 +24,8 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 		// NOTE - The generic enum type argument in each new ui_(type)_info MUST be the (category)_bool_option.
 		// See gameplay_config_fields_controller as an example of this.
 		ui_parameters_ordered.Add(winCon_float_option.time_limit, new ui_float_info<winCon_bool_option>(0, 300, 0, 3600, "Time in seconds before the game ends. Set to \"0\" for no limit."));
+		ui_parameters_ordered.Add(winCon_int_option.kill_limit, new ui_int_info<winCon_bool_option>(1, 100, 1, 1000, "Number of kills required to win."));
+		ui_parameters_ordered.Add(winCon_int_option.lives, new ui_int_info<winCon_bool_option>(1, 100, 1, 1000, "Number of lives that each player has."));
 
 		base.populate_ui_dependents();
 		base.Awake();
@@ -36,12 +38,15 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 
 	private void create_win_con_dropdown() {
 		Dropdown dropdown = Instantiate(win_con_dropdown_prefab.gameObject).GetComponent<Dropdown>();
+		dropdown.transform.SetParent(this.transform);
+
 		List<Dropdown.OptionData> dropdown_options = new List<Dropdown.OptionData>();
 		foreach (win_condition win_con in Enum.GetValues(typeof(win_condition))) {
 			Dropdown.OptionData next_option = new Dropdown.OptionData(option_title(win_con));
 			dropdown_options.Add(next_option);
 		}
 		dropdown.AddOptions(dropdown_options);
+
 		dropdown.interactable = interactable;
 		dropdown.value = (int)config.win_Condition;
 		dropdown.onValueChanged.AddListener(config.switch_win_con);

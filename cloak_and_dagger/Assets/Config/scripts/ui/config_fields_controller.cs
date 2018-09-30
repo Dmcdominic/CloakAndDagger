@@ -183,7 +183,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		for (int i=0; i < words.Length; i++) {
 			string word = words[i];
 			string first_char = word.Substring(0, 1).ToUpper();
-			words[i] = first_char + word.Substring(1, word.Length); ;
+			words[i] = first_char + word.Substring(1, word.Length - 1);
 		}
 		return string.Join(" ", words);
 	}
