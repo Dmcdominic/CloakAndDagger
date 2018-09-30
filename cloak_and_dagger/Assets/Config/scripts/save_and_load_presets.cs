@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum config_category { gameplay, readonly_gameplay }
-
 public class save_and_load_presets : MonoBehaviour {
 
 	private static string presets_subpath = "gamemode_presets/";
@@ -29,7 +27,7 @@ public class save_and_load_presets : MonoBehaviour {
 		// FOR TESTING
 		// TODO - REMOVE
 		//save_preset("test_preset");
-		get_available_presets();
+		//get_available_presets();
 		//load_preset("test_preset");
 	}
 
@@ -54,9 +52,7 @@ public class save_and_load_presets : MonoBehaviour {
 		print("Preset load success! You loaded: " + loaded_preset.name);
 
 		foreach (config_category config_cat in editable_configs.Keys) {
-			string loaded_config_json = loaded_preset.config_jsons[config_cat];
-			object[] parameters = { loaded_config_json };
-			JsonUtility.FromJsonOverwrite(loaded_config_json, editable_configs[config_cat]);
+			JsonUtility.FromJsonOverwrite(loaded_preset.config_jsons[config_cat], editable_configs[config_cat]);
 		}
 	}
 

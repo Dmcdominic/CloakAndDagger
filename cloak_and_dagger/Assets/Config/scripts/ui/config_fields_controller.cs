@@ -34,9 +34,12 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 	public ui_float_info<T0> default_float_info = new ui_float_info<T0>(0.01f, 20.0f, 0f, 100f, "");
 	public ui_int_info<T0> default_int_info = new ui_int_info<T0>(1, 20, 0, 100, "");
 
+	protected bool interactable;
+
 
 	// Initialization
 	protected void Awake() {
+		interactable = true; // TODO - Determine here whether the player is the host or not
 		if (update_fields_trigger) {
 			update_fields_trigger.e.AddListener(update_fields);
 		}
@@ -47,15 +50,14 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 	}
 
 	// Wrapper to create all UI input fields for config customization
-	public void create_all_fields() {
-		bool interactable = true; // TODO - Determine here whether the player is the host or not
-		create_fields(ui_parameters_ordered, new List<bool_input>(), interactable);
+	public virtual void create_all_fields() {
+		create_fields(ui_parameters_ordered, new List<bool_input>());
 	}
 
 	// Helper function for instantiating all the fields and dependent fields of a particular ui_parameters dictionary.
-	private void create_fields(OrderedDictionary ui_parameters, List<bool_input> dependencies, bool interactable) {
+	protected void create_fields(OrderedDictionary ui_parameters, List<bool_input> dependencies) {
 
-		// STILL NEED TO IMPLEMENT:
+		// TODO - STILL NEED TO IMPLEMENT:
 		// Map selection
 			// Map specific options, dependent on current map
 		// Win condition selection
@@ -64,16 +66,16 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		foreach (object option in ui_parameters.Keys) {
 			if (option is T0) {
 				T0 T0_option = (T0)option;
-				bool_input new_toggle = create_toggle(T0_option, dependencies, interactable);
+				bool_input new_toggle = create_toggle(T0_option, dependencies);
 				if (ui_dependents != null && ui_dependents.ContainsKey(T0_option)) {
 					dependencies.Add(new_toggle);
-					create_fields(ui_dependents[T0_option], dependencies, interactable);
+					create_fields(ui_dependents[T0_option], dependencies);
 					dependencies.Remove(new_toggle);
 				}
 			} else if (option is T1) {
-				create_float_slider((T1)option, dependencies, interactable);
+				create_float_slider((T1)option, dependencies);
 			} else if (option is T2) {
-				create_int_slider((T2)option, dependencies, interactable);
+				create_int_slider((T2)option, dependencies);
 			} else {
 				Debug.LogError("Config option: " + option + " is not a valid type!");
 			}
@@ -81,7 +83,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 	}
 
 	// Methods for instantiating UI fields
-	private bool_input create_toggle(T0 option, List<bool_input> dependencies, bool interactable) {
+	private bool_input create_toggle(T0 option, List<bool_input> dependencies) {
 		ui_bool_info<T0> ui_info;
 		if (ui_parameters_ordered.Contains(option)) {
 			ui_info = (ui_bool_info<T0>)ui_parameters_ordered[option];
@@ -96,7 +98,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		bool_input new_input_object = Instantiate(bool_input_prefab.gameObject).GetComponent<bool_input>();
 		new_input_object.transform.SetParent(this.transform);
 
-		new_input_object.title.text = option.ToString(); // Could instead add a Title property to each ui_(type)_info struct
+		new_input_object.title.text = option_title(option); // Could instead add a Title property to each ui_(type)_info struct
 		new_input_object.toggle.interactable = interactable;
 
 		new_input_object.set_up_listeners();
@@ -109,7 +111,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		return new_input_object;
 	}
 
-	private void create_float_slider(T1 option, List<bool_input> dependencies, bool interactable) {
+	private void create_float_slider(T1 option, List<bool_input> dependencies) {
 		ui_float_info<T0> ui_info;
 		if (ui_parameters_ordered.Contains(option)) {
 			ui_info = (ui_float_info<T0>)ui_parameters_ordered[option];
@@ -124,7 +126,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		float_input new_input_object = Instantiate(float_input_prefab.gameObject).GetComponent<float_input>();
 		new_input_object.transform.SetParent(this.transform);
 
-		new_input_object.title.text = option.ToString(); // Could instead add a Title property to each ui_(type)_info struct
+		new_input_object.title.text = option_title(option); // Could instead add a Title property to each ui_(type)_info struct
 		new_input_object.min = ui_info.min;
 		new_input_object.max = ui_info.max;
 		new_input_object.slider.minValue = ui_info.slider_min;
@@ -142,7 +144,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		new_input_object.slider.value = value;
 	}
 
-	private void create_int_slider(T2 option, List<bool_input> dependencies, bool interactable) {
+	private void create_int_slider(T2 option, List<bool_input> dependencies) {
 		ui_int_info<T0> ui_info;
 		if (ui_parameters_ordered.Contains(option)) {
 			ui_info = (ui_int_info<T0>)ui_parameters_ordered[option];
@@ -157,7 +159,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		int_input new_input_object = Instantiate(int_input_prefab.gameObject).GetComponent<int_input>();
 		new_input_object.transform.SetParent(this.transform);
 
-		new_input_object.title.text = option.ToString(); // Could instead add a Title property to each ui_(type)_info struct
+		new_input_object.title.text = option_title(option); // Could instead add a Title property to each ui_(type)_info struct
 		new_input_object.min = ui_info.min;
 		new_input_object.max = ui_info.max;
 		new_input_object.slider.minValue = ui_info.slider_min;
@@ -173,6 +175,17 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 			new_input_object.toggle_dependencies.Add(parent);
 		}
 		new_input_object.value = value;
+	}
+
+	// Take an enum option and turn it into a presentable string (capitalized, no underscores)
+	protected static string option_title(object option) {
+		string[] words = option.ToString().Split(new char[] { '_' }, System.StringSplitOptions.RemoveEmptyEntries);
+		for (int i=0; i < words.Length; i++) {
+			string word = words[i];
+			string first_char = word.Substring(0, 1).ToUpper();
+			words[i] = first_char + word.Substring(1, word.Length); ;
+		}
+		return string.Join(" ", words);
 	}
 
 
