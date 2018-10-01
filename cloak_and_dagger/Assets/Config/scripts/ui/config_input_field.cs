@@ -16,7 +16,9 @@ public abstract class config_input_field : MonoBehaviour {
 			}
 			return _HLG;
 	} }
-	
+
+	public Text title;
+
 
 	private void Start() {
 		update_dependency_styling();
@@ -33,7 +35,8 @@ public abstract class config_input_field : MonoBehaviour {
 		}
 		this.gameObject.SetActive(true);
 	}
-
+	
+	// This is how we can adjust the styling of each dependent child option
 	public void update_dependency_styling() {
 		HLG.padding.left += 20 * toggle_dependencies.Count;
 	}

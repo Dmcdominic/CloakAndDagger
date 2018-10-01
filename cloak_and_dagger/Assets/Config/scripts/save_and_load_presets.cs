@@ -7,8 +7,10 @@ public class save_and_load_presets : MonoBehaviour {
 	private static string presets_subpath = "gamemode_presets/";
 
 	// Events to trigger the saving or loading of a preset
-	public string_event_object save_trigger;
-	public string_event_object load_trigger;
+	public event_object save_trigger;
+	public string_var preset_name_to_save;
+	public event_object load_trigger;
+	public string_var preset_name_to_load;
 
 	// All editable configs, to be saved and loaded, should be serialized in this dictionary
 	public ConfigCat_ScriptableObj_Dict editable_configs = new ConfigCat_ScriptableObj_Dict();
@@ -26,9 +28,9 @@ public class save_and_load_presets : MonoBehaviour {
 	private void Start() {
 		// FOR TESTING
 		// TODO - REMOVE
-		//save_preset("test_preset");
+		//save_preset("gameplay_AND_winCon_test_preset");
 		//get_available_presets();
-		//load_preset("test_preset");
+		//load_preset("gameplay_AND_winCon_test_preset");
 	}
 
 	public void save_preset(string preset_name) {
@@ -39,6 +41,12 @@ public class save_and_load_presets : MonoBehaviour {
 		}
 		preset new_preset = new preset(preset_name, config_jsons);
 		save_util.save_to_JSON(presets_subpath, preset_name, new_preset);
+
+		print("Preset save success! You saved: " + preset_name);
+		// TODO - Ingame feedback on successful save
+	}
+	public void save_preset() {
+		save_preset(preset_name_to_save.val);
 	}
 
 	public void load_preset(string preset_name) {
@@ -49,11 +57,15 @@ public class save_and_load_presets : MonoBehaviour {
 			return;
 		}
 
-		print("Preset load success! You loaded: " + loaded_preset.name);
-
 		foreach (config_category config_cat in editable_configs.Keys) {
 			JsonUtility.FromJsonOverwrite(loaded_preset.config_jsons[config_cat], editable_configs[config_cat]);
 		}
+
+		print("Preset load success! You loaded: " + loaded_preset.name);
+		// TODO - Ingame feedback on successful load
+	}
+	public void load_preset() {
+		load_preset(preset_name_to_load.val);
 	}
 
 	// Returns the full list of all presets saved in the gamemode_presets folder

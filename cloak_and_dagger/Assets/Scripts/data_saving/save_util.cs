@@ -94,7 +94,7 @@ public static class save_util {
 				if (!with_extensions) {
 					int extension_index = new_name.LastIndexOf(".");
 					if (extension_index > 0) {
-						files_list[i] = new_name.Substring(0, extension_index);
+						new_name = new_name.Substring(0, extension_index);
 					}
 				}
 				files_list[i] = new_name;
