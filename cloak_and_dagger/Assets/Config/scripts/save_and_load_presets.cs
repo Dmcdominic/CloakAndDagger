@@ -12,6 +12,9 @@ public class save_and_load_presets : MonoBehaviour {
 	public event_object load_trigger;
 	public string_var preset_name_to_load;
 
+	public int_event_object to_trigger_after_save;
+	public int_event_object to_trigger_after_load;
+
 	// All editable configs, to be saved and loaded, should be serialized in this dictionary
 	public ConfigCat_ScriptableObj_Dict editable_configs = new ConfigCat_ScriptableObj_Dict();
 
@@ -36,14 +39,23 @@ public class save_and_load_presets : MonoBehaviour {
 	public void save_preset(string preset_name) {
 		ConfigCat_String_Dict config_jsons = new ConfigCat_String_Dict();
 
-		foreach (config_category config_cat in editable_configs.Keys) {
-			config_jsons.Add(config_cat, JsonUtility.ToJson(editable_configs[config_cat]));
+		try {
+			foreach (config_category config_cat in editable_configs.Keys) {
+				config_jsons.Add(config_cat, JsonUtility.ToJson(editable_configs[config_cat]));
+			}
+			preset new_preset = new preset(preset_name, config_jsons);
+			save_util.save_to_JSON(presets_subpath, preset_name, new_preset);
+		} catch {
+			Debug.LogError("Save failed on preset: " + preset_name);
+			if (to_trigger_after_save) {
+				to_trigger_after_save.Invoke(0);
+			}
 		}
-		preset new_preset = new preset(preset_name, config_jsons);
-		save_util.save_to_JSON(presets_subpath, preset_name, new_preset);
 
-		print("Preset save success! You saved: " + preset_name);
-		// TODO - Ingame feedback on successful save
+		Debug.Log("Preset save success! You saved: " + preset_name);
+		if (to_trigger_after_save) {
+			to_trigger_after_save.Invoke(1);
+		}
 	}
 	public void save_preset() {
 		save_preset(preset_name_to_save.val);
@@ -52,8 +64,10 @@ public class save_and_load_presets : MonoBehaviour {
 	public void load_preset(string preset_name) {
 		preset loaded_preset;
 		if (!save_util.try_load_from_JSON<preset>(presets_subpath, preset_name, out loaded_preset)) {
-			Debug.Log("Failed to load preset: " + preset_name);
-			// TODO - ingame feedback on failed load
+			Debug.LogError("Failed to load preset: " + preset_name);
+			if (to_trigger_after_load) {
+				to_trigger_after_load.Invoke(0);
+			}
 			return;
 		}
 
@@ -62,7 +76,9 @@ public class save_and_load_presets : MonoBehaviour {
 		}
 
 		print("Preset load success! You loaded: " + loaded_preset.name);
-		// TODO - Ingame feedback on successful load
+		if (to_trigger_after_load) {
+			to_trigger_after_load.Invoke(1);
+		}
 	}
 	public void load_preset() {
 		load_preset(preset_name_to_load.val);

@@ -9,14 +9,25 @@ public class save_and_load_panel_controller : MonoBehaviour {
 
 	public Button load_button;
 	public Dropdown loadable_presets_dropdown;
+
 	public string_var preset_name_to_load;
 	private List<string> current_loadable_options;
+
+	public Text result_text;
+	public int_event_object completed_save_event;
+	public int_event_object completed_load_event;
 
 
 	// Initialization
 	private void Awake() {
 		if (update_fields_trigger) {
 			update_fields_trigger.e.AddListener(update_fields);
+		}
+		if (completed_save_event) {
+			completed_save_event.e.AddListener(update_result_text_save);
+		}
+		if (completed_load_event) {
+			completed_load_event.e.AddListener(update_result_text_load);
 		}
 
 		loadable_presets_dropdown.onValueChanged.AddListener(on_dropdown_value_changed);
@@ -47,6 +58,7 @@ public class save_and_load_panel_controller : MonoBehaviour {
 
 	// To be called when the save/load panel is supposed to open
 	private void create_all_fields() {
+		result_text.text = "";
 		repopulate_loadable_dropdown_options();
 		foreach (Transform child in transform) {
 			child.gameObject.SetActive(true);
@@ -62,6 +74,25 @@ public class save_and_load_panel_controller : MonoBehaviour {
 
 	private void on_dropdown_value_changed(int option_index) {
 		preset_name_to_load.val = current_loadable_options[option_index];
+	}
+
+	private void update_result_text_save(int success) {
+		if (success > 0) {
+			result_text.text = "Save success!";
+			result_text.color = Color.green;
+		} else {
+			result_text.text = "Save failed";
+			result_text.color = Color.red;
+		}
+	}
+	private void update_result_text_load(int success) {
+		if (success > 0) {
+			result_text.text = "Load success!";
+			result_text.color = Color.green;
+		} else {
+			result_text.text = "Load failed";
+			result_text.color = Color.red;
+		}
 	}
 
 }

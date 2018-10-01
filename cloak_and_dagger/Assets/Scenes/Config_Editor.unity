@@ -712,6 +712,7 @@ RectTransform:
   m_Children:
   - {fileID: 222760448}
   - {fileID: 899670612}
+  - {fileID: 924374936}
   m_Father: {fileID: 805012002}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -736,6 +737,11 @@ MonoBehaviour:
   load_button: {fileID: 1892682787}
   loadable_presets_dropdown: {fileID: 242408704}
   preset_name_to_load: {fileID: 11400000, guid: 49f1a7d3232d34b40b07e0d4180baf10,
+    type: 2}
+  result_text: {fileID: 924374938}
+  completed_save_event: {fileID: 11400000, guid: a6aedf5f7dd1fed42b39287e9b1d35b0,
+    type: 2}
+  completed_load_event: {fileID: 11400000, guid: e37b48e48b9e41a4a9d3e997691800ad,
     type: 2}
 --- !u!114 &340427855
 MonoBehaviour:
@@ -2244,6 +2250,101 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 920271929}
   m_CullTransparentMesh: 0
+--- !u!1 &924374935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 924374936}
+  - component: {fileID: 924374939}
+  - component: {fileID: 924374938}
+  - component: {fileID: 924374937}
+  m_Layer: 5
+  m_Name: result_text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &924374936
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 924374935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 340427853}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 199.33998, y: -402}
+  m_SizeDelta: {x: 388.67996, y: 44}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &924374937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 924374935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1679637790, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
+--- !u!114 &924374938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 924374935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0.745283, b: 0.046757523, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Save/load result goes here
+--- !u!222 &924374939
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 924374935}
+  m_CullTransparentMesh: 0
 --- !u!1 &927641956
 GameObject:
   m_ObjectHideFlags: 0
@@ -2294,6 +2395,10 @@ MonoBehaviour:
     type: 2}
   load_trigger: {fileID: 11400000, guid: d4a5feaf2476c954392d6df95e1d74ed, type: 2}
   preset_name_to_load: {fileID: 11400000, guid: 49f1a7d3232d34b40b07e0d4180baf10,
+    type: 2}
+  to_trigger_after_save: {fileID: 11400000, guid: a6aedf5f7dd1fed42b39287e9b1d35b0,
+    type: 2}
+  to_trigger_after_load: {fileID: 11400000, guid: e37b48e48b9e41a4a9d3e997691800ad,
     type: 2}
   editable_configs:
     m_keys: 0000000002000000

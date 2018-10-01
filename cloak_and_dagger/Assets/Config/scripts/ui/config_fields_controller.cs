@@ -220,7 +220,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 
 	// Remove all the fields
 	public void clear_fields() {
-		Debug.Log("Destroying ALL children of this fields controller");
+		//Debug.Log("Destroying ALL children of this fields controller");
 		foreach (Transform child in transform) {
 			Destroy(child.gameObject);
 		}

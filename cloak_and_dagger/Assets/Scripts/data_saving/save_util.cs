@@ -93,7 +93,7 @@ public static class save_util {
 				string new_name = Path.GetFileName(files_list[i]);
 				if (!with_extensions) {
 					int extension_index = new_name.LastIndexOf(".");
-					if (extension_index > 0) {
+					if (extension_index >= 0) {
 						new_name = new_name.Substring(0, extension_index);
 					}
 				}
