@@ -17,6 +17,8 @@ public class trigger_death : NetworkBehaviour {
 	int_var lives;
 	[SerializeField]
 	event_object respawn_event;
+    [SerializeField]
+    kill_feed_display kill_Feed;
 	
 	NetworkIdentity net_id;
 
@@ -51,12 +53,12 @@ public class trigger_death : NetworkBehaviour {
             trigger_on_death.e.Invoke(death_Event_Data);
             if (lives.val > 0) {
                 respawn_event.Invoke();
-                //TODO: broadcast "You have been slain"
-                //TODO: show on screen you and the killer
+                kill_Feed.display_slain(death_Event_Data);
+                //TODO: broadcast sfx "You have been slain"
             } else {
                 spectator_reveal.val = true;
-                //TODO: broadcast "You have been terminated"
-                //TODO: show on screen you and the terminator
+                kill_Feed.display_terminated(death_Event_Data);
+                //TODO: broadcast sfx "You have been terminated"
             }
 		}
 	}
