@@ -8,15 +8,24 @@ public enum winCon_bool_option {  }
 public enum winCon_float_option { time_limit }
 public enum winCon_int_option { lives, kill_limit }
 
-[CreateAssetMenu(menuName = "config/win_con")]
+//[CreateAssetMenu(menuName = "config/win_con")]
 [System.Serializable]
 public class win_con_config : config_object<winCon_bool_option, winCon_float_option, winCon_int_option> {
-	
-	public win_condition win_Condition;
+
+	public win_condition _win_Condition;
+	public win_condition win_Condition {
+		get { return _win_Condition; }
+		set {
+			_win_Condition = value;
+			win_con_changed.Invoke();
+		}
+	}
+	public event_object win_con_changed;
 
 	public new WinConOption_Bool_Dict bool_options = new WinConOption_Bool_Dict();
 	public new WinConOption_Float_Dict float_options = new WinConOption_Float_Dict();
 	public new WinConOption_Int_Dict int_options = new WinConOption_Int_Dict();
+
 
 	public win_con_config() {
 		base.bool_options = bool_options;

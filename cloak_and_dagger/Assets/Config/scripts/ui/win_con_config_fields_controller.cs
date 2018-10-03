@@ -12,11 +12,16 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 
 	public Dropdown win_con_dropdown_prefab;
 
+	public event_object win_con_changed;
 	public new win_con_config config;
+
 
 	// Initialization
 	protected new void Awake() {
 		base.config = config;
+		if (win_con_changed) {
+			win_con_changed.e.AddListener(refresh_all_fields_if_currently_open);
+		}
 
 		// ========== Populate option UI parameters here ==========
 		// NOTE - The order of options here will be reflected in-game in the config menu,

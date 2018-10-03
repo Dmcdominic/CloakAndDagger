@@ -17,6 +17,8 @@ public class save_and_load_panel_controller : MonoBehaviour {
 	public int_event_object completed_save_event;
 	public int_event_object completed_load_event;
 
+	public bool interactable;
+
 
 	// Initialization
 	private void Awake() {
@@ -32,7 +34,7 @@ public class save_and_load_panel_controller : MonoBehaviour {
 
 		loadable_presets_dropdown.onValueChanged.AddListener(on_dropdown_value_changed);
 
-		bool interactable = true; // TODO - check here whether or not you are the host
+		interactable = true; // TODO - check here whether or not you are the host
 		if (!interactable) {
 			load_button.interactable = false;
 			loadable_presets_dropdown.ClearOptions();
@@ -70,6 +72,7 @@ public class save_and_load_panel_controller : MonoBehaviour {
 		current_loadable_options = save_and_load_presets.get_available_presets();
 		loadable_presets_dropdown.AddOptions(current_loadable_options);
 		loadable_presets_dropdown.value = 0;
+		on_dropdown_value_changed(0);
 	}
 
 	private void on_dropdown_value_changed(int option_index) {

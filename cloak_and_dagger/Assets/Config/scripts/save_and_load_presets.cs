@@ -46,16 +46,11 @@ public class save_and_load_presets : MonoBehaviour {
 			preset new_preset = new preset(preset_name, config_jsons);
 			save_util.save_to_JSON(presets_subpath, preset_name, new_preset);
 		} catch {
-			Debug.LogError("Save failed on preset: " + preset_name);
-			if (to_trigger_after_save) {
-				to_trigger_after_save.Invoke(0);
-			}
+			output_result(true, false, preset_name);
+			return;
 		}
 
-		Debug.Log("Preset save success! You saved: " + preset_name);
-		if (to_trigger_after_save) {
-			to_trigger_after_save.Invoke(1);
-		}
+		output_result(true, true, preset_name);
 	}
 	public void save_preset() {
 		save_preset(preset_name_to_save.val);
@@ -64,21 +59,23 @@ public class save_and_load_presets : MonoBehaviour {
 	public void load_preset(string preset_name) {
 		preset loaded_preset;
 		if (!save_util.try_load_from_JSON<preset>(presets_subpath, preset_name, out loaded_preset)) {
-			Debug.LogError("Failed to load preset: " + preset_name);
-			if (to_trigger_after_load) {
-				to_trigger_after_load.Invoke(0);
-			}
+			output_result(false, false, loaded_preset.name);
 			return;
 		}
 
-		foreach (config_category config_cat in editable_configs.Keys) {
-			JsonUtility.FromJsonOverwrite(loaded_preset.config_jsons[config_cat], editable_configs[config_cat]);
+		try {
+			foreach (config_category config_cat in loaded_preset.config_jsons.Keys) {
+				JsonUtility.FromJsonOverwrite(loaded_preset.config_jsons[config_cat], editable_configs[config_cat]);
+			}
+			//foreach (config_category config_cat in editable_configs.Keys) {
+			//	JsonUtility.FromJsonOverwrite(loaded_preset.config_jsons[config_cat], editable_configs[config_cat]);
+			//}
+		} catch {
+			output_result(false, false, loaded_preset.name);
+			return;
 		}
 
-		print("Preset load success! You loaded: " + loaded_preset.name);
-		if (to_trigger_after_load) {
-			to_trigger_after_load.Invoke(1);
-		}
+		output_result(false, true, loaded_preset.name);
 	}
 	public void load_preset() {
 		load_preset(preset_name_to_load.val);
@@ -87,6 +84,24 @@ public class save_and_load_presets : MonoBehaviour {
 	// Returns the full list of all presets saved in the gamemode_presets folder
 	public static List<string> get_available_presets() {
 		return save_util.get_files_in_dir(presets_subpath);
+	}
+
+	private void output_result(bool saving, bool succeeded, string preset_name) {
+		string save_or_load = saving ? "Save" : "Load";
+
+		string saved_or_loaded = saving ? "Saved" : "Loaded";
+		if (succeeded) {
+			Debug.Log("Success! " + saved_or_loaded + " preset: " + preset_name);
+		} else {
+			Debug.LogError("Failed! Unsuccessfully " + saved_or_loaded + " preset: " + preset_name);
+		}
+
+		int result = succeeded ? 1 : 0;
+		if (saving && to_trigger_after_save) {
+			to_trigger_after_save.Invoke(result);
+		} else if (!saving && to_trigger_after_load) {
+			to_trigger_after_load.Invoke(result);
+		}
 	}
 
 }

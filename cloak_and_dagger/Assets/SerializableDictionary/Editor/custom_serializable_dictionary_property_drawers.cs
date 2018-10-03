@@ -17,6 +17,9 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(WinConOption_Bool_Dict))]
 [CustomPropertyDrawer(typeof(WinConOption_Float_Dict))]
 [CustomPropertyDrawer(typeof(WinConOption_Int_Dict))]
+[CustomPropertyDrawer(typeof(MapOption_Bool_Dict))]
+[CustomPropertyDrawer(typeof(MapOption_Float_Dict))]
+[CustomPropertyDrawer(typeof(MapOption_Int_Dict))]
 // =========== Readonly config dictionaries ============
 [CustomPropertyDrawer(typeof(ReadonlyGameplayOption_Bool_Dict))]
 [CustomPropertyDrawer(typeof(ReadonlyGameplayOption_Float_Dict))]
