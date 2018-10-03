@@ -87,8 +87,6 @@ public class save_and_load_presets : MonoBehaviour {
 	}
 
 	private void output_result(bool saving, bool succeeded, string preset_name) {
-		string save_or_load = saving ? "Save" : "Load";
-
 		string saved_or_loaded = saving ? "Saved" : "Loaded";
 		if (succeeded) {
 			Debug.Log("Success! " + saved_or_loaded + " preset: " + preset_name);

@@ -10,10 +10,13 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 		get { return config_category.win_con;  }
 	}
 
+	public all_win_cons_list all_Win_Cons_List;
 	public Dropdown win_con_dropdown_prefab;
 
 	public event_object win_con_changed;
 	public new win_con_config config;
+	public map_config map_Config;
+	public all_maps_list all_Maps_List;
 
 
 	// Initialization
@@ -21,6 +24,7 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 		base.config = config;
 		if (win_con_changed) {
 			win_con_changed.e.AddListener(refresh_all_fields_if_currently_open);
+			win_con_changed.e.AddListener(check_map_compatibility);
 		}
 
 		// ========== Populate option UI parameters here ==========
@@ -37,6 +41,12 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 	}
 
 	public override void create_all_fields() {
+		win_con_info current_win_con_info = all_Win_Cons_List.win_con_infos[config.win_Condition];
+		limited_options_only = true;
+		limited_bool_options = current_win_con_info.compatible_bool_options;
+		limited_float_options = current_win_con_info.compatible_float_options;
+		limited_int_options = current_win_con_info.compatible_int_options;
+
 		create_win_con_dropdown();
 		base.create_all_fields();
 	}
@@ -55,6 +65,12 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 		dropdown.interactable = interactable;
 		dropdown.value = (int)config.win_Condition;
 		dropdown.onValueChanged.AddListener(config.switch_win_con);
+	}
+
+	private void check_map_compatibility() {
+		if (!all_Maps_List.map_infos[map_Config.map].compatible_win_cons.Contains(config.win_Condition)) {
+			map_Config.map = all_Win_Cons_List.win_con_infos[config.win_Condition].default_map;
+		}
 	}
 
 }

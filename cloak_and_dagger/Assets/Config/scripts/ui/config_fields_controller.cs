@@ -38,6 +38,11 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 	protected bool interactable;
 	protected bool currently_open = false;
 
+	protected bool limited_options_only = false;
+	protected List<T0> limited_bool_options;
+	protected List<T1> limited_float_options;
+	protected List<T2> limited_int_options;
+
 
 	// Initialization
 	protected void Awake() {
@@ -73,7 +78,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 			if (option is T0) {
 				T0 T0_option = (T0)option;
 				bool_input new_toggle = create_toggle(T0_option, dependencies);
-				if (ui_dependents != null && ui_dependents.ContainsKey(T0_option)) {
+				if (ui_dependents != null && new_toggle != null && ui_dependents.ContainsKey(T0_option)) {
 					dependencies.Add(new_toggle);
 					create_fields(ui_dependents[T0_option], dependencies);
 					dependencies.Remove(new_toggle);
@@ -90,6 +95,10 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 
 	// Methods for instantiating UI fields
 	private bool_input create_toggle(T0 option, List<bool_input> dependencies) {
+		if (limited_options_only && !limited_bool_options.Contains(option)) {
+			return null;
+		}
+
 		ui_bool_info<T0> ui_info;
 		if (ui_parameters_ordered.Contains(option)) {
 			ui_info = (ui_bool_info<T0>)ui_parameters_ordered[option];
@@ -118,6 +127,10 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 	}
 
 	private void create_float_slider(T1 option, List<bool_input> dependencies) {
+		if (limited_options_only && !limited_float_options.Contains(option)) {
+			return;
+		}
+
 		ui_float_info<T0> ui_info;
 		if (ui_parameters_ordered.Contains(option)) {
 			ui_info = (ui_float_info<T0>)ui_parameters_ordered[option];
@@ -154,6 +167,10 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 	}
 
 	private void create_int_slider(T2 option, List<bool_input> dependencies) {
+		if (limited_options_only && !limited_int_options.Contains(option)) {
+			return;
+		}
+
 		ui_int_info<T0> ui_info;
 		if (ui_parameters_ordered.Contains(option)) {
 			ui_info = (ui_int_info<T0>)ui_parameters_ordered[option];

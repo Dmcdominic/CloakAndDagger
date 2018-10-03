@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "config/map_info")]
 public class map_info : ScriptableObject {
 
+	public string map_name;
 	public Sprite thumbnail;
 
 	public List<win_condition> compatible_win_cons;

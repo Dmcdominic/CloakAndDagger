@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6315813c46f6564b899de2123241c7b, type: 3}
   m_Name: win_con_config
   m_EditorClassIdentifier: 
-  _win_Condition: 0
+  _win_Condition: 1
   win_con_changed: {fileID: 11400000, guid: 50a76939cc7f5344db6a45f47fdd6e75, type: 2}
   bool_options:
     m_keys: 
@@ -22,4 +22,4 @@ MonoBehaviour:
     - 101.7344
   int_options:
     m_keys: 0000000001000000
-    m_values: 0000000024000000
+    m_values: 0100000024000000

@@ -8,11 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 019db4baa5f216141ad9ba1380bbcf12, type: 3}
-  m_Name: TEST_map_info
+  m_Script: {fileID: 11500000, guid: 191aa1c7b573d7e4daf6c8367c85abe6, type: 3}
+  m_Name: ALL_MAPS
   m_EditorClassIdentifier: 
-  thumbnail: {fileID: 0}
-  compatible_win_cons: 00000000
-  compatible_bool_options: 0000000001000000
-  compatible_float_options: 
-  compatible_int_options: 
+  map_infos:
+    m_keys:
+    - Placeholder Map
+    m_values:
+    - {fileID: 11400000, guid: 270d81b11a401a846afbf35986832f37, type: 2}

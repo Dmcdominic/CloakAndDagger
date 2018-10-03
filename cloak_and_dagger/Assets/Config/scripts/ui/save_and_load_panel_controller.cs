@@ -17,7 +17,7 @@ public class save_and_load_panel_controller : MonoBehaviour {
 	public int_event_object completed_save_event;
 	public int_event_object completed_load_event;
 
-	public bool interactable;
+	private bool interactable;
 
 
 	// Initialization
@@ -81,6 +81,7 @@ public class save_and_load_panel_controller : MonoBehaviour {
 
 	private void update_result_text_save(int success) {
 		if (success > 0) {
+			repopulate_loadable_dropdown_options();
 			result_text.text = "Save success!";
 			result_text.color = Color.green;
 		} else {
