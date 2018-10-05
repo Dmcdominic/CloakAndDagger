@@ -20,6 +20,7 @@ public class kill_feed_display : MonoBehaviour {
         /** The above strings for display are ONLY TEMPORARY and may subject to future
          *  changes. Also, more death types (see death_event_object.cs) can be added
          *  in the future. */
+        wait_and_clear(this.GetComponent<Text>().text);
     }
 
     public void display_terminated(death_event_data DED) {
@@ -34,5 +35,12 @@ public class kill_feed_display : MonoBehaviour {
         /** The above strings for display are ONLY TEMPORARY and may subject to future
          *  changes. Also, more death types (see death_event_object.cs) can be added
          *  in the future. */
+        wait_and_clear(this.GetComponent<Text>().text);
+    }
+
+    public void wait_and_clear(string current) {
+        System.Threading.Thread.Sleep(1000);
+        if (this.GetComponent<Text>().text == current)
+            this.GetComponent<Text>().text = "";
     }
 }
