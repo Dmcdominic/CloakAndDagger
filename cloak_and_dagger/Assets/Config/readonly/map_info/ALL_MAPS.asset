@@ -13,6 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   map_infos:
     m_keys:
-    - Placeholder Map
+    - Ragnarok
+    - Nuketown
+    - Cave Demo
     m_values:
-    - {fileID: 11400000, guid: 270d81b11a401a846afbf35986832f37, type: 2}
+    - {fileID: 11400000, guid: 9f689dcd2323ebe40b2809d07c499e96, type: 2}
+    - {fileID: 11400000, guid: 4a93f3e5b29313647a296291096e166e, type: 2}
+    - {fileID: 11400000, guid: 35a0bde3aa6930a4fb17bac1139d66ef, type: 2}

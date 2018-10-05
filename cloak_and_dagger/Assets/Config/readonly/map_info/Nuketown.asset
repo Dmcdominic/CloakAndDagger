@@ -8,11 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67c77b4998ad4294a984eaa2a0272501, type: 3}
-  m_Name: Kill Count
+  m_Script: {fileID: 11500000, guid: 019db4baa5f216141ad9ba1380bbcf12, type: 3}
+  m_Name: Nuketown
   m_EditorClassIdentifier: 
-  win_Condition: 1
-  default_map: Nuketown
-  compatible_bool_options: 
-  compatible_float_options: 00000000
-  compatible_int_options: 01000000
+  map_name: Nuketown
+  thumbnail: {fileID: 0}
+  compatible_win_cons: 01000000
+  compatible_bool_options: 01000000
+  compatible_float_options: 
+  compatible_int_options: 

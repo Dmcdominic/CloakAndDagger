@@ -68,7 +68,8 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 	}
 
 	private void check_map_compatibility() {
-		if (!all_Maps_List.map_infos[map_Config.map].compatible_win_cons.Contains(config.win_Condition)) {
+		bool map_found = all_Maps_List.map_infos.ContainsKey(map_Config.map);
+		if (!map_found || !all_Maps_List.map_infos[map_Config.map].compatible_win_cons.Contains(config.win_Condition)) {
 			map_Config.map = all_Win_Cons_List.win_con_infos[config.win_Condition].default_map;
 		}
 	}
