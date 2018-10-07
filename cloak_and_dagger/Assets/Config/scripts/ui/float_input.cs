@@ -12,8 +12,7 @@ public class float_input : config_input_field {
 		get { return _value; }
 		set { _value = value; on_value_changed.Invoke(_value); }
 	}
-
-	public Text title;
+	
 	public Slider slider;
 	public InputField input_field;
 

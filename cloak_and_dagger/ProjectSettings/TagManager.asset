@@ -46,6 +46,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Set-Pieces
+    uniqueID: 4158927793
+    locked: 0
   - name: Players
     uniqueID: 2761839985
     locked: 0

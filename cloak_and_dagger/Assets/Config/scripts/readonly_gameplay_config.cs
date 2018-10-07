@@ -7,7 +7,7 @@ public enum readonly_gameplay_bool_option { }
 public enum readonly_gameplay_float_option { dagger_stun_time }
 public enum readonly_gameplay_int_option { }
 
-[CreateAssetMenu(menuName = "config/readonly_gameplay")]
+//[CreateAssetMenu(menuName = "config/readonly_gameplay")]
 public class readonly_gameplay_config : config_object<readonly_gameplay_bool_option, readonly_gameplay_float_option, readonly_gameplay_int_option> {
 
 	public new ReadonlyGameplayOption_Bool_Dict bool_options = new ReadonlyGameplayOption_Bool_Dict();

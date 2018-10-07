@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using UnityEngine;
 
-public enum config_category { gameplay, readonly_gameplay, win_con }
+public enum config_category { win_con, map, gameplay, readonly_win_con, readonly_map, readonly_gameplay }
 
 // See the "Code Notes" doc in Google Drive for usage details.
 // T0, T1, T2 should be enums specific to the config object, thus the generic type restrictions.

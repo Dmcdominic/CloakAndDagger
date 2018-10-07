@@ -7,7 +7,7 @@ public enum gameplay_bool_option { heartbeat, dagger_collaterals }
 public enum gameplay_float_option { heartbeat_interval, dagger_cooldown, dash_cooldown, dash_distance, reflection_time }
 public enum gameplay_int_option { int_test }
 
-[CreateAssetMenu(menuName = "config/gameplay")]
+//[CreateAssetMenu(menuName = "config/gameplay")]
 [System.Serializable]
 public class gameplay_config : config_object<gameplay_bool_option, gameplay_float_option, gameplay_int_option> {
 
