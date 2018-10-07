@@ -71,8 +71,12 @@ public class save_and_load_panel_controller : MonoBehaviour {
 		loadable_presets_dropdown.ClearOptions();
 		current_loadable_options = save_and_load_presets.get_available_presets();
 		loadable_presets_dropdown.AddOptions(current_loadable_options);
-		loadable_presets_dropdown.value = 0;
-		on_dropdown_value_changed(0);
+		if (current_loadable_options.Count > 0) {
+			loadable_presets_dropdown.value = 0;
+			on_dropdown_value_changed(0);
+		} else {
+			preset_name_to_load.val = "";
+		}
 	}
 
 	private void on_dropdown_value_changed(int option_index) {
