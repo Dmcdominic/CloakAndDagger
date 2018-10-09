@@ -22,6 +22,8 @@ public class WC_kill_count_controller : win_condition_controller {
 	protected override void init() {
 		// TODO - intialize the player_stats_dict and team_stats_dict
 		// based on info passed here from the lobby or host or whatever
+		player_stats_dict = new Dictionary<byte, player_kill_count_stats>();
+		team_stats_dict = new Dictionary<byte, team_kill_count_stats>();
 	}
 
 	// This is called when the game is started
@@ -30,18 +32,12 @@ public class WC_kill_count_controller : win_condition_controller {
 
 	// This is called when a player is killed,
 	// AFTER the stats dicts are updated with kill & death counters
-	protected override void on_player_killed() {
+	protected override void on_player_killed(death_event_data death_data) {
 		foreach (team_kill_count_stats team in team_stats_dict.Values) {
 			if (team.kill_count > win_Con_Config.int_options[winCon_int_option.kill_limit]) {
-				end_game();
+				end_game_general(false);
 			}
 		}
-	}
-
-	// Put in anything that you need to do right before ending the game
-	// that is specific to this win_con
-	private void end_game() {
-		end_game_general(false);
 	}
 
 }

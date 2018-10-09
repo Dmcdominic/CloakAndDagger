@@ -9,7 +9,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 
 	// Events to listen to
 	public event_object game_start_trigger;
-	public event_object player_killed; // TODO - This should be the death_event that we made on Ning's branch
+	public death_event_object player_killed;
 
 	// Events to trigger
 	public event_object trigger_on_game_over; // TODO - this needs to store some kind of game_over_data
@@ -31,7 +31,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 			return;
 		}
 		if (player_killed) {
-			player_killed.e.AddListener(on_player_killed);
+			player_killed.e.AddListener(on_player_killed_general);
 		}
 		if (game_start_trigger) {
 			game_start_trigger.e.AddListener(on_game_start_general);
@@ -43,6 +43,8 @@ public abstract class win_condition_controller : MonoBehaviour {
 		init();
 	}
 	
+	// Manages the game timer.
+	// If you want to use update, make sure to call base.Update() as well.
 	protected void Update () {
 		game_timer.val += Time.deltaTime;
 		if (time_limit != 0 && time_limit < game_timer.val) {
@@ -57,30 +59,31 @@ public abstract class win_condition_controller : MonoBehaviour {
 	}
 
 	// Is called by the player_killed event
-	// TODO - must take in the actual death_event struct
-	private void on_player_killed_general() {
-		byte killeD_placeholder = 1;
-		player_stats killed = get_player_stats(killeD_placeholder);
+	private void on_player_killed_general(death_event_data death_data) {
+		player_stats killed = get_player_stats((byte)death_data.playerID);
 		killed.death_count++;
 		get_team_stats(killed.teamID).death_count++;
-		if (true) { // TODO - replace this with condition if there is a killer or not
-			byte killeR_placeholder = 2;
-			player_stats killer = get_player_stats(killeR_placeholder);
+		if (death_data.death_Type != death_type.suicide) {
+			player_stats killer = get_player_stats((byte)death_data.killerID);
 			killer.kill_count++;
 		}
-		on_player_killed();
-	}
-
-	// Should be called when you want to end the game (i.e. when the win con is met or time runs out)
-	protected void end_game_general(bool timeout) {
-		ingame_state.val = false;
-		// TODO - some other stuff here, like the leaderboard
+		on_player_killed(death_data);
 	}
 
 	protected abstract void init(); // Initialize your controller values using the win_Con_Config
 	protected abstract void on_game_start(); // Start the game
-	protected abstract void on_player_killed(); // Called when a player_death_event is received, after general_stats is updated
-	
+
+	// This will be called when a player_death_event is received,
+	// AFTER updating the player_stats and team_stats with basic kill and death counter increments
+	protected abstract void on_player_killed(death_event_data death_data);
+
+	// Should be called when you want to end the game (i.e. when the win con is met or time runs out)
+	// Note that this may be called by a timeout, so if you need anything to occur before the game ends,
+	// You should override this and then call base.end_game_general(timeout) at the end.
+	protected void end_game_general(bool timeout) {
+		ingame_state.val = false;
+		// TODO - some other stuff here, like the leaderboard
+	}
 }
 
 
