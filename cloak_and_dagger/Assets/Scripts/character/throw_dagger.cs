@@ -65,7 +65,9 @@ public class throw_dagger : NetworkBehaviour {
 
 	// Edit the properties of the dagger here before throwing it
 	private dagger_data create_dagger_data() {
-		return new dagger_data(gameplay_Config.bool_options[gameplay_bool_option.dagger_collaterals]);
+        sbyte thrower_ID = this.gameObject.GetComponent<Player_data_carrier>().player_Data.tempID;
+
+        return new dagger_data(gameplay_Config.bool_options[gameplay_bool_option.dagger_collaterals], thrower_ID);
 	}
 	
 }

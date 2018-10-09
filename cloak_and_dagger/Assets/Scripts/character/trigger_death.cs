@@ -8,6 +8,8 @@ public class trigger_death : NetworkBehaviour {
 
 	[SerializeField]
 	dagger_collision_event_object trigger;
+    [SerializeField]
+    death_event_object trigger_on_death;
 
 	[SerializeField]
 	bool_var spectator_reveal;
@@ -15,6 +17,8 @@ public class trigger_death : NetworkBehaviour {
 	int_var lives;
 	[SerializeField]
 	event_object respawn_event;
+    [SerializeField]
+    kill_feed_display kill_Feed;
 	
 	NetworkIdentity net_id;
 
@@ -35,19 +39,27 @@ public class trigger_death : NetworkBehaviour {
 	
 	private void on_dagger_collision(GameObject dagger, dagger_data dagger_Data, GameObject player, string tag) {
 		if (player.Equals(this.gameObject)) {
-			die();
+			die(dagger_Data.thrower);
 		}
 	}
 
-	private void die() {
+	private void die(sbyte killerID) {
 		if (isLocalPlayer) {
 			lives.val--;
 			ClientScene.RemovePlayer(net_id.playerControllerId);
-			if(lives.val > 0)
-				respawn_event.Invoke();
-			else
-				spectator_reveal.val = true; 
-			
+
+            sbyte playerID = this.gameObject.GetComponent<Player_data_carrier>().player_Data.tempID;
+            death_event_data death_Event_Data = new death_event_data(playerID, death_type.dagger, killerID);
+            trigger_on_death.e.Invoke(death_Event_Data);
+            if (lives.val > 0) {
+                respawn_event.Invoke();
+                kill_Feed.display_slain(death_Event_Data);
+                //TODO: broadcast sfx "You have been slain"
+            } else {
+                spectator_reveal.val = true;
+                kill_Feed.display_terminated(death_Event_Data);
+                //TODO: broadcast sfx "You have been terminated"
+            }
 		}
 	}
 }
