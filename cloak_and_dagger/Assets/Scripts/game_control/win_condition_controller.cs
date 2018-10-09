@@ -82,6 +82,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 	// You should override this and then call base.end_game_general(timeout) at the end.
 	protected void end_game_general(bool timeout) {
 		ingame_state.val = false;
+		trigger_on_game_over.Invoke();
 		// TODO - some other stuff here, like the leaderboard
 	}
 }
