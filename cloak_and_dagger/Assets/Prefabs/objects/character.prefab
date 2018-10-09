@@ -206,7 +206,7 @@ MonoBehaviour:
   dagger_prefab: {fileID: 1862537834978502, guid: f715f6ea0cc87e445a3b49fe4014a4c1,
     type: 2}
   trigger: {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
-  dagger_Config: {fileID: 11400000, guid: 25b89998b0adbdb409733bd38c69eb36, type: 2}
+  gameplay_Config: {fileID: 0}
 --- !u!114 &114038434851701454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,10 +221,9 @@ MonoBehaviour:
   input_Config: {fileID: 11400000, guid: 039973cf0c0243d4d879ed91da1c803f, type: 2}
   to_trigger_dagger: {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
   dagger_on_cooldown: {fileID: 11400000, guid: a9c86986f5e34eb4b81b0bc355fc6b54, type: 2}
-  dagger_Config: {fileID: 11400000, guid: 25b89998b0adbdb409733bd38c69eb36, type: 2}
   to_trigger_dash: {fileID: 11400000, guid: 27ca4d790861da944a3b6eb1ca37e5ee, type: 2}
   dash_on_cooldown: {fileID: 11400000, guid: 1753c8ad12a45144bb3165db328722ff, type: 2}
-  dash_Config: {fileID: 11400000, guid: cf0f90e52070f674aaf4a1db58c3d9b1, type: 2}
+  gameplay_Config: {fileID: 0}
 --- !u!114 &114072292510557270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,9 +257,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigger: {fileID: 11400000, guid: 0f9847ced7d453448a50d59125e61655, type: 2}
+  trigger_on_death: {fileID: 0}
   spectator_reveal: {fileID: 11400000, guid: 4ad75e48cfa56ae45ade9765d99053d9, type: 2}
   lives: {fileID: 11400000, guid: 8da797a971da62748bc9e3615c651ab9, type: 2}
   respawn_event: {fileID: 11400000, guid: fe3745e7c102fce40892e5e880a0e868, type: 2}
+  kill_Feed: {fileID: 0}
 --- !u!114 &114336950006474412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -347,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throw_trigger: {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
   stun_trigger: {fileID: 11400000, guid: 160fe5029c4947f4fbcaf28517de28b8, type: 2}
-  dagger_Config: {fileID: 11400000, guid: 25b89998b0adbdb409733bd38c69eb36, type: 2}
+  readonly_gameplay_Config: {fileID: 0}
 --- !u!114 &114674665505827382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -374,8 +375,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _origin: {fileID: 11400000, guid: 276cb45050efbd24c925199d72e92b6b, type: 2}
   _target_dest: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
-  distance: 3.25
+  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   trigger: {fileID: 11400000, guid: 27ca4d790861da944a3b6eb1ca37e5ee, type: 2}
+  light_spawn_trigger: {fileID: 11400000, guid: ecca28e87029d9940927a70137884b99,
+    type: 2}
 --- !u!114 &114938384083110894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -475,7 +478,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1533127311
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 17ea451e7ca982d46ae4669e6722195f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

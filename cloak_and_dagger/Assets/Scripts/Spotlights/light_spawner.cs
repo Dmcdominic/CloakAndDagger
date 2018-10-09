@@ -21,7 +21,17 @@ public class light_spawner : MonoBehaviour {
 }
 
 public struct light_spawn_data {
-	public Vector3 pos;
-	public float spot_angle;
+	public Vector2 pos;
 	public float duration;
+	public float spot_angle;
+	public light_spawn_data(Vector2 _pos, float _duration) { // Use default spot_angle
+		this.pos = _pos;
+		this.duration = _duration;
+		this.spot_angle = 0;
+	}
+	public light_spawn_data(Vector2 _pos, float _duration, float _spot_angle) { // Override spot_angle
+		this.pos = _pos;
+		this.duration = _duration;
+		this.spot_angle = _spot_angle;
+	}
 }

@@ -12,11 +12,14 @@ public class dash : NetworkBehaviour {
 	[SerializeField]
 	Vec2Var _target_dest;
 
-	[SerializeField]
-	float distance = 2f;
+	public gameplay_config gameplay_Config;
+	private float max_distance;
 
 	[SerializeField]
 	float_event_object trigger;
+
+	[SerializeField]
+	light_spawn_event_object light_spawn_trigger;
 
 	private Rigidbody2D rb;
 
@@ -26,11 +29,20 @@ public class dash : NetworkBehaviour {
 		if (isLocalPlayer) {
 			trigger.e.AddListener(dash_func);
 		}
+
+		max_distance = gameplay_Config.float_options[gameplay_float_option.dash_distance];
 	}
 
 	public void dash_func(float cooldown) {
-		Vector3 direction = (_target_dest.val - _origin.val).normalized;
-		Vector3 displacement = direction * distance;
+		// Spawn light at origin
+		light_spawn_data light_data = new light_spawn_data(_origin.val, 2f);
+		light_spawn_trigger.Invoke(light_data);
+
+		// Blink to the target destination
+		Vector3 displacement = _target_dest.val - _origin.val;
+		if (displacement.magnitude > max_distance) {
+			displacement = displacement.normalized * max_distance;
+		}
 		Cmd_update_pos_on_server(this.transform.position + displacement);
 	}
 
