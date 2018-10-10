@@ -206,7 +206,7 @@ MonoBehaviour:
   dagger_prefab: {fileID: 1862537834978502, guid: f715f6ea0cc87e445a3b49fe4014a4c1,
     type: 2}
   trigger: {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
-  gameplay_Config: {fileID: 0}
+  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
 --- !u!114 &114038434851701454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,7 +223,8 @@ MonoBehaviour:
   dagger_on_cooldown: {fileID: 11400000, guid: a9c86986f5e34eb4b81b0bc355fc6b54, type: 2}
   to_trigger_dash: {fileID: 11400000, guid: 27ca4d790861da944a3b6eb1ca37e5ee, type: 2}
   dash_on_cooldown: {fileID: 11400000, guid: 1753c8ad12a45144bb3165db328722ff, type: 2}
-  gameplay_Config: {fileID: 0}
+  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  ingame_state: {fileID: 11400000, guid: 651e92a3b77baf94ea1cf6097bf34214, type: 2}
 --- !u!114 &114072292510557270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -257,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigger: {fileID: 11400000, guid: 0f9847ced7d453448a50d59125e61655, type: 2}
-  trigger_on_death: {fileID: 0}
+  trigger_on_death: {fileID: 11400000, guid: 5073091540451ef49aab435b616bee52, type: 2}
   spectator_reveal: {fileID: 11400000, guid: 4ad75e48cfa56ae45ade9765d99053d9, type: 2}
   lives: {fileID: 11400000, guid: 8da797a971da62748bc9e3615c651ab9, type: 2}
   respawn_event: {fileID: 11400000, guid: fe3745e7c102fce40892e5e880a0e868, type: 2}
@@ -348,7 +349,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throw_trigger: {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
   stun_trigger: {fileID: 11400000, guid: 160fe5029c4947f4fbcaf28517de28b8, type: 2}
-  readonly_gameplay_Config: {fileID: 0}
+  readonly_gameplay_Config: {fileID: 11400000, guid: 8ba77d9a33059e049866b4542e18f72a,
+    type: 2}
 --- !u!114 &114674665505827382
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -445,6 +447,7 @@ MonoBehaviour:
   trans: {fileID: 4336008036378410}
   move_speed: 70
   is_stun: {fileID: 11400000, guid: 5fee8766116ae67479a661562c667c48, type: 2}
+  ingame_state: {fileID: 11400000, guid: 651e92a3b77baf94ea1cf6097bf34214, type: 2}
 --- !u!212 &212318914461718598
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -83,7 +83,8 @@ public abstract class win_condition_controller : MonoBehaviour {
 	protected void end_game_general(bool timeout) {
 		ingame_state.val = false;
 		trigger_on_game_over.Invoke();
-		// TODO - some other stuff here, like the leaderboard
+		// TODO - some other stuff here, like the leaderboard?
+		// It can simply listen for the game_over event.
 	}
 }
 

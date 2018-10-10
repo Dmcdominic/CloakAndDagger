@@ -20,11 +20,14 @@ public class On_Action_Button : NetworkBehaviour {
 	bool_var dash_on_cooldown;
 	[SerializeField]
 	gameplay_config gameplay_Config;
+
+	[SerializeField]
+	bool_var ingame_state;
 	
 	
 	// Update is called once per frame
 	void Update () {
-		if (isLocalPlayer && input_Config)
+		if (isLocalPlayer && ingame_state.val && input_Config)
 		{
 			if (input_Config.dagger && !dagger_on_cooldown.val)
 			{

@@ -17,6 +17,9 @@ public class pmove : NetworkBehaviour {
 	[SerializeField]
 	bool_var is_stun;
 
+	[SerializeField]
+	bool_var ingame_state;
+
 
 	Rigidbody2D rb;
 
@@ -24,12 +27,10 @@ public class pmove : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(!isLocalPlayer)
-		{
+		if(!isLocalPlayer || !ingame_state.val) {
 			return;
 		}
-		if(is_stun.val)
-		{
+		if(is_stun.val) {
 			return;
 		}
 		rb.AddForce(input_vec.val * move_speed,ForceMode2D.Force);
