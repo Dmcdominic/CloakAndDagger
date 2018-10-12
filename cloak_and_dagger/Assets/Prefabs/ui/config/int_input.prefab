@@ -153,6 +153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224665298397769124}
   - component: {fileID: 114082272105111950}
+  - component: {fileID: 114123853877422042}
   m_Layer: 5
   m_Name: int_input
   m_TagString: Untagged
@@ -265,14 +266,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cb8b03db777c3c4b802fc86612ee596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggle_dependencies: []
+  tooltip_update: {fileID: 11400000, guid: cc944729bb9d4274fa99f6be62ad2abd, type: 2}
   title: {fileID: 114154989375421156}
+  toggle_dependencies: []
+  description: 
   slider: {fileID: 114317557916193354}
   input_field: {fileID: 114321401439103478}
   min: 0
   max: 0
   slider_min: 0
   slider_max: 0
+--- !u!114 &114123853877422042
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1591732634680438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114082272105111950}
+          m_MethodName: update_tooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!114 &114154989375421156
 MonoBehaviour:
   m_ObjectHideFlags: 1

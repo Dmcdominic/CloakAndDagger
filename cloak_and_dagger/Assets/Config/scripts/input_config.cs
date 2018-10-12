@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenuAttribute(menuName = "variables/input_config")]
+//[CreateAssetMenuAttribute(menuName = "config/input_config")]
 public class input_config : ScriptableObject {
 
 	[SerializeField]

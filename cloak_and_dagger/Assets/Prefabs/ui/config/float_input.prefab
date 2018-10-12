@@ -151,15 +151,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224416183137978890}
-  - component: {fileID: 114877116764969952}
   - component: {fileID: 114452280878945660}
+  - component: {fileID: 114829972269370106}
   m_Layer: 5
   m_Name: float_input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1809004926532122
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,8 +285,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe6e013ac14e8e4f86b26214bdc33cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggle_dependencies: []
+  tooltip_update: {fileID: 11400000, guid: cc944729bb9d4274fa99f6be62ad2abd, type: 2}
   title: {fileID: 114552509315581748}
+  toggle_dependencies: []
+  description: 
   slider: {fileID: 114699043285134468}
   input_field: {fileID: 114964658985228668}
   min: 0
@@ -461,6 +463,36 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114829972269370106
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1539141971880168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114452280878945660}
+          m_MethodName: update_tooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!114 &114862821337105510
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -488,25 +520,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114877116764969952
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1539141971880168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1679637790, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreLayout: 0
-  m_MinWidth: -1
-  m_MinHeight: -1
-  m_PreferredWidth: -1
-  m_PreferredHeight: -1
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
-  m_LayoutPriority: 1
 --- !u!114 &114964658985228668
 MonoBehaviour:
   m_ObjectHideFlags: 1

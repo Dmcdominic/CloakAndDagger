@@ -114,6 +114,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		new_input_object.transform.SetParent(this.transform);
 
 		new_input_object.title.text = option_title(option); // Could instead add a Title property to each ui_(type)_info struct
+		new_input_object.description = ui_info.description;
 		new_input_object.toggle.interactable = interactable;
 
 		new_input_object.set_up_listeners();
@@ -147,6 +148,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		new_input_object.transform.SetParent(this.transform);
 
 		new_input_object.title.text = option_title(option); // Could instead add a Title property to each ui_(type)_info struct
+		new_input_object.description = ui_info.description;
 		new_input_object.min = ui_info.min;
 		new_input_object.max = ui_info.max;
 		new_input_object.slider.minValue = ui_info.slider_min;
@@ -187,6 +189,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		new_input_object.transform.SetParent(this.transform);
 
 		new_input_object.title.text = option_title(option); // Could instead add a Title property to each ui_(type)_info struct
+		new_input_object.description = ui_info.description;
 		new_input_object.min = ui_info.min;
 		new_input_object.max = ui_info.max;
 		new_input_object.slider.minValue = ui_info.slider_min;

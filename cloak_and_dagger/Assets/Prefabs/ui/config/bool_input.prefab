@@ -70,6 +70,8 @@ GameObject:
   m_Component:
   - component: {fileID: 224523210102031866}
   - component: {fileID: 114646118590913086}
+  - component: {fileID: 222552017309216332}
+  - component: {fileID: 114629990716260368}
   m_Layer: 5
   m_Name: bool_input
   m_TagString: Untagged
@@ -226,6 +228,36 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Bool
+--- !u!114 &114629990716260368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1677064748896844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114646118590913086}
+          m_MethodName: update_tooltip
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!114 &114646118590913086
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,8 +269,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf3a86b51e89424288fdd94c714e477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggle_dependencies: []
+  tooltip_update: {fileID: 11400000, guid: cc944729bb9d4274fa99f6be62ad2abd, type: 2}
   title: {fileID: 114550595955733232}
+  toggle_dependencies: []
+  description: 
   toggle: {fileID: 114471314632893462}
   dependents: []
 --- !u!222 &222139255505232704
@@ -254,6 +288,13 @@ CanvasRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1015102906232242}
+  m_CullTransparentMesh: 0
+--- !u!222 &222552017309216332
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1677064748896844}
   m_CullTransparentMesh: 0
 --- !u!222 &222771473964587240
 CanvasRenderer:
@@ -334,8 +375,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 171.5, y: -20}
-  m_SizeDelta: {x: 333, y: 30}
+  m_AnchoredPosition: {x: 230.77998, y: -20}
+  m_SizeDelta: {x: 451.55997, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224828388105133210
 RectTransform:

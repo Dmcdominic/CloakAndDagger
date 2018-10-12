@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(menuName = "variables/string_event")]
+[CreateAssetMenu(menuName = "events/string_event")]
 public class string_event_object : ScriptableObject {
 	[SerializeField]
 	string constant = "";

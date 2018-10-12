@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(menuName = "variables/float_event")]
+[CreateAssetMenu(menuName = "events/float_event")]
 public class float_event_object : ScriptableObject {
 	[SerializeField]
 	float constant = 0;

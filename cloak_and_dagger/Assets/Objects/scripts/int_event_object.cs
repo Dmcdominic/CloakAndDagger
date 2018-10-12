@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(menuName = "variables/int_event")]
+[CreateAssetMenu(menuName = "events/int_event")]
 public class int_event_object : ScriptableObject {
 	[SerializeField]
 	int constant = 0;

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-[CreateAssetMenu(menuName = "variables/light_spawn_event")]
+//[CreateAssetMenu(menuName = "events/light_spawn_event")]
 public class light_spawn_event_object : ScriptableObject {
 	[System.Serializable]
 	public class light_spawn_event : UnityEvent<light_spawn_data> { };

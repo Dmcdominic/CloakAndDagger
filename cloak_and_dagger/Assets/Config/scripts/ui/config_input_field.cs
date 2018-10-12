@@ -6,18 +6,13 @@ using UnityEngine.UI;
 
 public abstract class config_input_field : MonoBehaviour {
 
+	public string_event_object tooltip_update;
+	public Text title;
+
 	[HideInInspector]
 	public List<bool_input> toggle_dependencies = new List<bool_input>();
-
-	//private HorizontalLayoutGroup _HLG;
-	//private HorizontalLayoutGroup HLG { get {
-	//		if (!_HLG) {
-	//			_HLG = GetComponent<HorizontalLayoutGroup>();
-	//		}
-	//		return _HLG;
-	//} }
-
-	public Text title;
+	[HideInInspector]
+	public string description;
 
 
 	private void Start() {
@@ -39,6 +34,11 @@ public abstract class config_input_field : MonoBehaviour {
 	// This is how we can adjust the styling of each dependent child option
 	public void update_dependency_styling() {
 		//HLG.padding.left += 20 * toggle_dependencies.Count;
+	}
+
+	// Trigger the tooltip_update event with this item's description
+	public void update_tooltip() {
+		tooltip_update.Invoke(description);
 	}
 
 	public abstract void set_up_listeners();

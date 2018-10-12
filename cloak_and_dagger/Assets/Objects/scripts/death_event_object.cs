@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public enum death_type {dagger, suicide};
 
 [System.Serializable]
-[CreateAssetMenu(menuName = "variables/death_event")]
+//[CreateAssetMenu(menuName = "events/death_event")]
 public class death_event_object : ScriptableObject {
     [System.Serializable]
     public class death_event : UnityEvent<death_event_data> { };
