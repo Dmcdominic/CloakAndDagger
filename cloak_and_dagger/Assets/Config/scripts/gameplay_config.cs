@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Add options here
-public enum gameplay_bool_option { heartbeat, dagger_collaterals }
-public enum gameplay_float_option { heartbeat_interval, dagger_cooldown, dash_cooldown, dash_distance, reflection_time }
+public enum gameplay_bool_option { heartbeat, dagger_collaterals, initial_reveal }
+public enum gameplay_float_option { heartbeat_interval, dagger_cooldown, dash_cooldown, dash_distance, reflection_time, respawn_delay, dagger_speed, dagger_light_radius }
 public enum gameplay_int_option { int_test }
 
 //[CreateAssetMenu(menuName = "config/gameplay")]
