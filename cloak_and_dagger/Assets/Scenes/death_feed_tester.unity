@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1e503624030954ab72d18401e2ba2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trigger: {fileID: 11400000, guid: 5073091540451ef49aab435b616bee52, type: 2}
   kill_feed:
   - 
   - 

@@ -21,13 +21,15 @@ public class death_event_object : ScriptableObject {
 
 public struct death_event_data
 {
-    public death_event_data(sbyte playerID, death_type death_Type, sbyte killerID) {
+    public death_event_data(byte playerID, death_type death_Type, bool terminated, byte killerID) {
         this.playerID = playerID;
         this.death_Type = death_Type;
+		this.terminated = terminated;
         this.killerID = killerID;
     }
 
-    public sbyte playerID;
+    public byte playerID;
     public death_type death_Type;
-    public sbyte killerID;
+	public bool terminated; // I.e. it was their last life
+    public byte killerID;
 }

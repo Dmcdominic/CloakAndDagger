@@ -5,12 +5,28 @@ using UnityEngine.UI;
 
 public class kill_feed_display : MonoBehaviour {
 
+	public death_event_object trigger;
+
     public string[] kill_feed = new string[5];
 
-    void Start () {
+	private void Awake() {
+		if (trigger) {
+			trigger.e.AddListener(on_death_event);
+		}
+	}
+
+	void Start () {
         this.GetComponent<Text>().text = "";
         for (int i = 0; i < 5; i++)
             kill_feed[i] = "";
+	}
+
+	private void on_death_event(death_event_data DED) {
+		if (DED.terminated) {
+			display_terminated(DED);
+		} else {
+			display_slain(DED);
+		}
 	}
 
     void display_helper(string str) {
@@ -53,17 +69,30 @@ public class kill_feed_display : MonoBehaviour {
         display_helper(tmp);
     }
 
-    public void wait_and_clear_last(string current) {
-        System.Threading.Thread.Sleep(1000);
-        int i = 0;
-        while (i < 5 && kill_feed[i] != "")
-            i++;
-        i--;
-        if (kill_feed[i] == current) {
-            kill_feed[i] = "";
-        }
-        change_text(i);
-    }
+	IEnumerator wait_and_clear_last(string current) {
+		yield return new WaitForSeconds(1);
+		int i = 0;
+		while (i < 5 && kill_feed[i] != "")
+			i++;
+		i--;
+		if (kill_feed[i] == current) {
+			kill_feed[i] = "";
+		}
+		change_text(i);
+		yield return null;
+	}
+
+    //public void wait_and_clear_last(string current) {
+    //    System.Threading.Thread.Sleep(1000);
+    //    int i = 0;
+    //    while (i < 5 && kill_feed[i] != "")
+    //        i++;
+    //    i--;
+    //    if (kill_feed[i] == current) {
+    //        kill_feed[i] = "";
+    //    }
+    //    change_text(i);
+    //}
 
     public void change_text(int i) {
         string for_print = "";

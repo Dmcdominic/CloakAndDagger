@@ -6,8 +6,6 @@ using UnityEngine.Events;
 
 public class throw_dagger : NetworkBehaviour {
 
-
-
 	[SerializeField]
 	Vec2Var _origin;
 
@@ -29,16 +27,22 @@ public class throw_dagger : NetworkBehaviour {
 	[SerializeField]
 	gameplay_config gameplay_Config;
 
+	private uint thrown_index_counter = 0;
 
-	public void throw_func(float cooldown) //too many times have I tried to name a func throw.
-	{
+	
+	// Use this for initialization
+	void Start() {
+		if (isLocalPlayer)
+			trigger.e.AddListener(throw_func);
+	}
+
+	public void throw_func(float cooldown) { //too many times have I tried to name a func throw.
 		Cmd_throw(_origin.val,_dest.val,cast_buffer);
 			
 	}
 
 	[Command]
-	public void Cmd_throw(Vector2 origin,Vector2 dest,float cast_buffer)
-	{
+	public void Cmd_throw(Vector2 origin,Vector2 dest,float cast_buffer) {
 		Vector3 position = origin;
 		Vector3 dir = dest - origin;
 		Quaternion rotation = Quaternion.Euler(0,0,Mathf.Rad2Deg * Mathf.Atan2(dir.y,dir.x));
@@ -46,28 +50,20 @@ public class throw_dagger : NetworkBehaviour {
 		my_dagger.transform.position += my_dagger.transform.right * cast_buffer;
 		my_dagger.GetComponent<dagger_data_carrier>().dagger_Data = create_dagger_data();
 		Rigidbody2D rb = my_dagger.GetComponent<Rigidbody2D>();
-			
-
+		
 		NetworkServer.Spawn(my_dagger);
 			
-		if(rb)
-		{
+		if(rb) {
 			//change this to a set velocity, forces don't apply instantly over the network
 			rb.velocity = my_dagger.transform.right * speed;
 		}
 	}
 
-	// Use this for initialization
-	void Start () {
-		if(isLocalPlayer)
-			trigger.e.AddListener(throw_func);
-	}
-
 	// Edit the properties of the dagger here before throwing it
 	private dagger_data create_dagger_data() {
-        sbyte thrower_ID = this.gameObject.GetComponent<Player_data_carrier>().player_Data.tempID;
-
-        return new dagger_data(gameplay_Config.bool_options[gameplay_bool_option.dagger_collaterals], thrower_ID);
+		bool collaterals = gameplay_Config.bool_options[gameplay_bool_option.dagger_collaterals];
+		byte thrower_ID = this.gameObject.GetComponent<Player_data_carrier>().player_Data.playerID;
+        return new dagger_data(collaterals, thrower_ID, thrown_index_counter++);
 	}
 	
 }

@@ -9,12 +9,12 @@ public class Player_data_carrier : MonoBehaviour {
 
 public struct player_data {
 
-    public player_data(sbyte tempID, string nickname) {
-        this.tempID = tempID;
+    public player_data(byte playerID, string nickname) {
+        this.playerID = playerID;
         this.nickname = nickname;
     }
 
     // Add more player_data properties here, and include them in the constructor
-    public sbyte tempID;
+    public byte playerID;
     public string nickname;
 }
