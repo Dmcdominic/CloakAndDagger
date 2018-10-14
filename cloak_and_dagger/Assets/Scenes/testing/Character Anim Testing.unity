@@ -4324,7 +4324,7 @@ Animator:
   m_GameObject: {fileID: 783093628}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 52d1fac88dc063e4fb38cd9e68c21e8f, type: 2}
+  m_Controller: {fileID: 22100000, guid: fc43d0cfab3f51b438a049948b3e08a8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7857,7 +7857,7 @@ GameObject:
   - component: {fileID: 1459809215}
   - component: {fileID: 1459809216}
   m_Layer: 0
-  m_Name: animated_pieces
+  m_Name: animated_pieces_deprecated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
