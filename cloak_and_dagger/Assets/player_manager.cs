@@ -23,7 +23,13 @@ public class player_manager : MonoBehaviour {
     [SerializeField]
     string_var out_name;
 
-    
+
+    [SerializeField]
+    GameObject req_join_button_prefab;
+
+
+    [SerializeField]
+    GameObject invite_button_prefab;
 
     [SerializeField]
     client_var client;
@@ -32,6 +38,10 @@ public class player_manager : MonoBehaviour {
 	void Start () {
 	}
 
+    private void Update()
+    {
+        populate_list(client.val.Get_Party_list());
+    }
 
 
     UnityAction player_join(string arg)
@@ -44,14 +54,18 @@ public class player_manager : MonoBehaviour {
         return () => client.val.Invite_Player(arg);
     }
 
-    void joinned()
+    void joinned(string joinner)
     {
-
+        GameObject j_button = Instantiate(req_join_button_prefab,transform);
+        j_button.transform.GetChild(0).GetComponent<Text>().text = $"{joinner} wants to join your party!";
+        j_button.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(player_invite(joinner));
     }
 
-    void invited()
+    void invited(string inviter)
     {
-
+        GameObject j_button = Instantiate(req_join_button_prefab, transform);
+        j_button.transform.GetChild(0).GetComponent<Text>().text = $"{inviter} invited you to their party!";
+        j_button.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(player_join(inviter));
     }
 
     void populate_list(List<Party_Names> pns)

@@ -58,7 +58,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         
         in_multicast.e.AddListener(mtc);
     }
-    void mtc(object o) { Multicast(o); }
+    void mtc(object o) { Multicast(o); } //because Mulitcast returns a bool and you can't cast lambdas to unity events
 
     IEnumerator Receive()
     {
