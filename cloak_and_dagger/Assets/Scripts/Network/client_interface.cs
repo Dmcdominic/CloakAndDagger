@@ -20,6 +20,8 @@ public interface IProtagoras_Client<Message_Type>
 {
     bool Setup_for_player(string name, string password, Action<string,Action> invite_trigger, Action<string,Action> request_trigger,Action<Message_Type> message_trigger, int port);
 
+
+    //we need to add a leave_party trigger :(
     /*
      *  Params:   port is the port that you will listen on, this must be different 
      *            for each client on the machine

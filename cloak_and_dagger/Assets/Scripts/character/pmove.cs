@@ -20,6 +20,8 @@ public class pmove : NetworkBehaviour {
 
 	Rigidbody2D rb;
 
+    public player_sync_data psd;
+
 
 	
 	// Update is called once per frame
@@ -33,6 +35,11 @@ public class pmove : NetworkBehaviour {
 			return;
 		}
 		rb.AddForce(input_vec.val * move_speed,ForceMode2D.Force);
+        psd.position.val = transform.position;
+        psd.velocity.val = rb.velocity;
+
+        transform.position = psd.position.update(transform.position);
+        rb.velocity = psd.velocity.update(rb.velocity);
 
 	}
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "variables/string")]
-public class string_var : ScriptableObject {
+public class string_var : ScriptableObject, IValue<string> {
 
 	[SerializeField]
 	bool use_constant = false;

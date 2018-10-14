@@ -45,11 +45,20 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
     bool connected = false;
     HostTopology topology;
 
+    [SerializeField]
+    client_var out_client;
+
+    [SerializeField]
+    obj_event in_multicast;
+
 
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+        
+        in_multicast.e.AddListener(mtc);
     }
+    void mtc(object o) { Multicast(o); }
 
     IEnumerator Receive()
     {

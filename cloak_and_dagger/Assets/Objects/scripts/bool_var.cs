@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "variables/bool")]
-public class bool_var : ScriptableObject {
+public class bool_var : ScriptableObject, IValue<bool> {
 
 	[SerializeField]
 	bool use_constant = false;

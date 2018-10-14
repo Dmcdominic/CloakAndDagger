@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "variables/vec2")]
-public class Vec2Var : ScriptableObject {
+public class Vec2Var : ScriptableObject, IValue<Vector2> {
 
 	[SerializeField]
 	bool use_constant = false;
