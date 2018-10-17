@@ -92,16 +92,22 @@ public static class save_util {
 			for (int i=0; i < files_list.Count; i++) {
 				string new_name = Path.GetFileName(files_list[i]);
 				if (!with_extensions) {
-					int extension_index = new_name.LastIndexOf(".");
-					if (extension_index >= 0) {
-						new_name = new_name.Substring(0, extension_index);
-					}
+					new_name = remove_extension(new_name);
 				}
 				files_list[i] = new_name;
 			}
 		}
 
 		return files_list;
+	}
+
+	// Remove the extension (everything after, and including, the last '.') from a string
+	public static string remove_extension(string path) {
+		int extension_index = path.LastIndexOf(".");
+		if (extension_index >= 0) {
+			return path.Substring(0, extension_index);
+		}
+		return path;
 	}
 
 	// Check if a certain file exists in the persistent data path
