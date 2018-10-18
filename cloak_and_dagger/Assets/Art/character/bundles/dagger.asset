@@ -9,9 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b9e6866cd89897438f7285464f6f2ac, type: 3}
-  m_Name: head
+  m_Name: dagger
   m_EditorClassIdentifier: 
   sets:
-  - {fileID: 11400000, guid: eaa451104b379ea49a4b0a77029e18b3, type: 2}
-  - {fileID: 11400000, guid: bfbbfbbd3bf62924eaf0e909ed034778, type: 2}
-  - {fileID: 11400000, guid: c58a6e68074b5d94a94826c76a588a09, type: 2}
+  - {fileID: 11400000, guid: 863db2409955eb141843d59bf221cd34, type: 2}

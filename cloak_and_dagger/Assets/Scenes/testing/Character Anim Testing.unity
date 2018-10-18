@@ -819,11 +819,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 126183966}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea4ea6cab61eab84fae95226492aacb6, type: 3}
+  m_Script: {fileID: 11500000, guid: 9410a687ca59b464fbdc8ac65a244382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  palette_Object: {fileID: 0}
-  current_palette_index: 0
+  anim_Palettes_Bundle: {fileID: 11400000, guid: 51c55809320738b4e9cfd9c265ddc4a2,
+    type: 2}
+  animation_index: 0
+  palette_index: 1
+  sprite_index: 0
 --- !u!212 &126183969
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2079,7 +2082,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 338390965}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.606, y: -1.649, z: 0}
+  m_LocalPosition: {x: -2.64, y: -1.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1218243485}
@@ -5691,7 +5694,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &973591692
 Transform:
   m_ObjectHideFlags: 0
@@ -6624,6 +6627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1123562800}
   - component: {fileID: 1123562801}
+  - component: {fileID: 1123562802}
   m_Layer: 0
   m_Name: head
   m_TagString: Untagged
@@ -6690,6 +6694,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1123562802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1123562799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9410a687ca59b464fbdc8ac65a244382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim_Palettes_Bundle: {fileID: 11400000, guid: cdafa467466f1b548ace0703084d698f,
+    type: 2}
+  animation_index: 0
+  palette_index: 1
+  sprite_index: 0
 --- !u!1001 &1169398952
 Prefab:
   m_ObjectHideFlags: 0
@@ -7047,6 +7067,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1218243485}
   - component: {fileID: 1218243486}
+  - component: {fileID: 1218243487}
   m_Layer: 0
   m_Name: animated_pieces
   m_TagString: Untagged
@@ -7079,7 +7100,7 @@ Animator:
   m_GameObject: {fileID: 1218243484}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: fc43d0cfab3f51b438a049948b3e08a8, type: 2}
+  m_Controller: {fileID: 9100000, guid: b38c2972a71b14840a85e462483b8b7f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7088,6 +7109,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1218243487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1218243484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea4ea6cab61eab84fae95226492aacb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim_pieces:
+  - {fileID: 126183968}
+  - {fileID: 1427730690}
+  - {fileID: 1123562802}
 --- !u!4 &1227749953 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4821071368564718, guid: 4aa77ccbf24c59a4c9e2cf21d093c51d,
@@ -7920,6 +7956,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1427730688}
   - component: {fileID: 1427730689}
+  - component: {fileID: 1427730690}
   m_Layer: 0
   m_Name: cape
   m_TagString: Untagged
@@ -7986,6 +8023,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1427730690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1427730687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9410a687ca59b464fbdc8ac65a244382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim_Palettes_Bundle: {fileID: 11400000, guid: d7ad639c930dec84a9847d6e52e70fbb,
+    type: 2}
+  animation_index: 0
+  palette_index: 1
+  sprite_index: 0
 --- !u!4 &1432094843 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4821071368564718, guid: 4aa77ccbf24c59a4c9e2cf21d093c51d,
