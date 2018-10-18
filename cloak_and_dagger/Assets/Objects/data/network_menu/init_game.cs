@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-
+/* obsolete
+[System.Serializable]
 public struct player_sync_data
 {
     public sync_var<Vector2> position;
     public sync_var<Vector2> velocity;
+
 }
 
 public class init_game : MonoBehaviour {
@@ -30,7 +31,10 @@ public class init_game : MonoBehaviour {
     GameObject player_prefab;
 
     [SerializeField]
-    scene_var game_scene;
+    int_var game_scene;
+
+    [SerializeField]
+    event_object done_initializing;
 
 
 	// Use this for initialization
@@ -41,7 +45,7 @@ public class init_game : MonoBehaviour {
     void init()
     {
 
-        SceneManager.LoadScene(game_scene.val.name);
+        SceneManager.LoadScene(game_scene.val);
 
 
         sync_state ss = new sync_state();
@@ -53,6 +57,15 @@ public class init_game : MonoBehaviour {
         List<player_sync_data> psds = new List<player_sync_data>();
 
         player_sync_data leader_psd = new player_sync_data();
+        if(my_name.val == party_info.val.leader)
+        {
+            leader_psd.position = new sync_var<Vector2>(false);
+            leader_psd.velocity = new sync_var<Vector2>(false);
+        } else
+        {
+            leader_psd.position = new sync_var<Vector2>(true);
+            leader_psd.velocity = new sync_var<Vector2>(true);
+        }
         leader_psd.position.variable = new Vec2Var(); //these bad boys stay in memory until end_game
         leader_psd.velocity.variable = new Vec2Var();
         leader_psd.position.val = spawn_points.next;
@@ -83,6 +96,8 @@ public class init_game : MonoBehaviour {
         }
 
         init_sync_state.Invoke(ss); //right now we only update postion and velocity
+        done_initializing.Invoke();
 
     }
 }
+*/

@@ -22,6 +22,8 @@ public class player_manager : MonoBehaviour {
 
     [SerializeField]
     string_var out_name;
+    [SerializeField]
+    string_var password;
 
 
     [SerializeField]
@@ -34,19 +36,28 @@ public class player_manager : MonoBehaviour {
     [SerializeField]
     client_var client;
 
+
 	// Use this for initialization
 	void Start () {
 	}
 
-    private void Update()
+    public void refresh()
     {
-        populate_list(client.val.Get_Party_list());
+        if(client.val != null) populate_list(client.val.Get_Party_list());
     }
 
 
+
+
+    public void setup()
+    {
+        client.val.Setup_for_player(out_name.val, password.val, invited, joinned, message_to_splitter.Invoke, 0);
+        refresh();
+    }
+
     UnityAction player_join(string arg)
     {
-        return () => client.val.Join_Party(arg);
+        return () => { print($"you tried to join {arg}'s party"); client.val.Join_Party(arg); };
     }
 
     UnityAction player_invite(string arg)
@@ -54,18 +65,20 @@ public class player_manager : MonoBehaviour {
         return () => client.val.Invite_Player(arg);
     }
 
-    void joinned(string joinner)
+    UnityAction identity(Action act) { return () => act (); }
+
+    void joinned(string joinner,Action accept)
     {
         GameObject j_button = Instantiate(req_join_button_prefab,transform);
-        j_button.transform.GetChild(0).GetComponent<Text>().text = $"{joinner} wants to join your party!";
-        j_button.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(player_invite(joinner));
+        j_button.transform.GetChild(0).GetComponentInChildren<Text>().text = $"{joinner} wants to join your party!";
+        j_button.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(identity (accept));
     }
 
-    void invited(string inviter)
+    void invited(string inviter,Action accept)
     {
         GameObject j_button = Instantiate(req_join_button_prefab, transform);
-        j_button.transform.GetChild(0).GetComponent<Text>().text = $"{inviter} invited you to their party!";
-        j_button.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(player_join(inviter));
+        j_button.transform.GetChild(0).GetComponentInChildren<Text>().text = $"{inviter} invited you to their party!";
+        j_button.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(identity(accept));
     }
 
     void populate_list(List<Party_Names> pns)
@@ -79,8 +92,8 @@ public class player_manager : MonoBehaviour {
         foreach(Party_Names pn in pns)
         {
             GameObject leader = Instantiate(leader_slot,party_display.transform);
-            leader.transform.GetChild(0).GetComponent<Text>().text = pn.leader;
-            if(!pn.members.Contains(out_name.val))
+            leader.transform.GetChild(0).GetComponentInChildren<Text>().text = pn.leader;
+            if(pn.leader != out_name.val)
             {
                 leader.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(player_join(pn.leader));
                 leader.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(player_invite(pn.leader));
@@ -88,7 +101,7 @@ public class player_manager : MonoBehaviour {
            foreach(string member_name in pn.members)
             {
                 GameObject member = Instantiate(member_slot, leader.transform);
-                member.transform.GetChild(0).GetComponent<Text>().text = member_name;
+                member.transform.GetChild(0).GetComponentInChildren<Text>().text = member_name;
                 if(!pn.members.Contains(out_name.val)) //you could do this faster
                 {
                     member.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(player_join(member_name));

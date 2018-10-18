@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Events;
 
-public class dash : NetworkBehaviour {
+public class dash : MonoBehaviour {
 
 	[SerializeField]
 	Vec2Var _origin;
@@ -23,7 +23,7 @@ public class dash : NetworkBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
-		if (isLocalPlayer) {
+		if (true){//TODO fix this
 			trigger.e.AddListener(dash_func);
 		}
 	}
@@ -35,13 +35,13 @@ public class dash : NetworkBehaviour {
 	}
 
 	// Server is told that the player should be moved to the new position
-	[Command]
+	//[Command]
 	private void Cmd_update_pos_on_server(Vector2 new_pos) {
 		Rpc_update_pos_for_all_clients(new_pos);
 	}
 
 	// Server tells all clients to move this player's rb to the new position
-	[ClientRpc]
+	//[ClientRpc]
 	private void Rpc_update_pos_for_all_clients(Vector2 new_pos) {
 		rb.MovePosition(new_pos);
 	}

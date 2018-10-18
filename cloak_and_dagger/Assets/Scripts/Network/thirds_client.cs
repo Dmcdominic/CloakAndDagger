@@ -51,9 +51,13 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
     [SerializeField]
     obj_event in_multicast;
 
+    [SerializeField]
+    event_object start_event;
+
 
     void Start()
     {
+        out_client.val = this;
         DontDestroyOnLoad(gameObject);
         
         in_multicast.e.AddListener(mtc);
@@ -117,6 +121,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
                 {
                     party_list = new List<List<string>>();
                 }
+                if (debug) {print($"recieved party_list"); }
                 break;
             case Custom_msg_type.LEAVE_PARTY:
                 break;
@@ -128,7 +133,8 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
                 invite_event(msg.arg1);
                 break;
             case Custom_msg_type.START_GAME:
-                message_event("your game started");
+                //message_event("your game started");
+                start_event.Invoke();
                 break;
             case Custom_msg_type.LOGOUT:
                 break;
@@ -205,8 +211,8 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
 
         host = NetworkTransport.AddHost(topology, 0);
         byte error;
-        //progatoras is running on 15150.
-        conn_id = NetworkTransport.Connect(host, "71.61.58.16", 15150, 0, out error);
+        //progatoras is running on 15150. my ip: "71.61.58.16" localhost: "127.0.0.1"
+        conn_id = NetworkTransport.Connect(host, "127.0.0.1", 15150, 0, out error);
         if (debug) print($"connecting {(NetworkError)error}");
         StartCoroutine(Receive());
         return (NetworkError)error == NetworkError.Ok;
@@ -215,6 +221,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
 
     public bool Create_Player(string name, string password)
     {
+        if (debug) print($"create player with name: {name} and pass: {password}");
         return send_message(Custom_msg_type.CREATE_PLAYER, name, null, -1);
     }
 

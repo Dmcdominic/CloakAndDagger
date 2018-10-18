@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Events;
 
-public class throw_dagger : NetworkBehaviour {
+public class throw_dagger : MonoBehaviour {
 
 
 
@@ -35,14 +35,13 @@ public class throw_dagger : NetworkBehaviour {
 		Cmd_throw(_origin.val,_dest.val,cast_buffer);
 			
 	}
-
-	[Command]
+    
 	public void Cmd_throw(Vector2 origin,Vector2 dest,float cast_buffer)
 	{
 		Vector3 position = origin;
 		Vector3 dir = dest - origin;
 		Quaternion rotation = Quaternion.Euler(0,0,Mathf.Rad2Deg * Mathf.Atan2(dir.y,dir.x));
-		GameObject my_dagger = Instantiate(dagger_prefab,position,rotation);
+		GameObject my_dagger = GameObject.Instantiate(dagger_prefab,position,rotation);
 		my_dagger.transform.position += my_dagger.transform.right * cast_buffer;
 		my_dagger.GetComponent<dagger_data_carrier>().dagger_Data = create_dagger_data();
 		Rigidbody2D rb = my_dagger.GetComponent<Rigidbody2D>();
@@ -59,7 +58,7 @@ public class throw_dagger : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if(isLocalPlayer)
+		//if(isLocalPlayer) fix this
 			trigger.e.AddListener(throw_func);
 	}
 

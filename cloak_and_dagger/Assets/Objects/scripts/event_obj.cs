@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class event_object : ScriptableObject
 {
 
-    public UnityEvent e;
+    public UnityEvent e = new UnityEvent();
 
     public void Invoke() { e.Invoke(); }
 
@@ -22,10 +22,14 @@ public class gen_event<T> : ScriptableObject
     public void Invoke(T arg) { e.Invoke(arg); }
 }
 
+
+
+public class adhoc_event<T> : UnityEvent<T> { }
+
 [CreateAssetMenu(menuName = "variables/object event")]
 public class obj_event : ScriptableObject
 {
-    public UnityEvent<object> e;
+    public UnityEvent<object> e = new adhoc_event<object>();
 
     public void Invoke(object o) { e.Invoke(o); }
 }

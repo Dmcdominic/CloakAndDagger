@@ -14,3 +14,5 @@ public class Status_FloatEventObject_Dict : SerializableDictionary<status, float
 
 [System.Serializable]
 public class Status_Float_Dict : SerializableDictionary<status, float> { }
+
+

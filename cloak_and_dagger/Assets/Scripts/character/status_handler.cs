@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 public enum status {stun, dagger_on_cooldown, dash_on_cooldown}
 
-public class status_handler : NetworkBehaviour {
+public class status_handler : MonoBehaviour{
 
 	[SerializeField]
 	Status_BoolVar_Dict stats = new Status_BoolVar_Dict();

@@ -2,12 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum mtc_Type : byte { sync_data, sync_event}
+[System.Serializable]
+public enum mtc_Type : byte { player_state, dagger_throw, dagger_die, player_die}
 
-public struct event_data_union
+
+[System.Serializable]
+public struct mtc_data
 {
     public mtc_Type type;
+    public float t;
     public object body;
+    public int id;
+
+    public mtc_data(mtc_Type type, float t, object body,int id)
+    {
+        this.type = type;
+        this.t = t;
+        this.body = body;
+        this.id = id;
+    }
 }
 
 
@@ -16,28 +29,28 @@ public class splitter : MonoBehaviour {
     obj_event message_in;
 
     [SerializeField]
-    obj_event out_event;
+    mtc_object_event_dict local_events;
+
+    [SerializeField] 
+    mtc_object_event_dict network_events;
 
     [SerializeField]
-    obj_event out_data;
+    obj_event out_mtc;
 
 	// Use this for initialization
 	void Start () {
         message_in.e.AddListener(split);
+        foreach(KeyValuePair<mtc_Type,sync_event> pair in local_events)
+        {
+            pair.Value.e.AddListener((t,o,id) => out_mtc.Invoke((object)(new mtc_data(pair.Key,t,o,id))));
+        }
 	}
 	
     void split(object obj_in)
     {
-        event_data_union edu = (event_data_union)obj_in;
-        switch (edu.type)
-        {
-            case mtc_Type.sync_data:
-                out_data.Invoke(edu.body);
-                break;
-            case mtc_Type.sync_event:
-                out_event.Invoke(edu.body);
-                break;
-        }
+        mtc_data md = (mtc_data)obj_in;
+        network_events[md.type].Invoke(md.t,md.body,md.id);
+
     }
 
 }

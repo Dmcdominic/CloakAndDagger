@@ -27,6 +27,10 @@ public class float_var : ScriptableObject, IValue<float> {
 		get {return use_constant ? constant : value;}
 		set {this.value = value;}
 	}
+    public static implicit operator float(float_var v)
+    {
+        return v.val;
+    }
 }
 
 
@@ -52,7 +56,7 @@ public class party_var : ScriptableObject
 
 
     [SerializeField]
-    private Party_Names value;
+    private Party_Names value = new Party_Names();
 
     public Party_Names val
     {
@@ -61,7 +65,7 @@ public class party_var : ScriptableObject
     }
 }
 
-[CreateAssetMenu(menuName = "variables/party_info")]
+[CreateAssetMenu(menuName = "variables/vec2_list")]
 public class vec2_list : ScriptableObject
 {
 

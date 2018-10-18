@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public struct data_sync_message
+
+[System.Serializable]
+public struct data_sync_message 
 {
     public Dictionary<int, int> int_vars;
     public Dictionary<int, float> float_vars;
@@ -11,6 +13,7 @@ public struct data_sync_message
     public Dictionary<int, string> string_vars;
 }
 
+[System.Serializable]
 public struct sync_state
 {
     public Dictionary<int, sync_var<int>> int_vars;
@@ -19,7 +22,8 @@ public struct sync_state
     public Dictionary<int, sync_var<string>> string_vars;
 }
 
-public class data_syncer : MonoBehaviour {
+public class data_syncer : MonoBehaviour
+{ //obsolete
 
     sync_state ss;
 
@@ -32,11 +36,14 @@ public class data_syncer : MonoBehaviour {
     [SerializeField]
     obj_event in_data;
 
+    [SerializeField]
+    event_object done_initializing;
+
     float sync_rate = 20;
 
     // Use this for initialization
     void Start () {
-        StartCoroutine(send_message());
+        done_initializing.e.AddListener(() => StartCoroutine(send_message()));
         set_ss.e.AddListener(init);
         in_data.e.AddListener(update_data);
 	}
@@ -81,9 +88,9 @@ public class data_syncer : MonoBehaviour {
     {
         data_sync_message msg = new data_sync_message();
         Message_package msg_p = new Message_package();
-        event_data_union edu = new event_data_union();
+        mtc_data edu = new mtc_data();
         msg_p.type = Custom_msg_type.MTC;
-        edu.type = mtc_Type.sync_data;
+        //edu.type = mtc_Type.sync_data;
         while(true)
         {
             yield return new WaitForSeconds(1/sync_rate);

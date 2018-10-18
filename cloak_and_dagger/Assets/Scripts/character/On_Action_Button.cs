@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
-public class On_Action_Button : NetworkBehaviour {
+public class On_Action_Button : MonoBehaviour {
 
 	[SerializeField]
 	input_config input_Config;
@@ -24,7 +24,7 @@ public class On_Action_Button : NetworkBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (isLocalPlayer && input_Config)
+		if (input_Config)
 		{
 			if (input_Config.dagger && !dagger_on_cooldown.val)
 			{

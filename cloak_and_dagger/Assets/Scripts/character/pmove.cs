@@ -3,13 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class pmove : NetworkBehaviour {
+public struct player_state
+{
+    public Vector2 pos;
+    public Vector2 vel;
 
-	[SerializeField]
+    public player_state(Vector2 pos, Vector2 vel)
+    {
+        this.pos = pos;
+        this.vel = vel;
+    }
+}
+
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(IValue<int>))]
+public class pmove : sync_behaviour<player_state> {
+
+
+
+    [SerializeField]
 	Vec2Var input_vec;
 
-	[SerializeField]
-	Transform trans;
 
 	[SerializeField]
 	float move_speed = 100;
@@ -20,36 +34,42 @@ public class pmove : NetworkBehaviour {
 
 	Rigidbody2D rb;
 
-    public player_sync_data psd;
 
 
-	
-	// Update is called once per frame
-	void Update () {
-		if(!isLocalPlayer)
-		{
-			return;
-		}
+
+    // Update is called once per frame
+    void Update () {
 		if(is_stun.val)
 		{
 			return;
 		}
+        if (gameObject_id.val != local_id.val) //you are not the local go
+        {
+            return;
+        }
 		rb.AddForce(input_vec.val * move_speed,ForceMode2D.Force);
-        psd.position.val = transform.position;
-        psd.velocity.val = rb.velocity;
-
-        transform.position = psd.position.update(transform.position);
-        rb.velocity = psd.velocity.update(rb.velocity);
+        send_state(new player_state(transform.position,rb.velocity));
+        
 
 	}
 
+    public override void rectify(float t, player_state ps)
+    {
+
+        transform.position = ps.pos;
+        rb.velocity = ps.vel;
+        rb.MovePosition(ps.pos + ps.vel * (Time.time - t));
+
+    }
 
 	// Use this for initialization
-	void Start () { //can we please get forward declarations
-		if(!trans) trans = transform.root;
-		rb = trans.GetComponent<Rigidbody2D>();
+	public override void Start () { 
+		rb = transform.GetComponent<Rigidbody2D>();
+        //gameObject_id = (IValue<int>)GetComponent(typeof(IValue<int>));
+        //in_player_state.e.AddListener(on_player_update);
+        base.Start();
 
-	}
+    }
 
 
 }
