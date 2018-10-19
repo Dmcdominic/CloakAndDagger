@@ -34,16 +34,18 @@ public class player_manager : MonoBehaviour {
     GameObject invite_button_prefab;
 
     [SerializeField]
-    client_var client;
+    GameObject client_go;
+    IProtagoras_Client<object> client;
 
 
 	// Use this for initialization
 	void Start () {
+        client = client_go.GetComponent<IProtagoras_Client<object>>();
 	}
 
     public void refresh()
     {
-        if(client.val != null) populate_list(client.val.Get_Party_list());
+        if(client != null) populate_list(client.Get_Party_list());
     }
 
 
@@ -59,18 +61,18 @@ public class player_manager : MonoBehaviour {
 
     public void setup()
     {
-        client.val.Setup_for_player(out_name.val, password.val, invited, joinned, message_to_splitter.Invoke, 0);
+        client.Setup_for_player(out_name.val, password.val, invited, joinned, message_to_splitter.Invoke, 0);
         StartCoroutine(refresher());
     }
 
     UnityAction player_join(string arg)
     {
-        return () => { print($"you tried to join {arg}'s party"); client.val.Join_Party(arg); };
+        return () => { print($"you tried to join {arg}'s party"); client.Join_Party(arg); };
     }
 
     UnityAction player_invite(string arg)
     {
-        return () => client.val.Invite_Player(arg);
+        return () => client.Invite_Player(arg);
     }
 
     UnityAction identity(Action act) { return () => act (); }

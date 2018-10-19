@@ -19,7 +19,7 @@ public class sync_behaviour<T> : MonoBehaviour {
 
     // Use this for initialization
     public virtual void Start() {
-        in_event.e.AddListener((t, o, id) => receive_state(t, o, id));
+        in_event.e.AddListener(receive_state);
         gameObject_id = GetComponent<network_id>();
     }
 

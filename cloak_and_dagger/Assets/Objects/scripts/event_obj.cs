@@ -19,7 +19,7 @@ public class event_object : ScriptableObject
 [CreateAssetMenu(menuName = "variables/generic event")]
 public class gen_event<T> : ScriptableObject
 {
-    public UnityEvent<T> e;
+    public UnityEvent<T> e = new adhoc_event<T>();
 
     public void Invoke(T arg) { e.Invoke(arg); }
 }
@@ -29,9 +29,4 @@ public class gen_event<T> : ScriptableObject
 public class adhoc_event<T> : UnityEvent<T> { }
 
 [CreateAssetMenu(menuName = "variables/object event")]
-public class obj_event : ScriptableObject
-{
-    public UnityEvent<object> e = new adhoc_event<object>();
-
-    public void Invoke(object o) { e.Invoke(o); }
-}
+public class obj_event : gen_event<object> { }
