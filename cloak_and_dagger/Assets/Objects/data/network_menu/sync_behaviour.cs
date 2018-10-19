@@ -15,6 +15,9 @@ public class sync_behaviour<T> : MonoBehaviour {
     [SerializeField]
     public int_var local_id;
 
+    [SerializeField]
+    float_var t0;
+
     public IValue<int> gameObject_id;
 
     // Use this for initialization
@@ -25,10 +28,10 @@ public class sync_behaviour<T> : MonoBehaviour {
 
     void receive_state(float t, object o, int id)
     {
-        if (t > Time.time) print($"you got a message from the future! from: {t}, now: {Time.time} ");
+        if (t > Time.time - t0.val) print($"you got a message from the future! from: {t}, now: {Time.time} ");
         if (id == local_id.val) print($"you got a message you shouldn't have {id}");
         if (id == gameObject_id.val)
-            rectify(t, (T)o);
+            rectify(t + t0.val, (T)o);
     }
 
     public virtual void rectify(float t, T state)
@@ -38,7 +41,7 @@ public class sync_behaviour<T> : MonoBehaviour {
 
     public void send_state(T state)
     { //Call this to send changes
-        out_event.Invoke(Time.time, (object)state, gameObject_id.val);
+        out_event.Invoke(Time.time - t0.val, (object)state, gameObject_id.val);
     }
 
     public void send_state_unreliable(T state)

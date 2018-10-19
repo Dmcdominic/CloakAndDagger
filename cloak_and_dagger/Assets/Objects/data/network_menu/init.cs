@@ -29,6 +29,9 @@ public class init : MonoBehaviour {
     [SerializeField]
     int_var local_network_id;
 
+    [SerializeField]
+    float_var t0;
+
 	// Use this for initialization
 	void Start () {
         start.e.AddListener(() => StartCoroutine(go()));
@@ -63,7 +66,7 @@ public class init : MonoBehaviour {
                 local_network_id.val = net_id.val;
             }
         }
-
+        t0.val = Time.time;
         done_initing.Invoke();
     }
 
