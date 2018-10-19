@@ -18,6 +18,8 @@ public class sync_behaviour<T> : MonoBehaviour {
     [SerializeField]
     float_var t0;
 
+
+
     public IValue<int> gameObject_id;
 
     // Use this for initialization

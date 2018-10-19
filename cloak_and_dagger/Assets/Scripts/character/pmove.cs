@@ -90,6 +90,9 @@ public class pmove : sync_behaviour<player_state> {
         transform.position = ps.pos;
         rb.velocity = ps.vel;
         rb.MovePosition(ps.pos + rb.velocity * (Time.time - t));
+        print($"move {gameObject_id}'s butt over to {(Vector2)ps.pos}" +
+            $" and push them at vel {(Vector2)ps.vel}" +
+            $" and this happenned {Time.time - t} seconds ago.");
 
     }
 
