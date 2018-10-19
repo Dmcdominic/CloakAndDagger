@@ -52,6 +52,9 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
     obj_event in_multicast;
 
     [SerializeField]
+    obj_event in_unreliable;
+
+    [SerializeField]
     event_object start_event;
 
 
@@ -61,9 +64,10 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         DontDestroyOnLoad(gameObject);
         
         in_multicast.e.AddListener(mtc);
+        in_unreliable.e.AddListener(mtc_unrel);
     }
     void mtc(object o) { Multicast(o); } //because Mulitcast returns a bool and you can't cast lambdas to unity events
-
+    void mtc_unrel(object o) { Multicast(o, reliable: true); }
     IEnumerator Receive()
     {
         int _conn;
@@ -151,7 +155,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         }
     }
 
-    bool send_message(Custom_msg_type type, string arg1, string arg2, int targetConnection, object body = null)
+    bool send_message(Custom_msg_type type, string arg1, string arg2, int targetConnection, object body = null,bool reliable = true)
     {
         byte error = 0;
         Message_package msg_p = new Message_package();
@@ -170,8 +174,13 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         }
 
         byte[] data = format_data(msg_p);
-        NetworkTransport.Send(host, conn_id, reliable_channel, data, data.Length, out error);
-        if(debug) print($"trying to send {type}: {(NetworkError)error} at channel: {reliable_channel}" +
+        int channel = reliable_channel;
+        if(!reliable)
+        {
+            channel = unreliable_channel;
+        }
+        NetworkTransport.Send(host, conn_id, channel, data, data.Length, out error);
+        if(debug) print($"trying to send {type}: {(NetworkError)error} at channel: {channel}" +
             $" on host {host} on conn {conn_id}");
         return (NetworkError)error == NetworkError.Ok;
     }
@@ -296,9 +305,9 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         //Setup_for_player(name, password, invite_trigger, request_trigger, message_trigger, port);
     }
 
-    public bool Multicast(object msg)
+    public bool Multicast(object msg,bool reliable = true)
     {
-        return send_message(Custom_msg_type.MTC, "", "", -1,body: msg);
+        return send_message(Custom_msg_type.MTC, "", "", -1,body: msg,reliable: reliable);
     }
 
     public void Register_Message_Receive(Action<object> when_you_receive_message)

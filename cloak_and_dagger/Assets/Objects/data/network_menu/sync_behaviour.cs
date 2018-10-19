@@ -17,13 +17,13 @@ public class sync_behaviour<T> : MonoBehaviour {
 
     public IValue<int> gameObject_id;
 
-	// Use this for initialization
-	public virtual void Start () {
-        in_event.e.AddListener((t,o,id) => receive_state(t,o,id));
+    // Use this for initialization
+    public virtual void Start() {
+        in_event.e.AddListener((t, o, id) => receive_state(t, o, id));
         gameObject_id = GetComponent<network_id>();
-	}
+    }
 
-    void receive_state(float t, object o, int id) 
+    void receive_state(float t, object o, int id)
     {
         if (t > Time.time) print($"you got a message from the future! from: {t}, now: {Time.time} ");
         if (id == local_id.val) print($"you got a message you shouldn't have {id}");
@@ -38,7 +38,12 @@ public class sync_behaviour<T> : MonoBehaviour {
 
     public void send_state(T state)
     { //Call this to send changes
-        out_event.Invoke(Time.time,(object)state,gameObject_id.val);
+        out_event.Invoke(Time.time, (object)state, gameObject_id.val);
+    }
+
+    public void send_state_unreliable(T state)
+    {
+        out_event.Invoke(Time.time, (object)state, gameObject_id.val,reliable: false);
     }
 
     public bool is_local()

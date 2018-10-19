@@ -35,14 +35,22 @@ public class splitter : MonoBehaviour {
     mtc_object_event_dict network_events;
 
     [SerializeField]
+    obj_event out_unreliable;
+
+    [SerializeField]
     obj_event out_mtc;
+    
 
 	// Use this for initialization
 	void Start () {
         message_in.e.AddListener(split);
         foreach(KeyValuePair<mtc_Type,sync_event> pair in local_events)
         {
-            pair.Value.e.AddListener((t,o,id) => out_mtc.Invoke((object)(new mtc_data(pair.Key,t,o,id))));
+            pair.Value.e.AddListener((t, o, id) =>
+             out_mtc.Invoke((object)(new mtc_data(pair.Key, t, o, id))));
+            pair.Value.r.AddListener((t, o, id) =>
+            out_unreliable.Invoke((object)(new mtc_data(pair.Key, t, o, id))));
+            
         }
 	}
 	

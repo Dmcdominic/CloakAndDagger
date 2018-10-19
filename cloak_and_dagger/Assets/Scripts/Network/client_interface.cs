@@ -132,7 +132,7 @@ public interface IProtagoras_Client<Message_Type>
      * Ensures:  All other players in your party will have their when_you_receive_message
      *           called with msg
      */
-    bool Multicast(Message_Type msg);
+    bool Multicast(Message_Type msg,bool reliable = true);
 
 
     /*
