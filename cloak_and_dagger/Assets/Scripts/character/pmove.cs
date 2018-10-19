@@ -3,10 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
+[System.Serializable]
+public class serializable_vec2
+{
+    public float x;
+    public float y;
+
+    public serializable_vec2(float x, float y)
+    {
+        this.x = x;
+        this.y = y;
+    }
+
+    public static implicit operator Vector2(serializable_vec2 sv2)
+    {
+        return new Vector2(sv2.x, sv2.y);
+    }
+
+    public static implicit operator serializable_vec2(Vector2 v2)
+    {
+        return new serializable_vec2(v2.x, v2.y);
+    }
+
+    public static implicit operator Vector3(serializable_vec2 sv2)
+    {
+        return new Vector3(sv2.x, sv2.y);
+    }
+
+
+}
+
+[System.Serializable]
 public struct player_state
 {
-    public Vector2 pos;
-    public Vector2 vel;
+    public serializable_vec2 pos;
+    public serializable_vec2 vel;
 
     public player_state(Vector2 pos, Vector2 vel)
     {
@@ -58,7 +89,7 @@ public class pmove : sync_behaviour<player_state> {
 
         transform.position = ps.pos;
         rb.velocity = ps.vel;
-        rb.MovePosition(ps.pos + ps.vel * (Time.time - t));
+        rb.MovePosition(ps.pos + rb.velocity * (Time.time - t));
 
     }
 

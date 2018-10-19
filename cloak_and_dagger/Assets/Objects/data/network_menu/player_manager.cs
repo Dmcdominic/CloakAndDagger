@@ -47,12 +47,20 @@ public class player_manager : MonoBehaviour {
     }
 
 
-
+    IEnumerator refresher()
+    {
+        while(true)
+        {
+            refresh();
+            yield return new WaitForSeconds(.5f);
+            
+        }
+    }
 
     public void setup()
     {
         client.val.Setup_for_player(out_name.val, password.val, invited, joinned, message_to_splitter.Invoke, 0);
-        refresh();
+        StartCoroutine(refresher());
     }
 
     UnityAction player_join(string arg)

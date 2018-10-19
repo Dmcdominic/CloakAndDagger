@@ -11,4 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: spawn_points
   m_EditorClassIdentifier: Assembly-CSharp::vec2_list
-  value: []
+  value:
+  - {x: 0, y: 0}
+  - {x: 100, y: 0}

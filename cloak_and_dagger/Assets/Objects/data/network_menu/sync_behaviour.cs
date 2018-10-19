@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[RequireComponent(typeof(IValue<int>))]
+[RequireComponent(typeof(network_id))]
 public class sync_behaviour<T> : MonoBehaviour {
 
     [SerializeField]
@@ -20,7 +20,7 @@ public class sync_behaviour<T> : MonoBehaviour {
 	// Use this for initialization
 	public virtual void Start () {
         in_event.e.AddListener((t,o,id) => receive_state(t,o,id));
-        gameObject_id = (IValue<int>)GetComponent(typeof(IValue<int>));
+        gameObject_id = GetComponent<network_id>();
 	}
 
     void receive_state(float t, object o, int id) 
