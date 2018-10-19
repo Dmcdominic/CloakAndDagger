@@ -57,6 +57,9 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
     [SerializeField]
     event_object start_event;
 
+    [SerializeField]
+    event_object start_in;
+
 
     void Start()
     {
@@ -65,6 +68,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         
         in_multicast.e.AddListener(mtc);
         in_unreliable.e.AddListener(mtc_unrel);
+        start_in.e.AddListener(() => Start_Game());
     }
     void mtc(object o) { Multicast(o); } //because Mulitcast returns a bool and you can't cast lambdas to unity events
     void mtc_unrel(object o) { Multicast(o, reliable: true); }

@@ -51,13 +51,16 @@ public class init : MonoBehaviour {
 
         GameObject member_go;
         network_id net_id;
+        int i = 1;
         foreach(string member in party.val.members)
         {
             member_go = Instantiate(player_prefab, spawn_points.next, Quaternion.identity);
             net_id = member_go.GetComponent<network_id>();
             if(member == local_name.val)
             {
+                net_id.val = i;
                 local_network_id.val = net_id.val;
+                i++;
             }
         }
 
