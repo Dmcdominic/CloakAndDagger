@@ -18,8 +18,10 @@ public class sync_behaviour<T> : MonoBehaviour {
     [SerializeField]
     float_var t0;
 
-
-
+    public bool is_local
+    {
+        get { return gameObject_id.val == local_id.val; }
+    }
     public IValue<int> gameObject_id;
 
     // Use this for initialization
@@ -32,6 +34,7 @@ public class sync_behaviour<T> : MonoBehaviour {
     {
         if (t > Time.time - t0.val) print($"you got a message from the future! from: {t}, now: {Time.time} ");
         if (id == local_id.val) print($"you got a message you shouldn't have {id}");
+        print($"t = {t}");
         if (id == gameObject_id.val)
             rectify(t + t0.val, (T)o);
     }
@@ -51,8 +54,4 @@ public class sync_behaviour<T> : MonoBehaviour {
         out_event.Invoke(Time.time, (object)state, gameObject_id.val,reliable: false);
     }
 
-    public bool is_local()
-    {
-        return (local_id.val == gameObject_id.val);
-    }
 }
