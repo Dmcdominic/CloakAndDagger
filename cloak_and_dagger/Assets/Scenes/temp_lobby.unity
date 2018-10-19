@@ -162,6 +162,7 @@ MonoBehaviour:
     type: 2}
   local_name: {fileID: 11400000, guid: e134b527f54a349468f9a3431ec78731, type: 2}
   local_network_id: {fileID: 11400000, guid: 2065b90a11a91544794c07c6b0e9baf6, type: 2}
+  t0: {fileID: 11400000, guid: bff5c232f6856b04bb7325e2fa2e42e5, type: 2}
 --- !u!4 &67332695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4151246075011688, guid: 823bd3ec1a8821d42b16bf93166c21b2,

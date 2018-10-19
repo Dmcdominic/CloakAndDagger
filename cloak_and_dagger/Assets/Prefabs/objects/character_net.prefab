@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f38a79dc9dc60c498c1af7d9457a265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
 --- !u!114 &114123068712302394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -283,6 +284,7 @@ MonoBehaviour:
   in_event: {fileID: 11400000, guid: d655aaf5b872d1c4e8c9bb54fec3706e, type: 2}
   out_event: {fileID: 11400000, guid: 2c897a98fc1a8df4482dc5b14fca14be, type: 2}
   local_id: {fileID: 11400000, guid: 2065b90a11a91544794c07c6b0e9baf6, type: 2}
+  t0: {fileID: 11400000, guid: bff5c232f6856b04bb7325e2fa2e42e5, type: 2}
   input_vec: {fileID: 11400000, guid: 4bbc87b548ed62b4c957d33abd733964, type: 2}
   move_speed: 100
   is_stun: {fileID: 11400000, guid: 5fee8766116ae67479a661562c667c48, type: 2}
