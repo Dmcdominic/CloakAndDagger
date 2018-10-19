@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: spawn_points
   m_EditorClassIdentifier: Assembly-CSharp::vec2_list
   value:
-  - {x: 0, y: 0}
-  - {x: 100, y: 0}
+  - {x: -1, y: 0}
+  - {x: 3, y: 0}
