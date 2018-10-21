@@ -12,22 +12,20 @@ public class anim_piece : MonoBehaviour {
 	private SpriteRenderer sprite_renderer;
 
 
-	private void Awake() {
+	protected virtual void Awake() {
 		sprite_renderer = GetComponent<SpriteRenderer>();
 		StartCoroutine(refresh_on_anim_change());
 		StartCoroutine(refresh_on_palette_change());
 		StartCoroutine(refresh_on_sprite_change());
 	}
 
-	public void refresh_sprite() {
+	public virtual void refresh_sprite() {
 		if (0 <= animation_index && animation_index < anim_Palettes_Bundle.sets.Count) {
 			anim_palettes_set set = anim_Palettes_Bundle.sets[animation_index];
 			if (0 <= palette_index && palette_index < set.palettes.Count) {
 				spritesheet sheet = set.palettes[palette_index];
 				if (0 <= sprite_index && sprite_index < sheet.sprites.Count) {
 					sprite_renderer.sprite = sheet.sprites[sprite_index];
-					Debug.Log("Accessed sprite: " + sheet.sprites[sprite_index]);
-					Debug.Log("New sprite: " + sprite_renderer.sprite);
 				}
 			}
 		}

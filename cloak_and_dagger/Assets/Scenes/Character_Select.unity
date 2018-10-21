@@ -439,6 +439,9 @@ GameObject:
   - component: {fileID: 462670919}
   - component: {fileID: 462670918}
   - component: {fileID: 462670920}
+  - component: {fileID: 462670923}
+  - component: {fileID: 462670922}
+  - component: {fileID: 462670921}
   m_Layer: 5
   m_Name: preview
   m_TagString: Untagged
@@ -528,10 +531,10 @@ MonoBehaviour:
     m_PressedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
+    m_NormalTrigger: none
+    m_HighlightedTrigger: update_preview
+    m_PressedTrigger: none
+    m_DisabledTrigger: none
   m_Interactable: 1
   m_TargetGraphic: {fileID: 462670918}
   m_OnClick:
@@ -539,6 +542,57 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &462670921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462670916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d9b8b4e424eab4e8682e0c42fdb93d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim_Palettes_Bundle: {fileID: 11400000, guid: 1647a96c03fd59246be9196c746b7253,
+    type: 2}
+  animation_index: 0
+  palette_index: 0
+  sprite_index: 0
+--- !u!114 &462670922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462670916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1172c68dda7c1bd4886097fd431a422a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characters_Chosen: {fileID: 11400000, guid: 7bc52388dd16ae14dba05be724bdad87, type: 2}
+  update_preview_trigger: {fileID: 11400000, guid: 5fb736cde990cee49adc41d53f354d50,
+    type: 2}
+  animator: {fileID: 462670923}
+  anim_Piece: {fileID: 462670921}
+  fixed_palette_range_index: -1
+--- !u!95 &462670923
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462670916}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 669df0aaba2ab75449fcc1acb3143d4c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &841816192
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,8 +774,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 768, y: -413.1}
-  m_SizeDelta: {x: 1516, y: 806.2}
+  m_AnchoredPosition: {x: 354, y: -161.415}
+  m_SizeDelta: {x: 688, y: 302.83}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1176630462
 MonoBehaviour:
