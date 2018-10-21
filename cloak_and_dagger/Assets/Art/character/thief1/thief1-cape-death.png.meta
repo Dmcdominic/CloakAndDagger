@@ -10,6 +10,14 @@ TextureImporter:
     21300010: thief-cape-death_5
     21300012: thief-cape-death_6
     21300014: thief-cape-death_7
+    21300016: thief1-cape-death_0
+    21300018: thief1-cape-death_1
+    21300020: thief1-cape-death_2
+    21300022: thief1-cape-death_3
+    21300024: thief1-cape-death_4
+    21300026: thief1-cape-death_5
+    21300028: thief1-cape-death_6
+    21300030: thief1-cape-death_7
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -71,7 +79,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -82,7 +90,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -93,7 +101,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -103,161 +111,161 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: thief-cape-death_0
+      name: thief1-cape-death_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 500
         height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.92, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c5928fa64594544faec7c202611835a
+      spriteID: 60ec6586d73d6714b92487321693cd46
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thief-cape-death_1
+      name: thief1-cape-death_1
       rect:
         serializedVersion: 2
-        x: 500
+        x: 508
         y: 0
         width: 500
         height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.92, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a36a76d4cff2e53468685022ba274ecd
+      spriteID: f4cd1b59a8280fa4bb0145d1190ae9c1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thief-cape-death_2
+      name: thief1-cape-death_2
       rect:
         serializedVersion: 2
         x: 1000
         y: 0
         width: 500
         height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.92, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f386fde9ac619d4b920cc9b064521b4
+      spriteID: 91b9e04dbcbf16342a9b54b939e0ded6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thief-cape-death_3
+      name: thief1-cape-death_3
       rect:
         serializedVersion: 2
         x: 1500
         y: 0
         width: 500
         height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.92, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02dda78f9bb9f074c86d8c72a7fef52b
+      spriteID: 27e08e194e9e66442a20badd6d4bfd2d
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thief-cape-death_4
+      name: thief1-cape-death_4
       rect:
         serializedVersion: 2
         x: 2000
         y: 0
         width: 500
         height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.92, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 508d08f5a000996448f26602faae4c27
+      spriteID: 14df3e3c3548c014aaea920cb049645e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thief-cape-death_5
+      name: thief1-cape-death_5
       rect:
         serializedVersion: 2
         x: 2500
         y: 0
         width: 500
         height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.92, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73df9807c7569934faa017e10e65d3bc
+      spriteID: 2c2e5657e74a08743b9a2188cbd25007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thief-cape-death_6
+      name: thief1-cape-death_6
       rect:
         serializedVersion: 2
         x: 3000
         y: 0
         width: 500
         height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.92, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd047fa57dcaff74d929b67e51b01ec4
+      spriteID: 2f0dd52a180164d4689dc36535454c4a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thief-cape-death_7
+      name: thief1-cape-death_7
       rect:
         serializedVersion: 2
         x: 3500
         y: 0
         width: 500
         height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.92, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 387f8f8c6ceb2364f823ee2a06d91607
+      spriteID: d215c736572d9454abfa905dbb8c8a46
       vertices: []
       indices: 
       edges: []

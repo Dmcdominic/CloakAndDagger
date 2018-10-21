@@ -1,13 +1,15 @@
 fileFormatVersion: 2
-guid: 46cc45447cf371849acb3e07864b0fa8
+guid: ba52d6ac7038da74b844f09c4ff62150
 TextureImporter:
   fileIDToRecycleName:
-    21300000: thief-body-throw_0
-    21300002: thief-body-throw_1
-    21300004: thief-body-throw_2
-    21300006: thief-body-throw_3
-    21300008: thief-body-throw_4
-    21300010: thief-body-throw_5
+    21300000: thief2-head-death_0
+    21300002: thief2-head-death_1
+    21300004: thief2-head-death_2
+    21300006: thief2-head-death_3
+    21300008: thief2-head-death_4
+    21300010: thief2-head-death_5
+    21300012: thief2-head-death_6
+    21300014: thief2-head-death_7
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -66,7 +68,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -77,7 +79,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -88,7 +90,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: WebGL
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -101,7 +103,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: thief-body-throw_0
+      name: thief2-head-death_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,13 +117,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f213499d885e8740b6ef999292306c6
+      spriteID: 4cdc015203869df4da09cf9d55ca844c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thief-body-throw_1
+      name: thief2-head-death_1
       rect:
         serializedVersion: 2
         x: 500
@@ -135,13 +137,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8638422623ea7bd499bb8260c9a7953a
+      spriteID: 4c4328b3869f94a469269b4657672643
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thief-body-throw_2
+      name: thief2-head-death_2
       rect:
         serializedVersion: 2
         x: 1000
@@ -155,13 +157,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dad87bc682cf8354ebf956fb2c9d6aab
+      spriteID: e99fa4d61daa505409edb004571b13ac
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thief-body-throw_3
+      name: thief2-head-death_3
       rect:
         serializedVersion: 2
         x: 1500
@@ -175,13 +177,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdbb0c0240cb93841a4848339ed07fbc
+      spriteID: 7ea303a22d742b6428e1a55691bfbfe4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thief-body-throw_4
+      name: thief2-head-death_4
       rect:
         serializedVersion: 2
         x: 2000
@@ -195,13 +197,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf64c172ce01ef4418093dfbd3b15381
+      spriteID: 738c1e9160bf7c941b19fed4b1477748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: thief-body-throw_5
+      name: thief2-head-death_5
       rect:
         serializedVersion: 2
         x: 2500
@@ -215,7 +217,47 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63f71cd5aa2407f40a692973fe2c46f3
+      spriteID: 29a59fc9ab025094bbd71059743523b8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thief2-head-death_6
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9e6404b989ac914aa31c5db254a779f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: thief2-head-death_7
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33cf3ec20614f7049b3fccb942504057
       vertices: []
       indices: 
       edges: []
@@ -223,7 +265,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 75fdb8422724e4c408f1714b862abd85
+    spriteID: 07f02d2a4e816b544b9904fc31481365
     vertices: []
     indices: 
     edges: []
