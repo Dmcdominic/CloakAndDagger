@@ -79,10 +79,11 @@ public class pmove : sync_behaviour<player_state> {
             return;
         }
 		rb.AddForce(input_vec.val * move_speed,ForceMode2D.Force);
-        send_state(new player_state(transform.position,rb.velocity));
+        state = new player_state(transform.position,rb.velocity);
         
-
 	}
+
+    
 
     public override void rectify(float t, player_state ps)
     {
@@ -93,10 +94,10 @@ public class pmove : sync_behaviour<player_state> {
 
 
 
-        print($"move {gameObject_id}'s butt over to {(Vector2)ps.pos}" +
-            $" and push them at vel {(Vector2)ps.vel}" +
-            $" and this happenned {Time.time - t} seconds ago." +
-            $" It is time {Time.time}");
+        //print($"move {gameObject_id}'s butt over to {(Vector2)ps.pos}" +
+        //    $" and push them at vel {(Vector2)ps.vel}" +
+        //    $" and this happenned {Time.time - t} seconds ago." +
+        //    $" It is time {Time.time}");
 
     }
 
@@ -106,6 +107,8 @@ public class pmove : sync_behaviour<player_state> {
         //gameObject_id = (IValue<int>)GetComponent(typeof(IValue<int>));
         //in_player_state.e.AddListener(on_player_update);
         base.Start();
+        state = new player_state(transform.position, rb.velocity);
+        sync_continously();
 
     }
 

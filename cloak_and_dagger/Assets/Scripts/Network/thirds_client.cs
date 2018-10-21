@@ -55,10 +55,13 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
     obj_event in_unreliable;
 
     [SerializeField]
-    event_object start_event;
+    float_event_object start_event;
 
     [SerializeField]
     event_object start_in;
+
+    [SerializeField]
+    bool local;
 
 
     void Start()
@@ -142,7 +145,9 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
                 break;
             case Custom_msg_type.START_GAME:
                 //message_event("your game started");
-                start_event.Invoke();
+                DateTime serverTime = (DateTime)message;
+                TimeSpan oneWayTrip = DateTime.Now - serverTime;
+                start_event.Invoke(Time.time - (float)oneWayTrip.TotalSeconds);
                 break;
             case Custom_msg_type.LOGOUT:
                 break;
@@ -181,7 +186,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         int channel = reliable_channel;
         if(!reliable)
         {
-            channel = unreliable_channel;
+            channel = state_update_channel;
         }
         NetworkTransport.Send(host, conn_id, channel, data, data.Length, out error);
         if(debug) print($"trying to send {type}: {(NetworkError)error} at channel: {channel}" +
@@ -225,7 +230,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         host = NetworkTransport.AddHost(topology, 0);
         byte error;
         //progatoras is running on 15150. my ip: "71.61.58.16" localhost: "127.0.0.1"
-        conn_id = NetworkTransport.Connect(host, "71.61.58.16", 15150, 0, out error);
+        conn_id = NetworkTransport.Connect(host, local ? "127.0.0.1" :"71.61.58.16", 15150, 0, out error);
         if (debug) print($"connecting {(NetworkError)error}");
         StartCoroutine(Receive());
         return (NetworkError)error == NetworkError.Ok;

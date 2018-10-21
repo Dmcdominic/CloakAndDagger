@@ -18,6 +18,13 @@ public class sync_behaviour<T> : MonoBehaviour {
     [SerializeField]
     float_var t0;
 
+    [SerializeField]
+    [Range(1,27)]
+    float sync_rate;
+
+
+    public T state;
+
     public bool is_local
     {
         get { return gameObject_id.val == local_id.val; }
@@ -30,11 +37,24 @@ public class sync_behaviour<T> : MonoBehaviour {
         gameObject_id = GetComponent<network_id>();
     }
 
+    public void sync_continously()
+    {
+        StartCoroutine(send_update());
+    }
+
+    IEnumerator send_update()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(1 / sync_rate);
+            send_state_unreliable(state);
+        }
+    }
+
     void receive_state(float t, object o, int id)
     {
         if (t > Time.time - t0.val) print($"you got a message from the future! from: {t}, now: {Time.time} ");
         if (id == local_id.val) print($"you got a message you shouldn't have {id}");
-        print($"t = {t}");
         if (id == gameObject_id.val)
             rectify(t + t0.val, (T)o);
     }
@@ -49,7 +69,7 @@ public class sync_behaviour<T> : MonoBehaviour {
         out_event.Invoke(Time.time - t0.val, (object)state, gameObject_id.val);
     }
 
-    public void send_state_unreliable(T state)
+    void send_state_unreliable(T state)
     {
         out_event.Invoke(Time.time, (object)state, gameObject_id.val,reliable: false);
     }

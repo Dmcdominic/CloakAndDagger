@@ -33,8 +33,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1545608585316462}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 430.15283, y: 154.79886, z: 0.41939977}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,5 +52,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message_in: {fileID: 11400000, guid: 10d1e3d9be0714147a50cd7e3c74c064, type: 2}
-  out_event: {fileID: 11400000, guid: 41d368e3b227c6848810e9850570baec, type: 2}
-  out_data: {fileID: 11400000, guid: 8f70e8e28134b4d49b0ae00e37bd13e1, type: 2}
+  local_events:
+    m_keys: 00
+    m_values:
+    - {fileID: 11400000, guid: 2c897a98fc1a8df4482dc5b14fca14be, type: 2}
+  network_events:
+    m_keys: 00
+    m_values:
+    - {fileID: 11400000, guid: d655aaf5b872d1c4e8c9bb54fec3706e, type: 2}
+  out_unreliable: {fileID: 11400000, guid: 525fb2efa1679554a8762743f8e92c70, type: 2}
+  out_mtc: {fileID: 11400000, guid: 8f26259459d5afe49b12d224d2708e44, type: 2}

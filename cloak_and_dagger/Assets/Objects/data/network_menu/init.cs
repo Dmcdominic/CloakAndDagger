@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class init : MonoBehaviour {
 
     [SerializeField]
-    event_object start;
+    float_event_object start;
 
     [SerializeField]
     event_object done_initing;
@@ -34,10 +34,10 @@ public class init : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        start.e.AddListener(() => StartCoroutine(go()));
+        start.e.AddListener((t) => StartCoroutine(go(t)));
 	}
 	
-    IEnumerator go()
+    IEnumerator go(float t)
     {
         yield return new WaitUntil(() => party.val.leader != "");
         SceneManager.LoadScene(game_scene.val);
@@ -66,7 +66,7 @@ public class init : MonoBehaviour {
                 local_network_id.val = net_id.val;
             }
         }
-        t0.val = Time.time;
+        t0.val = t;
         done_initing.Invoke();
     }
 
