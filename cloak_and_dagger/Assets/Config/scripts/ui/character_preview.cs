@@ -18,8 +18,8 @@ public class character_preview : MonoBehaviour {
 
 
 	private void Awake() {
-		// TODO - set my_playerID here
-		my_playerID = 0;
+		// TODO - set my_name here, or read from a SO instead
+		my_name = "PLACEHOLDER";
 		if (update_preview_trigger) {
 			update_preview_trigger.e.AddListener(update_preview);
 		}
