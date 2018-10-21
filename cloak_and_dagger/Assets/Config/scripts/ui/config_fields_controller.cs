@@ -43,6 +43,8 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 	protected List<T1> limited_float_options;
 	protected List<T2> limited_int_options;
 
+	protected List<Transform> current_fields;
+
 
 	// Initialization
 	protected void Awake() {
@@ -50,6 +52,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		if (update_fields_trigger) {
 			update_fields_trigger.e.AddListener(update_fields);
 		}
+		current_fields = new List<Transform>();
 	}
 
 	public void refresh_all_fields_if_currently_open() {
@@ -67,13 +70,6 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 
 	// Helper function for instantiating all the fields and dependent fields of a particular ui_parameters dictionary.
 	protected void create_fields(OrderedDictionary ui_parameters, List<bool_input> dependencies) {
-
-		// TODO - STILL NEED TO IMPLEMENT:
-		// Map selection
-			// Map specific options, dependent on current map
-		// Win condition selection
-			// Win condition specific options, dependent on current win condition
-
 		foreach (object option in ui_parameters.Keys) {
 			if (option is T0) {
 				T0 T0_option = (T0)option;
@@ -111,6 +107,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		}
 
 		bool_input new_input_object = Instantiate(bool_input_prefab.gameObject).GetComponent<bool_input>();
+		current_fields.Add(new_input_object.transform);
 		new_input_object.transform.SetParent(this.transform);
 
 		new_input_object.title.text = option_title(option); // Could instead add a Title property to each ui_(type)_info struct
@@ -127,9 +124,9 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		return new_input_object;
 	}
 
-	private void create_float_slider(T1 option, List<bool_input> dependencies) {
+	private float_input create_float_slider(T1 option, List<bool_input> dependencies) {
 		if (limited_options_only && !limited_float_options.Contains(option)) {
-			return;
+			return null;
 		}
 
 		ui_float_info<T0> ui_info;
@@ -145,6 +142,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		value = (config.float_options[option] = Mathf.Clamp(value, ui_info.min, ui_info.max));
 
 		float_input new_input_object = Instantiate(float_input_prefab.gameObject).GetComponent<float_input>();
+		current_fields.Add(new_input_object.transform);
 		new_input_object.transform.SetParent(this.transform);
 
 		new_input_object.title.text = option_title(option); // Could instead add a Title property to each ui_(type)_info struct
@@ -166,11 +164,12 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 
 		new_input_object.input_field.text = value.ToString();
 		new_input_object.slider.value = value;
+		return new_input_object;
 	}
 
-	private void create_int_slider(T2 option, List<bool_input> dependencies) {
+	private int_input create_int_slider(T2 option, List<bool_input> dependencies) {
 		if (limited_options_only && !limited_int_options.Contains(option)) {
-			return;
+			return null;
 		}
 
 		ui_int_info<T0> ui_info;
@@ -186,6 +185,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		value = (config.int_options[option] = Mathf.Clamp(value, ui_info.min, ui_info.max));
 
 		int_input new_input_object = Instantiate(int_input_prefab.gameObject).GetComponent<int_input>();
+		current_fields.Add(new_input_object.transform);
 		new_input_object.transform.SetParent(this.transform);
 
 		new_input_object.title.text = option_title(option); // Could instead add a Title property to each ui_(type)_info struct
@@ -207,6 +207,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 
 		new_input_object.input_field.text = value.ToString();
 		new_input_object.value = value;
+		return new_input_object;
 	}
 
 	// Take an enum option and turn it into a presentable string (capitalized, no underscores)
@@ -245,10 +246,10 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 
 	// Remove all the fields
 	public void clear_fields() {
-		//Debug.Log("Destroying ALL children of this fields controller");
-		foreach (Transform child in transform) {
+		foreach (Transform child in current_fields) {
 			Destroy(child.gameObject);
 		}
+		current_fields = new List<Transform>();
 		currently_open = false;
 	}
 

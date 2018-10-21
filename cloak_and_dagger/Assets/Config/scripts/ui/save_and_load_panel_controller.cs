@@ -19,6 +19,8 @@ public class save_and_load_panel_controller : MonoBehaviour {
 
 	private bool interactable;
 
+	//protected List<Transform> current_fields;
+
 
 	// Initialization
 	private void Awake() {

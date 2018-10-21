@@ -58,6 +58,7 @@ public class map_config_fields_controller : config_fields_controller<map_bool_op
 		// TODO - make this a visual selection menu using the thumbnails and a Grid Layout Group
 
 		Dropdown dropdown = Instantiate(map_dropdown_prefab.gameObject).GetComponent<Dropdown>();
+		current_fields.Add(dropdown.transform);
 		dropdown.transform.SetParent(this.transform);
 
 		List<Dropdown.OptionData> dropdown_options = new List<Dropdown.OptionData>();
