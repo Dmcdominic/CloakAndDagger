@@ -43,18 +43,24 @@ TagManager:
   - name: Background
     uniqueID: 2554544009
     locked: 0
-  - name: Set-Pieces
+  - name: BG-Set-Pieces
     uniqueID: 4158927793
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Players
-    uniqueID: 2761839985
-    locked: 0
   - name: Daggers
     uniqueID: 243907677
     locked: 0
+  - name: Players
+    uniqueID: 2761839985
+    locked: 0
+  - name: FG-Set-Pieces
+    uniqueID: 293972843
+    locked: 0
   - name: Walls
     uniqueID: 1676435743
+    locked: 0
+  - name: Outside-of-Map
+    uniqueID: 1535403323
     locked: 0

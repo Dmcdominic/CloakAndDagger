@@ -42,7 +42,7 @@ public class kill_feed_display : MonoBehaviour {
             i++;
         }
         change_text(i);
-        wait_and_clear_last(str);
+		StartCoroutine(wait_and_clear_last(str));
     }
 
 	public void display_slain(death_event_data DED) {
