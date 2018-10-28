@@ -51,8 +51,6 @@ public struct player_state
 public class pmove : sync_behaviour<player_state>
 {
 
-
-
     [SerializeField]
     Vec2Var input_vec;
 
