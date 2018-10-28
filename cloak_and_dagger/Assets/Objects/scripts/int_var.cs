@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "variables/int")]
-public class int_var : ScriptableObject {
+public class int_var : ScriptableObject, IValue<int> {
 
 	[SerializeField]
 	bool use_constant = false;

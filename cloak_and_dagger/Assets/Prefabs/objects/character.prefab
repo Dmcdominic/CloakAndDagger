@@ -24,18 +24,13 @@ GameObject:
   - component: {fileID: 212318914461718598}
   - component: {fileID: 50873398947275926}
   - component: {fileID: 61108694289720780}
-  - component: {fileID: 114553111138379116}
-  - component: {fileID: 114072292510557270}
   - component: {fileID: 114336950006474412}
-  - component: {fileID: 114010382592215022}
   - component: {fileID: 114938384083110894}
   - component: {fileID: 114038434851701454}
   - component: {fileID: 114629117855251732}
-  - component: {fileID: 114157402318734050}
   - component: {fileID: 114597311980453518}
   - component: {fileID: 114945662707097262}
-  - component: {fileID: 114903698730470286}
-  - component: {fileID: 114938828038472376}
+  - component: {fileID: 114067254127311388}
   m_Layer: 0
   m_Name: character
   m_TagString: Player
@@ -188,25 +183,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114010382592215022
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1479639472354148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cf15c439788e164ca9d10ab1fa49416, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _origin: {fileID: 11400000, guid: 276cb45050efbd24c925199d72e92b6b, type: 2}
-  _dest: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
-  speed: 20
-  cast_buffer: 1.5
-  dagger_prefab: {fileID: 1862537834978502, guid: f715f6ea0cc87e445a3b49fe4014a4c1,
-    type: 2}
-  trigger: {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
-  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
 --- !u!114 &114038434851701454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,7 +201,8 @@ MonoBehaviour:
   dash_on_cooldown: {fileID: 11400000, guid: 1753c8ad12a45144bb3165db328722ff, type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   ingame_state: {fileID: 11400000, guid: 651e92a3b77baf94ea1cf6097bf34214, type: 2}
---- !u!114 &114072292510557270
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
+--- !u!114 &114067254127311388
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,35 +210,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1479639472354148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Script: {fileID: 11500000, guid: a8de38d8c22502b43a20d86905feb161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 2
-  m_SendInterval: 0.033333335
-  m_SyncRotationAxis: 3
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
---- !u!114 &114157402318734050
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1479639472354148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71523a8b37cec8048bf49cd64f43cf03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trigger: {fileID: 11400000, guid: 0f9847ced7d453448a50d59125e61655, type: 2}
-  trigger_on_death: {fileID: 11400000, guid: 5073091540451ef49aab435b616bee52, type: 2}
-  spectator_reveal: {fileID: 11400000, guid: 4ad75e48cfa56ae45ade9765d99053d9, type: 2}
-  lives: {fileID: 11400000, guid: 8da797a971da62748bc9e3615c651ab9, type: 2}
-  respawn_event: {fileID: 11400000, guid: fe3745e7c102fce40892e5e880a0e868, type: 2}
+  id: 0
 --- !u!114 &114336950006474412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -289,38 +241,6 @@ MonoBehaviour:
     type: 2}
   global_spotlight_off_trigger: {fileID: 0}
   global_spotlight_on_trigger: {fileID: 0}
---- !u!114 &114553111138379116
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1479639472354148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 64
-    i1: 155
-    i2: 74
-    i3: 150
-    i4: 190
-    i5: 185
-    i6: 238
-    i7: 196
-    i8: 170
-    i9: 231
-    i10: 12
-    i11: 116
-    i12: 7
-    i13: 217
-    i14: 60
-    i15: 67
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114597311980453518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -332,6 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34f8bd293314e94589ed59f9a3ef672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
   local_mat: {fileID: 2100000, guid: e8bf8d2dbacf1c747a09b365bd7b0b03, type: 2}
   non_local_mat: {fileID: 2100000, guid: 452412745e77c11439780ad97074aa54, type: 2}
   spectator_reveal: {fileID: 11400000, guid: 4ad75e48cfa56ae45ade9765d99053d9, type: 2}
@@ -363,23 +284,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 039973cf0c0243d4d879ed91da1c803f, type: 2}
   output: {fileID: 11400000, guid: 4bbc87b548ed62b4c957d33abd733964, type: 2}
---- !u!114 &114903698730470286
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1479639472354148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edc058c0817451c4fac455508830cc66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _origin: {fileID: 11400000, guid: 276cb45050efbd24c925199d72e92b6b, type: 2}
-  _target_dest: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
-  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
-  trigger: {fileID: 11400000, guid: 27ca4d790861da944a3b6eb1ca37e5ee, type: 2}
-  light_spawn_trigger: {fileID: 11400000, guid: ecca28e87029d9940927a70137884b99,
-    type: 2}
 --- !u!114 &114938384083110894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -392,19 +296,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   output: {fileID: 11400000, guid: 276cb45050efbd24c925199d72e92b6b, type: 2}
---- !u!114 &114938828038472376
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1479639472354148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc34dc4cc4af48647bdd7b97d627c9d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  to_trigger_on_collision: {fileID: 11400000, guid: 0f9847ced7d453448a50d59125e61655,
-    type: 2}
 --- !u!114 &114945662707097262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -442,11 +333,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd911cb2641a134bbaf3371e9b0dfd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_event: {fileID: 11400000, guid: f7d22b945dd5bd44a8a6aea1e5b0c6f6, type: 2}
+  out_event: {fileID: 11400000, guid: f825901c86abbd443a8261f8754ed9a1, type: 2}
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
+  t0: {fileID: 11400000, guid: 57bb56410a2f79c4aaa77d261a3079f8, type: 2}
+  sync_rate: 14.4
+  state:
+    pos:
+      x: 0
+      y: 0
+    vel:
+      x: 0
+      y: 0
   input_vec: {fileID: 11400000, guid: 4bbc87b548ed62b4c957d33abd733964, type: 2}
-  trans: {fileID: 4336008036378410}
   move_speed: 70
   is_stun: {fileID: 11400000, guid: 5fee8766116ae67479a661562c667c48, type: 2}
-  ingame_state: {fileID: 11400000, guid: 651e92a3b77baf94ea1cf6097bf34214, type: 2}
 --- !u!212 &212318914461718598
 SpriteRenderer:
   m_ObjectHideFlags: 1

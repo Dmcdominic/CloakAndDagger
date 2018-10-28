@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Conditional_Rendering : NetworkBehaviour {
+[RequireComponent(typeof(network_id))]
+public class Conditional_Rendering : MonoBehaviour {
+
+    [SerializeField]
+    int_var local_id;
 
 	[SerializeField]
 	Material local_mat;
@@ -33,7 +37,7 @@ public class Conditional_Rendering : NetworkBehaviour {
 		if (!sr) {
 			sr = GetComponent<SpriteRenderer>();
 		}
-		if (isLocalPlayer || spectator_reveal.val) {
+		if ((GetComponent<network_id>().val == local_id.val) || spectator_reveal.val) {
 			sr.material = local_mat;
 		} else {
 			sr.material = non_local_mat;

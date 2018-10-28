@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public interface IValue<T>
+{
+    T val { get; set; }
+}
+
 [CreateAssetMenu(menuName = "variables/float")]
-public class float_var : ScriptableObject {
+public class float_var : ScriptableObject, IValue<float> {
 
 	[SerializeField]
 	bool use_constant = false;

@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(menuName = "events/event")]
-public class event_object : ScriptableObject {
+[CreateAssetMenu(menuName = "events/unit")]
+public class event_object : ScriptableObject
+{
 
-	public UnityEvent e;
+    private UnityEvent _e;
 
-	public void Invoke() {e.Invoke();}
+    public UnityEvent e
+    {
+        get { if (_e == null) _e = new UnityEvent(); return _e; }
+    }
+
+    public void Invoke() { e.Invoke(); }
 
 }

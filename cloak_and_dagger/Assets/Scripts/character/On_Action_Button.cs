@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
-public class On_Action_Button : NetworkBehaviour {
+
+[RequireComponent(typeof(network_id))]
+public class On_Action_Button : MonoBehaviour {
 
 	[SerializeField]
 	input_config input_Config;
@@ -23,11 +25,14 @@ public class On_Action_Button : NetworkBehaviour {
 
 	[SerializeField]
 	bool_var ingame_state;
+
+    [SerializeField]
+    int_var local_id;
 	
 	
 	// Update is called once per frame
 	void Update () {
-		if (isLocalPlayer && ingame_state.val && input_Config)
+		if (GetComponent<network_id>().val == local_id.val && ingame_state.val && input_Config)
 		{
 			if (input_Config.dagger && !dagger_on_cooldown.val)
 			{
