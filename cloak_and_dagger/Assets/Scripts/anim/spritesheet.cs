@@ -9,6 +9,7 @@ using System.IO;
 public class spritesheet : ScriptableObject {
 	public List<Sprite> sprites;
 
+#if UNITY_EDITOR
 	// Generate a spritesheet for every texture that is selected.
 	[MenuItem("Custom/Generate Spritesheet Objects %g")]
 	public static void generate_spritesheets() {
@@ -51,4 +52,5 @@ public class spritesheet : ScriptableObject {
 		AssetDatabase.CreateAsset(new_spritesheet, new_path);
 		return true;
 	}
+#endif
 }

@@ -8,6 +8,7 @@ using UnityEditor;
 public class anim_palettes_bundle : ScriptableObject {
 	public List<anim_palettes_set> sets;
 
+#if UNITY_EDITOR
 	[MenuItem("Custom/Populate Palletes Bundles %#&g")]
 	public static void populate_palettes_bundles() {
 		Object[] APSs = Selection.GetFiltered(typeof(anim_palettes_set), SelectionMode.DeepAssets);
@@ -35,4 +36,5 @@ public class anim_palettes_bundle : ScriptableObject {
 			}
 		}
 	}
+#endif
 }
