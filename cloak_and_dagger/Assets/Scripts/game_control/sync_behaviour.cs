@@ -53,7 +53,8 @@ public class sync_behaviour<T> : MonoBehaviour {
 
     void receive_state(float t, object o, int id)
     {
-        if (t > Time.time - t0.val) print($"you got a message from the future! from: {t}, now: {Time.time} ");
+        print($"one way trip time {(Time.time - t0.val) - t}");
+        if (t > Time.time - t0.val) print($"you got a message from the future! from: {t}, now: {Time.time - t0.val} ");
         if (id == local_id.val) print($"you got a message you shouldn't have {id}");
         if (id == gameObject_id.val)
             rectify(t + t0.val, (T)o);
@@ -71,7 +72,8 @@ public class sync_behaviour<T> : MonoBehaviour {
 
     void send_state_unreliable(T state)
     {
-        out_event.Invoke(Time.time, (object)state, gameObject_id.val,reliable: false);
+        print($"Sending state at t_i = {Time.time - t0.val}");
+        out_event.Invoke(Time.time - t0.val, (object)state, gameObject_id.val,reliable: false);
     }
 
 }

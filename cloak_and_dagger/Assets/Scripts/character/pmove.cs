@@ -66,6 +66,10 @@ public class pmove : sync_behaviour<player_state>
 
     Rigidbody2D rb;
 
+    Vector2 target_pos;
+
+    Vector3 smooth_vel = Vector3.zero;
+
 
 
 
@@ -78,6 +82,7 @@ public class pmove : sync_behaviour<player_state>
         }
         if (!is_local) //you are not the local go
         {
+            transform.position = Vector3.SmoothDamp(transform.position, target_pos, ref smooth_vel, .01f);
             return;
         }
         rb.AddForce(input_vec.val * move_speed, ForceMode2D.Force);
@@ -90,8 +95,8 @@ public class pmove : sync_behaviour<player_state>
     public override void rectify(float t, player_state ps)
     {
 
-        transform.position = ps.pos;
-        rb.velocity = ps.vel;
+        target_pos = ps.pos;
+        //rb.velocity = ps.vel;
         //rb.MovePosition(ps.pos + rb.velocity * (Time.time - t));
 
 

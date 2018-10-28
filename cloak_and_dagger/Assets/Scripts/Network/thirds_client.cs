@@ -140,8 +140,9 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
             case Custom_msg_type.START_GAME:
                 //message_event("your game started");
                 DateTime serverTime = (DateTime)message;
-                TimeSpan oneWayTrip = DateTime.Now - serverTime;
-                start_event.Invoke(Time.time - (float)oneWayTrip.TotalSeconds);
+                TimeSpan oneWayTrip = DateTime.Now - (serverTime.AddHours(-1));
+                print(oneWayTrip.TotalSeconds);
+                start_event.Invoke(Time.time);
                 break;
             case Custom_msg_type.LOGOUT:
                 break;

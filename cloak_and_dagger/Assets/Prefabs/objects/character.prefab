@@ -337,7 +337,7 @@ MonoBehaviour:
   out_event: {fileID: 11400000, guid: f825901c86abbd443a8261f8754ed9a1, type: 2}
   local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
   t0: {fileID: 11400000, guid: 57bb56410a2f79c4aaa77d261a3079f8, type: 2}
-  sync_rate: 14.4
+  sync_rate: 27
   state:
     pos:
       x: 0
