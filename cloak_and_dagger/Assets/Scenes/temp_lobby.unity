@@ -817,6 +817,7 @@ MonoBehaviour:
   invite_button_prefab: {fileID: 1290678644136166, guid: 14aa17ec6aa2b274b84a7c4de89a2e85,
     type: 2}
   client_go: {fileID: 1044740422}
+  host: {fileID: 11400000, guid: fe42b619e3bccd34eaf8ce7c03e77e41, type: 2}
 --- !u!1 &569488292
 GameObject:
   m_ObjectHideFlags: 0
