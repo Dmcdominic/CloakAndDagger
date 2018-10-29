@@ -25,13 +25,8 @@ public class config_sync : MonoBehaviour {
 	private void sync_incoming_config(float t, object state, int placeholder) {
 		Debug.Log("Reached sync_incoming_config()");
 		preset loaded_preset = new preset((string)state);
-		try {
-			foreach (config_category config_cat in loaded_preset.config_jsons.Keys) {
-				JsonUtility.FromJsonOverwrite(loaded_preset.config_jsons[config_cat], editable_configs[config_cat]);
-			}
-		} catch {
+		if (!save_and_load_presets.copy_all_editable_configs(loaded_preset, editable_configs)) {
 			Debug.LogError("Failed to overwrite a config dictionary from its json.");
-			return;
 		}
 	}
 

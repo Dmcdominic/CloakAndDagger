@@ -21,6 +21,13 @@ public class gameplay_config : config_object<gameplay_bool_option, gameplay_floa
 		base.int_options = int_options;
 	}
 
+	public override void copy_from_obj(config_object<gameplay_bool_option, gameplay_float_option, gameplay_int_option> obj) {
+		gameplay_config casted_obj = (gameplay_config)obj;
+		bool_options.CopyFrom(casted_obj.bool_options);
+		float_options.CopyFrom(casted_obj.float_options);
+		int_options.CopyFrom(casted_obj.int_options);
+	}
+
 }
 
 

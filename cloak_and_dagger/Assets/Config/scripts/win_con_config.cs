@@ -39,6 +39,13 @@ public class win_con_config : config_object<winCon_bool_option, winCon_float_opt
 		win_Condition = (win_condition)new_win_con;
 	}
 
+	public override void copy_from_obj(config_object<winCon_bool_option, winCon_float_option, winCon_int_option> obj) {
+		win_con_config casted_obj = (win_con_config)obj;
+		win_Condition = casted_obj.win_Condition;
+		bool_options.CopyFrom(casted_obj.bool_options);
+		float_options.CopyFrom(casted_obj.float_options);
+		int_options.CopyFrom(casted_obj.int_options);
+	}
 }
 
 
