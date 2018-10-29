@@ -7,6 +7,8 @@ public class config_sync : MonoBehaviour {
 
 	public ConfigCat_ScriptableObj_Dict editable_configs = new ConfigCat_ScriptableObj_Dict();
 
+	public bool_var host;
+
 	public event_object trigger_out;
 	public sync_event out_event;
 	public sync_event in_event;
@@ -33,7 +35,7 @@ public class config_sync : MonoBehaviour {
 	}
 
 	private void send_config() {
-		if (!true) { // Todo - check if you are the host here
+		if (!host.val) {
 			return;
 		}
 
