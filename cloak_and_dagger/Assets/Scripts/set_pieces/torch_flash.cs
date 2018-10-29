@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public struct Torch {
+	public GameObject torch_object;
 	public Light light;
 	public float intensity;
 
-	public Torch(Light l, float i) {
+	public Torch(GameObject t, Light l, float i) {
+		this.torch_object = t;
 		this.light = l;
 		this.intensity = i;
 	}
@@ -22,6 +24,8 @@ public class torch_flash : MonoBehaviour {
 	private int num_torches;
 	private List<Torch> torches = new List<Torch>();
 
+	public Sprite torch_off_sprite;
+
 	public float duration = 10.0f;
 
 	public int num_on = 0;
@@ -35,7 +39,6 @@ public class torch_flash : MonoBehaviour {
 		// Simulates randomly selecting num_on torches from torches
 		for(int i=0; i<num_torches; i++) {
 			int prob = rnd.Next(1,tot+1);
-			Debug.Log(prob);
 			if(prob <= need) {
 				need--;
 				on_torches.Add(i);
@@ -47,6 +50,11 @@ public class torch_flash : MonoBehaviour {
 	void turnOffTorch(Torch t) {
 		if(t.light.enabled) {
 			t.light.enabled = false;
+			
+			GameObject t_obj = t.torch_object;
+
+			t_obj.GetComponent<Animator>().enabled = false;
+			t_obj.GetComponent<SpriteRenderer>().sprite = torch_off_sprite;
 		}
 	}
 
@@ -63,6 +71,7 @@ public class torch_flash : MonoBehaviour {
 		
 		foreach(int i in on_torches) {
 			torches[i].light.enabled = true;
+			torches[i].torch_object.GetComponent<Animator>().enabled = true;
 		}
 	}
 
@@ -73,7 +82,7 @@ public class torch_flash : MonoBehaviour {
 		// Initializing List of torches and their intensities
 		foreach(GameObject t in ts) {
 			Light l = (t.GetComponentsInChildren<Light>())[0];
-			Torch torch = new Torch(l, l.intensity);
+			Torch torch = new Torch(t, l, l.intensity);
 			torches.Add(torch);
 		}
 

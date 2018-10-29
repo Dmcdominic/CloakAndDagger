@@ -6761,6 +6761,17 @@ Prefab:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95817855550709798, guid: a20e95989f7671c44a78c22c26e32200,
+        type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212714345287396928, guid: a20e95989f7671c44a78c22c26e32200,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 72674f13e68411842abd60b8ef555ecd,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a20e95989f7671c44a78c22c26e32200, type: 2}
   m_IsPrefabAsset: 0
@@ -13065,7 +13076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawn_event: {fileID: 11400000, guid: fe3745e7c102fce40892e5e880a0e868, type: 2}
-  conn: {fileID: 11400000, guid: 61b225a447ab4ba4993f8420f3d25571, type: 2}
+  conn: {fileID: 0}
 --- !u!4 &930111255
 Transform:
   m_ObjectHideFlags: 0
@@ -25228,7 +25239,8 @@ MonoBehaviour:
   - {fileID: 1039173483}
   - {fileID: 272817993}
   - {fileID: 2125707415}
-  duration: 10
+  torch_off_sprite: {fileID: 21300000, guid: 5108798b248bb944d9dfedc74ab4c62d, type: 3}
+  duration: 2
   num_on: 2
 --- !u!1001 &1789631533
 Prefab:
