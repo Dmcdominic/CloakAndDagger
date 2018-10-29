@@ -67,9 +67,6 @@ public class save_and_load_presets : MonoBehaviour {
 			foreach (config_category config_cat in loaded_preset.config_jsons.Keys) {
 				JsonUtility.FromJsonOverwrite(loaded_preset.config_jsons[config_cat], editable_configs[config_cat]);
 			}
-			//foreach (config_category config_cat in editable_configs.Keys) {
-			//	JsonUtility.FromJsonOverwrite(loaded_preset.config_jsons[config_cat], editable_configs[config_cat]);
-			//}
 		} catch {
 			output_result(false, false, loaded_preset.name);
 			return;
@@ -112,6 +109,11 @@ public class preset {
 	public preset(string _name, ConfigCat_String_Dict _config_jsons) {
 		this.name = _name;
 		this.config_jsons = _config_jsons;
+	}
+	public preset(string json) {
+		preset _this = JsonUtility.FromJson<preset>(json);
+		this.name = _this.name;
+		this.config_jsons = _this.config_jsons;
 	}
 }
 
