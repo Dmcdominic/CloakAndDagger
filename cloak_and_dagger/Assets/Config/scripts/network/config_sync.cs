@@ -23,6 +23,7 @@ public class config_sync : MonoBehaviour {
 	}
 
 	private void sync_incoming_config(float t, object state, int placeholder) {
+		Debug.Log("Reached sync_incoming_config()");
 		preset loaded_preset = new preset((string)state);
 		try {
 			foreach (config_category config_cat in loaded_preset.config_jsons.Keys) {
@@ -35,7 +36,9 @@ public class config_sync : MonoBehaviour {
 	}
 
 	private void send_config() {
+		Debug.Log("Reached send_config()");
 		if (!host.val) {
+			Debug.Log("Returning, though, because you're not the host");
 			return;
 		}
 
@@ -43,6 +46,7 @@ public class config_sync : MonoBehaviour {
 
 		try {
 			foreach (config_category config_cat in editable_configs.Keys) {
+				Debug.Log("Adding category: " + config_cat + "to the json which will be sent");
 				config_jsons.Add(config_cat, JsonUtility.ToJson(editable_configs[config_cat]));
 			}
 			preset new_preset = new preset("current settings", config_jsons);
