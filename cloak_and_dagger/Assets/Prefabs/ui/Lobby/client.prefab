@@ -125,6 +125,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 82fd9c3e638984e42b9b775780d7385f, type: 2}
     - {fileID: 11400000, guid: 37a7d28f2025cba459e2e3d9750f0496, type: 2}
   out_unreliable: {fileID: 11400000, guid: 99b73b994ade95149bbe1b7616ee0397, type: 2}
+  out_large: {fileID: 11400000, guid: 14b56887b4680c84a89544f7301ced15, type: 2}
   out_mtc: {fileID: 11400000, guid: 11f3c22c330b0cb499df42eeaeb444ad, type: 2}
 --- !u!114 &114638553666161056
 MonoBehaviour:
@@ -140,6 +141,7 @@ MonoBehaviour:
   debug: 0
   in_multicast: {fileID: 11400000, guid: 11f3c22c330b0cb499df42eeaeb444ad, type: 2}
   in_unreliable: {fileID: 11400000, guid: 99b73b994ade95149bbe1b7616ee0397, type: 2}
+  in_large: {fileID: 11400000, guid: 14b56887b4680c84a89544f7301ced15, type: 2}
   start_event: {fileID: 11400000, guid: 7f1fcba0038477d4d90bcba572f87cf6, type: 2}
   start_in: {fileID: 11400000, guid: b679b10936335874abe4e4a88ba87c2e, type: 2}
   local: 0
