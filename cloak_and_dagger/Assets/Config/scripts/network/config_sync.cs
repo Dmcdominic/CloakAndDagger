@@ -33,6 +33,10 @@ public class config_sync : MonoBehaviour {
 	}
 
 	private void send_config() {
+		if (!true) { // Todo - check if you are the host here
+			return;
+		}
+
 		ConfigCat_String_Dict config_jsons = new ConfigCat_String_Dict();
 
 		try {

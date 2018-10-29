@@ -16,9 +16,17 @@ public class map_config : config_object<map_bool_option, map_float_option, map_i
 		set {
 			_map = value;
 			map_changed.Invoke();
+			send_config_sync.Invoke();
+		}
+	}
+	public all_maps_list all_map_infos;
+	public map_info current_map_info {
+		get {
+			return all_map_infos.map_infos[map];
 		}
 	}
 	public event_object map_changed;
+	public event_object send_config_sync;
 
 	public new MapOption_Bool_Dict bool_options = new MapOption_Bool_Dict();
 	public new MapOption_Float_Dict float_options = new MapOption_Float_Dict();

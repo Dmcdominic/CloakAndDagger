@@ -8,8 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d883e97ed8d9dd34d9d88d3f24c4c59d, type: 3}
-  m_Name: spawn_points
+  m_Script: {fileID: 11500000, guid: bc0a2ec61452cee418d3d0d9d2a27035, type: 3}
+  m_Name: out_config_sync
   m_EditorClassIdentifier: 
-  value:
-  - {x: 0, y: 0}

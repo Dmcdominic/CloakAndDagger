@@ -18,9 +18,11 @@ public class win_con_config : config_object<winCon_bool_option, winCon_float_opt
 		set {
 			_win_Condition = value;
 			win_con_changed.Invoke();
+			send_config_sync.Invoke();
 		}
 	}
 	public event_object win_con_changed;
+	public event_object send_config_sync;
 
 	public new WinConOption_Bool_Dict bool_options = new WinConOption_Bool_Dict();
 	public new WinConOption_Float_Dict float_options = new WinConOption_Float_Dict();
