@@ -53,11 +53,16 @@ public class splitter : MonoBehaviour {
             
         }
 	}
+
+
+
+
 	
     void split(object obj_in)
     {
         mtc_data md = (mtc_data)obj_in;
         network_events[md.type].Invoke(md.t,md.body,md.id);
+        print($"received message of type {md.type}");
 
     }
 
