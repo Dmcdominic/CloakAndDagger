@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 114629117855251732}
   - component: {fileID: 114597311980453518}
   - component: {fileID: 114945662707097262}
+  - component: {fileID: 114427959952397214}
   - component: {fileID: 114067254127311388}
   m_Layer: 0
   m_Name: character
@@ -226,6 +227,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   output: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
+--- !u!114 &114427959952397214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479639472354148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf15c439788e164ca9d10ab1fa49416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  in_event: {fileID: 11400000, guid: 82fd9c3e638984e42b9b775780d7385f, type: 2}
+  out_event: {fileID: 11400000, guid: 62b7d49aefcf6fa4ab1f00d1875a56cd, type: 2}
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
+  t0: {fileID: 11400000, guid: 57bb56410a2f79c4aaa77d261a3079f8, type: 2}
+  sync_rate: 0
+  state:
+    thrower_pos:
+      x: 0
+      y: 0
+    target_dest:
+      x: 0
+      y: 0
+    network_id: 0
+  _origin: {fileID: 11400000, guid: 276cb45050efbd24c925199d72e92b6b, type: 2}
+  _dest: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
+  speed: 100
+  cast_buffer: 1
+  dagger_prefab: {fileID: 1862537834978502, guid: f715f6ea0cc87e445a3b49fe4014a4c1,
+    type: 2}
+  trigger: {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
+  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
 --- !u!114 &114519411291893160
 MonoBehaviour:
   m_ObjectHideFlags: 1

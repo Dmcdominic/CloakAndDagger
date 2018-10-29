@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114026266421554374}
   - component: {fileID: 114005111440912888}
   - component: {fileID: 114500513551518450}
+  - component: {fileID: 114918435820188940}
   m_Layer: 0
   m_Name: dagger
   m_TagString: Dagger
@@ -104,7 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561587b52ffd7bd4582f76b8bad8ed14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger_only_on: 2
   to_trigger_on_collision: {fileID: 11400000, guid: ed9ef46757136204ebbd7032bde056b7,
     type: 2}
 --- !u!114 &114026266421554374
@@ -198,6 +198,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
+--- !u!114 &114918435820188940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862537834978502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8de38d8c22502b43a20d86905feb161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
 --- !u!212 &212187264656605594
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -231,7 +243,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 243907677
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 29e466de7ad34c848b7b8c9ecffaf99c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

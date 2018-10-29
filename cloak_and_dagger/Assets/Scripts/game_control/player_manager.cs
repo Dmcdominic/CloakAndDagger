@@ -35,11 +35,16 @@ public class player_manager : MonoBehaviour {
 
     [SerializeField]
     GameObject client_go;
+
+    [SerializeField]
+    bool_var host;
+
     IProtagoras_Client<object> client;
 
 
 	// Use this for initialization
 	void Start () {
+        host.val = false;
         client = client_go.GetComponent<IProtagoras_Client<object>>();
 	}
 
@@ -99,6 +104,7 @@ public class player_manager : MonoBehaviour {
         {
             Destroy(child.gameObject);
         }
+        host.val = false;
         foreach(Party_Names pn in pns)
         {
             GameObject leader = Instantiate(leader_slot,party_display.transform);
@@ -107,7 +113,11 @@ public class player_manager : MonoBehaviour {
             {
                 leader.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(player_join(pn.leader));
                 leader.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(player_invite(pn.leader));
-            } //else leave button
+            }
+            else
+            {
+                host.val = true;
+            }
            foreach(string member_name in pn.members)
             {
                 GameObject member = Instantiate(member_slot, leader.transform);

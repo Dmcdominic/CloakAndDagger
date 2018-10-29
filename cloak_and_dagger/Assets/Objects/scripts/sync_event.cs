@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class adhoc_event<T1,T2,T3> : UnityEvent<T1,T2,T3> { }
 
-[CreateAssetMenu(menuName = "variables/sync_event")]
+[CreateAssetMenu(menuName = "events/sync_event")]
 public class sync_event : ScriptableObject
 {
 
