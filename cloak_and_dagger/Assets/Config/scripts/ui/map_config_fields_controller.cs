@@ -72,7 +72,7 @@ public class map_config_fields_controller : config_fields_controller<map_bool_op
 		}
 		dropdown.AddOptions(dropdown_options);
 
-		dropdown.interactable = interactable;
+		dropdown.interactable = host.val;
 		dropdown.value = current_map_options.IndexOf(current_map_info.map_name);
 		dropdown.onValueChanged.AddListener(switch_map_by_index);
 	}
