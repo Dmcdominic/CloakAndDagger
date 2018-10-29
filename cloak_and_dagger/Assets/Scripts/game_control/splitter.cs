@@ -38,6 +38,9 @@ public class splitter : MonoBehaviour {
     obj_event out_unreliable;
 
     [SerializeField]
+    obj_event out_large;
+
+    [SerializeField]
     obj_event out_mtc;
     
 
@@ -50,7 +53,9 @@ public class splitter : MonoBehaviour {
              out_mtc.Invoke((object)(new mtc_data(pair.Key, t, o, id))));
             pair.Value.r.AddListener((t, o, id) =>
             out_unreliable.Invoke((object)(new mtc_data(pair.Key, t, o, id))));
-            
+            pair.Value.l.AddListener((t, o, id) =>
+            out_large.Invoke((object)(new mtc_data(pair.Key, t, o, id))));
+
         }
 	}
 

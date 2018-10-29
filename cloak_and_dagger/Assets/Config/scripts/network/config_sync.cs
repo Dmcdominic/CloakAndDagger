@@ -51,7 +51,7 @@ public class config_sync : MonoBehaviour {
 			}
 			preset new_preset = new preset("current settings", config_jsons);
 			string data_json = JsonUtility.ToJson(new_preset);
-			out_event.Invoke(0, data_json, 0);
+			out_event.Invoke(0, data_json, 0,large: true);
 			// Todo - reliable = false?
 		} catch {
 			Debug.LogError("Failed to send config");
