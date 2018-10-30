@@ -19,13 +19,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4067253919971170}
-  - component: {fileID: 114791960966589640}
-  - component: {fileID: 114247305520068176}
   - component: {fileID: 50301819326712060}
   - component: {fileID: 61037714204618394}
   - component: {fileID: 212187264656605594}
-  - component: {fileID: 114805709980555324}
-  - component: {fileID: 114026266421554374}
+  - component: {fileID: 114616818953551260}
   - component: {fileID: 114005111440912888}
   - component: {fileID: 114500513551518450}
   - component: {fileID: 114918435820188940}
@@ -105,44 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561587b52ffd7bd4582f76b8bad8ed14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  to_trigger_on_collision: {fileID: 11400000, guid: ed9ef46757136204ebbd7032bde056b7,
+  to_trigger_on_collision: {fileID: 11400000, guid: 62a0507375e0cc34dbba2a270381c1e6,
     type: 2}
---- !u!114 &114026266421554374
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1862537834978502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2460ecb2f74cc7942bf8506b51544871, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player_collision_trigger: {fileID: 11400000, guid: 0f9847ced7d453448a50d59125e61655,
-    type: 2}
-  other_collision_trigger: {fileID: 11400000, guid: ed9ef46757136204ebbd7032bde056b7,
-    type: 2}
---- !u!114 &114247305520068176
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1862537834978502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 2
-  m_SendInterval: 0.07692308
-  m_SyncRotationAxis: 3
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &114500513551518450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,7 +115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3963576ec0bf1a2488077fb980e6f42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114791960966589640
+  dagger_Data:
+    collaterals: 0
+    thrower: 0
+    thrown_index: 0
+--- !u!114 &114616818953551260
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,42 +127,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1862537834978502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a43afeacf2ec3d4184311a64189a2c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 247
-    i1: 21
-    i2: 246
-    i3: 234
-    i4: 12
-    i5: 200
-    i6: 126
-    i7: 68
-    i8: 90
-    i9: 59
-    i10: 73
-    i11: 254
-    i12: 64
-    i13: 20
-    i14: 164
-    i15: 193
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
---- !u!114 &114805709980555324
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1862537834978502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d372c2f00b74ea94285e67634c1aec9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 1
+  in_event: {fileID: 11400000, guid: ca778a649221f3c4891069680a386bc1, type: 2}
+  out_event: {fileID: 11400000, guid: 83fda4d6f40ad144c9b161ae2154b115, type: 2}
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
+  t0: {fileID: 11400000, guid: 57bb56410a2f79c4aaa77d261a3079f8, type: 2}
+  sync_rate: 0
+  state:
+    collaterals: 0
+    thrower: 0
+    thrown_index: 0
+  trigger_destroy: {fileID: 11400000, guid: 62a0507375e0cc34dbba2a270381c1e6, type: 2}
 --- !u!114 &114918435820188940
 MonoBehaviour:
   m_ObjectHideFlags: 1

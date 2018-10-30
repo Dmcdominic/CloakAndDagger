@@ -113,17 +113,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   message_in: {fileID: 11400000, guid: e646a766baa65fc46a85417a5afc652c, type: 2}
   local_events:
-    m_keys: 000104
+    m_keys: 00010402
     m_values:
     - {fileID: 11400000, guid: f825901c86abbd443a8261f8754ed9a1, type: 2}
     - {fileID: 11400000, guid: 62b7d49aefcf6fa4ab1f00d1875a56cd, type: 2}
     - {fileID: 11400000, guid: a177ccb41096d254e99247c15781ef2e, type: 2}
+    - {fileID: 11400000, guid: 83fda4d6f40ad144c9b161ae2154b115, type: 2}
   network_events:
-    m_keys: 000104
+    m_keys: 00010402
     m_values:
     - {fileID: 11400000, guid: f7d22b945dd5bd44a8a6aea1e5b0c6f6, type: 2}
     - {fileID: 11400000, guid: 82fd9c3e638984e42b9b775780d7385f, type: 2}
     - {fileID: 11400000, guid: 37a7d28f2025cba459e2e3d9750f0496, type: 2}
+    - {fileID: 11400000, guid: ca778a649221f3c4891069680a386bc1, type: 2}
   out_unreliable: {fileID: 11400000, guid: 99b73b994ade95149bbe1b7616ee0397, type: 2}
   out_large: {fileID: 11400000, guid: 14b56887b4680c84a89544f7301ced15, type: 2}
   out_mtc: {fileID: 11400000, guid: 11f3c22c330b0cb499df42eeaeb444ad, type: 2}
