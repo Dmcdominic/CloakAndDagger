@@ -22,11 +22,21 @@ public class config_sync : MonoBehaviour {
 		}
 	}
 
-	private void sync_incoming_config(float t, object state, int placeholder) {
+	private void sync_incoming_config(float t, object state, int config_cat_int) {
 		Debug.Log("Reached sync_incoming_config()");
-		preset loaded_preset = new preset((string)state);
-		if (!save_and_load_presets.copy_all_editable_configs(loaded_preset, editable_configs)) {
-			Debug.LogError("Failed to overwrite a config dictionary from its json.");
+		switch ((config_category)config_cat_int) {
+			case config_category.map:
+				((map_config)editable_configs[config_category.map]).copy_from_syncable((map_syncable_config)state);
+				break;
+			case config_category.win_con:
+				((win_con_config)editable_configs[config_category.win_con]).copy_from_syncable((win_con_syncable_config)state);
+				break;
+			case config_category.gameplay:
+				((gameplay_config)editable_configs[config_category.gameplay]).copy_from_syncable((gameplay_syncable_config)state);
+				break;
+			default:
+				Debug.LogError("config_cat_int received (" + config_cat_int + ") does not apply to a compatible config category");
+				break;
 		}
 	}
 
@@ -37,21 +47,22 @@ public class config_sync : MonoBehaviour {
 			return;
 		}
 
-		ConfigCat_String_Dict config_jsons = new ConfigCat_String_Dict();
+		// Send map config
+		Debug.Log("Sending map config");
+		map_syncable_config map_syncable = new map_syncable_config((map_config)editable_configs[config_category.map]);
+		out_event.Invoke(0, map_syncable, (int)config_category.map, large: true);
 
-		try {
-			foreach (config_category config_cat in editable_configs.Keys) {
-				Debug.Log("Adding category: " + config_cat + "to the json which will be sent");
-				config_jsons.Add(config_cat, JsonUtility.ToJson(editable_configs[config_cat]));
-			}
-			preset new_preset = new preset("current settings", config_jsons);
-			string data_json = JsonUtility.ToJson(new_preset);
-			out_event.Invoke(0, data_json, 0,large: true);
-			// Todo - reliable = false?
-		} catch {
-			Debug.LogError("Failed to send config");
-			return;
-		}
+		// Send win_con config
+		Debug.Log("Sending win_con config");
+		win_con_syncable_config win_con_syncable = new win_con_syncable_config((win_con_config)editable_configs[config_category.win_con]);
+		out_event.Invoke(0, win_con_syncable, (int)config_category.win_con, large: true);
+
+		// Send gameplay config
+		Debug.Log("Sending gameplay config");
+		gameplay_syncable_config gameplay_syncable = new gameplay_syncable_config((gameplay_config)editable_configs[config_category.gameplay]);
+		out_event.Invoke(0, gameplay_syncable, (int)config_category.gameplay, large: true);
+
+		Debug.Log("Completed all 3 config sends");
 	}
 
 }
