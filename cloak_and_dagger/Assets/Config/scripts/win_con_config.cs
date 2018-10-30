@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum win_condition { last_survivor, kill_count }
@@ -49,9 +50,9 @@ public class win_con_config : config_object<winCon_bool_option, winCon_float_opt
 
 	public void copy_from_syncable(win_con_syncable_config syncable) {
 		win_Condition = syncable.win_Condition;
-		bool_options.CopyFrom(syncable.bool_options);
-		float_options.CopyFrom(syncable.float_options);
-		int_options.CopyFrom(syncable.int_options);
+		bool_options.CopyFrom(syncable.bool_options.ToDictionary(x => x.Key, x => x.Value));
+		float_options.CopyFrom(syncable.float_options.ToDictionary(x => x.Key, x => x.Value));
+		int_options.CopyFrom(syncable.int_options.ToDictionary(x => x.Key, x => x.Value));
 	}
 }
 
@@ -59,14 +60,14 @@ public class win_con_config : config_object<winCon_bool_option, winCon_float_opt
 [System.Serializable]
 public struct win_con_syncable_config {
 	public win_condition win_Condition;
-	public WinConOption_Bool_Dict bool_options;
-	public WinConOption_Float_Dict float_options;
-	public WinConOption_Int_Dict int_options;
+	public List<KeyValuePair<winCon_bool_option, bool>> bool_options;
+	public List<KeyValuePair<winCon_float_option, float>> float_options;
+	public List<KeyValuePair<winCon_int_option, int>> int_options;
 	public win_con_syncable_config(win_con_config config) {
 		win_Condition = config.win_Condition;
-		bool_options = config.bool_options;
-		float_options = config.float_options;
-		int_options = config.int_options;
+		bool_options = config.bool_options.ToList();
+		float_options = config.float_options.ToList();
+		int_options = config.int_options.ToList();
 	}
 }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum map_bool_option { dynamic_lights, hazards }
@@ -49,28 +50,6 @@ public class map_config : config_object<map_bool_option, map_float_option, map_i
 		bool_options = (MapOption_Bool_Dict)casted_obj.bool_options;
 		float_options = (MapOption_Float_Dict)casted_obj.float_options;
 		int_options = (MapOption_Int_Dict)casted_obj.int_options;
-	}
-
-	public void copy_from_syncable(map_syncable_config syncable) {
-		map = syncable.map;
-		bool_options.CopyFrom(syncable.bool_options);
-		float_options.CopyFrom(syncable.float_options);
-		int_options.CopyFrom(syncable.int_options);
-	}
-}
-
-
-[System.Serializable]
-public struct map_syncable_config {
-	public string map;
-	public MapOption_Bool_Dict bool_options;
-	public MapOption_Float_Dict float_options;
-	public MapOption_Int_Dict int_options;
-	public map_syncable_config(map_config config) {
-		map = config.map;
-		bool_options = config.bool_options;
-		float_options = config.float_options;
-		int_options = config.int_options;
 	}
 }
 

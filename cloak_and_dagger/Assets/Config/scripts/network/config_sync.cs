@@ -26,7 +26,7 @@ public class config_sync : MonoBehaviour {
 		Debug.Log("Reached sync_incoming_config()");
 		switch ((config_category)config_cat_int) {
 			case config_category.map:
-				((map_config)editable_configs[config_category.map]).copy_from_syncable((map_syncable_config)state);
+				((map_config)editable_configs[config_category.map]).bool_options[(map_bool_option)(int)t] = (bool)state;
 				break;
 			case config_category.win_con:
 				((win_con_config)editable_configs[config_category.win_con]).copy_from_syncable((win_con_syncable_config)state);
@@ -49,17 +49,25 @@ public class config_sync : MonoBehaviour {
 
 		// Send map config
 		Debug.Log("Sending map config");
-		map_syncable_config map_syncable = new map_syncable_config((map_config)editable_configs[config_category.map]);
-		out_event.Invoke(0, map_syncable, (int)config_category.map, large: true);
+		map_config map_Config = (map_config)(editable_configs[config_category.map]);
+		for (int i = 0; i < map_Config.bool_options.Count; i++) {
+			out_event.Invoke(i, map_Config.bool_options[(map_bool_option)i], (int)config_category.map);
+		}
+		for (int i = 0; i < map_Config.float_options.Count; i++) {
+			out_event.Invoke(i, map_Config.float_options[(map_float_option)i], (int)config_category.map);
+		}
+		for (int i = 0; i < map_Config.int_options.Count; i++) {
+			out_event.Invoke(i, map_Config.int_options[(map_int_option)i], (int)config_category.map);
+		}
 
 		// Send win_con config
 		Debug.Log("Sending win_con config");
-		win_con_syncable_config win_con_syncable = new win_con_syncable_config((win_con_config)editable_configs[config_category.win_con]);
+		win_con_syncable_config win_con_syncable = new win_con_syncable_config((win_con_config)(editable_configs[config_category.win_con]));
 		out_event.Invoke(0, win_con_syncable, (int)config_category.win_con, large: true);
 
 		// Send gameplay config
 		Debug.Log("Sending gameplay config");
-		gameplay_syncable_config gameplay_syncable = new gameplay_syncable_config((gameplay_config)editable_configs[config_category.gameplay]);
+		gameplay_syncable_config gameplay_syncable = new gameplay_syncable_config((gameplay_config)(editable_configs[config_category.gameplay]));
 		out_event.Invoke(0, gameplay_syncable, (int)config_category.gameplay, large: true);
 
 		Debug.Log("Completed all 3 config sends");
