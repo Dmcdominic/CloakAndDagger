@@ -52,7 +52,6 @@ public class dash : sync_behaviour<serializable_vec2> {
 
     public void dash_func(int id, float cooldown)
     {
-        print("got here");
         if (id != GetComponent<network_id>().val) return;
 
 
@@ -82,7 +81,6 @@ public class dash : sync_behaviour<serializable_vec2> {
 
     bool blink(Vector2 dest)
     {
-        print("doing it");
         // Spawn light at origin
         light_spawn_data light_data = new light_spawn_data(_origin.val, 2f);
         light_spawn_trigger.Invoke(light_data);
