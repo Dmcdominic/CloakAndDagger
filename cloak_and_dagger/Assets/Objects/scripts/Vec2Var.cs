@@ -3,21 +3,4 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "variables/vec2")]
-public class Vec2Var : ScriptableObject {
-
-	[SerializeField]
-	bool use_constant = false;
-
-	[SerializeField]
-	Vector2 constant = Vector2.zero;
-
-	[SerializeField]
-	private Vector2 value;
-
-	public Vector2 val
-	{
-		get {return use_constant ? constant : value;}
-		set {this.value = value;}
-	}
-
-}
+public class Vec2Var : gen_var<Vector2> { }

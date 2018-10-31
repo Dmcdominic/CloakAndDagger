@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-[RequireComponent(typeof(NetworkIdentity))]
-public class trigger_death : NetworkBehaviour {
+[RequireComponent(typeof(network_id))] //deprecated?
+public class trigger_death : sync_behaviour<death_event_data> {
 
 	[SerializeField]
 	dagger_collision_event_object trigger;
@@ -24,7 +24,7 @@ public class trigger_death : NetworkBehaviour {
 	// Use this for initialization
 	void Start () {
 		net_id = GetComponent<NetworkIdentity>();
-		if (isLocalPlayer) {
+        if (is_local) {
 			lives.val = 10;
 			trigger.e.AddListener(on_dagger_collision);
 		}
@@ -42,12 +42,12 @@ public class trigger_death : NetworkBehaviour {
 	}
 
 	private void die(byte killerID) {
-		if (isLocalPlayer) {
+		if (is_local) {
 			lives.val--;
 			ClientScene.RemovePlayer(net_id.playerControllerId);
 
             byte playerID = this.gameObject.GetComponent<Player_data_carrier>().player_Data.playerID;
-            death_event_data death_Event_Data = new death_event_data(playerID, death_type.dagger, (lives.val <= 0), killerID);
+            death_event_data death_Event_Data = new death_event_data(playerID, death_type.dagger, killerID);
             trigger_on_death.e.Invoke(death_Event_Data);
             if (lives.val > 0) {
                 respawn_event.Invoke();

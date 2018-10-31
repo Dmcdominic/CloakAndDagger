@@ -49,13 +49,19 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 
 	private void Awake() {
 		player_data_Carrier = GetComponent<Player_data_carrier>();
-		if (is_local) {
-			trigger.e.AddListener(local_throw);
-		}
 	}
 
-	// This is the local player, and they pressed the throw dagger button, and it was off cooldown
-	private void local_throw(float cooldown) {
+    public override void Start()
+    {
+        base.Start();
+        if (is_local)
+        {
+            trigger.e.AddListener(local_throw);
+        }
+    }
+
+    // This is the local player, and they pressed the throw dagger button, and it was off cooldown
+    private void local_throw(float cooldown) {
 		throw_dagger_data throw_data = new throw_dagger_data(_origin.val, _dest.val);
 		send_state(throw_data);
 		throw_func(throw_data);

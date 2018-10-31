@@ -18,6 +18,9 @@ public class init : MonoBehaviour {
 	map_config map_Config;
 
     [SerializeField]
+    bool_var ingame;
+
+    [SerializeField]
     party_var party;
 
     [SerializeField]
@@ -68,7 +71,9 @@ public class init : MonoBehaviour {
                 local_network_id.val = net_id.val;
             }
         }
+        data.local_id = local_network_id;
         t0.val = t;
+        ingame.val = true;
         done_initing.Invoke();
     }
 

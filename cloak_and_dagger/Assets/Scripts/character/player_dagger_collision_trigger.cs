@@ -3,31 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class player_dagger_collision_trigger : NetworkBehaviour {
+public enum death_type { dagger, suicide };
+
+public struct death_event_data
+{
+    public death_event_data(byte playerID, death_type death_Type, byte killerID)
+    {
+        this.playerID = playerID;
+        this.death_Type = death_Type;
+        this.killerID = killerID;
+    }
+
+    public byte playerID;
+    public death_type death_Type;
+    public byte killerID;
+}
+
+public class player_dagger_collision_trigger : sync_behaviour<death_event_data> {
 
 	[SerializeField]
-	dagger_collision_event_object to_trigger_on_collision;
+	gen_event<int,float> kill_out;
 
+    [SerializeField]
+    player_var<float> respawn_times;
 
-	private void OnCollisionEnter2D(Collision2D collision) {
+    public override void Start()
+    {
+        base.Start();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
 		string dagger_tag = collision.gameObject.tag;
-		if (!dagger_tag.Equals("Dagger") || !isLocalPlayer) {
+		if (!dagger_tag.Equals("Dagger") || !is_local) {
 			return;
 		}
 
-		string tag = this.gameObject.tag; // Should be "Player"
+		string tag = gameObject.tag; // Should be "Player"
 		dagger_data dagger_Data = collision.gameObject.GetComponent<dagger_data_carrier>().dagger_Data;
-		Cmd_trigger_collision(collision.gameObject, dagger_Data, tag);
+
+        rectify(Time.time, new death_event_data((byte)gameObject_id.val, death_type.dagger, dagger_Data.thrower));
+        send_state(new death_event_data((byte)gameObject_id.val,death_type.dagger,dagger_Data.thrower));
 	}
 
-	[Command]
-	private void Cmd_trigger_collision(GameObject dagger, dagger_data dagger_Data, string tag) {
-		Rpc_trigger_collision(dagger, dagger_Data, tag);
-	}
 
-	[ClientRpc]
-	private void Rpc_trigger_collision(GameObject dagger, dagger_data dagger_Data, string tag) {
-		to_trigger_on_collision.Invoke(dagger, dagger_Data, this.gameObject, tag);
-	}
+
+    public override void rectify(float f, death_event_data DD)
+    {
+        kill_out.Invoke(gameObject_id.val, respawn_times[gameObject_id.val]);
+    }
 
 }
