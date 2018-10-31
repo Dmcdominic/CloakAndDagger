@@ -67,7 +67,6 @@ public class dash : sync_behaviour<serializable_vec2> {
            
             cooldown_out.Invoke(gameObject_id.val, cooldown);
         }
-
         send_state((Vector2)transform.position);
     }
 

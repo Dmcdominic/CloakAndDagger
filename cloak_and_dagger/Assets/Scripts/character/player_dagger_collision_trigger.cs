@@ -22,10 +22,10 @@ public struct death_event_data
 public class player_dagger_collision_trigger : sync_behaviour<death_event_data> {
 
 	[SerializeField]
-	gen_event<int,float> kill_out;
+	int_float_event kill_out;
 
     [SerializeField]
-    player_var<float> respawn_times;
+    player_float respawn_times;
 
     public override void Start()
     {

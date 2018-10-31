@@ -18,6 +18,9 @@ public class init : MonoBehaviour {
 	map_config map_Config;
 
     [SerializeField]
+    gameplay_config gc;
+
+    [SerializeField]
     bool_var ingame;
 
     [SerializeField]
@@ -34,6 +37,10 @@ public class init : MonoBehaviour {
 
     [SerializeField]
     float_var t0;
+
+    [SerializeField]
+    player_float respawn_times;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -54,6 +61,7 @@ public class init : MonoBehaviour {
         if(party.val.leader == local_name.val)
         {
             local_network_id.val = leader_id.val;
+            respawn_times[leader_id.val] = gc.float_options[gameplay_float_option.respawn_delay];
         }
 
         GameObject member_go;
@@ -69,6 +77,7 @@ public class init : MonoBehaviour {
             if (member == local_name.val)
             {
                 local_network_id.val = net_id.val;
+                respawn_times[net_id.val] = gc.float_options[gameplay_float_option.respawn_delay];
             }
         }
         data.local_id = local_network_id;
