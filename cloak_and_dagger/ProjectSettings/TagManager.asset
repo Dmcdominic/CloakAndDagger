@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Dagger
+  - Dead-Player
   layers:
   - Default
   - TransparentFX
