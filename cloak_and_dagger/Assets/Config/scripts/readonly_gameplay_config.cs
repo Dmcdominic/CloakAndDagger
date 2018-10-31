@@ -20,6 +20,10 @@ public class readonly_gameplay_config : config_object<readonly_gameplay_bool_opt
 		base.int_options = int_options;
 	}
 
+	public override void copy_from_obj(config_object<readonly_gameplay_bool_option, readonly_gameplay_float_option, readonly_gameplay_int_option> obj) {
+		// todo
+		throw new System.NotImplementedException();
+	}
 }
 
 // Serializable dictionary declarations

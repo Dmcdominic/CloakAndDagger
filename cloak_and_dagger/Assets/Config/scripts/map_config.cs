@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum map_bool_option { dynamic_lights, hazards }
@@ -43,6 +44,13 @@ public class map_config : config_object<map_bool_option, map_float_option, map_i
 		map = new_map;
 	}
 
+	public override void copy_from_obj(config_object<map_bool_option, map_float_option, map_int_option> obj) {
+		map_config casted_obj = (map_config)obj;
+		map = casted_obj.map;
+		bool_options = (MapOption_Bool_Dict)casted_obj.bool_options;
+		float_options = (MapOption_Float_Dict)casted_obj.float_options;
+		int_options = (MapOption_Int_Dict)casted_obj.int_options;
+	}
 }
 
 
