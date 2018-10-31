@@ -35,7 +35,8 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 	public ui_float_info<T0> default_float_info = new ui_float_info<T0>(0.01f, 20.0f, 0f, 100f, "");
 	public ui_int_info<T0> default_int_info = new ui_int_info<T0>(1, 20, 0, 100, "");
 
-	protected bool interactable;
+	public bool_var host;
+	
 	protected bool currently_open = false;
 
 	protected bool limited_options_only = false;
@@ -48,7 +49,6 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 
 	// Initialization
 	protected void Awake() {
-		interactable = true; // TODO - Determine here whether the player is the host or not
 		if (update_fields_trigger) {
 			update_fields_trigger.e.AddListener(update_fields);
 		}
@@ -112,7 +112,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 
 		new_input_object.title.text = option_title(option); // Could instead add a Title property to each ui_(type)_info struct
 		new_input_object.description = ui_info.description;
-		new_input_object.toggle.interactable = interactable;
+		new_input_object.toggle.interactable = host.val;
 
 		new_input_object.set_up_listeners();
 		new_input_object.on_value_changed.AddListener(edit_bool(config.bool_options, option));
@@ -152,8 +152,8 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		new_input_object.slider.minValue = ui_info.slider_min;
 		new_input_object.slider.maxValue = ui_info.slider_max;
 
-		new_input_object.input_field.interactable = interactable;
-		new_input_object.slider.interactable = interactable;
+		new_input_object.input_field.interactable = host.val;
+		new_input_object.slider.interactable = host.val;
 
 		new_input_object.set_up_listeners();
 		new_input_object.on_value_changed.AddListener(edit_float(config.float_options, option));
@@ -195,8 +195,8 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		new_input_object.slider.minValue = ui_info.slider_min;
 		new_input_object.slider.maxValue = ui_info.slider_max;
 
-		new_input_object.slider.interactable = interactable;
-		new_input_object.input_field.interactable = interactable;
+		new_input_object.slider.interactable = host.val;
+		new_input_object.input_field.interactable = host.val;
 
 		new_input_object.set_up_listeners();
 		new_input_object.on_value_changed.AddListener(edit_int(config.int_options, option));

@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class kill_feed_display : MonoBehaviour {
 
+    [SerializeField]
+    player_var<int> lives;
+
 	public death_event_object trigger;
 
     public string[] kill_feed = new string[5];
@@ -22,7 +25,7 @@ public class kill_feed_display : MonoBehaviour {
 	}
 
 	private void on_death_event(death_event_data DED) {
-		if (DED.terminated) {
+		if (lives[DED.playerID] <= 0) {
 			display_terminated(DED);
 		} else {
 			display_slain(DED);

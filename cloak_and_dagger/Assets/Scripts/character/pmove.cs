@@ -74,13 +74,15 @@ public class pmove : sync_behaviour<player_state>
     // Update is called once per frame
     void Update()
     {
-        if (is_stun.val)
-        {
-            return;
-        }
+
         if (!is_local) //you are not the local go
         {
             transform.position = Vector3.SmoothDamp(transform.position, target_pos, ref smooth_vel, .01f);
+            return;
+        }
+        if (is_stun.val)
+        {
+            rb.velocity = Vector2.zero;
             return;
         }
         rb.AddForce(input_vec.val * move_speed, ForceMode2D.Force);
@@ -94,15 +96,7 @@ public class pmove : sync_behaviour<player_state>
     {
 
         target_pos = ps.pos;
-        //rb.velocity = ps.vel;
-        //rb.MovePosition(ps.pos + rb.velocity * (Time.time - t));
 
-
-
-        //print($"move {gameObject_id}'s butt over to {(Vector2)ps.pos}" +
-        //    $" and push them at vel {(Vector2)ps.vel}" +
-        //    $" and this happenned {Time.time - t} seconds ago." +
-        //    $" It is time {Time.time}");
 
     }
 
@@ -110,8 +104,6 @@ public class pmove : sync_behaviour<player_state>
     public override void Start()
     {
         rb = transform.GetComponent<Rigidbody2D>();
-        //gameObject_id = (IValue<int>)GetComponent(typeof(IValue<int>));
-        //in_player_state.e.AddListener(on_player_update);
         base.Start();
         state = new player_state(transform.position, rb.velocity);
         sync_continously();

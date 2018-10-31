@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-[RequireComponent(typeof(dagger_data_carrier))]
+[RequireComponent(typeof(dagger_data_carrier), typeof(network_id))]
 public class dagger_other_collision_trigger : NetworkBehaviour {
-
-	[SerializeField]
-	network_sided_condition trigger_only_on;
 
 	[SerializeField]
 	dagger_collision_event_object to_trigger_on_collision;
@@ -27,32 +24,7 @@ public class dagger_other_collision_trigger : NetworkBehaviour {
 		}
 
 		GameObject collided_with_safe = collided_with.GetComponent<NetworkIdentity>() ? collided_with : null;
-
-		switch (trigger_only_on) {
-			case network_sided_condition.locally:
-				to_trigger_on_collision.Invoke(this.gameObject, data_carrier.dagger_Data, collided_with, tag);
-				break;
-			case network_sided_condition.server_to_all_clients:
-				if (isServer) {
-					Rpc_trigger_collision(this.gameObject, data_carrier.dagger_Data, collided_with_safe, tag);
-				}
-				break;
-			case network_sided_condition.local_player_to_all_clients:
-				if (isLocalPlayer) {
-					Cmd_trigger_collision(this.gameObject, data_carrier.dagger_Data, collided_with_safe, tag);
-				}
-				break;
-		}
-	}
-
-	[Command]
-	private void Cmd_trigger_collision(GameObject dagger, dagger_data dagger_Data, GameObject collided_with, string tag) {
-		Rpc_trigger_collision(dagger, dagger_Data, collided_with, tag);
-	}
-
-	[ClientRpc]
-	private void Rpc_trigger_collision(GameObject dagger, dagger_data dagger_Data, GameObject collided_with, string tag) {
-		to_trigger_on_collision.Invoke(dagger, dagger_Data, collided_with, tag);
+		to_trigger_on_collision.Invoke(this.gameObject, data_carrier.dagger_Data, collided_with, tag);
 	}
 
 }

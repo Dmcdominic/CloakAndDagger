@@ -30,7 +30,11 @@ GameObject:
   - component: {fileID: 114629117855251732}
   - component: {fileID: 114597311980453518}
   - component: {fileID: 114945662707097262}
+  - component: {fileID: 114427959952397214}
   - component: {fileID: 114067254127311388}
+  - component: {fileID: 114487284874482236}
+  - component: {fileID: 114979525041593486}
+  - component: {fileID: 114208676034183456}
   m_Layer: 0
   m_Name: character
   m_TagString: Player
@@ -195,10 +199,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input_Config: {fileID: 11400000, guid: 039973cf0c0243d4d879ed91da1c803f, type: 2}
-  to_trigger_dagger: {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
-  dagger_on_cooldown: {fileID: 11400000, guid: a9c86986f5e34eb4b81b0bc355fc6b54, type: 2}
-  to_trigger_dash: {fileID: 11400000, guid: 27ca4d790861da944a3b6eb1ca37e5ee, type: 2}
-  dash_on_cooldown: {fileID: 11400000, guid: 1753c8ad12a45144bb3165db328722ff, type: 2}
+  to_trigger_dagger: {fileID: 11400000, guid: 5adfb4030633d6c4195a90424c62c663, type: 2}
+  dagger_on_cooldown: {fileID: 11400000, guid: fa68461f70c2565479f2ad6740b69db0, type: 2}
+  to_trigger_dash: {fileID: 11400000, guid: f1cd2a170e0a5a341905078728b92222, type: 2}
+  dash_on_cooldown: {fileID: 11400000, guid: 97b359e921771a547baee782d3db444f, type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   ingame_state: {fileID: 11400000, guid: 651e92a3b77baf94ea1cf6097bf34214, type: 2}
   local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
@@ -214,6 +218,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+--- !u!114 &114208676034183456
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479639472354148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e582946112e989e458560abe7baa1f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  in_kill: {fileID: 11400000, guid: a8382b71a4b25b34c8e81f0433bfba56, type: 2}
+  out_kill: {fileID: 11400000, guid: 65ce5342acaa7e445bbeb3beebbaf218, type: 2}
 --- !u!114 &114336950006474412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,6 +243,66 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   output: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
+--- !u!114 &114427959952397214
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479639472354148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf15c439788e164ca9d10ab1fa49416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  in_event: {fileID: 11400000, guid: 82fd9c3e638984e42b9b775780d7385f, type: 2}
+  out_event: {fileID: 11400000, guid: 62b7d49aefcf6fa4ab1f00d1875a56cd, type: 2}
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
+  t0: {fileID: 11400000, guid: 57bb56410a2f79c4aaa77d261a3079f8, type: 2}
+  sync_rate: 11.7
+  state:
+    thrower_pos:
+      x: 0
+      y: 0
+    target_dest:
+      x: 0
+      y: 0
+    network_id: 0
+  _origin: {fileID: 11400000, guid: 276cb45050efbd24c925199d72e92b6b, type: 2}
+  _dest: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
+  speed: 100
+  cast_buffer: 1
+  dagger_prefab: {fileID: 1862537834978502, guid: f715f6ea0cc87e445a3b49fe4014a4c1,
+    type: 2}
+  trigger: {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
+  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+--- !u!114 &114487284874482236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479639472354148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edc058c0817451c4fac455508830cc66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  in_event: {fileID: 11400000, guid: 28e3be81a7e789d4f8997a2ec7d09947, type: 2}
+  out_event: {fileID: 11400000, guid: f9ba7aa2e3a2205469ba19ae816cef37, type: 2}
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
+  t0: {fileID: 11400000, guid: 57bb56410a2f79c4aaa77d261a3079f8, type: 2}
+  sync_rate: 0
+  state:
+    x: 0
+    y: 0
+  _origin: {fileID: 11400000, guid: 276cb45050efbd24c925199d72e92b6b, type: 2}
+  _target_dest: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
+  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  trigger: {fileID: 11400000, guid: f1cd2a170e0a5a341905078728b92222, type: 2}
+  light_spawn_trigger: {fileID: 11400000, guid: ecca28e87029d9940927a70137884b99,
+    type: 2}
+  stun_out: {fileID: 11400000, guid: 8a12398b55b5a6b43ab8f07664a4b7ed, type: 2}
+  cooldown_out: {fileID: 11400000, guid: 0c2ab5da8ab37f6499586658fe6c97a5, type: 2}
+  mini_stun: 0.1
 --- !u!114 &114519411291893160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -308,20 +385,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    m_keys: 000000000100000002000000
+    m_keys: 000000000300000002000000
     m_values:
-    - {fileID: 11400000, guid: 5fee8766116ae67479a661562c667c48, type: 2}
-    - {fileID: 11400000, guid: a9c86986f5e34eb4b81b0bc355fc6b54, type: 2}
-    - {fileID: 11400000, guid: 1753c8ad12a45144bb3165db328722ff, type: 2}
+    - {fileID: 11400000, guid: b606f126309b3944fbf2ec7e7b3b09a2, type: 2}
+    - {fileID: 11400000, guid: 9fad67e37486e6f449ee3829119a152b, type: 2}
+    - {fileID: 11400000, guid: 97b359e921771a547baee782d3db444f, type: 2}
   on_triggers:
-    m_keys: 000000000100000002000000
+    m_keys: 000000000300000002000000
     m_values:
-    - {fileID: 11400000, guid: 160fe5029c4947f4fbcaf28517de28b8, type: 2}
-    - {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
-    - {fileID: 11400000, guid: 27ca4d790861da944a3b6eb1ca37e5ee, type: 2}
+    - {fileID: 11400000, guid: 8a12398b55b5a6b43ab8f07664a4b7ed, type: 2}
+    - {fileID: 11400000, guid: a8382b71a4b25b34c8e81f0433bfba56, type: 2}
+    - {fileID: 11400000, guid: 0c2ab5da8ab37f6499586658fe6c97a5, type: 2}
   off_triggers:
-    m_keys: 
-    m_values: []
+    m_keys: 03000000
+    m_values:
+    - {fileID: 11400000, guid: 5522c9ca6af1c2d419a3026a079974e2, type: 2}
+--- !u!114 &114979525041593486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479639472354148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc34dc4cc4af48647bdd7b97d627c9d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  in_event: {fileID: 11400000, guid: 1cdc8d19303f9b04abbc0ab475113b3e, type: 2}
+  out_event: {fileID: 11400000, guid: 0a4dd1ac8d4d40c478c44022ddc40c1c, type: 2}
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
+  t0: {fileID: 11400000, guid: 57bb56410a2f79c4aaa77d261a3079f8, type: 2}
+  sync_rate: 1
 --- !u!114 &114990156458923406
 MonoBehaviour:
   m_ObjectHideFlags: 1

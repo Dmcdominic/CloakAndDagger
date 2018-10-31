@@ -11,6 +11,22 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1271832467573936}
   m_IsPrefabAsset: 1
+--- !u!1 &1120360346721810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4927191812615330}
+  - component: {fileID: 114305223639537142}
+  m_Layer: 0
+  m_Name: status_handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1271832467573936
 GameObject:
   m_ObjectHideFlags: 0
@@ -22,6 +38,22 @@ GameObject:
   - component: {fileID: 114638553666161056}
   m_Layer: 0
   m_Name: client
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1642744587782092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4017354807116774}
+  - component: {fileID: 114836982731032744}
+  m_Layer: 0
+  m_Name: respawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,6 +91,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4017354807116774
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1642744587782092}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4491820199344692}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4339620708691150
 Transform:
   m_ObjectHideFlags: 1
@@ -84,6 +129,8 @@ Transform:
   m_Children:
   - {fileID: 4898961976024828}
   - {fileID: 4339620708691150}
+  - {fileID: 4017354807116774}
+  - {fileID: 4927191812615330}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -100,6 +147,19 @@ Transform:
   m_Father: {fileID: 4491820199344692}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4927191812615330
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1120360346721810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4491820199344692}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114151201741709174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,15 +173,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   message_in: {fileID: 11400000, guid: e646a766baa65fc46a85417a5afc652c, type: 2}
   local_events:
-    m_keys: 00
+    m_keys: 00010403
     m_values:
     - {fileID: 11400000, guid: f825901c86abbd443a8261f8754ed9a1, type: 2}
+    - {fileID: 11400000, guid: 62b7d49aefcf6fa4ab1f00d1875a56cd, type: 2}
+    - {fileID: 11400000, guid: a177ccb41096d254e99247c15781ef2e, type: 2}
+    - {fileID: 11400000, guid: 0a4dd1ac8d4d40c478c44022ddc40c1c, type: 2}
   network_events:
-    m_keys: 00
+    m_keys: 00010403
     m_values:
     - {fileID: 11400000, guid: f7d22b945dd5bd44a8a6aea1e5b0c6f6, type: 2}
+    - {fileID: 11400000, guid: 82fd9c3e638984e42b9b775780d7385f, type: 2}
+    - {fileID: 11400000, guid: 37a7d28f2025cba459e2e3d9750f0496, type: 2}
+    - {fileID: 11400000, guid: 1cdc8d19303f9b04abbc0ab475113b3e, type: 2}
   out_unreliable: {fileID: 11400000, guid: 99b73b994ade95149bbe1b7616ee0397, type: 2}
+  out_large: {fileID: 11400000, guid: 14b56887b4680c84a89544f7301ced15, type: 2}
   out_mtc: {fileID: 11400000, guid: 11f3c22c330b0cb499df42eeaeb444ad, type: 2}
+--- !u!114 &114305223639537142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1120360346721810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1deb4d20e22f5914ea6cc12a11c2c0a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    m_keys: 00000000010000000200000003000000
+    m_values:
+    - {fileID: 11400000, guid: b606f126309b3944fbf2ec7e7b3b09a2, type: 2}
+    - {fileID: 11400000, guid: fa68461f70c2565479f2ad6740b69db0, type: 2}
+    - {fileID: 11400000, guid: 97b359e921771a547baee782d3db444f, type: 2}
+    - {fileID: 11400000, guid: 9fad67e37486e6f449ee3829119a152b, type: 2}
+  on_triggers:
+    m_keys: 00000000010000000200000003000000
+    m_values:
+    - {fileID: 11400000, guid: 8a12398b55b5a6b43ab8f07664a4b7ed, type: 2}
+    - {fileID: 11400000, guid: 5adfb4030633d6c4195a90424c62c663, type: 2}
+    - {fileID: 11400000, guid: 0c2ab5da8ab37f6499586658fe6c97a5, type: 2}
+    - {fileID: 11400000, guid: a8382b71a4b25b34c8e81f0433bfba56, type: 2}
+  off_triggers:
+    m_keys: 03000000
+    m_values:
+    - {fileID: 11400000, guid: 5522c9ca6af1c2d419a3026a079974e2, type: 2}
 --- !u!114 &114638553666161056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,6 +232,7 @@ MonoBehaviour:
   debug: 0
   in_multicast: {fileID: 11400000, guid: 11f3c22c330b0cb499df42eeaeb444ad, type: 2}
   in_unreliable: {fileID: 11400000, guid: 99b73b994ade95149bbe1b7616ee0397, type: 2}
+  in_large: {fileID: 11400000, guid: 14b56887b4680c84a89544f7301ced15, type: 2}
   start_event: {fileID: 11400000, guid: 7f1fcba0038477d4d90bcba572f87cf6, type: 2}
   start_in: {fileID: 11400000, guid: b679b10936335874abe4e4a88ba87c2e, type: 2}
   local: 0
@@ -153,9 +250,25 @@ MonoBehaviour:
   start: {fileID: 11400000, guid: 7f1fcba0038477d4d90bcba572f87cf6, type: 2}
   done_initing: {fileID: 11400000, guid: d3e0ab02c632bb84d8ec92942cd5dcc5, type: 2}
   game_scene: {fileID: 11400000, guid: c7434fb98d9bfa841aa3bcbd37aafc93, type: 2}
-  spawn_points: {fileID: 11400000, guid: 025b2f0d1c4261c49b366bf35ea9da71, type: 2}
+  map_Config: {fileID: 11400000, guid: 311d7573890fff64598a6d804ea6e720, type: 2}
+  ingame: {fileID: 11400000, guid: 651e92a3b77baf94ea1cf6097bf34214, type: 2}
   party: {fileID: 11400000, guid: af142701058b0424d90947e0d77e7de9, type: 2}
-  player_prefab: {fileID: 0}
+  player_prefab: {fileID: 1479639472354148, guid: 409b4a96beb9eec4aae70c7407d93c43,
+    type: 2}
   local_name: {fileID: 11400000, guid: 704b1696cb8499c479c077820b659856, type: 2}
   local_network_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
   t0: {fileID: 11400000, guid: 57bb56410a2f79c4aaa77d261a3079f8, type: 2}
+--- !u!114 &114836982731032744
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1642744587782092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a2782fcee488045b17d4d4a6f157ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  death_trigger: {fileID: 11400000, guid: 65ce5342acaa7e445bbeb3beebbaf218, type: 2}
+  dead: {fileID: 11400000, guid: 9fad67e37486e6f449ee3829119a152b, type: 2}
+  map: {fileID: 11400000, guid: 311d7573890fff64598a6d804ea6e720, type: 2}

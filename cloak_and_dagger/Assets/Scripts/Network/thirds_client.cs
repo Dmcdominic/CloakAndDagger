@@ -35,6 +35,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
     int conn_id;
     int reliable_channel;
     int state_update_channel;
+    int large_data_channel;
     List<List<string>> party_list = new List<List<string>>();
     Action<string> invite_event;
     Action<string> request_event;
@@ -48,6 +49,9 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
 
     [SerializeField]
     obj_event in_unreliable;
+
+    [SerializeField]
+    obj_event in_large;
 
     [SerializeField]
     float_event_object start_event;
@@ -66,9 +70,12 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         in_multicast.e.AddListener(mtc);
         in_unreliable.e.AddListener(mtc_unrel);
         start_in.e.AddListener(() => Start_Game());
+        in_large.e.AddListener(mtc_large);
     }
     void mtc(object o) { Multicast(o); } //because Mulitcast returns a bool and you can't cast lambdas to unity events
     void mtc_unrel(object o) { Multicast(o, reliable: true); }
+    void mtc_large(object o) { Multicast(o, large: true); }
+
     IEnumerator Receive()
     {
         int _conn;
@@ -159,7 +166,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         }
     }
 
-    bool send_message(Custom_msg_type type, string arg1, string arg2, int targetConnection, object body = null,bool reliable = true)
+    bool send_message(Custom_msg_type type, string arg1, string arg2, int targetConnection, object body = null,bool reliable = true,bool large = false)
     {
         byte error = 0;
         Message_package msg_p = new Message_package();
@@ -182,6 +189,10 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         if(!reliable)
         {
             channel = state_update_channel;
+        }
+        if(large)
+        {
+            channel = large_data_channel;
         }
         NetworkTransport.Send(host, conn_id, channel, data, data.Length, out error);
         if(debug) print($"trying to send {type}: {(NetworkError)error} at channel: {channel}" +
@@ -219,7 +230,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         config.AddChannel(QosType.Unreliable);
         config.AddChannel(QosType.AllCostDelivery);
         state_update_channel = config.AddChannel(QosType.StateUpdate);
-        config.AddChannel(QosType.ReliableFragmentedSequenced);
+        large_data_channel = config.AddChannel(QosType.ReliableFragmentedSequenced);
         topology = new HostTopology(config, 100);
 
         host = NetworkTransport.AddHost(topology, 0);
@@ -309,9 +320,9 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         //Setup_for_player(name, password, invite_trigger, request_trigger, message_trigger, port);
     }
 
-    public bool Multicast(object msg,bool reliable = true)
+    public bool Multicast(object msg,bool reliable = true, bool large = false)
     {
-        return send_message(Custom_msg_type.MTC, "", "", -1,body: msg,reliable: reliable);
+        return send_message(Custom_msg_type.MTC, "", "", -1,body: msg,reliable: reliable,large: large);
     }
 
     public void Register_Message_Receive(Action<object> when_you_receive_message)

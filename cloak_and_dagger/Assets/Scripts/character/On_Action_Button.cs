@@ -12,14 +12,14 @@ public class On_Action_Button : MonoBehaviour {
 	input_config input_Config;
 
 	[SerializeField]
-	float_event_object to_trigger_dagger;
+	int_float_event to_trigger_dagger;
 	[SerializeField]
-	bool_var dagger_on_cooldown;
+	player_bool dagger_on_cooldown;
 
 	[SerializeField]
-	float_event_object to_trigger_dash;
+	int_float_event to_trigger_dash;
 	[SerializeField]
-	bool_var dash_on_cooldown;
+	player_bool dash_on_cooldown;
 	[SerializeField]
 	gameplay_config gameplay_Config;
 
@@ -34,13 +34,13 @@ public class On_Action_Button : MonoBehaviour {
 	void Update () {
 		if (GetComponent<network_id>().val == local_id.val && ingame_state.val && input_Config)
 		{
-			if (input_Config.dagger && !dagger_on_cooldown.val)
+			if (input_Config.dagger && !dagger_on_cooldown[GetComponent<network_id>().val])
 			{
-				to_trigger_dagger.Invoke(gameplay_Config.float_options[gameplay_float_option.dagger_cooldown]);
+				to_trigger_dagger.Invoke(GetComponent<network_id>().val,gameplay_Config.float_options[gameplay_float_option.dagger_cooldown]);
 			}
-			else if (input_Config.dash && !dash_on_cooldown.val)
-			{
-				to_trigger_dash.Invoke(gameplay_Config.float_options[gameplay_float_option.dash_cooldown]);
+			else if (input_Config.dash && !dash_on_cooldown[GetComponent<network_id>().val])
+            {
+                to_trigger_dash.Invoke(GetComponent<network_id>().val,gameplay_Config.float_options[gameplay_float_option.dash_cooldown]);
 			}
 		}
 	}

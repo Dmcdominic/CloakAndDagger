@@ -10,7 +10,7 @@ public class bool_input : config_input_field {
 	private bool _value;
 	public bool value {
 		get { return _value; }
-		set { _value = value; on_value_changed.Invoke(_value); }
+		set { _value = value; on_value_changed.Invoke(_value); after_value_changed.Invoke(); }
 	}
 	
 	public Toggle toggle;
