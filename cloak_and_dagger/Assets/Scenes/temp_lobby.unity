@@ -3480,6 +3480,26 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114151201741709174, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: local_events.m_keys.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114151201741709174, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: local_events.m_values.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114151201741709174, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: network_events.m_keys.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114151201741709174, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: network_events.m_values.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4491820199344692, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
       propertyPath: m_LocalPosition.x
       value: 430.15283
@@ -3541,6 +3561,28 @@ Prefab:
       propertyPath: gc
       value: 
       objectReference: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8,
+        type: 2}
+    - target: {fileID: 114151201741709174, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: local_events.m_keys.Array.data[4]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114151201741709174, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: local_events.m_values.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: f9ba7aa2e3a2205469ba19ae816cef37,
+        type: 2}
+    - target: {fileID: 114151201741709174, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: network_events.m_keys.Array.data[4]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114151201741709174, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: network_events.m_values.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 28e3be81a7e789d4f8997a2ec7d09947,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
