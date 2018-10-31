@@ -273,7 +273,7 @@ MonoBehaviour:
   cast_buffer: 1
   dagger_prefab: {fileID: 1862537834978502, guid: f715f6ea0cc87e445a3b49fe4014a4c1,
     type: 2}
-  trigger: {fileID: 11400000, guid: 7ebc711b7e5532e48bfb4b7ce03010f1, type: 2}
+  trigger: {fileID: 11400000, guid: 5adfb4030633d6c4195a90424c62c663, type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
 --- !u!114 &114487284874482236
 MonoBehaviour:

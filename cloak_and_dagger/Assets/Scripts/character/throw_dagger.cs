@@ -38,7 +38,7 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 	GameObject dagger_prefab;
 
 	[SerializeField]
-	float_event_object trigger;
+	int_float_event trigger;
 
 	[SerializeField]
 	gameplay_config gameplay_Config;
@@ -61,7 +61,9 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
     }
 
     // This is the local player, and they pressed the throw dagger button, and it was off cooldown
-    private void local_throw(float cooldown) {
+    private void local_throw(int id, float cooldown) {
+        if (id != gameObject_id.val) return; 
+
 		throw_dagger_data throw_data = new throw_dagger_data(_origin.val, _dest.val);
 		send_state(throw_data);
 		throw_func(throw_data);
