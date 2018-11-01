@@ -12,11 +12,15 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 
 	public all_win_cons_list all_Win_Cons_List;
 	public Dropdown win_con_dropdown_prefab;
+	private Dropdown dropdown;
 
 	public event_object win_con_changed;
 	public new win_con_config config;
 	public map_config map_Config;
 	public all_maps_list all_Maps_List;
+
+	public config_option_event_object update_one_config_value;
+	public config_option_event_object update_one_config_field;
 
 
 	// Initialization
@@ -25,6 +29,9 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 		if (win_con_changed) {
 			win_con_changed.e.AddListener(refresh_all_fields_if_currently_open);
 			win_con_changed.e.AddListener(check_map_compatibility);
+		}
+		if (update_one_config_field) {
+			update_one_config_field.e.AddListener(on_update_one_config_field);
 		}
 
 		// ========== Populate option UI parameters here ==========
@@ -65,7 +72,12 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 
 		dropdown.interactable = host.val;
 		dropdown.value = (int)config.win_Condition;
-		dropdown.onValueChanged.AddListener(config.switch_win_con);
+		dropdown.onValueChanged.AddListener(switch_win_con_by_index);
+	}
+
+	private void switch_win_con_by_index(int index) {
+		config.switch_win_con(index);
+		update_one_config_value.Invoke(-2, index, (int)config_Category);
 	}
 
 	private void check_map_compatibility() {
@@ -73,6 +85,22 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 		if (!map_found || !all_Maps_List.map_infos[map_Config.map].compatible_win_cons.Contains(config.win_Condition)) {
 			map_Config.map = all_Win_Cons_List.win_con_infos[config.win_Condition].default_map;
 		}
+	}
+
+	private void on_update_one_config_field(int inc_encoded_enum, object inc_value, int inc_config_cat) {
+		if (inc_encoded_enum == -2 && inc_config_cat == (int)config_Category) {
+			dropdown.value = (int)inc_value;
+		}
+	}
+
+	public override int get_encoded_enum_bool_opt(winCon_bool_option option) {
+		return 0 + 3 * ((int)option);
+	}
+	public override int get_encoded_enum_float_opt(winCon_float_option option) {
+		return 1 + 3 * ((int)option);
+	}
+	public override int get_encoded_enum_int_opt(winCon_int_option option) {
+		return 2 + 3 * ((int)option);
 	}
 
 }

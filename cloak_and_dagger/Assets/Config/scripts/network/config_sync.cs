@@ -9,18 +9,33 @@ public class config_sync : MonoBehaviour {
 
 	public bool_var host;
 
-	public event_object trigger_out;
+	public event_object trigger_send_all;
+	public event_object someone_joined_my_party;
 	public sync_event out_event;
 	public sync_event in_event;
+
+	public config_option_event_object update_one_config_field;
+	public config_option_event_object updated_one_config_value;
 
 
 	private void Awake() {
 		if (in_event) {
 			in_event.e.AddListener(sync_incoming_config);
 		}
-		if (trigger_out) {
-			trigger_out.e.AddListener(send_config);
+		if (trigger_send_all) {
+			trigger_send_all.e.AddListener(send_config);
 		}
+		if (someone_joined_my_party) {
+			someone_joined_my_party.e.AddListener(send_config);
+		}
+		if (updated_one_config_value) {
+			updated_one_config_value.e.AddListener(on_updated_one_config_value);
+		}
+	}
+
+	private void on_updated_one_config_value(int encoded_enum, object val, int config_cat) {
+		Debug.Log("Sending one config value");
+		out_event.Invoke((float)encoded_enum, val, config_cat);
 	}
 
 	private void sync_incoming_config(float t, object state, int config_cat_int) {
@@ -76,6 +91,8 @@ public class config_sync : MonoBehaviour {
 					break;
 			}
 		}
+
+		update_one_config_field.Invoke(t_int, state, config_cat_int);
 	}
 
 	private void send_config() {

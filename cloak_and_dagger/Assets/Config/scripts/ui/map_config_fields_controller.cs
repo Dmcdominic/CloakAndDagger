@@ -13,17 +13,25 @@ public class map_config_fields_controller : config_fields_controller<map_bool_op
 
 	public all_maps_list all_Maps_List;
 	public Dropdown map_dropdown_prefab;
+	private Dropdown dropdown;
 	private List<string> current_map_options;
 
 	public event_object map_changed;
 	public new map_config config;
 	public win_con_config win_Con_Config;
 
+	public config_option_event_object update_one_config_value;
+	public config_option_event_object update_one_config_field;
+
+
 	// Initialization
 	protected new void Awake() {
 		base.config = config;
 		if (map_changed) {
 			map_changed.e.AddListener(refresh_all_fields_if_currently_open);
+		}
+		if (update_one_config_field) {
+			update_one_config_field.e.AddListener(on_update_one_config_field);
 		}
 
 		// ========== Populate option UI parameters here ==========
@@ -55,9 +63,9 @@ public class map_config_fields_controller : config_fields_controller<map_bool_op
 	}
 
 	private void create_map_selection_menu(map_info current_map_info) {
-		// TODO - make this a visual selection menu using the thumbnails and a Grid Layout Group
+		// TODO - make this a visual selection menu using the thumbnails and a Grid Layout Group or something
 
-		Dropdown dropdown = Instantiate(map_dropdown_prefab.gameObject).GetComponent<Dropdown>();
+		dropdown = Instantiate(map_dropdown_prefab.gameObject).GetComponent<Dropdown>();
 		current_fields.Add(dropdown.transform);
 		dropdown.transform.SetParent(this.transform);
 
@@ -79,6 +87,23 @@ public class map_config_fields_controller : config_fields_controller<map_bool_op
 
 	private void switch_map_by_index(int index) {
 		config.switch_map(current_map_options[index]);
+		update_one_config_value.Invoke(-1, config.map, (int)config_Category);
+	}
+
+	private void on_update_one_config_field(int inc_encoded_enum, object inc_value, int inc_config_cat) {
+		if (inc_encoded_enum == -1 && inc_config_cat == (int)config_Category) {
+			dropdown.value = dropdown.options.IndexOf(new Dropdown.OptionData((string)inc_value));
+		}
+	}
+
+	public override int get_encoded_enum_bool_opt(map_bool_option option) {
+		return 0 + 3 * ((int)option);
+	}
+	public override int get_encoded_enum_float_opt(map_float_option option) {
+		return 1 + 3 * ((int)option);
+	}
+	public override int get_encoded_enum_int_opt(map_int_option option) {
+		return 2 + 3 * ((int)option);
 	}
 
 }
