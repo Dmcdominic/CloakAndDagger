@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114990156458923406}
   - component: {fileID: 114674665505827382}
   - component: {fileID: 50873398947275926}
-  - component: {fileID: 70908301206694378}
+  - component: {fileID: 58490216279277398}
   - component: {fileID: 114336950006474412}
   - component: {fileID: 114938384083110894}
   - component: {fileID: 114038434851701454}
@@ -151,7 +151,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1479639472354148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.068, y: -0.901, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4286915255765376}
@@ -230,9 +230,9 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!70 &70908301206694378
-CapsuleCollider2D:
+  m_Constraints: 4
+--- !u!58 &58490216279277398
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -243,9 +243,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.016203523}
-  m_Size: {x: 0.49459878, y: 0.94058657}
-  m_Direction: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.32
 --- !u!95 &95162268332254806
 Animator:
   serializedVersion: 3
@@ -553,6 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dagger_thrown: {fileID: 11400000, guid: 3a8a68bcc7096ac478aa6c31393b3814, type: 2}
+  running_velo_threshhold: 0.2
 --- !u!114 &114938384083110894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -631,6 +632,8 @@ MonoBehaviour:
   kill_out: {fileID: 11400000, guid: a8382b71a4b25b34c8e81f0433bfba56, type: 2}
   respawn_times: {fileID: 11400000, guid: 1a83130fc7c8bd84389b07c46ce4daaa, type: 2}
   destroy_dagger: {fileID: 11400000, guid: 62a0507375e0cc34dbba2a270381c1e6, type: 2}
+  dead_body_prefab: {fileID: 1479639472354148, guid: 1de9f5e2b87dcf54f8f318a273340a7c,
+    type: 2}
 --- !u!114 &114990156458923406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -692,7 +695,7 @@ SpriteRenderer:
   m_SortingLayerID: -1533127311
   m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: fcf51c4cb2959ef4b8c5dd455fbd1d04, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a19f092445b4a04889a4ffed5d11e0b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
