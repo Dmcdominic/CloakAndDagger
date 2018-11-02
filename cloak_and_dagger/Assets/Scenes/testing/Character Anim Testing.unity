@@ -3503,6 +3503,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 7a19f092445b4a04889a4ffed5d11e0b,
         type: 3}
+    - target: {fileID: 114723900682864694, guid: 409b4a96beb9eec4aae70c7407d93c43,
+        type: 2}
+      propertyPath: running_velo_threshhold
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 409b4a96beb9eec4aae70c7407d93c43, type: 2}
   m_IsPrefabAsset: 0
@@ -3544,6 +3549,10 @@ Prefab:
     - target: {fileID: 4336008036378410, guid: 1de9f5e2b87dcf54f8f318a273340a7c, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479639472354148, guid: 1de9f5e2b87dcf54f8f318a273340a7c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1de9f5e2b87dcf54f8f318a273340a7c, type: 2}
