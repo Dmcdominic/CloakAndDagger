@@ -20,6 +20,7 @@ public struct throw_dagger_data {
 }
 
 
+[RequireComponent(typeof(network_id))]
 public class throw_dagger : sync_behaviour<throw_dagger_data> {
 
 	[SerializeField]
@@ -43,12 +44,12 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 	[SerializeField]
 	gameplay_config gameplay_Config;
 
-	private Player_data_carrier player_data_Carrier;
+	private network_id networkID;
 	private uint thrown_index_counter = 0;
 
 
 	private void Awake() {
-		player_data_Carrier = GetComponent<Player_data_carrier>();
+		networkID = GetComponent<network_id>();
 	}
 
     public override void Start()
@@ -95,7 +96,7 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 	// Edit the properties of the dagger here before throwing it
 	private dagger_data create_dagger_data() {
 		bool collaterals = gameplay_Config.bool_options[gameplay_bool_option.dagger_collaterals];
-		byte thrower_ID = player_data_Carrier.player_Data.playerID;
+		byte thrower_ID = (byte)networkID.val;
         return new dagger_data(collaterals, thrower_ID, thrown_index_counter++);
 	}
 	
