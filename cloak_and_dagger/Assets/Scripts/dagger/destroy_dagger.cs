@@ -24,6 +24,7 @@ public class destroy_dagger : sync_behaviour<dagger_data> {
 	}
 
 	public override void rectify(float t, dagger_data state) {
+        print("dagger destoryed");
 		Destroy(gameObject);
 	}
 
