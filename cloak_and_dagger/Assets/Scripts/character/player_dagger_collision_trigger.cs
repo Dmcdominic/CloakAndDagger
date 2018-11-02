@@ -27,7 +27,7 @@ public class player_dagger_collision_trigger : sync_behaviour<death_event_data> 
 	int_float_event kill_out;
 
     [SerializeField]
-    player_float respawn_times;
+    gameplay_config config;
 
     [SerializeField]
     int_event_object destroy_dagger;
@@ -62,7 +62,7 @@ public class player_dagger_collision_trigger : sync_behaviour<death_event_data> 
 	
     public override void rectify(float f, death_event_data DD) {
 		spawn_dead_body(DD);
-		kill_out.Invoke(gameObject_id.val, respawn_times[gameObject_id.val]);
+		kill_out.Invoke(gameObject_id.val, config.float_options[gameplay_float_option.respawn_delay]);
     }
 
 	private void spawn_dead_body(death_event_data DD) {
