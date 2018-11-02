@@ -23,7 +23,7 @@ MonoBehaviour:
     - 0.1
     - 0.5
     - 0
-    - 1.01
+    - 3
     - 1
   int_options:
     m_keys: 00000000
