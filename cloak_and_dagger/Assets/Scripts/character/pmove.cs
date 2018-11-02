@@ -95,6 +95,10 @@ public class pmove : sync_behaviour<player_state>
             rb.velocity = Vector2.zero;
             return;
         }
+        if (rb.velocity.x * input_vec.val.x < 0) rb.velocity = Vector2.up * rb.velocity;
+        if (rb.velocity.y * input_vec.val.y < 0) rb.velocity = Vector2.right * rb.velocity;
+        if(rb.velocity.sqrMagnitude < .25f)
+            rb.AddForce(input_vec.val * move_speed * .1f, ForceMode2D.Impulse);
         rb.AddForce(input_vec.val * move_speed, ForceMode2D.Force);
 
         if(((Vector2)input_vec).sqrMagnitude > .1f && !ignore_input)
@@ -102,7 +106,7 @@ public class pmove : sync_behaviour<player_state>
 
         transform.eulerAngles = Vector3.forward * Mathf.SmoothDampAngle(
                                 transform.eulerAngles.z, target_theta, 
-                                ref smooth_rot_vel, .05f);
+                                ref smooth_rot_vel, .025f);
 
         state = new player_state(transform.position, rb.velocity,transform.eulerAngles.z);
 
@@ -136,7 +140,7 @@ public class pmove : sync_behaviour<player_state>
             smooth_rot_vel = 0;
             target_theta = transform.eulerAngles.z;
             ignore_input = true;
-            Invoke("reset_input", .1f);
+            Invoke("reset_input", .15f);
         }
     }
 
