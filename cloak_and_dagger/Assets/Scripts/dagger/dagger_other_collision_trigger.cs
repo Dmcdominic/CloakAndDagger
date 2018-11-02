@@ -9,7 +9,7 @@ public class dagger_other_collision_trigger : MonoBehaviour {
 	public int_event_object to_trigger_on_collision;
 
 
-	private void OnCollisionEnter2D(Collision2D collision) {
+	private void OnTriggerEnter2D(Collision2D collision) {
 		GameObject collided_with = collision.gameObject;
 		string tag = collided_with.tag;
 		if (tag == "Player") {

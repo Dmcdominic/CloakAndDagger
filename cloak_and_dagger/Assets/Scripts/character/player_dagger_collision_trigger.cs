@@ -37,7 +37,7 @@ public class player_dagger_collision_trigger : sync_behaviour<death_event_data> 
         base.Start();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnTriggerEnter2D(Collision2D collision) {
 		string dagger_tag = collision.gameObject.tag;
 		if (!dagger_tag.Equals("Dagger") || !is_local) {
 			return;
