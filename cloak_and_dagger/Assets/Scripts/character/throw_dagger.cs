@@ -41,6 +41,9 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 	[SerializeField]
 	gameplay_config gameplay_Config;
 
+    [SerializeField]
+    int_float_event inform_pmove;
+
 	private network_id networkID;
 	private uint thrown_index_counter = 0;
 
@@ -88,6 +91,7 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 		if (rb) {
 			rb.velocity = my_dagger.transform.right * gameplay_Config.float_options[gameplay_float_option.dagger_speed];
 		}
+        inform_pmove.Invoke(gameObject_id.val, rotation.eulerAngles.z);
 	}
 
 	// Edit the properties of the dagger here before throwing it
