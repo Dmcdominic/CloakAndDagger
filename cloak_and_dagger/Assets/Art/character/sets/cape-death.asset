@@ -11,4 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7d363466a9a5a429a0c3781885a780, type: 3}
   m_Name: cape-death
   m_EditorClassIdentifier: 
-  palettes: []
+  palettes:
+  - {fileID: 11400000, guid: ccab44155278eda4cb582e13dd1221a2, type: 2}
+  - {fileID: 11400000, guid: e36155a2123b5964eab4fe5ce4c525ec, type: 2}

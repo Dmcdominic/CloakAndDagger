@@ -36,6 +36,7 @@ public class anim_palettes_bundle : ScriptableObject {
 				APB.sets.Add(set);
 			}
 		}
+		EditorUtility.SetDirty(APB);
 	}
 #endif
 }

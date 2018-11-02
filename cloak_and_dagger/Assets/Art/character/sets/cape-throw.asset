@@ -11,4 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7d363466a9a5a429a0c3781885a780, type: 3}
   m_Name: cape-throw
   m_EditorClassIdentifier: 
-  palettes: []
+  palettes:
+  - {fileID: 11400000, guid: c12fdfa4beb53104a861755b3c94ead8, type: 2}
+  - {fileID: 11400000, guid: 8ef15959c37e3214e958fe0221cebfa5, type: 2}

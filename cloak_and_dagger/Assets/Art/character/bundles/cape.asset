@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: cape
   m_EditorClassIdentifier: 
   sets:
-  - {fileID: 11400000, guid: fb6c558df33f1f241bdb879e2a8d5bbb, type: 2}
-  - {fileID: 11400000, guid: 8c4a066e6e3618e4f825ba55be59ef63, type: 2}
+  - {fileID: 11400000, guid: f1805220be788d347aa2a615a0d13ff6, type: 2}
+  - {fileID: 11400000, guid: ea6203f09e8702f4c8d0f8a7ad815574, type: 2}
+  - {fileID: 11400000, guid: 3870e61e01b4c7946ae864ebbb9b8e5f, type: 2}
+  - {fileID: 11400000, guid: 60da5e2c70985634486e1f8a6a658769, type: 2}

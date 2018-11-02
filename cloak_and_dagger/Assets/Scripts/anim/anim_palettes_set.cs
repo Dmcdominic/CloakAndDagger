@@ -38,6 +38,7 @@ public class anim_palettes_set : ScriptableObject {
 				APS.palettes.Add(sheet);
 			}
 		}
+		EditorUtility.SetDirty(APS);
 	}
 #endif
 }

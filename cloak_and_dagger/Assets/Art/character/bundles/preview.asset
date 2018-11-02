@@ -11,4 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9e6866cd89897438f7285464f6f2ac, type: 3}
   m_Name: preview
   m_EditorClassIdentifier: 
-  sets: []
+  sets:
+  - {fileID: 11400000, guid: 20b244b4e24b1cb429002adc3857dca4, type: 2}

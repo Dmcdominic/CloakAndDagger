@@ -11,4 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7d363466a9a5a429a0c3781885a780, type: 3}
   m_Name: body-throw
   m_EditorClassIdentifier: 
-  palettes: []
+  palettes:
+  - {fileID: 11400000, guid: 6ec6c9687068e1e44bab1a6a57a58a80, type: 2}
+  - {fileID: 11400000, guid: f645fb9263f6742478feb7387d7f86f6, type: 2}

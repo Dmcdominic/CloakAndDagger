@@ -11,4 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7d363466a9a5a429a0c3781885a780, type: 3}
   m_Name: cape-run
   m_EditorClassIdentifier: 
-  palettes: []
+  palettes:
+  - {fileID: 11400000, guid: 657190d0868a76f49a98248510bfe79d, type: 2}
+  - {fileID: 11400000, guid: f09e38063e517e441ad329099007c32d, type: 2}
