@@ -16,7 +16,7 @@ MonoBehaviour:
   up: 0
   down: 0
   dagger_key: 32
-  dash_key: 324
+  dash_key: 113
   horizontal_axis: Horizontal
   vertical_axis: Vertical
   use_axis: 1

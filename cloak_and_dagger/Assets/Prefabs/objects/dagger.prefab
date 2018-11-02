@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   to_trigger_on_collision: {fileID: 11400000, guid: 62a0507375e0cc34dbba2a270381c1e6,
     type: 2}
+  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
 --- !u!114 &114500513551518450
 MonoBehaviour:
   m_ObjectHideFlags: 1
