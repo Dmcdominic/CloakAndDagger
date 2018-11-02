@@ -61,7 +61,7 @@ public class pmove : sync_behaviour<player_state>
     float move_speed = 100;
 
     [SerializeField]
-    bool_var is_stun;
+    player_bool is_stun;
 
     [SerializeField]
     int_float_event dagger_in;
@@ -75,6 +75,7 @@ public class pmove : sync_behaviour<player_state>
     float smooth_rot_vel = 0;
 
     bool ignore_input = false;
+    
 
     Vector3 smooth_vel = Vector3.zero;
 
@@ -84,15 +85,15 @@ public class pmove : sync_behaviour<player_state>
     // Update is called once per frame
     void Update()
     {
-
-        if (!is_local) //you are not the local go
-        {
-            transform.position = Vector3.SmoothDamp(transform.position, target_pos, ref smooth_vel, .005f);
-            return;
-        }
-        if (is_stun.val)
+        if (is_stun[gameObject_id.val])
         {
             rb.velocity = Vector2.zero;
+            return;
+        }
+        if (!is_local) //you are not the local go
+        {
+            if (Mathf.Abs(((Vector2)transform.position - target_pos).magnitude) > 1) return;
+            transform.position = Vector3.SmoothDamp(transform.position, target_pos, ref smooth_vel, .005f);
             return;
         }
         if (rb.velocity.x * input_vec.val.x < 0) rb.velocity = Vector2.up * rb.velocity;
