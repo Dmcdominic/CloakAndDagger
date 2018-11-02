@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4283682991924868}
   - component: {fileID: 114838478873467394}
-  - component: {fileID: 114642483626690530}
   m_Layer: 0
   m_Name: heartbeat_repeater
   m_TagString: Untagged
@@ -41,38 +40,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114642483626690530
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1099883201935626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 44
-    i1: 171
-    i2: 169
-    i3: 127
-    i4: 194
-    i5: 229
-    i6: 66
-    i7: 180
-    i8: 171
-    i9: 205
-    i10: 191
-    i11: 209
-    i12: 165
-    i13: 48
-    i14: 207
-    i15: 214
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &114838478873467394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,7 +51,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d41b7cfab31a342aeb04e4569e81cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverOnly: 1
-  autostart: 1
-  interval: 4
+  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   event_to_trigger: {fileID: 11400000, guid: 566665ec96310f541876a867afffb402, type: 2}

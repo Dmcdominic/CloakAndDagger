@@ -3,16 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class event_repeater : NetworkBehaviour {
+public class event_repeater : MonoBehaviour {
 
 	[SerializeField]
-	private bool serverOnly;
-
-	[SerializeField]
-	private bool autostart;
-
-	[SerializeField]
-	private float interval;
+	private gameplay_config gameplay_Config;
 
 	[SerializeField]
 	private event_object event_to_trigger;
@@ -20,15 +14,13 @@ public class event_repeater : NetworkBehaviour {
 
 	// Use this for initialization
 	void Start() {
-		if (autostart) {
+		// todo - start the repeater when the game start countdown ends
+		if (gameplay_Config.bool_options[gameplay_bool_option.heartbeat]) {
 			start_repeater();
 		}
 	}
 
 	public void start_repeater() {
-		if (serverOnly && !isServer) {
-			return;
-		}
 		StartCoroutine(triggerEvent());
 	}
 
@@ -38,15 +30,9 @@ public class event_repeater : NetworkBehaviour {
 
 	IEnumerator triggerEvent() {
 		while (true) {
-			yield return new WaitForSeconds(interval);
-			Rpc_trigger_event();
+			yield return new WaitForSeconds(gameplay_Config.float_options[gameplay_float_option.heartbeat_interval]);
+			event_to_trigger.Invoke();
 		}
-	}
-
-	// Triggers the event on all clients
-	[ClientRpc]
-	private void Rpc_trigger_event() {
-		event_to_trigger.Invoke();
 	}
 
 }
