@@ -269,8 +269,7 @@ MonoBehaviour:
     network_id: 0
   _origin: {fileID: 11400000, guid: 276cb45050efbd24c925199d72e92b6b, type: 2}
   _dest: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
-  speed: 100
-  cast_buffer: 1
+  cast_buffer: 1.5
   dagger_prefab: {fileID: 1862537834978502, guid: f715f6ea0cc87e445a3b49fe4014a4c1,
     type: 2}
   trigger: {fileID: 11400000, guid: 5adfb4030633d6c4195a90424c62c663, type: 2}

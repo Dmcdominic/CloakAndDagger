@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[SerializeField]
+public struct unit { }
 
-public class destroy_dagger : sync_behaviour<dagger_data> {
+public class destroy_dagger : sync_behaviour<unit> {
 
 	public int_event_object trigger_destroy;
 	private dagger_data_carrier dagger_Data_Carrier;
@@ -19,12 +21,13 @@ public class destroy_dagger : sync_behaviour<dagger_data> {
 		if (gameObject.GetInstanceID() != dagger_instanceID) {
 			return;
 		}
-		send_state(dagger_Data_Carrier.dagger_Data);
+        
+		send_state(new unit());
 		Destroy(gameObject);
 	}
 
-	public override void rectify(float t, dagger_data state) {
-        print("dagger destoryed");
+	public override void rectify(float t, unit state) {
+        print($"dagger destoryed");
 		Destroy(gameObject);
 	}
 

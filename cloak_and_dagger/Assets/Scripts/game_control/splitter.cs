@@ -67,7 +67,7 @@ public class splitter : MonoBehaviour {
     {
         mtc_data md = (mtc_data)obj_in;
         network_events[md.type].Invoke(md.t,md.body,md.id);
-        print($"received message of type {md.type}");
+        if(md.type == mtc_Type.dagger_die) print($"received message of type {md.type}");
 
     }
 
