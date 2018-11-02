@@ -30,16 +30,18 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 	Vec2Var _dest;
 
 	[SerializeField]
-	float cast_buffer = 1;
-
-	[SerializeField]
 	GameObject dagger_prefab;
 
 	[SerializeField]
 	int_float_event trigger;
 
 	[SerializeField]
+	player_event dagger_thrown;
+
+	[SerializeField]
 	gameplay_config gameplay_Config;
+	[SerializeField]
+	readonly_gameplay_config readonly_Gameplay_Config;
 
     [SerializeField]
     int_float_event inform_pmove;
@@ -83,7 +85,7 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 
 		Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(dir.y, dir.x));
 		GameObject my_dagger = Instantiate(dagger_prefab, position, rotation);
-		my_dagger.transform.position += my_dagger.transform.right * cast_buffer;
+		my_dagger.transform.position += my_dagger.transform.right * readonly_Gameplay_Config.float_options[readonly_gameplay_float_option.dagger_buffer];
 		my_dagger.GetComponent<dagger_data_carrier>().dagger_Data = create_dagger_data();
 		my_dagger.GetComponent<network_id>().val = throw_data.network_id;
 
@@ -92,6 +94,9 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 			rb.velocity = my_dagger.transform.right * gameplay_Config.float_options[gameplay_float_option.dagger_speed];
 		}
         inform_pmove.Invoke(gameObject_id.val, rotation.eulerAngles.z);
+		if (dagger_thrown) {
+			dagger_thrown.Invoke(0, gameObject);
+		}
 	}
 
 	// Edit the properties of the dagger here before throwing it

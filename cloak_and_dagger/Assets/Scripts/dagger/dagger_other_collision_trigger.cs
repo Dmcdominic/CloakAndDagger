@@ -20,8 +20,6 @@ public class dagger_other_collision_trigger : MonoBehaviour {
 			to_trigger_on_collision.Invoke(gameObject.GetInstanceID());
 		} else if (tag == "Dagger") {
 			to_trigger_on_collision.Invoke(gameObject.GetInstanceID());
-		} else if (tag == "Dead-Player") {
-			to_trigger_on_collision.Invoke(gameObject.GetInstanceID());
 		}
 	}
 

@@ -21,11 +21,11 @@ public class Conditional_Rendering : MonoBehaviour {
 	[SerializeField]
 	bool_var spectator_reveal;
 
-	private SpriteRenderer sr;
+	private SpriteRenderer[] srs;
 
 	// Use this for initialization
 	void Start () {
-		sr = GetComponent<SpriteRenderer>();
+		srs = GetComponentsInChildren<SpriteRenderer>();
 		update_material();
 	}
 
@@ -34,13 +34,17 @@ public class Conditional_Rendering : MonoBehaviour {
 	}
 
 	private void update_material() {
-		if (!sr) {
-			sr = GetComponent<SpriteRenderer>();
+		if (srs == null) {
+			srs = GetComponentsInChildren<SpriteRenderer>();
 		}
 		if ((GetComponent<network_id>().val == local_id.val) || spectator_reveal.val) {
-			sr.material = local_mat;
+			foreach (SpriteRenderer sr in srs) {
+				sr.material = local_mat;
+			}
 		} else {
-			sr.material = non_local_mat;
+			foreach (SpriteRenderer sr in srs) {
+				sr.material = non_local_mat;
+			}
 		}
 	}
 

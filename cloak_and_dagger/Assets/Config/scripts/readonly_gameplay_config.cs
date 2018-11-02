@@ -4,7 +4,7 @@ using UnityEngine;
 
 // Add options here
 public enum readonly_gameplay_bool_option { }
-public enum readonly_gameplay_float_option { dagger_stun_time }
+public enum readonly_gameplay_float_option { dagger_stun_time, dagger_buffer }
 public enum readonly_gameplay_int_option { }
 
 //[CreateAssetMenu(menuName = "config/readonly_gameplay")]
