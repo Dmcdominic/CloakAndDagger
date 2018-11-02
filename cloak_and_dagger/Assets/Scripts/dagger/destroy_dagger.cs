@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[SerializeField]
+using System;
+
+[Serializable]
 public struct unit { }
 
 public class destroy_dagger : sync_behaviour<unit> {
