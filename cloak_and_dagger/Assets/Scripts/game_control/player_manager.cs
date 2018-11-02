@@ -39,6 +39,9 @@ public class player_manager : MonoBehaviour {
     [SerializeField]
     bool_var host;
 
+    [SerializeField]
+    event_object notify_party;
+
     IProtagoras_Client<object> client;
 
 
@@ -46,6 +49,7 @@ public class player_manager : MonoBehaviour {
 	void Start () {
         host.val = false;
         client = client_go.GetComponent<IProtagoras_Client<object>>();
+        StartCoroutine(notify_party_change(notify_party));
 	}
 
     public void refresh()
@@ -61,6 +65,20 @@ public class player_manager : MonoBehaviour {
             refresh();
             yield return new WaitForSeconds(.5f);
             
+        }
+    }
+
+    IEnumerator notify_party_change(event_object notify)
+    {
+        yield return new WaitUntil(() => out_party_info.val.members != null);
+        while(true)
+        {
+            Party_Names pn = out_party_info.val;
+            yield return new WaitUntil(
+                () => !pn.members.SequenceEqual(out_party_info.val.members)
+                      && pn.leader != out_party_info.val.leader
+                );
+            notify.Invoke();
         }
     }
 

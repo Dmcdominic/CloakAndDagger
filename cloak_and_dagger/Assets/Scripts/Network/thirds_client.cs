@@ -154,6 +154,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
             case Custom_msg_type.LOGOUT:
                 break;
             case Custom_msg_type.MTC:
+                message = unformat_bytes<object>((byte[])message);
                 message_event(message);
                 break;
             case Custom_msg_type.RPC:
@@ -322,6 +323,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
 
     public bool Multicast(object msg,bool reliable = true, bool large = false)
     {
+        msg = format_data(msg);
         return send_message(Custom_msg_type.MTC, "", "", -1,body: msg,reliable: reliable,large: large);
     }
 

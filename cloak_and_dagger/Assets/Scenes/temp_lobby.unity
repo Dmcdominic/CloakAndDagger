@@ -819,6 +819,7 @@ MonoBehaviour:
     type: 2}
   client_go: {fileID: 1044740422}
   host: {fileID: 11400000, guid: fe42b619e3bccd34eaf8ce7c03e77e41, type: 2}
+  notify_party: {fileID: 0}
 --- !u!1 &569488292
 GameObject:
   m_ObjectHideFlags: 0
