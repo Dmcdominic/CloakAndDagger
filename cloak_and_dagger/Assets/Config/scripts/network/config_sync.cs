@@ -13,6 +13,7 @@ public class config_sync : MonoBehaviour {
 	public sync_event out_event;
 	public sync_event in_event;
 
+
 	private void Awake() {
 		if (in_event) {
 			in_event.e.AddListener(sync_incoming_config);
@@ -24,42 +25,56 @@ public class config_sync : MonoBehaviour {
 
 	private void sync_incoming_config(float t, object state, int config_cat_int) {
 		Debug.Log("Reached sync_incoming_config()");
-		int type = ((int)t) % 3;
-		int enum_index = ((int)t) / 3;
-		switch ((config_category)config_cat_int) {
-			case config_category.map:
-				Debug.Log("Received a map config value");
-				if (type == 0) {
-					((map_config)editable_configs[config_category.map]).bool_options[(map_bool_option)enum_index] = (bool)state;
-				} else if (type == 1) {
-					((map_config)editable_configs[config_category.map]).float_options[(map_float_option)enum_index] = (float)state;
-				} else if (type == 2) {
-					((map_config)editable_configs[config_category.map]).int_options[(map_int_option)enum_index] = (int)state;
-				}
-				break;
-			case config_category.win_con:
-				Debug.Log("Received a win_con config value");
-				if (type == 0) {
-					((win_con_config)editable_configs[config_category.win_con]).bool_options[(winCon_bool_option)enum_index] = (bool)state;
-				} else if (type == 1) {
-					((win_con_config)editable_configs[config_category.win_con]).float_options[(winCon_float_option)enum_index] = (float)state;
-				} else if (type == 2) {
-					((win_con_config)editable_configs[config_category.win_con]).int_options[(winCon_int_option)enum_index] = (int)state;
-				}
-				break;
-			case config_category.gameplay:
-				Debug.Log("Received a gameplay config value");
-				if (type == 0) {
-					((gameplay_config)editable_configs[config_category.gameplay]).bool_options[(gameplay_bool_option)enum_index] = (bool)state;
-				} else if (type == 1) {
-					((gameplay_config)editable_configs[config_category.gameplay]).float_options[(gameplay_float_option)enum_index] = (float)state;
-				} else if (type == 2) {
-					((gameplay_config)editable_configs[config_category.gameplay]).int_options[(gameplay_int_option)enum_index] = (int)state;
-				}
-				break;
-			default:
-				Debug.LogError("config_cat_int received (" + config_cat_int + ") does not apply to a compatible config category");
-				break;
+
+		int t_int = (int)t;
+
+		// Check for special config types
+		if (t_int == -1) {
+			// Receive the current map string
+			((map_config)editable_configs[config_category.map]).map = (string)state;
+		} else if (t_int == -2) {
+			// Receive the current win_con enum
+			((win_con_config)editable_configs[config_category.win_con]).win_Condition = (win_condition)state;
+		} else {
+			// Receive a key-value pair in one of the config dictionaries
+			int type = t_int % 3;
+			int enum_index = t_int / 3;
+
+			switch ((config_category)config_cat_int) {
+				case config_category.map:
+					Debug.Log("Received a map config value");
+					if (type == 0) {
+						((map_config)editable_configs[config_category.map]).bool_options[(map_bool_option)enum_index] = (bool)state;
+					} else if (type == 1) {
+						((map_config)editable_configs[config_category.map]).float_options[(map_float_option)enum_index] = (float)state;
+					} else if (type == 2) {
+						((map_config)editable_configs[config_category.map]).int_options[(map_int_option)enum_index] = (int)state;
+					}
+					break;
+				case config_category.win_con:
+					Debug.Log("Received a win_con config value");
+					if (type == 0) {
+						((win_con_config)editable_configs[config_category.win_con]).bool_options[(winCon_bool_option)enum_index] = (bool)state;
+					} else if (type == 1) {
+						((win_con_config)editable_configs[config_category.win_con]).float_options[(winCon_float_option)enum_index] = (float)state;
+					} else if (type == 2) {
+						((win_con_config)editable_configs[config_category.win_con]).int_options[(winCon_int_option)enum_index] = (int)state;
+					}
+					break;
+				case config_category.gameplay:
+					Debug.Log("Received a gameplay config value");
+					if (type == 0) {
+						((gameplay_config)editable_configs[config_category.gameplay]).bool_options[(gameplay_bool_option)enum_index] = (bool)state;
+					} else if (type == 1) {
+						((gameplay_config)editable_configs[config_category.gameplay]).float_options[(gameplay_float_option)enum_index] = (float)state;
+					} else if (type == 2) {
+						((gameplay_config)editable_configs[config_category.gameplay]).int_options[(gameplay_int_option)enum_index] = (int)state;
+					}
+					break;
+				default:
+					Debug.LogError("config_cat_int received (" + config_cat_int + ") does not apply to a compatible config category");
+					break;
+			}
 		}
 	}
 
@@ -70,7 +85,7 @@ public class config_sync : MonoBehaviour {
 			return;
 		}
 
-		// Send map config
+		// Send map config options
 		Debug.Log("Sending map config");
 		map_config map_Config = (map_config)(editable_configs[config_category.map]);
 		foreach (map_bool_option bool_Option in map_Config.bool_options.Keys) {
@@ -108,6 +123,11 @@ public class config_sync : MonoBehaviour {
 		foreach (gameplay_int_option int_Option in gameplay_Config.int_options.Keys) {
 			out_event.Invoke(2 + ((int)int_Option) * 3, gameplay_Config.int_options[int_Option], (int)config_category.gameplay);
 		}
+
+		// Send map name
+		out_event.Invoke(-1, map_Config.map, (int)config_category.map);
+		// Send win_con
+		out_event.Invoke(-2, win_con_Config.win_Condition, (int)config_category.win_con);
 
 		Debug.Log("Completed all 3 config sends");
 	}
