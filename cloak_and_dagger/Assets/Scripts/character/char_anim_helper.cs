@@ -36,7 +36,7 @@ public class char_anim_helper : MonoBehaviour {
 		animator.SetTrigger("die");
 	}
 
-	public void destroy_this_gameobject() {
-		Destroy(gameObject);
+	public void destroy_this() {
+		Destroy(transform.root.gameObject);
 	}
 }

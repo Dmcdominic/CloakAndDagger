@@ -19,11 +19,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4336008036378410}
-  - component: {fileID: 50873398947275926}
-  - component: {fileID: 70908301206694378}
   m_Layer: 0
   m_Name: dead_character
-  m_TagString: Dead-Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,41 +164,6 @@ Transform:
   m_Father: {fileID: 4286915255765376}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50873398947275926
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1479639472354148}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.5
-  m_LinearDrag: 20
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!70 &70908301206694378
-CapsuleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1479639472354148}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.016203523}
-  m_Size: {x: 0.49459878, y: 0.94058657}
-  m_Direction: 0
 --- !u!95 &95162268332254806
 Animator:
   serializedVersion: 3
@@ -278,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dagger_thrown: {fileID: 11400000, guid: 3a8a68bcc7096ac478aa6c31393b3814, type: 2}
+  running_velo_threshhold: 0
 --- !u!114 &114945712545972036
 MonoBehaviour:
   m_ObjectHideFlags: 1
