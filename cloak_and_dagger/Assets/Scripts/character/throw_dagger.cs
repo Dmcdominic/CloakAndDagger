@@ -30,9 +30,6 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 	Vec2Var _dest;
 
 	[SerializeField]
-	float speed = 100;
-
-	[SerializeField]
 	float cast_buffer = 1;
 
 	[SerializeField]
@@ -89,7 +86,7 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 
 		Rigidbody2D rb = my_dagger.GetComponent<Rigidbody2D>();
 		if (rb) {
-			rb.velocity = my_dagger.transform.right * speed;
+			rb.velocity = my_dagger.transform.right * gameplay_Config.float_options[gameplay_float_option.dagger_speed];
 		}
 	}
 
