@@ -37,16 +37,16 @@ public class player_dagger_collision_trigger : sync_behaviour<death_event_data> 
         base.Start();
     }
 
-    private void OnTriggerEnter2D(Collision2D collision) {
-		string dagger_tag = collision.gameObject.tag;
+    private void OnTriggerEnter2D(Collider2D collider) {
+		string dagger_tag = collider.gameObject.tag;
 		if (!dagger_tag.Equals("Dagger") || !is_local) {
 			return;
 		}
 
 		string tag = gameObject.tag; // Should be "Player"
-		dagger_data dagger_Data = collision.gameObject.GetComponent<dagger_data_carrier>().dagger_Data;
+		dagger_data dagger_Data = collider.gameObject.GetComponent<dagger_data_carrier>().dagger_Data;
 
-        destroy_dagger.Invoke(collision.gameObject.GetInstanceID());
+        destroy_dagger.Invoke(collider.gameObject.GetInstanceID());
 
         rectify(Time.time, new death_event_data((byte)gameObject_id.val, death_type.dagger, dagger_Data.thrower));
         send_state(new death_event_data((byte)gameObject_id.val,death_type.dagger,dagger_Data.thrower));
