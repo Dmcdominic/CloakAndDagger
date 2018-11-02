@@ -106,9 +106,10 @@ public class pmove : sync_behaviour<player_state>
         rb = transform.GetComponent<Rigidbody2D>();
         base.Start();
         state = new player_state(transform.position, rb.velocity);
-        sync_continously();
-
     }
 
-
+    private void OnEnable()
+    {
+        sync_continously();
+    }
 }

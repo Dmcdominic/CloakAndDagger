@@ -44,6 +44,7 @@ public class sync_behaviour<T> : MonoBehaviour {
 
     IEnumerator send_update()
     {
+        yield return null;
         while(gameObject_id.val == local_id.val)
         {
             yield return new WaitForSeconds(1 / sync_rate);
