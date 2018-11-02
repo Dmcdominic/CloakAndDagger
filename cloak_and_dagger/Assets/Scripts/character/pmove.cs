@@ -38,13 +38,13 @@ public struct player_state
 {
     public serializable_vec2 pos;
     public serializable_vec2 vel;
-    //public float theta;
+    public float theta;
 
     public player_state(Vector2 pos, Vector2 vel, float theta)
     {
         this.pos = pos;
         this.vel = vel;
-        //this.theta = theta;
+        this.theta = theta;
     }
 }
 
@@ -119,7 +119,7 @@ public class pmove : sync_behaviour<player_state>
 
         target_pos = ps.pos;
         rb.velocity = ps.vel;
-        //transform.eulerAngles = Vector3.forward * ps.theta;
+        transform.eulerAngles = Vector3.forward * ps.theta;
         
     }
     // Use this for initialization
