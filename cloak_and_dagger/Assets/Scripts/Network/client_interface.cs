@@ -67,7 +67,7 @@ public interface IProtagoras_Client<Message_Type>
     bool Join_Party(string name);
 
 
-    bool leave_party();
+    bool Leave_Party();
 
 
     /*
@@ -119,14 +119,7 @@ public interface IProtagoras_Client<Message_Type>
      */
     void Register_Receive_Request(Action<string,Action> when_someone_wants_to_join);
 
-
-    /*
-     * Params:   -
-     * Requires: You have logged in and have not called Start_Game
-     * Ensures:  Gives you the most recent list that the server sent us
-     *            
-     */
-    List<Party_Names> Get_Party_list();
+    
 
     void Register_Party_list(Action<List<Party_Names>> invoke);
 

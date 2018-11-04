@@ -292,6 +292,10 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         request_event = str => when_someone_wants_to_join(str, () => Invite_Player(str));
     }
 
+    public bool Leave_Party()
+    {
+        return send_message(Custom_msg_type.LEAVE_PARTY, "", null, -1);
+    }
 
     public bool Start_Game()
     {

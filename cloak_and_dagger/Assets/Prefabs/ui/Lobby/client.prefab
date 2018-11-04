@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7b73d2b0dc914084014c0d24a7076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
+  debug: 1
   in_multicast: {fileID: 11400000, guid: 11f3c22c330b0cb499df42eeaeb444ad, type: 2}
   in_unreliable: {fileID: 11400000, guid: 99b73b994ade95149bbe1b7616ee0397, type: 2}
   in_large: {fileID: 11400000, guid: 14b56887b4680c84a89544f7301ced15, type: 2}
