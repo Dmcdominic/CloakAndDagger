@@ -266,11 +266,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tooltip_update: {fileID: 11400000, guid: cc944729bb9d4274fa99f6be62ad2abd, type: 2}
-  after_value_changed: {fileID: 11400000, guid: 12c5f480ae5b02246be621b1b3b2f5d5,
+  after_value_changed: {fileID: 11400000, guid: ef2268ebe1777c848b9d9af100f0b891,
     type: 2}
+  update_field_to: {fileID: 11400000, guid: c7d956458be2cae4ea1d4a892711750d, type: 2}
   title: {fileID: 114154989375421156}
   toggle_dependencies: []
   description: 
+  values_prepopulated: 0
+  encoded_enum: 0
+  config_cat: 0
   slider: {fileID: 114317557916193354}
   input_field: {fileID: 114321401439103478}
   min: 0

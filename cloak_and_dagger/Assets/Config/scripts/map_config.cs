@@ -15,9 +15,11 @@ public class map_config : config_object<map_bool_option, map_float_option, map_i
 	public string map {
 		get { return _map; }
 		set {
-			_map = value;
-			map_changed.Invoke();
-			send_config_sync.Invoke();
+			if (_map != value) {
+				_map = value;
+				map_changed.Invoke();
+				update_one_config_value.Invoke(-1, _map, (int)config_category.map);
+			}
 		}
 	}
 	public all_maps_list all_map_infos;
@@ -27,7 +29,7 @@ public class map_config : config_object<map_bool_option, map_float_option, map_i
 		}
 	}
 	public event_object map_changed;
-	public event_object send_config_sync;
+	public config_option_event_object update_one_config_value;
 
 	public new MapOption_Bool_Dict bool_options = new MapOption_Bool_Dict();
 	public new MapOption_Float_Dict float_options = new MapOption_Float_Dict();

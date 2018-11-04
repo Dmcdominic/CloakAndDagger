@@ -42,4 +42,14 @@ public class gameplay_config_fields_controller : config_fields_controller<gamepl
 		base.Awake();
 	}
 
+	public override int get_encoded_enum_bool_opt(gameplay_bool_option option) {
+		return 0 + 3 * ((int)option);
+	}
+	public override int get_encoded_enum_float_opt(gameplay_float_option option) {
+		return 1 + 3 * ((int)option);
+	}
+	public override int get_encoded_enum_int_opt(gameplay_int_option option) {
+		return 2 + 3 * ((int)option);
+	}
+
 };

@@ -17,13 +17,15 @@ public class win_con_config : config_object<winCon_bool_option, winCon_float_opt
 	public win_condition win_Condition {
 		get { return _win_Condition; }
 		set {
-			_win_Condition = value;
-			win_con_changed.Invoke();
-			send_config_sync.Invoke();
+			if (_win_Condition != value) {
+				_win_Condition = value;
+				win_con_changed.Invoke();
+				update_one_config_value.Invoke(-2, _win_Condition, (int)config_category.win_con);
+			}
 		}
 	}
 	public event_object win_con_changed;
-	public event_object send_config_sync;
+	public config_option_event_object update_one_config_value;
 
 	public new WinConOption_Bool_Dict bool_options = new WinConOption_Bool_Dict();
 	public new WinConOption_Float_Dict float_options = new WinConOption_Float_Dict();

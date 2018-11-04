@@ -2122,6 +2122,10 @@ MonoBehaviour:
   map_changed: {fileID: 11400000, guid: da845d93557c85b42b37da10ce4adaa8, type: 2}
   config: {fileID: 11400000, guid: 311d7573890fff64598a6d804ea6e720, type: 2}
   win_Con_Config: {fileID: 11400000, guid: 4a15c59b8048876449a6497af431e6a7, type: 2}
+  update_one_config_value: {fileID: 11400000, guid: ef2268ebe1777c848b9d9af100f0b891,
+    type: 2}
+  update_one_config_field: {fileID: 11400000, guid: c7d956458be2cae4ea1d4a892711750d,
+    type: 2}
 --- !u!114 &114554907725774868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2531,6 +2535,10 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 4a15c59b8048876449a6497af431e6a7, type: 2}
   map_Config: {fileID: 11400000, guid: 311d7573890fff64598a6d804ea6e720, type: 2}
   all_Maps_List: {fileID: 11400000, guid: 1ba2f1829016d5145a73effd797b5b4b, type: 2}
+  update_one_config_value: {fileID: 11400000, guid: ef2268ebe1777c848b9d9af100f0b891,
+    type: 2}
+  update_one_config_field: {fileID: 11400000, guid: c7d956458be2cae4ea1d4a892711750d,
+    type: 2}
 --- !u!114 &114741505742278136
 MonoBehaviour:
   m_ObjectHideFlags: 1

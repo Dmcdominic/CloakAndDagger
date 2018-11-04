@@ -10,7 +10,7 @@ public class bool_input : config_input_field {
 	private bool _value;
 	public bool value {
 		get { return _value; }
-		set { _value = value; on_value_changed.Invoke(_value); after_value_changed.Invoke(); }
+		set { _value = value; on_value_changed.Invoke(_value); after_val_changed(_value); }
 	}
 	
 	public Toggle toggle;
@@ -26,11 +26,21 @@ public class bool_input : config_input_field {
 
 
 	public override void set_up_listeners() {
-		// UI input listeners
+		// UI input listener
 		toggle.onValueChanged.AddListener(on_toggle_value_change());
 
-		// on_value_change listeners
+		// on_value_change listener
 		on_value_changed.AddListener(get_update_dependents_action());
+
+		// Enable values_prepopulated so that a config sync event will now get sent after edits
+		values_prepopulated = true;
+	}
+
+	public override void update_this_field_to(object new_val_obj) {
+		bool new_val = (bool)new_val_obj;
+		if (new_val != value) {
+			value = new_val;
+		}
 	}
 
 	private UnityAction<bool> on_toggle_value_change() {
