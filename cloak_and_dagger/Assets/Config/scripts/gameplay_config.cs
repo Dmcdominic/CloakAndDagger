@@ -28,25 +28,6 @@ public class gameplay_config : config_object<gameplay_bool_option, gameplay_floa
 		float_options.CopyFrom(casted_obj.float_options);
 		int_options.CopyFrom(casted_obj.int_options);
 	}
-
-	public void copy_from_syncable(gameplay_syncable_config syncable) {
-		bool_options.CopyFrom(syncable.bool_options.ToDictionary(x => x.Key, x => x.Value));
-		float_options.CopyFrom(syncable.float_options.ToDictionary(x => x.Key, x => x.Value));
-		int_options.CopyFrom(syncable.int_options.ToDictionary(x => x.Key, x => x.Value));
-	}
-}
-
-
-[System.Serializable]
-public struct gameplay_syncable_config {
-	public List<KeyValuePair<gameplay_bool_option, bool>> bool_options;
-	public List<KeyValuePair<gameplay_float_option, float>> float_options;
-	public List<KeyValuePair<gameplay_int_option, int>> int_options;
-	public gameplay_syncable_config(gameplay_config config) {
-		bool_options = config.bool_options.ToList();
-		float_options = config.float_options.ToList();
-		int_options = config.int_options.ToList();
-	}
 }
 
 
