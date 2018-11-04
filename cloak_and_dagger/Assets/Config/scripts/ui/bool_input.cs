@@ -39,9 +39,8 @@ public class bool_input : config_input_field {
 
 	public override void update_this_field_to(object new_val_obj) {
 		bool new_val = (bool)new_val_obj;
-		if (new_val != value) {
-			toggle.isOn = new_val;
-		}
+		value = new_val;
+		toggle.isOn = new_val;
 	}
 
 	private UnityAction<bool> on_toggle_value_change() {
