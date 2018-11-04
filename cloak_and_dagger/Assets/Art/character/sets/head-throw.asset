@@ -11,4 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7d363466a9a5a429a0c3781885a780, type: 3}
   m_Name: head-throw
   m_EditorClassIdentifier: 
-  palettes: []
+  palettes:
+  - {fileID: 11400000, guid: 35a4564e1c80a414fb502dd10bba1637, type: 2}
+  - {fileID: 11400000, guid: 8854eba95c28f1041b94126d1432f5d9, type: 2}

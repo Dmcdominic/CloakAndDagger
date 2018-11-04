@@ -53,6 +53,7 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 
 	private void create_win_con_dropdown() {
 		Dropdown dropdown = Instantiate(win_con_dropdown_prefab.gameObject).GetComponent<Dropdown>();
+		current_fields.Add(dropdown.transform);
 		dropdown.transform.SetParent(this.transform);
 
 		List<Dropdown.OptionData> dropdown_options = new List<Dropdown.OptionData>();
@@ -62,7 +63,7 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 		}
 		dropdown.AddOptions(dropdown_options);
 
-		dropdown.interactable = interactable;
+		dropdown.interactable = host.val;
 		dropdown.value = (int)config.win_Condition;
 		dropdown.onValueChanged.AddListener(config.switch_win_con);
 	}

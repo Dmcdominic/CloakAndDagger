@@ -10,6 +10,8 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(Status_Float_Dict))]
 // ============= Data persistence dicts ================
 [CustomPropertyDrawer(typeof(ConfigCat_ScriptableObj_Dict))]
+// ============= Event dicts ===========================
+[CustomPropertyDrawer(typeof(mtc_object_event_dict))]
 // ========== Config object enum dictionaries ==========
 [CustomPropertyDrawer(typeof(GameplayOption_Bool_Dict))]
 [CustomPropertyDrawer(typeof(GameplayOption_Float_Dict))]

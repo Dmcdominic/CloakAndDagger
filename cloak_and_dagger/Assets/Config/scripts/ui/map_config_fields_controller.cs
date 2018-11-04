@@ -58,6 +58,7 @@ public class map_config_fields_controller : config_fields_controller<map_bool_op
 		// TODO - make this a visual selection menu using the thumbnails and a Grid Layout Group
 
 		Dropdown dropdown = Instantiate(map_dropdown_prefab.gameObject).GetComponent<Dropdown>();
+		current_fields.Add(dropdown.transform);
 		dropdown.transform.SetParent(this.transform);
 
 		List<Dropdown.OptionData> dropdown_options = new List<Dropdown.OptionData>();
@@ -71,7 +72,7 @@ public class map_config_fields_controller : config_fields_controller<map_bool_op
 		}
 		dropdown.AddOptions(dropdown_options);
 
-		dropdown.interactable = interactable;
+		dropdown.interactable = host.val;
 		dropdown.value = current_map_options.IndexOf(current_map_info.map_name);
 		dropdown.onValueChanged.AddListener(switch_map_by_index);
 	}

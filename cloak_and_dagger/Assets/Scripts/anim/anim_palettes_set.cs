@@ -8,6 +8,7 @@ using UnityEditor;
 public class anim_palettes_set : ScriptableObject {
 	public List<spritesheet> palettes;
 
+#if UNITY_EDITOR
 	// Fill in each selecteed anim_palettes_set object with all respectively named spritesheet objects.
 	// You must have all target anim_palettes_set objects selected, in addition to any potential directories for the spritesheet objects.
 	// Additionally, each target anim_palettes_set must be named according to the common string which each such spritesheet object's name will contain.
@@ -37,5 +38,7 @@ public class anim_palettes_set : ScriptableObject {
 				APS.palettes.Add(sheet);
 			}
 		}
+		EditorUtility.SetDirty(APS);
 	}
+#endif
 }

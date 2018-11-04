@@ -63,14 +63,7 @@ public class save_and_load_presets : MonoBehaviour {
 			return;
 		}
 
-		try {
-			foreach (config_category config_cat in loaded_preset.config_jsons.Keys) {
-				JsonUtility.FromJsonOverwrite(loaded_preset.config_jsons[config_cat], editable_configs[config_cat]);
-			}
-			//foreach (config_category config_cat in editable_configs.Keys) {
-			//	JsonUtility.FromJsonOverwrite(loaded_preset.config_jsons[config_cat], editable_configs[config_cat]);
-			//}
-		} catch {
+		if (!copy_all_editable_configs(loaded_preset, editable_configs)) {
 			output_result(false, false, loaded_preset.name);
 			return;
 		}
@@ -102,6 +95,32 @@ public class save_and_load_presets : MonoBehaviour {
 		}
 	}
 
+	public static bool copy_all_editable_configs(preset Preset, ConfigCat_ScriptableObj_Dict configs) {
+		try {
+			foreach (config_category config_cat in Preset.config_jsons.Keys) {
+				ScriptableObject clone = Instantiate(configs[config_cat]);
+				JsonUtility.FromJsonOverwrite(Preset.config_jsons[config_cat], clone);
+				switch (config_cat) {
+					case config_category.gameplay:
+						((gameplay_config)(configs[config_cat])).copy_from_obj((gameplay_config)clone);
+						break;
+					case config_category.map:
+						((map_config)(configs[config_cat])).copy_from_obj((map_config)clone);
+						break;
+					case config_category.win_con:
+						((win_con_config)(configs[config_cat])).copy_from_obj((win_con_config)clone);
+						break;
+					default:
+						Debug.LogError("No case implemented for config_category: " + config_cat);
+						break;
+				}
+			}
+		} catch {
+			return false;
+		}
+		return true;
+	}
+
 }
 
 
@@ -112,6 +131,11 @@ public class preset {
 	public preset(string _name, ConfigCat_String_Dict _config_jsons) {
 		this.name = _name;
 		this.config_jsons = _config_jsons;
+	}
+	public preset(string json) {
+		preset _this = JsonUtility.FromJson<preset>(json);
+		this.name = _this.name;
+		this.config_jsons = _this.config_jsons;
 	}
 }
 

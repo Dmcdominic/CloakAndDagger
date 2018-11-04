@@ -11,8 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1746214300bc6cf4c87e173add2ead01, type: 3}
   m_Name: map_config
   m_EditorClassIdentifier: 
-  _map: Placeholder Map
+  _map: Cave Demo
+  all_map_infos: {fileID: 11400000, guid: 1ba2f1829016d5145a73effd797b5b4b, type: 2}
   map_changed: {fileID: 11400000, guid: da845d93557c85b42b37da10ce4adaa8, type: 2}
+  send_config_sync: {fileID: 11400000, guid: 12c5f480ae5b02246be621b1b3b2f5d5, type: 2}
   bool_options:
     m_keys: 0000000001000000
     m_values: 0100

@@ -17,3 +17,4 @@ MonoBehaviour:
   compatible_bool_options: 0000000001000000
   compatible_float_options: 
   compatible_int_options: 
+  _spawn_points: {fileID: 11400000, guid: 60c2539cca5f3a247878ffdafd30c2d1, type: 2}

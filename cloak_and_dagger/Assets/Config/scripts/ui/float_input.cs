@@ -10,7 +10,7 @@ public class float_input : config_input_field {
 	private float _value;
 	public float value {
 		get { return _value; }
-		set { _value = value; on_value_changed.Invoke(_value); }
+		set { _value = value; on_value_changed.Invoke(_value); after_value_changed.Invoke(); }
 	}
 	
 	public Slider slider;

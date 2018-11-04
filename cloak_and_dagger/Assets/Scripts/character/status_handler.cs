@@ -6,12 +6,12 @@ using UnityEngine.Networking;
 using UnityEngine.Events;
 
 
-public enum status {stun, dagger_on_cooldown, dash_on_cooldown}
+public enum status {stun, dagger_on_cooldown, dash_on_cooldown, dead}
 
-public class status_handler : NetworkBehaviour {
+public class status_handler : MonoBehaviour {
 
 	[SerializeField]
-	Status_BoolVar_Dict stats = new Status_BoolVar_Dict();
+    Status_BoolVar_Dict stats = new Status_BoolVar_Dict();
 
 	[SerializeField]
 	Status_FloatEventObject_Dict on_triggers = new Status_FloatEventObject_Dict();
@@ -39,17 +39,17 @@ public class status_handler : NetworkBehaviour {
 
 	private void init_times() {
 		foreach (status stat in stats.Keys) {
-			times.Add(stat, 0);
+			times.Add(stat, ScriptableObject.CreateInstance<player_float>());
 		}
 	}
 
-	public UnityAction<float> set_status(status stat) {
-		return duration => { times[stat] = Mathf.Max(times[stat], duration); };
+	public UnityAction<int,float> set_status(status stat) {
+		return (id,duration) => { times[stat][id] = Mathf.Max(times[stat][id], duration);};
 	}
 
-	public UnityAction reset_status(status stat)
+	public UnityAction<int> reset_status(status stat)
 	{
-		return () => {times[stat] = 0;};
+		return id => {times[stat][id] = 0;};
 	}
 
 
@@ -58,15 +58,18 @@ public class status_handler : NetworkBehaviour {
 	void Update () {
 		foreach(status stat in stats.Keys)
 		{
-			if(times[stat] > 0) 
-			{
-				times[stat] -= Time.deltaTime;
-				stats[stat].val = true;
-			}
-			else 
-			{
-				stats[stat].val = false;
-			}
+            for (int id = 0; id < times[stat].Count; id++)
+            {
+                if (times[stat][id] > 0)
+                {
+                    times[stat][id] -= Time.deltaTime;
+                    stats[stat][id] = true;
+                }
+                else
+                {
+                    stats[stat][id] = false;
+                }
+            }
 		}
 	}
 }
