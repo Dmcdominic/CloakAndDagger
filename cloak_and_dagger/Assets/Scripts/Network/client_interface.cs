@@ -38,7 +38,7 @@ public interface IProtagoras_Client<Message_Type>
      * Ensures:  returns true if (name,password) will be registered
      *           with the server or they already were registered.
      */
-    bool Create_Player(string name, string password);
+    bool Create_Player(string name, string password, Action success);
 
 
     /*
@@ -52,7 +52,7 @@ public interface IProtagoras_Client<Message_Type>
      *           and invite players for this account
      * 
      */
-    bool Login(string name, string password);
+    bool Login(string name, string password, Action success);
 
 
     /*
@@ -65,6 +65,9 @@ public interface IProtagoras_Client<Message_Type>
      *            
      */
     bool Join_Party(string name);
+
+
+    bool leave_party();
 
 
     /*
