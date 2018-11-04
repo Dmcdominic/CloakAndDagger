@@ -92,7 +92,8 @@ public class map_config_fields_controller : config_fields_controller<map_bool_op
 	}
 
 	private void on_update_one_config_field(int inc_encoded_enum, object inc_value, int inc_config_cat) {
-		if (inc_encoded_enum == -1 && inc_config_cat == (int)config_Category) {
+		if (inc_encoded_enum == -1 && inc_config_cat == (int)config_Category && dropdown) {
+			Debug.Log("Received the map value");
 			dropdown.value = dropdown.options.IndexOf(new Dropdown.OptionData((string)inc_value));
 			dropdown.RefreshShownValue();
 		}

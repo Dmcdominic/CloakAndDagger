@@ -32,7 +32,7 @@ public class gameplay_config_fields_controller : config_fields_controller<gamepl
 
 		ui_parameters_ordered.Add(gameplay_float_option.dagger_cooldown, new ui_float_info<gameplay_bool_option>(0.1f, 30f, 0f, 250f, "The cooldown for throwing a dagger."));
 		ui_parameters_ordered.Add(gameplay_float_option.dagger_speed, new ui_float_info<gameplay_bool_option>(1f, 40f, 0.1f, 250f, "The speed of a dagger after it is thrown."));
-		ui_parameters_ordered.Add(gameplay_float_option.dagger_light_radius, new ui_float_info<gameplay_bool_option>(0f, 179f, 10f, 80f, "The size of the area which is made visible around any dagger."));
+		ui_parameters_ordered.Add(gameplay_float_option.dagger_light_radius, new ui_float_info<gameplay_bool_option>(10f, 80f, 1f, 179f, "The size of the area which is made visible around any dagger."));
 		ui_parameters_ordered.Add(gameplay_bool_option.dagger_collaterals, new ui_bool_info<gameplay_bool_option>("Daggers can pierce through multiple players."));
 		ui_parameters_ordered.Add(gameplay_bool_option.daggers_destroy_daggers, new ui_bool_info<gameplay_bool_option>("Daggers will destroy each other when they collide."));
 		ui_parameters_ordered.Add(gameplay_bool_option.daggers_pierce_walls, new ui_bool_info<gameplay_bool_option>("Daggers can pass through walls."));
