@@ -10,7 +10,7 @@ public class int_input : config_input_field {
 	private int _value;
 	public int value {
 		get { return _value; }
-		set { _value = value; on_value_changed.Invoke(_value); after_value_changed.Invoke(); }
+		set { _value = value; on_value_changed.Invoke(_value); after_val_changed(_value); }
 	}
 	
 	public Slider slider;
@@ -30,6 +30,16 @@ public class int_input : config_input_field {
 
 		// on_value_change listeners
 		on_value_changed.AddListener(update_text_field());
+
+		// Enable values_prepopulated so that a config sync event will now get sent after edits
+		values_prepopulated = true;
+	}
+
+	public override void update_this_field_to(object new_val_obj) {
+		int new_val = (int)new_val_obj;
+		if (new_val != value) {
+			value = new_val;
+		}
 	}
 
 	private int parse_and_clamp_string(string val) {

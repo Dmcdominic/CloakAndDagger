@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public abstract class config_input_field : MonoBehaviour {
 
 	public string_event_object tooltip_update;
-	public event_object after_value_changed;
+	public config_option_event_object after_value_changed;
+	public config_option_event_object update_field_to;
 	public Text title;
 
 	[HideInInspector]
@@ -15,10 +16,16 @@ public abstract class config_input_field : MonoBehaviour {
 	[HideInInspector]
 	public string description;
 
+	[HideInInspector]
+	public bool values_prepopulated = false;
+	[HideInInspector]
+	public int encoded_enum, config_cat;
+
 
 	private void Start() {
 		update_dependency_styling();
 		update_visibility();
+		update_field_to.e.AddListener(on_update_field_to);
 	}
 
 	// This will check all toggle_depedencies and hide or show if necessary
@@ -42,6 +49,20 @@ public abstract class config_input_field : MonoBehaviour {
 		tooltip_update.Invoke(description);
 	}
 
+	protected void after_val_changed(object value) {
+		if (values_prepopulated) {
+			after_value_changed.Invoke(encoded_enum, value, config_cat);
+		}
+	}
+
+	protected void on_update_field_to(int inc_encoded_enum, object inc_value, int inc_config_cat) {
+		if (values_prepopulated && (inc_encoded_enum == encoded_enum) && (inc_config_cat == config_cat)) {
+			update_this_field_to(inc_value);
+		}
+	}
+
+	public abstract void update_this_field_to(object new_val_obj);
+
 	public abstract void set_up_listeners();
-	
+
 }

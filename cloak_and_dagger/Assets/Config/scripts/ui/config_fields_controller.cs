@@ -55,6 +55,10 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		current_fields = new List<Transform>();
 	}
 
+	public abstract int get_encoded_enum_bool_opt(T0 option);
+	public abstract int get_encoded_enum_float_opt(T1 option);
+	public abstract int get_encoded_enum_int_opt(T2 option);
+
 	public void refresh_all_fields_if_currently_open() {
 		if (currently_open) {
 			clear_fields();
@@ -110,9 +114,14 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		current_fields.Add(new_input_object.transform);
 		new_input_object.transform.SetParent(this.transform);
 
+		new_input_object.encoded_enum = get_encoded_enum_bool_opt(option);
+		new_input_object.config_cat = (int)config_Category;
+
 		new_input_object.title.text = option_title(option); // Could instead add a Title property to each ui_(type)_info struct
 		new_input_object.description = ui_info.description;
 		new_input_object.toggle.interactable = host.val;
+
+		new_input_object.toggle.isOn = value;
 
 		new_input_object.set_up_listeners();
 		new_input_object.on_value_changed.AddListener(edit_bool(config.bool_options, option));
@@ -120,7 +129,6 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 			parent.dependents.Add(new_input_object);
 			new_input_object.toggle_dependencies.Add(parent);
 		}
-		new_input_object.toggle.isOn = value;
 		return new_input_object;
 	}
 
@@ -145,6 +153,9 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		current_fields.Add(new_input_object.transform);
 		new_input_object.transform.SetParent(this.transform);
 
+		new_input_object.encoded_enum = get_encoded_enum_float_opt(option);
+		new_input_object.config_cat = (int)config_Category;
+
 		new_input_object.title.text = option_title(option); // Could instead add a Title property to each ui_(type)_info struct
 		new_input_object.description = ui_info.description;
 		new_input_object.min = ui_info.min;
@@ -155,15 +166,16 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		new_input_object.input_field.interactable = host.val;
 		new_input_object.slider.interactable = host.val;
 
+		new_input_object.input_field.text = value.ToString();
+		new_input_object.slider.value = value;
+
 		new_input_object.set_up_listeners();
 		new_input_object.on_value_changed.AddListener(edit_float(config.float_options, option));
 		foreach (bool_input parent in dependencies) {
 			parent.dependents.Add(new_input_object);
 			new_input_object.toggle_dependencies.Add(parent);
 		}
-
-		new_input_object.input_field.text = value.ToString();
-		new_input_object.slider.value = value;
+		
 		return new_input_object;
 	}
 
@@ -188,6 +200,9 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		current_fields.Add(new_input_object.transform);
 		new_input_object.transform.SetParent(this.transform);
 
+		new_input_object.encoded_enum = get_encoded_enum_int_opt(option);
+		new_input_object.config_cat = (int)config_Category;
+
 		new_input_object.title.text = option_title(option); // Could instead add a Title property to each ui_(type)_info struct
 		new_input_object.description = ui_info.description;
 		new_input_object.min = ui_info.min;
@@ -198,6 +213,9 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		new_input_object.slider.interactable = host.val;
 		new_input_object.input_field.interactable = host.val;
 
+		new_input_object.input_field.text = value.ToString();
+		new_input_object.value = value;
+
 		new_input_object.set_up_listeners();
 		new_input_object.on_value_changed.AddListener(edit_int(config.int_options, option));
 		foreach (bool_input parent in dependencies) {
@@ -205,8 +223,6 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 			new_input_object.toggle_dependencies.Add(parent);
 		}
 
-		new_input_object.input_field.text = value.ToString();
-		new_input_object.value = value;
 		return new_input_object;
 	}
 

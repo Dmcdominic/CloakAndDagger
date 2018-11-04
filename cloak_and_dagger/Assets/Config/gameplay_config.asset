@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Name: gameplay_config
   m_EditorClassIdentifier: 
   bool_options:
-    m_keys: 010000000200000000000000
-    m_values: 000000
+    m_keys: 0100000000000000020000000300000004000000
+    m_values: 0001000100
   float_options:
-    m_keys: 0000000002000000010000000300000005000000040000000600000007000000
+    m_keys: 000000000200000001000000030000000500000004000000060000000700000008000000
     m_values:
     - 12.98251
     - 4.798777
@@ -24,7 +24,8 @@ MonoBehaviour:
     - 2
     - 0
     - 3
-    - 1
+    - 60
+    - 70
   int_options:
-    m_keys: 00000000
-    m_values: 14000000
+    m_keys: 
+    m_values: 

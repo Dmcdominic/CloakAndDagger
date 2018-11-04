@@ -57,8 +57,8 @@ public class pmove : sync_behaviour<player_state>
     Vec2Var input_vec;
 
 
-    [SerializeField]
-    float move_speed = 100;
+	[SerializeField]
+	gameplay_config gameplay_Config;
 
     [SerializeField]
     player_bool is_stun;
@@ -98,9 +98,11 @@ public class pmove : sync_behaviour<player_state>
         }
         if (rb.velocity.x * input_vec.val.x < 0) rb.velocity = Vector2.up * rb.velocity;
         if (rb.velocity.y * input_vec.val.y < 0) rb.velocity = Vector2.right * rb.velocity;
-        if(rb.velocity.sqrMagnitude < .25f)
-            rb.AddForce(input_vec.val * move_speed * .1f, ForceMode2D.Impulse);
-        rb.AddForce(input_vec.val * move_speed, ForceMode2D.Force);
+
+		float config_movespeed = gameplay_Config.float_options[gameplay_float_option.player_movespeed];
+		if (rb.velocity.sqrMagnitude < .25f)
+            rb.AddForce(input_vec.val * config_movespeed * .1f, ForceMode2D.Impulse);
+        rb.AddForce(input_vec.val * config_movespeed, ForceMode2D.Force);
 
         if(((Vector2)input_vec).sqrMagnitude > .1f && !ignore_input)
             target_theta = Mathf.Rad2Deg * Mathf.Atan2(input_vec.val.y, input_vec.val.x);

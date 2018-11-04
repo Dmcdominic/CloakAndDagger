@@ -9,6 +9,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ded100b52d760b42aaa3d509b8e4b20, type: 3}
-  m_Name: update_config_fields
+  m_Name: update_all_config_fields
   m_EditorClassIdentifier: 
   constant: -2

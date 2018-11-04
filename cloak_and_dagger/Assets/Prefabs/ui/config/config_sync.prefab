@@ -58,6 +58,12 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 311d7573890fff64598a6d804ea6e720, type: 2}
     - {fileID: 11400000, guid: 4a15c59b8048876449a6497af431e6a7, type: 2}
   host: {fileID: 11400000, guid: fe42b619e3bccd34eaf8ce7c03e77e41, type: 2}
-  trigger_out: {fileID: 11400000, guid: 12c5f480ae5b02246be621b1b3b2f5d5, type: 2}
+  trigger_send_all: {fileID: 11400000, guid: 12c5f480ae5b02246be621b1b3b2f5d5, type: 2}
+  someone_joined_my_party: {fileID: 11400000, guid: ff2c3b412cbba164b93e9922610a3ed3,
+    type: 2}
   out_event: {fileID: 11400000, guid: a177ccb41096d254e99247c15781ef2e, type: 2}
   in_event: {fileID: 11400000, guid: 37a7d28f2025cba459e2e3d9750f0496, type: 2}
+  update_one_config_field: {fileID: 11400000, guid: c7d956458be2cae4ea1d4a892711750d,
+    type: 2}
+  updated_one_config_value: {fileID: 11400000, guid: ef2268ebe1777c848b9d9af100f0b891,
+    type: 2}
