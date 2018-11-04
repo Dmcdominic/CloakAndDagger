@@ -125,6 +125,8 @@ public interface IProtagoras_Client<Message_Type>
      */
     List<Party_Names> Get_Party_list();
 
+    void Register_Party_list(Action<List<Party_Names>> invoke);
+
     /*
      * Params:   msg is the object you want all other (not you) players
      *           in your party to receive 
