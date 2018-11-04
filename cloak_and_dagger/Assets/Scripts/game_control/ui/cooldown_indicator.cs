@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class cooldown_indicator : MonoBehaviour {
 
+    public Text timeRemaining;
     public Image timerMask;
 
     public bool active;
     public float cooldown;
-    public float timeLeft;
+    float timeLeft;
 
     // initialize
     void Start() {
         timerMask.fillAmount = 0;
+        timeRemaining.text = "";
     }
 
     // run the cooldown
@@ -34,6 +36,10 @@ public class cooldown_indicator : MonoBehaviour {
 
     void updateUI() {
         timerMask.fillAmount = timeLeft / cooldown;
+        if (timeLeft >= 1)
+            timeRemaining.text = "" + (int)(timeLeft + 1);
+        else
+            timeRemaining.text = "" + (int)(timeLeft * 10 + 1) / 10.0;
     }
 
     // stop the cooldown indicator
@@ -42,5 +48,6 @@ public class cooldown_indicator : MonoBehaviour {
             return;
         active = false;
         timeLeft = cooldown;
+        timeRemaining.text = "";
     }
 }
