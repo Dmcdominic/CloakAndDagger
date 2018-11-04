@@ -72,6 +72,7 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 
 		dropdown.interactable = host.val;
 		dropdown.value = (int)config.win_Condition;
+		dropdown.RefreshShownValue();
 		dropdown.onValueChanged.AddListener(switch_win_con_by_index);
 	}
 
@@ -90,6 +91,7 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 	private void on_update_one_config_field(int inc_encoded_enum, object inc_value, int inc_config_cat) {
 		if (inc_encoded_enum == -2 && inc_config_cat == (int)config_Category) {
 			dropdown.value = (int)inc_value;
+			dropdown.RefreshShownValue();
 		}
 	}
 

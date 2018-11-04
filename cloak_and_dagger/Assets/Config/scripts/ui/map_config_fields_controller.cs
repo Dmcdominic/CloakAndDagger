@@ -82,6 +82,7 @@ public class map_config_fields_controller : config_fields_controller<map_bool_op
 
 		dropdown.interactable = host.val;
 		dropdown.value = current_map_options.IndexOf(current_map_info.map_name);
+		dropdown.RefreshShownValue();
 		dropdown.onValueChanged.AddListener(switch_map_by_index);
 	}
 
@@ -93,6 +94,7 @@ public class map_config_fields_controller : config_fields_controller<map_bool_op
 	private void on_update_one_config_field(int inc_encoded_enum, object inc_value, int inc_config_cat) {
 		if (inc_encoded_enum == -1 && inc_config_cat == (int)config_Category) {
 			dropdown.value = dropdown.options.IndexOf(new Dropdown.OptionData((string)inc_value));
+			dropdown.RefreshShownValue();
 		}
 	}
 
