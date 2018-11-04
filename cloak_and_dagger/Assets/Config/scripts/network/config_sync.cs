@@ -44,6 +44,10 @@ public class config_sync : MonoBehaviour {
 
 	private void sync_incoming_config(float t, object state, int config_cat_int) {
 		Debug.Log("Reached sync_incoming_config()");
+		if (host.val) {
+			Debug.Log("Returning, though, because you're the host");
+			return;
+		}
 
 		int t_int = (int)t;
 
