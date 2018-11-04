@@ -35,6 +35,10 @@ public class config_sync : MonoBehaviour {
 
 	private void on_updated_one_config_value(int encoded_enum, object val, int config_cat) {
 		Debug.Log("Sending one config value");
+		if (!host.val) {
+			Debug.Log("Returning, though, because you're not the host");
+			return;
+		}
 		out_event.Invoke((float)encoded_enum, val, config_cat);
 	}
 
