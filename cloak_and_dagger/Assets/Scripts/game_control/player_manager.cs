@@ -76,7 +76,7 @@ public class player_manager : MonoBehaviour {
             Party_Names pn = out_party_info.val;
             yield return new WaitUntil(
                 () => !pn.members.SequenceEqual(out_party_info.val.members)
-                      && pn.leader != out_party_info.val.leader
+                      || pn.leader != out_party_info.val.leader
                 );
             notify.Invoke();
         }
