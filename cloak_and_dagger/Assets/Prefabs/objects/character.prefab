@@ -28,7 +28,6 @@ GameObject:
   - component: {fileID: 114038434851701454}
   - component: {fileID: 114629117855251732}
   - component: {fileID: 114597311980453518}
-  - component: {fileID: 114945662707097262}
   - component: {fileID: 114427959952397214}
   - component: {fileID: 114067254127311388}
   - component: {fileID: 114487284874482236}
@@ -554,7 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dagger_thrown: {fileID: 11400000, guid: 3a8a68bcc7096ac478aa6c31393b3814, type: 2}
-  running_velo_threshhold: 0.2
+  running_velo_threshhold: 5
 --- !u!114 &114938384083110894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -567,33 +566,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   output: {fileID: 11400000, guid: 276cb45050efbd24c925199d72e92b6b, type: 2}
---- !u!114 &114945662707097262
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1479639472354148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1deb4d20e22f5914ea6cc12a11c2c0a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats:
-    m_keys: 000000000300000002000000
-    m_values:
-    - {fileID: 11400000, guid: b606f126309b3944fbf2ec7e7b3b09a2, type: 2}
-    - {fileID: 11400000, guid: 9fad67e37486e6f449ee3829119a152b, type: 2}
-    - {fileID: 11400000, guid: 97b359e921771a547baee782d3db444f, type: 2}
-  on_triggers:
-    m_keys: 000000000300000002000000
-    m_values:
-    - {fileID: 11400000, guid: 8a12398b55b5a6b43ab8f07664a4b7ed, type: 2}
-    - {fileID: 11400000, guid: a8382b71a4b25b34c8e81f0433bfba56, type: 2}
-    - {fileID: 11400000, guid: 0c2ab5da8ab37f6499586658fe6c97a5, type: 2}
-  off_triggers:
-    m_keys: 03000000
-    m_values:
-    - {fileID: 11400000, guid: 5522c9ca6af1c2d419a3026a079974e2, type: 2}
 --- !u!114 &114945712545972036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -631,7 +603,7 @@ MonoBehaviour:
     death_Type: 0
     killerID: 0
   kill_out: {fileID: 11400000, guid: a8382b71a4b25b34c8e81f0433bfba56, type: 2}
-  respawn_times: {fileID: 11400000, guid: 1a83130fc7c8bd84389b07c46ce4daaa, type: 2}
+  config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   destroy_dagger: {fileID: 11400000, guid: 62a0507375e0cc34dbba2a270381c1e6, type: 2}
   dead_body_prefab: {fileID: 1479639472354148, guid: 1de9f5e2b87dcf54f8f318a273340a7c,
     type: 2}
