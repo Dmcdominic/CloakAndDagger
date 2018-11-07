@@ -53,7 +53,9 @@ public class player_dagger_collision_trigger : sync_behaviour<death_event_data> 
 		string tag = gameObject.tag; // Should be "Player"
 		dagger_data dagger_Data = collider.gameObject.GetComponent<dagger_data_carrier>().dagger_Data;
 
-        destroy_dagger.Invoke(collider.gameObject.GetInstanceID());
+		if (!dagger_Data.collaterals) {
+			destroy_dagger.Invoke(collider.gameObject.GetInstanceID());
+		}
 
         rectify(Time.time, new death_event_data((byte)gameObject_id.val, death_type.dagger, dagger_Data.thrower));
         send_state(new death_event_data((byte)gameObject_id.val,death_type.dagger,dagger_Data.thrower));

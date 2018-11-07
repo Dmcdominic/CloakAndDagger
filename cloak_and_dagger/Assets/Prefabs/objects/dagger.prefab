@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4492030598562950}
   - component: {fileID: 108898377049242738}
+  - component: {fileID: 114431764849634566}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -172,6 +173,18 @@ MonoBehaviour:
   to_trigger_on_collision: {fileID: 11400000, guid: 62a0507375e0cc34dbba2a270381c1e6,
     type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+--- !u!114 &114431764849634566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1739296947075772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3656748ce304cca458cb35f7253e6450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
 --- !u!114 &114500513551518450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,7 +262,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 243907677
-  m_SortingLayer: 1
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 29e466de7ad34c848b7b8c9ecffaf99c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -5,7 +5,7 @@ using UnityEngine;
 
 // Add options here
 public enum gameplay_bool_option { heartbeat, initial_reveal, dagger_collaterals, daggers_destroy_daggers, daggers_pierce_walls }
-public enum gameplay_float_option { heartbeat_interval, dagger_cooldown, dash_cooldown, dash_distance, reflection_time, respawn_delay, dagger_speed, dagger_light_radius, player_movespeed }
+public enum gameplay_float_option { heartbeat_interval, dagger_cooldown, dash_cooldown, dash_distance, reflection_time, respawn_delay, dagger_speed, dagger_light_radius, player_movespeed, bump_reveal_time, reflection_cooldown }
 public enum gameplay_int_option { }
 
 //[CreateAssetMenu(menuName = "config/gameplay")]

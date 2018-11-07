@@ -33,6 +33,7 @@ GameObject:
   - component: {fileID: 114487284874482236}
   - component: {fileID: 114979525041593486}
   - component: {fileID: 114208676034183456}
+  - component: {fileID: 114861065466034230}
   m_Layer: 0
   m_Name: character
   m_TagString: Player
@@ -554,6 +555,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dagger_thrown: {fileID: 11400000, guid: 3a8a68bcc7096ac478aa6c31393b3814, type: 2}
   running_velo_threshhold: 5
+--- !u!114 &114861065466034230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479639472354148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1da03019761461c47b6f87a0961e7f02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
 --- !u!114 &114938384083110894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -668,7 +681,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1533127311
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 7a19f092445b4a04889a4ffed5d11e0b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -714,7 +727,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1533127311
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5335f0bc432610b46b3087d6b084c90b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -760,7 +773,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1533127311
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 38f2486f4148d2443b03bb9d76cc7191, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
