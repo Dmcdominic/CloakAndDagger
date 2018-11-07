@@ -8,6 +8,7 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(Status_EventObject_Dict))]
 [CustomPropertyDrawer(typeof(Status_FloatEventObject_Dict))]
 [CustomPropertyDrawer(typeof(Status_Float_Dict))]
+[CustomPropertyDrawer(typeof(Status_FloatVar_Dict))]
 // ============= Data persistence dicts ================
 [CustomPropertyDrawer(typeof(ConfigCat_ScriptableObj_Dict))]
 // ============= Event dicts ===========================

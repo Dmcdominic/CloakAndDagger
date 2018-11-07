@@ -8,9 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734fc9a47fa3469419a6fbe8ce717fdf, type: 3}
-  m_Name: match_scene
+  m_Script: {fileID: 11500000, guid: ace8cc03f20ee0943ac0f7e11381e2e4, type: 3}
+  m_Name: dash_float_cooldown
   m_EditorClassIdentifier: 
-  use_constant: 1
-  constant: 1
+  use_constant: 0
+  constant: 0
   value: 0

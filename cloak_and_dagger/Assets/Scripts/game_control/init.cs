@@ -11,9 +11,6 @@ public class init : MonoBehaviour {
     [SerializeField]
     event_object done_initing;
 
-    [SerializeField]
-    int_var game_scene;
-
 	[SerializeField]
 	map_config map_Config;
 
@@ -50,8 +47,8 @@ public class init : MonoBehaviour {
     IEnumerator go(float t)
     {
         yield return new WaitUntil(() => party.val.leader != "");
-        SceneManager.LoadScene(game_scene.val);
-        yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == game_scene.val);
+        SceneManager.LoadScene(map_Config.map);
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == map_Config.map);
 
 		Vector2 spawn_point = map_Config.current_map_info.next_spawn_point;
 		GameObject leader_go = Instantiate(player_prefab,spawn_point,Quaternion.identity);

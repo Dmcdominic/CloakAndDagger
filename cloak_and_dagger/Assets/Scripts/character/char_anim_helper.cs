@@ -22,8 +22,10 @@ public class char_anim_helper : MonoBehaviour {
 	}
 
 	private void Update() {
-		bool running = rb.velocity.magnitude > running_velo_threshhold;
-		animator.SetBool("running", running);
+		if (rb) {
+			bool running = rb.velocity.magnitude > running_velo_threshhold;
+			animator.SetBool("running", running);
+		}
 	}
 
 	public void on_dagger_thrown(int placeholder, GameObject obj) {

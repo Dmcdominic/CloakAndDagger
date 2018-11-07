@@ -33,7 +33,6 @@ public class bool_input : config_input_field {
 		on_value_changed.AddListener(get_update_dependents_action());
 
 		// Start the coroutine which will listen for value changes to send
-		Debug.Log("Starting the coroutine");
 		StartCoroutine(waiting_to_send_val());
 	}
 

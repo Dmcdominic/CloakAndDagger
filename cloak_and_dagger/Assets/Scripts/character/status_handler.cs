@@ -19,6 +19,12 @@ public class status_handler : MonoBehaviour {
 	[SerializeField]
 	Status_EventObject_Dict off_triggers = new Status_EventObject_Dict();
 
+	[SerializeField]
+	Status_FloatVar_Dict local_cooldowns = new Status_FloatVar_Dict();
+
+	[SerializeField]
+	int_var local_id;
+
 	Status_Float_Dict times = new Status_Float_Dict();
 
 
@@ -58,18 +64,17 @@ public class status_handler : MonoBehaviour {
 	void Update () {
 		foreach(status stat in stats.Keys)
 		{
-            for (int id = 0; id < times[stat].Count; id++)
-            {
-                if (times[stat][id] > 0)
-                {
-                    times[stat][id] -= Time.deltaTime;
-                    stats[stat][id] = true;
-                }
-                else
-                {
-                    stats[stat][id] = false;
-                }
+			for (int id = 0; id < times[stat].Count; id++) {
+				if (times[stat][id] > 0) {
+					times[stat][id] -= Time.deltaTime;
+					stats[stat][id] = true;
+				} else {
+					stats[stat][id] = false;
+				}
             }
+			if (local_cooldowns.ContainsKey(stat) && local_cooldowns[stat] != null) {
+				local_cooldowns[stat].val = times[stat][local_id.val];
+			}
 		}
 	}
 }
