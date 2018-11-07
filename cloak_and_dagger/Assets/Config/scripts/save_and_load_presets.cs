@@ -27,15 +27,7 @@ public class save_and_load_presets : MonoBehaviour {
 			load_trigger.e.AddListener(load_preset);
 		}
 	}
-
-	private void Start() {
-		// FOR TESTING
-		// TODO - REMOVE
-		//save_preset("gameplay_AND_winCon_test_preset");
-		//get_available_presets();
-		//load_preset("gameplay_AND_winCon_test_preset");
-	}
-
+	
 	public void save_preset(string preset_name) {
 		ConfigCat_String_Dict config_jsons = new ConfigCat_String_Dict();
 

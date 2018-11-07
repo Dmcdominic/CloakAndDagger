@@ -16,6 +16,10 @@ public class anim_piece : MonoBehaviour {
 		sprite_renderer = GetComponent<SpriteRenderer>();
 	}
 
+	private void Start() {
+		refresh_sprite();
+	}
+
 	private void OnEnable() {
 		StartCoroutine(refresh_on_anim_change());
 		StartCoroutine(refresh_on_palette_change());

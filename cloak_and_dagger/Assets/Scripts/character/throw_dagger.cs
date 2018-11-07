@@ -46,11 +46,13 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
     [SerializeField]
     int_float_event inform_pmove;
 
+	private anim_parent anim_Parent;
 	private network_id networkID;
 	private uint thrown_index_counter = 0;
 
 
 	private void Awake() {
+		anim_Parent = GetComponentInChildren<anim_parent>();
 		networkID = GetComponent<network_id>();
 	}
 
@@ -88,6 +90,8 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 		my_dagger.transform.position += my_dagger.transform.right * readonly_Gameplay_Config.float_options[readonly_gameplay_float_option.dagger_buffer];
 		my_dagger.GetComponent<dagger_data_carrier>().dagger_Data = create_dagger_data();
 		my_dagger.GetComponent<network_id>().val = throw_data.network_id;
+
+		my_dagger.GetComponentInChildren<anim_piece>().palette_index = anim_Parent.palette_index;
 
 		Rigidbody2D rb = my_dagger.GetComponent<Rigidbody2D>();
 		if (rb) {

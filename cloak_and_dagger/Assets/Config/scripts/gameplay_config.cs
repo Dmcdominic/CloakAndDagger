@@ -27,6 +27,8 @@ public class gameplay_config : config_object<gameplay_bool_option, gameplay_floa
 		bool_options.CopyFrom(casted_obj.bool_options);
 		float_options.CopyFrom(casted_obj.float_options);
 		int_options.CopyFrom(casted_obj.int_options);
+
+		fill_in_missing_options();
 	}
 }
 
