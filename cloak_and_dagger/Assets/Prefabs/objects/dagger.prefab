@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114500513551518450}
   - component: {fileID: 114918435820188940}
   - component: {fileID: 114451253903432172}
+  - component: {fileID: 114912687548306728}
   m_Layer: 0
   m_Name: dagger
   m_TagString: Dagger
@@ -234,6 +235,18 @@ MonoBehaviour:
   t0: {fileID: 11400000, guid: 57bb56410a2f79c4aaa77d261a3079f8, type: 2}
   sync_rate: 0
   trigger_destroy: {fileID: 11400000, guid: 62a0507375e0cc34dbba2a270381c1e6, type: 2}
+--- !u!114 &114912687548306728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862537834978502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bbd121f7419feb418c50698c0cbfeba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  absolute_max_dist_from_origin: 500
 --- !u!114 &114918435820188940
 MonoBehaviour:
   m_ObjectHideFlags: 1

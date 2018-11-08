@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fba180815505b014fbdafce38b376aea, type: 3}
+  m_Name: WCAP
+  m_EditorClassIdentifier: 
+  win_Con_Config: {fileID: 11400000, guid: 4a15c59b8048876449a6497af431e6a7, type: 2}
+  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  done_initing: {fileID: 11400000, guid: d3e0ab02c632bb84d8ec92942cd5dcc5, type: 2}
+  player_killed: {fileID: 11400000, guid: 5073091540451ef49aab435b616bee52, type: 2}
+  countdown_event: {fileID: 11400000, guid: af29c19964ac99e4dabd392708532a54, type: 2}
+  trigger_on_game_start: {fileID: 11400000, guid: bbc6a7507da56154c93cab2aa0809747,
+    type: 2}
+  trigger_on_game_over: {fileID: 11400000, guid: 3ae1a8fa862f761498dbdb085e52b195,
+    type: 2}
+  ingame_state: {fileID: 11400000, guid: 651e92a3b77baf94ea1cf6097bf34214, type: 2}
+  game_timer: {fileID: 11400000, guid: 5229a31490d70a34f913756d77c8cd74, type: 2}

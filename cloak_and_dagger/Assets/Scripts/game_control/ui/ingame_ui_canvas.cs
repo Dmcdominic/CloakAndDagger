@@ -5,7 +5,7 @@ using UnityEngine;
 public class ingame_ui_canvas : MonoBehaviour {
 
 	public event_object enable_trigger;
-	public event_object disable_trigger;
+	public List<event_object> disable_triggers;
 
 
 	private void Awake() {
@@ -13,8 +13,8 @@ public class ingame_ui_canvas : MonoBehaviour {
 		if (enable_trigger) {
 			enable_trigger.e.AddListener(enable);
 		}
-		if (disable_trigger) {
-			disable_trigger.e.AddListener(disable);
+		foreach (event_object event_obj in disable_triggers) {
+			event_obj.e.AddListener(disable);
 		}
 		disable();
 	}

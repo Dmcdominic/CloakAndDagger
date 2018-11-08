@@ -34,7 +34,7 @@ public class WC_kill_count_controller : win_condition_controller {
 	// AFTER the stats dicts are updated with kill & death counters
 	protected override void on_player_killed(death_event_data death_data) {
 		foreach (team_kill_count_stats team in team_stats_dict.Values) {
-			if (team.kill_count > win_Con_Config.int_options[winCon_int_option.kill_limit]) {
+			if (team.kill_count > WCAP.win_Con_Config.int_options[winCon_int_option.kill_limit]) {
 				end_game_general(false);
 			}
 		}

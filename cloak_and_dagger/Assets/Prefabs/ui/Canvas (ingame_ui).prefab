@@ -213,7 +213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enable_trigger: {fileID: 11400000, guid: d3e0ab02c632bb84d8ec92942cd5dcc5, type: 2}
-  disable_trigger: {fileID: 0}
+  disable_triggers:
+  - {fileID: 11400000, guid: 3ae1a8fa862f761498dbdb085e52b195, type: 2}
 --- !u!114 &114680789187419884
 MonoBehaviour:
   m_ObjectHideFlags: 1

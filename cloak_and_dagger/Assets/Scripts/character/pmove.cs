@@ -60,6 +60,9 @@ public class pmove : sync_behaviour<player_state>
 	[SerializeField]
 	gameplay_config gameplay_Config;
 
+	[SerializeField]
+	bool_var ingame_state;
+
     [SerializeField]
     player_bool is_stun;
 
@@ -85,7 +88,7 @@ public class pmove : sync_behaviour<player_state>
     // Update is called once per frame
     void Update()
     {
-        if (is_stun[gameObject_id.val])
+        if (is_stun[gameObject_id.val] || !ingame_state.val)
         {
             rb.velocity = Vector2.zero;
             return;
