@@ -646,6 +646,7 @@ MonoBehaviour:
     theta: 0
   input_vec: {fileID: 11400000, guid: 4bbc87b548ed62b4c957d33abd733964, type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  ingame_state: {fileID: 11400000, guid: 651e92a3b77baf94ea1cf6097bf34214, type: 2}
   is_stun: {fileID: 11400000, guid: b606f126309b3944fbf2ec7e7b3b09a2, type: 2}
   dagger_in: {fileID: 11400000, guid: 61155ee5589bc0e46ab15225bb13c462, type: 2}
 --- !u!212 &212633720941415684
