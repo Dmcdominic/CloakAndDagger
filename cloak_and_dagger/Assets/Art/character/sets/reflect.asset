@@ -8,16 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22a281209dd23fa4d90567a38e8642f4, type: 3}
-  m_Name: input_config
+  m_Script: {fileID: 11500000, guid: 3c7d363466a9a5a429a0c3781885a780, type: 3}
+  m_Name: reflect
   m_EditorClassIdentifier: 
-  left: 0
-  right: 0
-  up: 0
-  down: 0
-  dagger_key: 32
-  dash_key: 113
-  reflect_key: 101
-  horizontal_axis: Horizontal
-  vertical_axis: Vertical
-  use_axis: 1
+  palettes: []

@@ -47,7 +47,7 @@ public class dash : sync_behaviour<serializable_vec2> {
 			trigger.e.AddListener(dash_func);
 		}
 
-		max_distance = gameplay_Config.float_options[gameplay_float_option.dash_distance];
+		max_distance = gameplay_Config.float_options[gameplay_float_option.blink_range];
 	}
 
     public void dash_func(int id, float cooldown)

@@ -265,23 +265,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    m_keys: 00000000010000000200000003000000
+    m_keys: 000000000100000002000000030000000400000005000000
     m_values:
     - {fileID: 11400000, guid: b606f126309b3944fbf2ec7e7b3b09a2, type: 2}
     - {fileID: 11400000, guid: fa68461f70c2565479f2ad6740b69db0, type: 2}
     - {fileID: 11400000, guid: 97b359e921771a547baee782d3db444f, type: 2}
+    - {fileID: 11400000, guid: 13ea3477d48dfb341831c08f1585e3a5, type: 2}
     - {fileID: 11400000, guid: 9fad67e37486e6f449ee3829119a152b, type: 2}
+    - {fileID: 11400000, guid: a9eb7bc703aa53343b2d85148742a033, type: 2}
   on_triggers:
-    m_keys: 00000000010000000200000003000000
+    m_keys: 000000000100000002000000030000000400000005000000
     m_values:
     - {fileID: 11400000, guid: 8a12398b55b5a6b43ab8f07664a4b7ed, type: 2}
     - {fileID: 11400000, guid: 5adfb4030633d6c4195a90424c62c663, type: 2}
     - {fileID: 11400000, guid: 0c2ab5da8ab37f6499586658fe6c97a5, type: 2}
+    - {fileID: 11400000, guid: 4b230fb7b40acf5498f248ae4b23d495, type: 2}
     - {fileID: 11400000, guid: a8382b71a4b25b34c8e81f0433bfba56, type: 2}
+    - {fileID: 11400000, guid: 4b230fb7b40acf5498f248ae4b23d495, type: 2}
   off_triggers:
-    m_keys: 03000000
+    m_keys: 0400000005000000
     m_values:
     - {fileID: 11400000, guid: 5522c9ca6af1c2d419a3026a079974e2, type: 2}
+    - {fileID: 11400000, guid: ebfa06e17ce69e640966e61f761a892a, type: 2}
   local_cooldowns:
     m_keys: 0100000002000000
     m_values:
