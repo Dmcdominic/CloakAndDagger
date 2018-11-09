@@ -62,7 +62,8 @@ public class player_dagger_collision_trigger : sync_behaviour<death_event_data> 
 		string tag = gameObject.tag; // Should be "Player"
 		dagger_data dagger_Data = collider.gameObject.GetComponent<dagger_data_carrier>().dagger_Data;
 
-		if (reflecting) {
+		if (reflecting[gameObject_id.val]) {
+			destroy_dagger.Invoke(collider.gameObject.GetInstanceID());
 			Vector2 dest = collider.transform.position;
 			int palette = anim_Parent.palette_index;
 			local_reflect_proc.e.Invoke(gameObject_id.val, dest, palette);

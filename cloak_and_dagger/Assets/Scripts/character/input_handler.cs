@@ -10,10 +10,6 @@ public class input_handler : MonoBehaviour {
 	[SerializeField]
 	Vec2Var output;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {

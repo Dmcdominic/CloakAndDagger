@@ -246,7 +246,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bbd121f7419feb418c50698c0cbfeba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  absolute_max_dist_from_origin: 500
+  readonly_Gameplay_Config: {fileID: 11400000, guid: 8ba77d9a33059e049866b4542e18f72a,
+    type: 2}
 --- !u!114 &114918435820188940
 MonoBehaviour:
   m_ObjectHideFlags: 1
