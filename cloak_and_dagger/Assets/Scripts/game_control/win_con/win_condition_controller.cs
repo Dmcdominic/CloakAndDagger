@@ -14,7 +14,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 
 
 	// Initialization
-	protected void Awake() {
+	private void Awake() {
 		if (WCAP.win_Con_Config.win_Condition != win_Condition) {
 			gameObject.SetActive(false);
 			return;
@@ -25,8 +25,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 		if (WCAP.done_initing) {
 			WCAP.done_initing.e.AddListener(on_done_initing);
 		}
-
-		print("Setting ingame_state.val to false");
+		
 		WCAP.ingame_state.val = false;
 		WCAP.game_timer.val = 0;
 		time_limit = WCAP.win_Con_Config.float_options[winCon_float_option.time_limit];
@@ -61,7 +60,6 @@ public abstract class win_condition_controller : MonoBehaviour {
 
 	// Is called by the game_start_trigger event
 	private void on_game_start_general() {
-		print("Setting ingame_state.val to true");
 		WCAP.ingame_state.val = true;
 		WCAP.trigger_on_game_start.Invoke();
 		on_game_start();

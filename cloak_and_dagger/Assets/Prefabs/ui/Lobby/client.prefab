@@ -318,6 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  game_started: {fileID: 11400000, guid: bbc6a7507da56154c93cab2aa0809747, type: 2}
   event_to_trigger: {fileID: 11400000, guid: 566665ec96310f541876a867afffb402, type: 2}
 --- !u!114 &114700959637492258
 MonoBehaviour:

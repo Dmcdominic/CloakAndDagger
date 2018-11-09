@@ -79,7 +79,6 @@ public class init : MonoBehaviour {
         }
         data.local_id = local_network_id;
         t0.val = t;
-        ingame.val = true;
         done_initing.Invoke();
     }
 

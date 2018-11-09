@@ -437,18 +437,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 1008363273284238, guid: 35ab82797fe1bb5479480e1bb6d6a794, type: 2}
-      propertyPath: m_Name
-      value: Win condition controllers
-      objectReference: {fileID: 0}
-    - target: {fileID: 1441507748145074, guid: 35ab82797fe1bb5479480e1bb6d6a794, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1594974933674450, guid: 35ab82797fe1bb5479480e1bb6d6a794, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35ab82797fe1bb5479480e1bb6d6a794, type: 2}
   m_IsPrefabAsset: 0

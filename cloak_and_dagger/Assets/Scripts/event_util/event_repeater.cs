@@ -9,19 +9,23 @@ public class event_repeater : MonoBehaviour {
 	private gameplay_config gameplay_Config;
 
 	[SerializeField]
+	private event_object game_started;
+
+	[SerializeField]
 	private event_object event_to_trigger;
 
 
-	// Use this for initialization
-	void Start() {
-		// todo - start the repeater when the game start countdown ends
-		if (gameplay_Config.bool_options[gameplay_bool_option.heartbeat]) {
-			start_repeater();
+	private void Awake() {
+		if (game_started) {
+			game_started.e.AddListener(start_repeater);
 		}
 	}
 
 	public void start_repeater() {
-		StartCoroutine(triggerEvent());
+		stop_repeater();
+		if (gameplay_Config.bool_options[gameplay_bool_option.heartbeat]) {
+			StartCoroutine(triggerEvent());
+		}
 	}
 
 	public void stop_repeater() {
