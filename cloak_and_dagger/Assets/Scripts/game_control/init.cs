@@ -62,7 +62,7 @@ public class init : MonoBehaviour {
 		GameObject member_go;
 		network_id net_id;
 		int i = 1;
-		if (party) {
+		if (party && party.val.members != null) {
 			foreach (string member in party.val.members) {
 				spawn_point = map_Config.current_map_info.next_spawn_point;
 				member_go = Instantiate(player_prefab, spawn_point, Quaternion.identity);

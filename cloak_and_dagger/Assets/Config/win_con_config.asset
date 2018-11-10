@@ -21,7 +21,7 @@ MonoBehaviour:
   float_options:
     m_keys: 00000000
     m_values:
-    - 101.7344
+    - 300
   int_options:
     m_keys: 0000000001000000
     m_values: 0100000012000000

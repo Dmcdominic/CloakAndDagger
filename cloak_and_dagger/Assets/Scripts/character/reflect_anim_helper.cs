@@ -11,6 +11,9 @@ public class reflect_anim_helper : MonoBehaviour {
 	[SerializeField]
 	int_event_object end_reflect;
 
+	[SerializeField]
+	player_bool reflecting;
+
 	private SpriteRenderer sr;
 	private network_id network_Id;
 
@@ -26,7 +29,7 @@ public class reflect_anim_helper : MonoBehaviour {
 			end_reflect.e.AddListener(on_end_reflect);
 		}
 	}
-	
+
 	private void on_reflect_time(int id, float time) {
 		if (network_Id.val != id) return;
 
@@ -42,7 +45,10 @@ public class reflect_anim_helper : MonoBehaviour {
 
 	IEnumerator reflect_anim_for_time(float time) {
 		sr.enabled = true;
-		yield return new WaitForSeconds(time);
+		//yield return new WaitForSeconds(time);
+		yield return new WaitForEndOfFrame();
+		yield return new WaitForEndOfFrame();
+		yield return new WaitUntil(() => !reflecting[network_Id.val]);
 		sr.enabled = false;
 	}
 
