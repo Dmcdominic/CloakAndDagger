@@ -4,8 +4,8 @@ using System.Linq;
 using UnityEngine;
 
 // Add options here
-public enum gameplay_bool_option { heartbeat, initial_reveal, dagger_collaterals, daggers_destroy_daggers, daggers_pierce_walls }
-public enum gameplay_float_option { heartbeat_interval, dagger_cooldown, dash_cooldown, dash_distance, reflection_time, respawn_delay, dagger_speed, dagger_light_radius, player_movespeed }
+public enum gameplay_bool_option { heartbeat, initial_reveal, dagger_collaterals, daggers_destroy_daggers, daggers_pierce_walls, fragile_reflect }
+public enum gameplay_float_option { heartbeat_interval, dagger_cooldown, blink_cooldown, blink_range, reflect_time, respawn_delay, dagger_speed, dagger_light_radius, player_movespeed, bump_reveal_time, reflect_cooldown }
 public enum gameplay_int_option { }
 
 //[CreateAssetMenu(menuName = "config/gameplay")]
@@ -27,6 +27,8 @@ public class gameplay_config : config_object<gameplay_bool_option, gameplay_floa
 		bool_options.CopyFrom(casted_obj.bool_options);
 		float_options.CopyFrom(casted_obj.float_options);
 		int_options.CopyFrom(casted_obj.int_options);
+
+		fill_in_missing_options();
 	}
 }
 

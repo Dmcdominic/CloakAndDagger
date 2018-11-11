@@ -48,6 +48,8 @@ public class win_con_config : config_object<winCon_bool_option, winCon_float_opt
 		bool_options.CopyFrom(casted_obj.bool_options);
 		float_options.CopyFrom(casted_obj.float_options);
 		int_options.CopyFrom(casted_obj.int_options);
+
+		fill_in_missing_options();
 	}
 }
 

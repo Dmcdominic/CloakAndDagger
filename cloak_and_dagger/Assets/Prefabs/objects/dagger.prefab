@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4492030598562950}
   - component: {fileID: 108898377049242738}
+  - component: {fileID: 114431764849634566}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -42,6 +43,8 @@ GameObject:
   - component: {fileID: 114005111440912888}
   - component: {fileID: 114500513551518450}
   - component: {fileID: 114918435820188940}
+  - component: {fileID: 114451253903432172}
+  - component: {fileID: 114912687548306728}
   m_Layer: 0
   m_Name: dagger
   m_TagString: Dagger
@@ -172,6 +175,34 @@ MonoBehaviour:
   to_trigger_on_collision: {fileID: 11400000, guid: 62a0507375e0cc34dbba2a270381c1e6,
     type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+--- !u!114 &114431764849634566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1739296947075772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3656748ce304cca458cb35f7253e6450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+--- !u!114 &114451253903432172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862537834978502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9410a687ca59b464fbdc8ac65a244382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim_Palettes_Bundle: {fileID: 11400000, guid: e6002cbca4252d043a5b5b44ab5f9e6c,
+    type: 2}
+  animation_index: 0
+  palette_index: 0
+  sprite_index: 0
 --- !u!114 &114500513551518450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,6 +235,19 @@ MonoBehaviour:
   t0: {fileID: 11400000, guid: 57bb56410a2f79c4aaa77d261a3079f8, type: 2}
   sync_rate: 0
   trigger_destroy: {fileID: 11400000, guid: 62a0507375e0cc34dbba2a270381c1e6, type: 2}
+--- !u!114 &114912687548306728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862537834978502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bbd121f7419feb418c50698c0cbfeba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  readonly_Gameplay_Config: {fileID: 11400000, guid: 8ba77d9a33059e049866b4542e18f72a,
+    type: 2}
 --- !u!114 &114918435820188940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,7 +293,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 243907677
-  m_SortingLayer: 1
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 29e466de7ad34c848b7b8c9ecffaf99c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -276,7 +276,6 @@ MonoBehaviour:
   title: {fileID: 114550595955733232}
   toggle_dependencies: []
   description: 
-  values_prepopulated: 0
   encoded_enum: 0
   config_cat: 0
   toggle: {fileID: 114471314632893462}

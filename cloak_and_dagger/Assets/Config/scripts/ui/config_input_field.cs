@@ -57,7 +57,6 @@ public abstract class config_input_field : MonoBehaviour {
 		object prev_val;
 		while (true) {
 			prev_val = val_to_send;
-			Debug.Log("Waiting for value to change");
 			yield return new WaitUntil(() => val_to_send != prev_val);
 			while (val_to_send != prev_val) {
 				prev_val = val_to_send;

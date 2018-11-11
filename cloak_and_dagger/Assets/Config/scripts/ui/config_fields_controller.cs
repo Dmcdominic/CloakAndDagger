@@ -36,7 +36,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 	public ui_int_info<T0> default_int_info = new ui_int_info<T0>(1, 20, 0, 100, "");
 
 	public bool_var host;
-	
+
 	protected bool currently_open = false;
 
 	protected bool limited_options_only = false;
@@ -53,6 +53,66 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 			update_fields_trigger.e.AddListener(update_fields);
 		}
 		current_fields = new List<Transform>();
+	}
+
+	protected void Start() {
+		validate_all_options();
+	}
+
+	// Make sure that all three option dictionaries contain all the respective keys, and all values are within their bounds.
+	private void validate_all_options() {
+		foreach (T0 t0 in System.Enum.GetValues(typeof(T0))) {
+			if (!config.bool_options.ContainsKey(t0)) {
+				config.bool_options.Add(t0, false);
+			}
+		}
+		foreach (T1 t1 in System.Enum.GetValues(typeof(T1))) {
+			ui_float_info<T0> float_info;
+			if (ui_parameters_ordered.Contains(t1)) {
+				float_info = ((ui_float_info<T0>)ui_parameters_ordered[t1]);
+			} else {
+				object obj = get_missing_ui_parameter(t1);
+				if (obj == null) {
+					Debug.LogError("Please enter the ui parameters for config option: " + t1);
+					continue;
+				}
+				float_info = (ui_float_info<T0>)obj;
+			}
+		
+			if (!config.float_options.ContainsKey(t1)) {
+				config.float_options.Add(t1, float_info.slider_min);
+			}
+			config.float_options[t1] = Mathf.Clamp(config.float_options[t1], float_info.min, float_info.max);
+		}
+		foreach (T2 t2 in System.Enum.GetValues(typeof(T2))) {
+			ui_int_info<T0> int_info;
+			if (ui_parameters_ordered.Contains(t2)) {
+				int_info = ((ui_int_info<T0>)ui_parameters_ordered[t2]);
+			} else {
+				object obj = get_missing_ui_parameter(t2);
+				if (obj == null) {
+					Debug.LogError("Please enter the ui parameters for config option: " + t2);
+					continue;
+				}
+				int_info = (ui_int_info<T0>)obj;
+			}
+
+			if (!config.int_options.ContainsKey(t2)) {
+				config.int_options.Add(t2, int_info.slider_min);
+			}
+			config.int_options[t2] = Mathf.Clamp(config.int_options[t2], int_info.min, int_info.max);
+		}
+	}
+
+	private object get_missing_ui_parameter(object option) {
+		foreach (OrderedDictionary dict in ui_dependents.Values) {
+			foreach (object key in dict.Keys) {
+				if ((int)key == (int)option) {
+					return dict[key];
+				}
+			}
+		}
+		return null;
 	}
 
 	public abstract int get_encoded_enum_bool_opt(T0 option);

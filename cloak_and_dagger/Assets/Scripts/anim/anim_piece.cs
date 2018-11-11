@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class anim_piece : MonoBehaviour {
 
 	public anim_palettes_bundle anim_Palettes_Bundle;
@@ -14,6 +15,10 @@ public class anim_piece : MonoBehaviour {
 
 	protected virtual void Awake() {
 		sprite_renderer = GetComponent<SpriteRenderer>();
+	}
+
+	private void Start() {
+		refresh_sprite();
 	}
 
 	private void OnEnable() {

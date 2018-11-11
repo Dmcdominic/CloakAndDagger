@@ -8,6 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 88bc5c3e12028314c9536d5bb29ed1b9, type: 3}
   m_Name: update_one_config_value
-  m_EditorClassIdentifier: Assembly-CSharp::config_option_event_object
+  m_EditorClassIdentifier: 

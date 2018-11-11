@@ -9,18 +9,20 @@ public class event_repeater : MonoBehaviour {
 	private gameplay_config gameplay_Config;
 
 	[SerializeField]
+	private event_object game_started;
+
+	[SerializeField]
 	private event_object event_to_trigger;
 
+	private float interval = 10f;
 
-	// Use this for initialization
-	void Start() {
-		// todo - start the repeater when the game start countdown ends
-		if (gameplay_Config.bool_options[gameplay_bool_option.heartbeat]) {
-			start_repeater();
-		}
+
+	private void Awake() {
+		start_repeater();
 	}
 
 	public void start_repeater() {
+		stop_repeater();
 		StartCoroutine(triggerEvent());
 	}
 
@@ -30,7 +32,7 @@ public class event_repeater : MonoBehaviour {
 
 	IEnumerator triggerEvent() {
 		while (true) {
-			yield return new WaitForSeconds(gameplay_Config.float_options[gameplay_float_option.heartbeat_interval]);
+			yield return new WaitForSeconds(interval);
 			event_to_trigger.Invoke();
 		}
 	}

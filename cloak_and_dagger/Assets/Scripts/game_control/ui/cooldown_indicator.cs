@@ -8,9 +8,11 @@ public class cooldown_indicator : MonoBehaviour {
     public Text timeRemaining;
     public Image timerMask;
 
-    public bool active;
-    public float cooldown;
-    float timeLeft;
+	public gameplay_config gameplay_Config;
+	public gameplay_float_option cooldown_type;
+	
+	public float_var current_cooldown;
+	
 
     // initialize
     void Start() {
@@ -20,34 +22,22 @@ public class cooldown_indicator : MonoBehaviour {
 
     // run the cooldown
     void Update () {
-        if (active) {
-            timeLeft -= Time.deltaTime;
-            if (timeLeft < 0)
-                timeLeft = 0;
-            updateUI();
-            completeAction();
-        }
+		updateUI();
+		completeAction();
 	}
 
-    // activate the cooldown
-    public void activateCooldown() {
-        active = true;
-    }
-
     void updateUI() {
-        timerMask.fillAmount = timeLeft / cooldown;
-        if (timeLeft >= 1)
-            timeRemaining.text = "" + (int)(timeLeft + 1);
+        timerMask.fillAmount = current_cooldown.val / gameplay_Config.float_options[cooldown_type];
+        if (current_cooldown.val >= 1)
+            timeRemaining.text = "" + Mathf.FloorToInt(current_cooldown.val);
         else
-            timeRemaining.text = "" + (int)(timeLeft * 10 + 1) / 10.0;
+            timeRemaining.text = "" + (int)(current_cooldown.val * 10 + 1) / 10.0;
     }
 
     // stop the cooldown indicator
     public void completeAction() {
-        if (timeLeft > 0)
+        if (current_cooldown.val > 0)
             return;
-        active = false;
-        timeLeft = cooldown;
         timeRemaining.text = "";
     }
 }

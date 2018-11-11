@@ -17,6 +17,7 @@ MonoBehaviour:
   down: 0
   dagger_key: 32
   dash_key: 113
+  reflect_key: 101
   horizontal_axis: Horizontal
   vertical_axis: Vertical
   use_axis: 1
