@@ -15,11 +15,14 @@ public class save_and_load_presets : MonoBehaviour {
 	public int_event_object to_trigger_after_save;
 	public int_event_object to_trigger_after_load;
 
+	public text_asset_list jsons_to_preload;
+
 	// All editable configs, to be saved and loaded, should be serialized in this dictionary
 	public ConfigCat_ScriptableObj_Dict editable_configs = new ConfigCat_ScriptableObj_Dict();
 
 
 	private void Awake() {
+		DontDestroyOnLoad(gameObject);
 		if (save_trigger) {
 			save_trigger.e.AddListener(save_preset);
 		}
@@ -27,7 +30,16 @@ public class save_and_load_presets : MonoBehaviour {
 			load_trigger.e.AddListener(load_preset);
 		}
 	}
-	
+
+	private void Start() {
+		if (jsons_to_preload) {
+			foreach(TextAsset preset in jsons_to_preload.text_assets) {
+				save_util.save_to_JSON(presets_subpath, preset.name, preset.text);
+			}
+		}
+		load_preset(get_available_presets()[0]);
+	}
+
 	public void save_preset(string preset_name) {
 		ConfigCat_String_Dict config_jsons = new ConfigCat_String_Dict();
 

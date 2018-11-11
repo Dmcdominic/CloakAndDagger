@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1076147227828504}
+  m_IsPrefabAsset: 1
+--- !u!1 &1076147227828504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4622022675104128}
+  - component: {fileID: 114787873520327124}
+  m_Layer: 0
+  m_Name: save_and_load_presets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4622022675104128
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076147227828504}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114787873520327124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076147227828504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd94f881ef238b4a9d06975f0a1080c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  save_trigger: {fileID: 11400000, guid: 70c99047acde4db4ca298e54fc7e1ba8, type: 2}
+  preset_name_to_save: {fileID: 11400000, guid: 3cd17da71acf8a1418b8807862d1ab26,
+    type: 2}
+  load_trigger: {fileID: 11400000, guid: d4a5feaf2476c954392d6df95e1d74ed, type: 2}
+  preset_name_to_load: {fileID: 11400000, guid: 49f1a7d3232d34b40b07e0d4180baf10,
+    type: 2}
+  to_trigger_after_save: {fileID: 11400000, guid: a6aedf5f7dd1fed42b39287e9b1d35b0,
+    type: 2}
+  to_trigger_after_load: {fileID: 11400000, guid: e37b48e48b9e41a4a9d3e997691800ad,
+    type: 2}
+  jsons_to_preload: {fileID: 11400000, guid: 6e6f2754944516c4ba33b13ad2bcf51a, type: 2}
+  editable_configs:
+    m_keys: 000000000100000002000000
+    m_values:
+    - {fileID: 11400000, guid: 4a15c59b8048876449a6497af431e6a7, type: 2}
+    - {fileID: 11400000, guid: 311d7573890fff64598a6d804ea6e720, type: 2}
+    - {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
