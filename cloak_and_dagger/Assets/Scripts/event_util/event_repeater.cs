@@ -14,18 +14,16 @@ public class event_repeater : MonoBehaviour {
 	[SerializeField]
 	private event_object event_to_trigger;
 
+	private float interval = 10f;
+
 
 	private void Awake() {
-		if (game_started) {
-			game_started.e.AddListener(start_repeater);
-		}
+		start_repeater();
 	}
 
 	public void start_repeater() {
 		stop_repeater();
-		if (gameplay_Config.bool_options[gameplay_bool_option.heartbeat]) {
-			StartCoroutine(triggerEvent());
-		}
+		StartCoroutine(triggerEvent());
 	}
 
 	public void stop_repeater() {
@@ -34,7 +32,7 @@ public class event_repeater : MonoBehaviour {
 
 	IEnumerator triggerEvent() {
 		while (true) {
-			yield return new WaitForSeconds(gameplay_Config.float_options[gameplay_float_option.heartbeat_interval]);
+			yield return new WaitForSeconds(interval);
 			event_to_trigger.Invoke();
 		}
 	}
