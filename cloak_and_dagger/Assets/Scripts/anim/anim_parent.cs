@@ -5,6 +5,7 @@ using UnityEngine;
 public class anim_parent : MonoBehaviour {
 
 	public List<anim_piece> anim_pieces;
+	public int palette_index { get; private set; }
 
 
 	public void set_all_animation(int anim_index) {
@@ -13,9 +14,10 @@ public class anim_parent : MonoBehaviour {
 		}
 	}
 
-	public void set_all_palette(int palette_index) {
+	public void set_all_palette(int inc_palette_index) {
+		palette_index = inc_palette_index;
 		foreach (anim_piece piece in anim_pieces) {
-			piece.palette_index = palette_index;
+			piece.palette_index = inc_palette_index;
 		}
 	}
 

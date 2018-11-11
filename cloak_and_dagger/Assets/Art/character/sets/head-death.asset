@@ -11,4 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7d363466a9a5a429a0c3781885a780, type: 3}
   m_Name: head-death
   m_EditorClassIdentifier: 
-  palettes: []
+  palettes:
+  - {fileID: 11400000, guid: 622dfef4f9259174caf3acf1f3156aa6, type: 2}
+  - {fileID: 11400000, guid: 99fe583eeff04fd4db91cfa4718ced5f, type: 2}

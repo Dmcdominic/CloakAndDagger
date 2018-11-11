@@ -17,7 +17,7 @@ public class save_and_load_panel_controller : MonoBehaviour {
 	public int_event_object completed_save_event;
 	public int_event_object completed_load_event;
 
-	private bool interactable;
+	public bool_var host;
 
 	//protected List<Transform> current_fields;
 
@@ -35,14 +35,6 @@ public class save_and_load_panel_controller : MonoBehaviour {
 		}
 
 		loadable_presets_dropdown.onValueChanged.AddListener(on_dropdown_value_changed);
-
-		interactable = true; // TODO - check here whether or not you are the host
-		if (!interactable) {
-			load_button.interactable = false;
-			loadable_presets_dropdown.ClearOptions();
-			loadable_presets_dropdown.interactable = false;
-		}
-
 		clear_fields();
 	}
 
@@ -64,6 +56,14 @@ public class save_and_load_panel_controller : MonoBehaviour {
 	private void create_all_fields() {
 		result_text.text = "";
 		repopulate_loadable_dropdown_options();
+		if (!host.val) {
+			load_button.interactable = false;
+			loadable_presets_dropdown.ClearOptions();
+			loadable_presets_dropdown.interactable = false;
+		} else {
+			load_button.interactable = true;
+			loadable_presets_dropdown.interactable = true;
+		}
 		foreach (Transform child in transform) {
 			child.gameObject.SetActive(true);
 		}

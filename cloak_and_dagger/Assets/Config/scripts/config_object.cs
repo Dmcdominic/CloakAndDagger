@@ -8,7 +8,7 @@ public enum config_category { win_con, map, gameplay, readonly_win_con, readonly
 // See the "Code Notes" doc in Google Drive for usage details.
 // T0, T1, T2 should be enums specific to the config object, thus the generic type restrictions.
 [System.Serializable]
-public class config_object<T0, T1, T2> : ScriptableObject	where T0 : struct, System.IConvertible
+public abstract class config_object<T0, T1, T2> : ScriptableObject	where T0 : struct, System.IConvertible
 															where T1 : struct, System.IConvertible
 															where T2 : struct, System.IConvertible {
 	
@@ -16,6 +16,8 @@ public class config_object<T0, T1, T2> : ScriptableObject	where T0 : struct, Sys
 	public Dictionary<T0, bool> bool_options;
 	public Dictionary<T1, float> float_options;
 	public Dictionary<T2, int> int_options;
+
+	public abstract void copy_from_obj(config_object<T0, T1, T2> obj);
 }
 
 

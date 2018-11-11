@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: body-run
   m_EditorClassIdentifier: 
   palettes:
-  - {fileID: 11400000, guid: 2d454da82f60a3749a95cd1fbe4d3a13, type: 2}
-  - {fileID: 11400000, guid: 2cd6c2d4b795db645b29210db2289e57, type: 2}
+  - {fileID: 11400000, guid: f7d14ec69b0900a4993be7bc075440d2, type: 2}
+  - {fileID: 11400000, guid: 3b37f15dcb8bb9d4c807de2c792c1390, type: 2}

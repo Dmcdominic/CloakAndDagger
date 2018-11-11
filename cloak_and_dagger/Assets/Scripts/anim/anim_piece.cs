@@ -14,6 +14,9 @@ public class anim_piece : MonoBehaviour {
 
 	protected virtual void Awake() {
 		sprite_renderer = GetComponent<SpriteRenderer>();
+	}
+
+	private void OnEnable() {
 		StartCoroutine(refresh_on_anim_change());
 		StartCoroutine(refresh_on_palette_change());
 		StartCoroutine(refresh_on_sprite_change());

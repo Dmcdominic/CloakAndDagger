@@ -4,7 +4,24 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Events;
 
-public class throw_dagger : NetworkBehaviour {
+
+[System.Serializable]
+public struct throw_dagger_data {
+	public serializable_vec2 thrower_pos;
+	public serializable_vec2 target_dest;
+	public int network_id;
+
+	public throw_dagger_data(Vector2 _thrower_pos, Vector2 _target_dest) {
+		this.thrower_pos = _thrower_pos;
+		this.target_dest = _target_dest;
+		System.Random rand = new System.Random();
+		this.network_id = rand.Next(int.MinValue, int.MaxValue);
+	}
+}
+
+
+[RequireComponent(typeof(network_id))]
+public class throw_dagger : sync_behaviour<throw_dagger_data> {
 
 	[SerializeField]
 	Vec2Var _origin;
@@ -13,56 +30,79 @@ public class throw_dagger : NetworkBehaviour {
 	Vec2Var _dest;
 
 	[SerializeField]
-	float speed = 100;
-
-	[SerializeField]
-	float cast_buffer = 1;
-
-	[SerializeField]
 	GameObject dagger_prefab;
 
 	[SerializeField]
-	float_event_object trigger;
+	int_float_event trigger;
+
+	[SerializeField]
+	player_event dagger_thrown;
 
 	[SerializeField]
 	gameplay_config gameplay_Config;
+	[SerializeField]
+	readonly_gameplay_config readonly_Gameplay_Config;
 
+    [SerializeField]
+    int_float_event inform_pmove;
+
+	private network_id networkID;
 	private uint thrown_index_counter = 0;
 
+
+	private void Awake() {
+		networkID = GetComponent<network_id>();
+	}
+
+    public override void Start()
+    {
+        base.Start();
+        if (is_local)
+        {
+            trigger.e.AddListener(local_throw);
+        }
+    }
+
+    // This is the local player, and they pressed the throw dagger button, and it was off cooldown
+    private void local_throw(int id, float cooldown) {
+        if (id != gameObject_id.val) return; 
+
+		throw_dagger_data throw_data = new throw_dagger_data(_origin.val, _dest.val);
+		send_state(throw_data);
+		throw_func(throw_data);
+	}
+
+	// Received a throw_dagger event
+	public override void rectify(float t, throw_dagger_data state) {
+		// todo - account for lag with t?
+		throw_func(state);
+	}
 	
-	// Use this for initialization
-	void Start() {
-		if (isLocalPlayer)
-			trigger.e.AddListener(throw_func);
-	}
+	// Actually spawn a dagger
+	public void throw_func(throw_dagger_data throw_data) { //too many times have I tried to name a func throw.
+		Vector3 position = throw_data.thrower_pos;
+		Vector3 dir = (Vector3)throw_data.target_dest - position;
 
-	public void throw_func(float cooldown) { //too many times have I tried to name a func throw.
-		Cmd_throw(_origin.val,_dest.val,cast_buffer);
-			
-	}
-
-	[Command]
-	public void Cmd_throw(Vector2 origin,Vector2 dest,float cast_buffer) {
-		Vector3 position = origin;
-		Vector3 dir = dest - origin;
-		Quaternion rotation = Quaternion.Euler(0,0,Mathf.Rad2Deg * Mathf.Atan2(dir.y,dir.x));
-		GameObject my_dagger = Instantiate(dagger_prefab,position,rotation);
-		my_dagger.transform.position += my_dagger.transform.right * cast_buffer;
+		Quaternion rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(dir.y, dir.x));
+		GameObject my_dagger = Instantiate(dagger_prefab, position, rotation);
+		my_dagger.transform.position += my_dagger.transform.right * readonly_Gameplay_Config.float_options[readonly_gameplay_float_option.dagger_buffer];
 		my_dagger.GetComponent<dagger_data_carrier>().dagger_Data = create_dagger_data();
+		my_dagger.GetComponent<network_id>().val = throw_data.network_id;
+
 		Rigidbody2D rb = my_dagger.GetComponent<Rigidbody2D>();
-		
-		NetworkServer.Spawn(my_dagger);
-			
-		if(rb) {
-			//change this to a set velocity, forces don't apply instantly over the network
-			rb.velocity = my_dagger.transform.right * speed;
+		if (rb) {
+			rb.velocity = my_dagger.transform.right * gameplay_Config.float_options[gameplay_float_option.dagger_speed];
+		}
+        inform_pmove.Invoke(gameObject_id.val, rotation.eulerAngles.z);
+		if (dagger_thrown) {
+			dagger_thrown.Invoke(0, gameObject);
 		}
 	}
 
 	// Edit the properties of the dagger here before throwing it
 	private dagger_data create_dagger_data() {
 		bool collaterals = gameplay_Config.bool_options[gameplay_bool_option.dagger_collaterals];
-		byte thrower_ID = this.gameObject.GetComponent<Player_data_carrier>().player_Data.playerID;
+		byte thrower_ID = (byte)networkID.val;
         return new dagger_data(collaterals, thrower_ID, thrown_index_counter++);
 	}
 	

@@ -11,4 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7d363466a9a5a429a0c3781885a780, type: 3}
   m_Name: preview
   m_EditorClassIdentifier: 
-  palettes: []
+  palettes:
+  - {fileID: 11400000, guid: 98b3c4d9d28a4934898c910bbbb56e1e, type: 2}
+  - {fileID: 11400000, guid: b08c0d2cf2c677a43b477ad558ee14f7, type: 2}

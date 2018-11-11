@@ -11,6 +11,7 @@ public class anim_palettes_bundle : ScriptableObject {
 #if UNITY_EDITOR
 	[MenuItem("Custom/Populate Palletes Bundles %#&g")]
 	public static void populate_palettes_bundles() {
+		Debug.Log("Starting to populate your palletes bundles");
 		Object[] APSs = Selection.GetFiltered(typeof(anim_palettes_set), SelectionMode.DeepAssets);
 		Object[] APBs = Selection.GetFiltered(typeof(anim_palettes_bundle), SelectionMode.DeepAssets);
 		if (APSs.Length <= 0 || APBs.Length <= 0) {
@@ -35,6 +36,7 @@ public class anim_palettes_bundle : ScriptableObject {
 				APB.sets.Add(set);
 			}
 		}
+		EditorUtility.SetDirty(APB);
 	}
 #endif
 }

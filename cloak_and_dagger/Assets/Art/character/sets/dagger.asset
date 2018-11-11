@@ -11,4 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7d363466a9a5a429a0c3781885a780, type: 3}
   m_Name: dagger
   m_EditorClassIdentifier: 
-  palettes: []
+  palettes:
+  - {fileID: 11400000, guid: 8417bd2bd91848449beaaf8eeb3c8e53, type: 2}
+  - {fileID: 11400000, guid: 66b3182d1d1b7544189611e82ff95b3e, type: 2}

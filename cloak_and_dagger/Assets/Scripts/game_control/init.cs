@@ -14,8 +14,14 @@ public class init : MonoBehaviour {
     [SerializeField]
     int_var game_scene;
 
+	[SerializeField]
+	map_config map_Config;
+
     [SerializeField]
-    vec2_list spawn_points;
+    gameplay_config gc;
+
+    [SerializeField]
+    bool_var ingame;
 
     [SerializeField]
     party_var party;
@@ -32,6 +38,10 @@ public class init : MonoBehaviour {
     [SerializeField]
     float_var t0;
 
+    [SerializeField]
+    player_float respawn_times;
+    
+
 	// Use this for initialization
 	void Start () {
         start.e.AddListener((t) => StartCoroutine(go(t)));
@@ -43,13 +53,15 @@ public class init : MonoBehaviour {
         SceneManager.LoadScene(game_scene.val);
         yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == game_scene.val);
 
-        GameObject leader_go = Instantiate(player_prefab,spawn_points.next,Quaternion.identity);
+		Vector2 spawn_point = map_Config.current_map_info.next_spawn_point;
+		GameObject leader_go = Instantiate(player_prefab,spawn_point,Quaternion.identity);
 
         network_id leader_id = leader_go.GetComponent<network_id>();
         leader_id.val = 0;
         if(party.val.leader == local_name.val)
         {
             local_network_id.val = leader_id.val;
+            respawn_times[leader_id.val] = gc.float_options[gameplay_float_option.respawn_delay];
         }
 
         GameObject member_go;
@@ -57,16 +69,20 @@ public class init : MonoBehaviour {
         int i = 1;
         foreach(string member in party.val.members)
         {
-            member_go = Instantiate(player_prefab, spawn_points.next, Quaternion.identity);
+			spawn_point = map_Config.current_map_info.next_spawn_point;
+			member_go = Instantiate(player_prefab, spawn_point, Quaternion.identity);
             net_id = member_go.GetComponent<network_id>();
             net_id.val = i;
             i++;
             if (member == local_name.val)
             {
                 local_network_id.val = net_id.val;
+                respawn_times[net_id.val] = gc.float_options[gameplay_float_option.respawn_delay];
             }
         }
+        data.local_id = local_network_id;
         t0.val = t;
+        ingame.val = true;
         done_initing.Invoke();
     }
 

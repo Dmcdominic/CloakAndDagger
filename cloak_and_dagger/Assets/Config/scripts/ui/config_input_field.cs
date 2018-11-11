@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public abstract class config_input_field : MonoBehaviour {
 
 	public string_event_object tooltip_update;
+	public event_object after_value_changed;
 	public Text title;
 
 	[HideInInspector]

@@ -35,12 +35,21 @@ public class player_manager : MonoBehaviour {
 
     [SerializeField]
     GameObject client_go;
+
+    [SerializeField]
+    bool_var host;
+
+    [SerializeField]
+    event_object notify_party;
+
     IProtagoras_Client<object> client;
 
 
 	// Use this for initialization
 	void Start () {
+        host.val = false;
         client = client_go.GetComponent<IProtagoras_Client<object>>();
+        StartCoroutine(notify_party_change(notify_party));
 	}
 
     public void refresh()
@@ -56,6 +65,20 @@ public class player_manager : MonoBehaviour {
             refresh();
             yield return new WaitForSeconds(.5f);
             
+        }
+    }
+
+    IEnumerator notify_party_change(event_object notify)
+    {
+        yield return new WaitUntil(() => out_party_info.val.members != null);
+        while(true)
+        {
+            Party_Names pn = out_party_info.val;
+            yield return new WaitUntil(
+                () => !pn.members.SequenceEqual(out_party_info.val.members)
+                      && pn.leader != out_party_info.val.leader
+                );
+            notify.Invoke();
         }
     }
 
@@ -99,6 +122,7 @@ public class player_manager : MonoBehaviour {
         {
             Destroy(child.gameObject);
         }
+        host.val = false;
         foreach(Party_Names pn in pns)
         {
             GameObject leader = Instantiate(leader_slot,party_display.transform);
@@ -107,7 +131,11 @@ public class player_manager : MonoBehaviour {
             {
                 leader.transform.GetChild(1).GetComponent<Button>().onClick.AddListener(player_join(pn.leader));
                 leader.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(player_invite(pn.leader));
-            } //else leave button
+            }
+            else
+            {
+                host.val = true;
+            }
            foreach(string member_name in pn.members)
             {
                 GameObject member = Instantiate(member_slot, leader.transform);
