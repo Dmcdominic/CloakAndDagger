@@ -272,7 +272,6 @@ MonoBehaviour:
   title: {fileID: 114552509315581748}
   toggle_dependencies: []
   description: 
-  values_prepopulated: 0
   encoded_enum: 0
   config_cat: 0
   slider: {fileID: 114699043285134468}
