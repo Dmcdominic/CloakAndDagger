@@ -151,3 +151,4 @@ public class player_manager : MonoBehaviour {
     }
 
 }
+

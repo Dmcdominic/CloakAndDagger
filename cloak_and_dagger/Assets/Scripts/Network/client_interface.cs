@@ -16,9 +16,42 @@ public struct Party_Names
     }
 }
 
+public enum GAME { Cloak_and_Dagger }
+
+[Serializable]
+public struct connection_struct
+{
+    public string name;
+    public bool is_in_game;
+    public bool is_in_party;
+    public GAME current_game;
+    public bool online;
+    public int conn_id;
+
+    public connection_struct(string name, bool is_in_game, bool is_in_party, GAME current_game, bool online,int conn_id)
+    {
+        this.name = name;
+        this.is_in_game = is_in_game;
+        this.is_in_party = is_in_party;
+        this.current_game = current_game;
+        this.online = online;
+        this.conn_id = conn_id;
+    }
+}
+
+[System.Serializable]
+public struct player_info
+{
+    public string name;
+
+    public Sprite profile;
+    public int kill_count;
+    public float last_login;
+}
+
+
 public interface IProtagoras_Client<Message_Type>
 {
-    bool Setup_for_player(string name, string password, Action<string,Action> invite_trigger, Action<string,Action> request_trigger,Action<Message_Type> message_trigger, int port);
 
 
     //we need to add a leave_party trigger :(
@@ -30,7 +63,7 @@ public interface IProtagoras_Client<Message_Type>
      *            Allows you to call all of the functions below.
      *            Return true iff the connection succeeds
      */
-    bool Connect(int port);
+    bool Connect(int port, Action success, Action failure); //TODO add a failure callback
 
     /*
      * Params:   name the players name, password the desired plaintext password
@@ -38,7 +71,7 @@ public interface IProtagoras_Client<Message_Type>
      * Ensures:  returns true if (name,password) will be registered
      *           with the server or they already were registered.
      */
-    bool Create_Player(string name, string password, Action success);
+    bool Create_Player(string name, string password, Action success, Action failure);
 
 
     /*
@@ -52,7 +85,7 @@ public interface IProtagoras_Client<Message_Type>
      *           and invite players for this account
      * 
      */
-    bool Login(string name, string password, Action success);
+    bool Login(string name, string password, Action success, Action failure);
 
 
     /*
@@ -121,7 +154,7 @@ public interface IProtagoras_Client<Message_Type>
 
     
 
-    void Register_Party_list(Action<List<Party_Names>> invoke);
+    void Register_Party_List(Action<Party_Names> invoke);
 
     /*
      * Params:   msg is the object you want all other (not you) players
@@ -138,4 +171,15 @@ public interface IProtagoras_Client<Message_Type>
      * 
      */
     void Register_Message_Receive(Action<Message_Type> when_you_receive_message);
+
+
+    void send_info(player_info pi);
+
+    void get_player_info(Action<player_info> callback);
+
+    void find_match();
+
+    void add_friend(string name,Action success, Action failure);
+
+    void Register_friends(Action<List<connection_struct>> friends_event);
 }
