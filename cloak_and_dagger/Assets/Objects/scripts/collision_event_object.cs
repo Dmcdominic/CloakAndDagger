@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-[CreateAssetMenu(menuName = "variables/collision_event")]
+[CreateAssetMenu(menuName = "events/collision")]
 public class collision_event_object : ScriptableObject {
 
 	[System.Serializable]

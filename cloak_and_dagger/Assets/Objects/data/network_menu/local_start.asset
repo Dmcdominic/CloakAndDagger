@@ -11,8 +11,3 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: local_start
   m_EditorClassIdentifier: Assembly-CSharp::event_object
-  e:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null

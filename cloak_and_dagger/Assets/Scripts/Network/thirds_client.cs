@@ -45,8 +45,6 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
     bool connected = false;
     HostTopology topology;
 
-    [SerializeField]
-    client_var out_client;
 
     [SerializeField]
     obj_event in_multicast;
@@ -66,7 +64,6 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
 
     void Start()
     {
-        out_client.val = this;
         DontDestroyOnLoad(gameObject);
         
         in_multicast.e.AddListener(mtc);

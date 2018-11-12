@@ -8,6 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: message_to_splitter
-  m_EditorClassIdentifier: Assembly-CSharp::obj_event
+  m_Script: {fileID: 11500000, guid: be48ad5a7708e9d4abd8666c1a6c8a38, type: 3}
+  m_Name: start_in
+  m_EditorClassIdentifier: 
+  constant: 0

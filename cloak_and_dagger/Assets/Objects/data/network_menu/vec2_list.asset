@@ -8,6 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: sync_data
-  m_EditorClassIdentifier: Assembly-CSharp::obj_event
+  m_Script: {fileID: 11500000, guid: a02be2882222d054fb2b26dde5904818, type: 3}
+  m_Name: vec2_list
+  m_EditorClassIdentifier: 
+  value: []

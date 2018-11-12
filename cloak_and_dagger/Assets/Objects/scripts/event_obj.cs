@@ -4,11 +4,16 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEditor;
 
-[CreateAssetMenu(menuName = "variables/event")]
+[CreateAssetMenu(menuName = "events/unit")]
 public class event_object : ScriptableObject
 {
 
-    public UnityEvent e = new UnityEvent();
+    private UnityEvent _e;
+
+    public UnityEvent e
+    {
+        get { if (_e == null) _e = new UnityEvent();  return _e; }
+    }
 
     public void Invoke() { e.Invoke(); }
 
@@ -16,17 +21,21 @@ public class event_object : ScriptableObject
 
 
 
-[CreateAssetMenu(menuName = "variables/generic event")]
 public class gen_event<T> : ScriptableObject
 {
-    public UnityEvent<T> e = new adhoc_event<T>();
+
+    private UnityEvent<T> _e;
+
+    public UnityEvent<T> e
+    {
+        get { if (_e == null) _e = new adhoc_event<T>(); return _e; }
+    }
 
     public void Invoke(T arg) { e.Invoke(arg); }
+
 }
 
 
 
 public class adhoc_event<T> : UnityEvent<T> { }
 
-[CreateAssetMenu(menuName = "variables/object event")]
-public class obj_event : gen_event<object> { }

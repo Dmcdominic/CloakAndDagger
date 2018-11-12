@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-[CreateAssetMenu(menuName = "variables/dagger_collision_event")]
+[CreateAssetMenu(menuName = "events/dagger_collision")]
 public class dagger_collision_event_object : ScriptableObject {
 
 	[System.Serializable]
