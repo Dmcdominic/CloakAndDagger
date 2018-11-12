@@ -33,15 +33,21 @@ public class personal_spotlight_trigger : MonoBehaviour {
 	}
 	
 	private void heartbeat() {
-		animator.Play("Heartbeat");
+		animator_play_safe("Heartbeat");
 	}
 
 	private void on() {
-		animator.Play("On");
+		animator_play_safe("On");
 	}
 
 	private void off() {
-		animator.Play("Off");
+		animator_play_safe("Off");
+	}
+
+	private void animator_play_safe(string stateName) {
+		if (gameObject.activeInHierarchy) {
+			animator.Play(stateName);
+		}
 	}
 
 }

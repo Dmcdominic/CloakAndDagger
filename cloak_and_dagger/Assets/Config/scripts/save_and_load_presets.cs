@@ -37,7 +37,9 @@ public class save_and_load_presets : MonoBehaviour {
 				save_util.save_to_JSON(presets_subpath, preset.name, preset.text);
 			}
 		}
+#if !UNITY_EDITOR
 		load_preset(get_available_presets()[0]);
+#endif
 	}
 
 	public void save_preset(string preset_name) {
