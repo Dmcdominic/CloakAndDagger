@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/maps/Cave Demo.unity
     guid: f9952c8db80928e45af5aedef57d425a
+  - enabled: 1
+    path: Assets/Scenes/maps/Ning_map_3.unity
+    guid: 9d4fa3e7cc6c20741bd31d3894924515
   m_configObjects: {}
