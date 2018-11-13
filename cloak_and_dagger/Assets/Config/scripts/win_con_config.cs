@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public enum win_condition { last_survivor, kill_count }
+public enum win_condition { last_survivor, kill_count, assault }
 
-public enum winCon_bool_option {  }
-public enum winCon_float_option { time_limit }
-public enum winCon_int_option { lives, kill_limit }
+public enum winCon_bool_option { payload_carrier_revealed }
+public enum winCon_float_option { time_limit, payload_respawn_delay }
+public enum winCon_int_option { lives, kill_limit, payload_delivery_limit }
 
 //[CreateAssetMenu(menuName = "config/win_con")]
 [System.Serializable]

@@ -26,13 +26,17 @@ public class WC_last_survivor_controller : win_condition_controller {
 		team_stats_dict = new Dictionary<byte, team_last_survivor_stats>();
 	}
 
-	// This is called when the game is started
+	// This is called when the game is started, at the end of the countdown
 	protected override void on_game_start() {
 	}
 
 	// This is called when a player is killed,
 	// AFTER the stats dicts are updated with kill & death counters
 	protected override void on_player_killed(death_event_data death_data) {
+		if (WCAP.win_Con_Config.int_options[winCon_int_option.lives] == 0) {
+			return;
+		}
+
 		player_last_survivor_stats killed = player_stats_dict[(byte)death_data.playerID];
 		killed.lives_remaining--;
 		team_stats_dict[killed.teamID].lives_remaining--;
