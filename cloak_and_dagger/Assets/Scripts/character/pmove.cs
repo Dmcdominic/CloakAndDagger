@@ -101,18 +101,24 @@ public class pmove : sync_behaviour<player_state>
         }
         if (rb.velocity.x * input_vec.val.x < 0) rb.velocity = Vector2.up * rb.velocity;
         if (rb.velocity.y * input_vec.val.y < 0) rb.velocity = Vector2.right * rb.velocity;
+        
 
 		float config_movespeed = gameplay_Config.float_options[gameplay_float_option.player_movespeed];
-		if (rb.velocity.sqrMagnitude < .25f)
-            rb.AddForce(input_vec.val * config_movespeed * .1f, ForceMode2D.Impulse);
-        rb.AddForce(input_vec.val * config_movespeed, ForceMode2D.Force);
+        //if (rb.velocity.sqrMagnitude < .25f)
+        //    rb.AddForce(input_vec.val * config_movespeed * .05f, ForceMode2D.Impulse);
+        //rb.AddForce(input_vec.val * config_movespeed, ForceMode2D.Force);
+
+        rb.velocity = input_vec.val.normalized * config_movespeed;
+
+      
+        
 
         if(((Vector2)input_vec).sqrMagnitude > .1f && !ignore_input)
             target_theta = Mathf.Rad2Deg * Mathf.Atan2(input_vec.val.y, input_vec.val.x);
 
         transform.eulerAngles = Vector3.forward * Mathf.SmoothDampAngle(
                                 transform.eulerAngles.z, target_theta, 
-                                ref smooth_rot_vel, .025f);
+                                ref smooth_rot_vel, .14f);
 
         state = new player_state(transform.position, rb.velocity,transform.eulerAngles.z);
 
