@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67c77b4998ad4294a984eaa2a0272501, type: 3}
-  m_Name: Last Survivor
+  m_Name: Assault
   m_EditorClassIdentifier: 
-  win_Condition: 0
-  default_map: Ragnarok
-  compatible_bool_options: 00000000
-  compatible_float_options: 
-  compatible_int_options: 00000000
+  win_Condition: 2
+  default_map: Cave Demo
+  compatible_bool_options: 01000000
+  compatible_float_options: 0100000000000000
+  compatible_int_options: 0200000000000000

@@ -14,6 +14,7 @@ public class save_and_load_presets : MonoBehaviour {
 
 	public int_event_object to_trigger_after_save;
 	public int_event_object to_trigger_after_load;
+	public event_object to_trigger_sync_all;
 
 	public text_asset_list jsons_to_preload;
 
@@ -37,7 +38,9 @@ public class save_and_load_presets : MonoBehaviour {
 				save_util.save_to_JSON(presets_subpath, preset.name, preset.text);
 			}
 		}
+#if !UNITY_EDITOR
 		load_preset(get_available_presets()[0]);
+#endif
 	}
 
 	public void save_preset(string preset_name) {
@@ -72,6 +75,7 @@ public class save_and_load_presets : MonoBehaviour {
 			return;
 		}
 
+		to_trigger_sync_all.Invoke();
 		output_result(false, true, loaded_preset.name);
 	}
 	public void load_preset() {

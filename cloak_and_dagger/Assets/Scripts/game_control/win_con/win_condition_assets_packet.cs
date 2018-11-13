@@ -17,6 +17,9 @@ public class win_condition_assets_packet : ScriptableObject {
 	public event_object trigger_on_game_start;
 	public event_object trigger_on_game_over; // TODO - this needs to send some kind of game_over_data?
 
+	// Player-Team data
+	public player_int teams;
+
 	// Game variables
 	public bool_var ingame_state;
 

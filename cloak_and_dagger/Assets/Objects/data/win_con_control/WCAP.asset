@@ -20,5 +20,6 @@ MonoBehaviour:
     type: 2}
   trigger_on_game_over: {fileID: 11400000, guid: 3ae1a8fa862f761498dbdb085e52b195,
     type: 2}
+  teams: {fileID: 11400000, guid: 3e6fb11ac1e910349b8e078c4edc1c78, type: 2}
   ingame_state: {fileID: 11400000, guid: 651e92a3b77baf94ea1cf6097bf34214, type: 2}
   game_timer: {fileID: 11400000, guid: 5229a31490d70a34f913756d77c8cd74, type: 2}

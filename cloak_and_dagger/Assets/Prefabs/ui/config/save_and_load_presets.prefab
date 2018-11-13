@@ -61,6 +61,8 @@ MonoBehaviour:
     type: 2}
   to_trigger_after_load: {fileID: 11400000, guid: e37b48e48b9e41a4a9d3e997691800ad,
     type: 2}
+  to_trigger_sync_all: {fileID: 11400000, guid: 12c5f480ae5b02246be621b1b3b2f5d5,
+    type: 2}
   jsons_to_preload: {fileID: 11400000, guid: 6e6f2754944516c4ba33b13ad2bcf51a, type: 2}
   editable_configs:
     m_keys: 000000000100000002000000

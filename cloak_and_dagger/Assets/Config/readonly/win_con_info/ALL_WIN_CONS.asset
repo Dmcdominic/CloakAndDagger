@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: ALL_WIN_CONS
   m_EditorClassIdentifier: 
   win_con_infos:
-    m_keys: 0000000001000000
+    m_keys: 000000000100000002000000
     m_values:
     - {fileID: 11400000, guid: 2ac9d6bf4f2458c4abd7ea5f44e4a81a, type: 2}
     - {fileID: 11400000, guid: f22a945d71755a84ba8107bb454ab7fe, type: 2}
+    - {fileID: 11400000, guid: c49bfac1a21e675488001073945d2a71, type: 2}

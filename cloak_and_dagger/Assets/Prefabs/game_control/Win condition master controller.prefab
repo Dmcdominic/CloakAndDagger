@@ -51,6 +51,22 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4156863910189934}
+  - component: {fileID: 114627081766228654}
+  m_Layer: 0
+  m_Name: assault
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &1976182503014990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4826361174197486}
   - component: {fileID: 114977693231741110}
   m_Layer: 0
   m_Name: kill count
@@ -65,12 +81,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1594974933674450}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4738424570576098}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4576649971311402
 Transform:
@@ -96,9 +112,23 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4576649971311402}
+  - {fileID: 4826361174197486}
   - {fileID: 4156863910189934}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4826361174197486
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976182503014990}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4738424570576098}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114058240854290130
 MonoBehaviour:
@@ -111,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072ffe9121368e14db8f10d342f5a760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
+  WCAP: {fileID: 0}
 --- !u!114 &114462569691076326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,11 +156,12 @@ MonoBehaviour:
   start_in: {fileID: 11400000, guid: 7f1fcba0038477d4d90bcba572f87cf6, type: 2}
   WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
   WC_controller_prefabs:
-    m_keys: 0000000001000000
+    m_keys: 000000000100000002000000
     m_values:
     - {fileID: 114058240854290130}
     - {fileID: 114977693231741110}
---- !u!114 &114977693231741110
+    - {fileID: 114627081766228654}
+--- !u!114 &114627081766228654
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +169,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1594974933674450}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7a56b6b8c4e330449bef18d7094ad82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WCAP: {fileID: 0}
+--- !u!114 &114977693231741110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976182503014990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85dd5b2c495e1b44ea56733b486ba8a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
+  WCAP: {fileID: 0}

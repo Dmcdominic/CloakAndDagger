@@ -39,9 +39,15 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 		// except that depedendencies will be placed directly beneath their parent toggle.
 		// NOTE - The generic enum type argument in each new ui_(type)_info MUST be the (category)_bool_option.
 		// See gameplay_config_fields_controller as an example of this.
+		ui_parameters_ordered.Add(winCon_bool_option.free_for_all, new ui_bool_info<winCon_bool_option>("Each player battles for individual victory - No teams allowed."));
 		ui_parameters_ordered.Add(winCon_float_option.time_limit, new ui_float_info<winCon_bool_option>(0, 300, 0, 3600, "Time in seconds before the game ends. Set to \"0\" for no limit."));
 		ui_parameters_ordered.Add(winCon_int_option.kill_limit, new ui_int_info<winCon_bool_option>(1, 100, 1, 1000, "Number of kills required to win."));
-		ui_parameters_ordered.Add(winCon_int_option.lives, new ui_int_info<winCon_bool_option>(1, 100, 1, 1000, "Number of lives that each player has."));
+
+		ui_parameters_ordered.Add(winCon_int_option.lives, new ui_int_info<winCon_bool_option>(1, 100, 0, 1000, "Number of lives that each player has. Set to \"0\" for no limit."));
+
+		ui_parameters_ordered.Add(winCon_int_option.payload_delivery_limit, new ui_int_info<winCon_bool_option>(1, 10, 1, 100, "Number of payload deliveries required to win."));
+		ui_parameters_ordered.Add(winCon_float_option.payload_respawn_delay, new ui_float_info<winCon_bool_option>(0, 20, 0, 120, "Delay in seconds before the payload respawns after being delivered."));
+		ui_parameters_ordered.Add(winCon_bool_option.payload_carrier_revealed, new ui_bool_info<winCon_bool_option>("The player remains visible while carrying the payload."));
 
 		base.populate_ui_dependents();
 		base.Awake();

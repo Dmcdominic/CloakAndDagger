@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class win_condition_controller : MonoBehaviour {
 	public abstract win_condition win_Condition { get; }
 
+	[HideInInspector]
 	public win_condition_assets_packet WCAP;
 	
 	private float time_limit;
@@ -58,7 +59,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 		yield return null;
 	}
 
-	// Is called by the game_start_trigger event
+	// Is called at the end of the countdown
 	private void on_game_start_general() {
 		WCAP.ingame_state.val = true;
 		WCAP.trigger_on_game_start.Invoke();
@@ -67,11 +68,11 @@ public abstract class win_condition_controller : MonoBehaviour {
 
 	// Is called by the player_killed event
 	private void on_player_killed_general(death_event_data death_data) {
-		player_stats killed = get_player_stats((byte)death_data.playerID);
+		player_stats killed = get_player_stats(death_data.playerID);
 		killed.death_count++;
 		get_team_stats(killed.teamID).death_count++;
 		if (death_data.death_Type != death_type.suicide) {
-			player_stats killer = get_player_stats((byte)death_data.killerID);
+			player_stats killer = get_player_stats(death_data.killerID);
 			killer.kill_count++;
 		}
 		on_player_killed(death_data);
@@ -91,7 +92,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 		WCAP.ingame_state.val = false;
 		WCAP.trigger_on_game_over.Invoke();
 		// TODO - some other stuff here, like the leaderboard?
-		// Or other stuff can simply listen for the game_over event.
+		// Or that stuff can simply listen for the game_over event.
 		Destroy(gameObject);
 	}
 }
@@ -101,13 +102,20 @@ public abstract class win_condition_controller : MonoBehaviour {
 public class player_stats {
 	public byte playerID;
 	public byte teamID;
-	public int kill_count;
-	public int death_count;
+	public int kill_count = 0;
+	public int death_count = 0;
+	public player_stats(byte _playerID, byte _teamID) {
+		playerID = _playerID;
+		teamID = _teamID;
+	}
 }
 
 // Stores a single team's stats for this match
 public class team_stats {
 	public byte teamID;
-	public byte kill_count;
-	public byte death_count;
+	public byte kill_count = 0;
+	public byte death_count = 0;
+	public team_stats(byte _teamID) {
+		teamID = _teamID;
+	}
 }

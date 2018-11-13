@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   win_Condition: 1
   default_map: Nuketown
-  compatible_bool_options: 
+  compatible_bool_options: 00000000
   compatible_float_options: 00000000
   compatible_int_options: 01000000
