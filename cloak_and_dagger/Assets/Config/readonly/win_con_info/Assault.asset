@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   win_Condition: 2
   default_map: Cave Demo
-  compatible_bool_options: 00000000
+  compatible_bool_options: 01000000
   compatible_float_options: 0100000000000000
   compatible_int_options: 0200000000000000

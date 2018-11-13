@@ -20,10 +20,17 @@ public class WC_kill_count_controller : win_condition_controller {
 	// This is called right when the scene is loaded, after the base Awake.
 	// Use this for initialization instead of Awake.
 	protected override void init() {
-		// TODO - intialize the player_stats_dict and team_stats_dict
-		// based on info passed here from the lobby or host or whatever
 		player_stats_dict = new Dictionary<byte, player_kill_count_stats>();
 		team_stats_dict = new Dictionary<byte, team_kill_count_stats>();
+
+		foreach (byte player in WCAP.teams) {
+			byte team = (byte)WCAP.teams[player];
+			player_stats_dict.Add(player, new player_kill_count_stats(player, team));
+
+			if (!team_stats_dict.ContainsKey(team)) {
+				team_stats_dict.Add(team, new team_kill_count_stats(team));
+			}
+		}
 	}
 
 	// This is called when the game is started, at the end of the countdown
@@ -45,7 +52,11 @@ public class WC_kill_count_controller : win_condition_controller {
 
 // These are player stat and team stat classes for you to store additional win condition info
 public class player_kill_count_stats : player_stats {
+	public player_kill_count_stats(byte _playerID, byte _teamID) : base(_playerID, _teamID) {
+	}
 }
 
 public class team_kill_count_stats : team_stats {
+	public team_kill_count_stats(byte _teamID) : base(_teamID) {
+	}
 }

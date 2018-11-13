@@ -20,10 +20,17 @@ public class WC_assault_controller : win_condition_controller {
 	// This is called right when the scene is loaded, after the base Awake.
 	// Use this for initialization instead of Awake.
 	protected override void init() {
-		// TODO - intialize the player_stats_dict and team_stats_dict
-		// based on info passed here from the lobby or host or whatever
 		player_stats_dict = new Dictionary<byte, player_assault_stats>();
 		team_stats_dict = new Dictionary<byte, team_assault_stats>();
+
+		foreach (byte player in WCAP.teams) {
+			byte team = (byte)WCAP.teams[player];
+			player_stats_dict.Add(player, new player_assault_stats(player, team));
+
+			if (!team_stats_dict.ContainsKey(team)) {
+				team_stats_dict.Add(team, new team_assault_stats(team));
+			}
+		}
 	}
 
 	// This is called when the game is started, at the end of the countdown
@@ -35,11 +42,11 @@ public class WC_assault_controller : win_condition_controller {
 	protected override void on_player_killed(death_event_data death_data) {
 	}
 
-	private void on_bomb_pickup() {
+	private void on_payload_pickup() {
 		// Todo
 	}
 
-	private void on_bomb_delivered() {
+	private void on_payload_delivery() {
 		// Todo
 	}
 
@@ -48,11 +55,15 @@ public class WC_assault_controller : win_condition_controller {
 
 // These are player stat and team stat classes for you to store additional win condition info
 public class player_assault_stats : player_stats {
-	int bomb_pickups;
-	int bomb_deliveries;
+	int payload_pickups = 0;
+	int payload_deliveries = 0;
+	public player_assault_stats(byte _playerID, byte _teamID) : base(_playerID, _teamID) {
+	}
 }
 
 public class team_assault_stats : team_stats {
-	int bomb_pickups;
-	int bomb_deliveries;
+	int payload_pickups = 0;
+	int payload_deliveries = 0;
+	public team_assault_stats(byte _teamID) : base(_teamID) {
+	}
 }

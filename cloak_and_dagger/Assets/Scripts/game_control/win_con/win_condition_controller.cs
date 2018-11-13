@@ -102,13 +102,20 @@ public abstract class win_condition_controller : MonoBehaviour {
 public class player_stats {
 	public byte playerID;
 	public byte teamID;
-	public int kill_count;
-	public int death_count;
+	public int kill_count = 0;
+	public int death_count = 0;
+	public player_stats(byte _playerID, byte _teamID) {
+		playerID = _playerID;
+		teamID = _teamID;
+	}
 }
 
 // Stores a single team's stats for this match
 public class team_stats {
 	public byte teamID;
-	public byte kill_count;
-	public byte death_count;
+	public byte kill_count = 0;
+	public byte death_count = 0;
+	public team_stats(byte _teamID) {
+		teamID = _teamID;
+	}
 }
