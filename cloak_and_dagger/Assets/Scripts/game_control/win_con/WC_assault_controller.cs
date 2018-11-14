@@ -7,6 +7,11 @@ public class WC_assault_controller : win_condition_controller {
 		get { return win_condition.assault; }
 	}
 
+	public int_event_object payload_pickup;
+	public int_event_object payload_dropped;
+	public int_event_object payload_delivery;
+	public event_object spawn_payload;
+
 	protected Dictionary<byte, player_assault_stats> player_stats_dict;
 	protected Dictionary<byte, team_assault_stats> team_stats_dict;
 	protected override player_stats get_player_stats(byte playerID) {
@@ -20,6 +25,16 @@ public class WC_assault_controller : win_condition_controller {
 	// This is called right when the scene is loaded, after the base Awake.
 	// Use this for initialization instead of Awake.
 	protected override void init() {
+		if (payload_pickup) {
+			payload_pickup.e.AddListener(on_payload_pickup);
+		}
+		if (payload_dropped) {
+			payload_dropped.e.AddListener(on_payload_dropped);
+		}
+		if (payload_delivery) {
+			payload_delivery.e.AddListener(on_payload_delivery);
+		}
+
 		player_stats_dict = new Dictionary<byte, player_assault_stats>();
 		team_stats_dict = new Dictionary<byte, team_assault_stats>();
 
@@ -35,6 +50,7 @@ public class WC_assault_controller : win_condition_controller {
 
 	// This is called when the game is started, at the end of the countdown
 	protected override void on_game_start() {
+		spawn_payload.Invoke();
 	}
 
 	// This is called when a player is killed,
@@ -42,12 +58,23 @@ public class WC_assault_controller : win_condition_controller {
 	protected override void on_player_killed(death_event_data death_data) {
 	}
 
-	private void on_payload_pickup() {
-		// Todo
+	private void on_payload_pickup(int playerID) {
+		// Todo - update stats
 	}
 
-	private void on_payload_delivery() {
-		// Todo
+	private void on_payload_dropped(int playerID) {
+		// Anything needed here?
+	}
+
+	private void on_payload_delivery(int playerID) {
+		// todo - update stats
+		StartCoroutine(spawn_payload_delayed());
+	}
+
+	IEnumerator spawn_payload_delayed() {
+		yield return new WaitForSeconds(WCAP.win_Con_Config.float_options[winCon_float_option.payload_respawn_delay]);
+		spawn_payload.Invoke();
+		yield return null;
 	}
 
 }

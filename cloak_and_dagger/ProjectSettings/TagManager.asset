@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - Dagger
+  - Payload
+  - Payload_delivery_zone
   layers:
   - Default
   - TransparentFX
@@ -43,11 +45,17 @@ TagManager:
   - name: Background
     uniqueID: 2554544009
     locked: 0
+  - name: Zones
+    uniqueID: 539181441
+    locked: 0
   - name: BG-Set-Pieces
     uniqueID: 4158927793
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Carried-Objects
+    uniqueID: 1078874351
     locked: 0
   - name: Players
     uniqueID: 2761839985

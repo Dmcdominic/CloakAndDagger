@@ -173,6 +173,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WCAP: {fileID: 0}
+  payload_pickup: {fileID: 11400000, guid: 1e85ee8d760c31c4d89422e43288679c, type: 2}
+  payload_dropped: {fileID: 11400000, guid: e6616da01b0b212499d9c070d314c87c, type: 2}
+  payload_delivery: {fileID: 11400000, guid: 95b2f7417a0e2ee47ab64b77132f7188, type: 2}
+  spawn_payload: {fileID: 11400000, guid: 0943b9ec4d9078c4d9412bb09cd9db0f, type: 2}
 --- !u!114 &114977693231741110
 MonoBehaviour:
   m_ObjectHideFlags: 1
