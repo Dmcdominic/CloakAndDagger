@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class character_preview : MonoBehaviour {
-
-	public characters_chosen characters_Chosen;
+	
+	public player_int characters_chosen;
 	public event_object update_preview_trigger;
 
 	public Animator animator;
@@ -13,13 +13,13 @@ public class character_preview : MonoBehaviour {
 	private static int palettes_per_char_type = 2;
 	public int fixed_palette_range_index = -1;
 
-	private string my_name;
+	//private string my_name;
 	private int current_palette;
 
 
 	private void Awake() {
 		// TODO - set my_name here, or read from a SO instead
-		my_name = "PLACEHOLDER";
+		//my_name = "PLACEHOLDER";
 		if (update_preview_trigger) {
 			update_preview_trigger.e.AddListener(update_preview);
 		}

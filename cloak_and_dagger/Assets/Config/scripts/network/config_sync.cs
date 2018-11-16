@@ -11,6 +11,8 @@ public class config_sync : MonoBehaviour {
 
 	public event_object trigger_send_all;
 	public event_object someone_joined_my_party;
+	public float_event_object start_event;
+
 	public sync_event out_event;
 	public sync_event in_event;
 
@@ -18,7 +20,9 @@ public class config_sync : MonoBehaviour {
 	public config_option_event_object updated_one_config_value;
 
 
+	// Initialization
 	private void Awake() {
+		DontDestroyOnLoad(gameObject);
 		if (in_event) {
 			in_event.e.AddListener(sync_incoming_config);
 		}
@@ -27,6 +31,9 @@ public class config_sync : MonoBehaviour {
 		}
 		if (someone_joined_my_party) {
 			someone_joined_my_party.e.AddListener(send_config);
+		}
+		if (start_event) {
+			trigger_send_all.e.AddListener(send_config);
 		}
 		if (updated_one_config_value) {
 			updated_one_config_value.e.AddListener(on_updated_one_config_value);

@@ -8,6 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf400c21f6b9db14184fd77755755fd6, type: 3}
-  m_Name: characters_chosen
+  m_Script: {fileID: 11500000, guid: ace8cc03f20ee0943ac0f7e11381e2e4, type: 3}
+  m_Name: reflect_float_cooldown
   m_EditorClassIdentifier: 
+  use_constant: 0
+  constant: 0
+  value: 0
