@@ -6,25 +6,20 @@ public class WC_assault_controller : win_condition_controller {
 	public override win_condition win_Condition {
 		get { return win_condition.assault; }
 	}
+	public override bool free_for_all_compatible {
+		get { return false; }
+	}
 
 	public int_event_object payload_pickup;
 	public int_event_object payload_dropped;
 	public int_event_object payload_delivery;
 	public event_object spawn_payload;
 
-	protected Dictionary<byte, player_assault_stats> player_stats_dict;
-	protected Dictionary<byte, team_assault_stats> team_stats_dict;
-	protected override player_stats get_player_stats(byte playerID) {
-		return player_stats_dict[playerID];
-	}
-	protected override team_stats get_team_stats(byte teamID) {
-		return team_stats_dict[teamID];
-	}
-
 
 	// This is called right when the scene is loaded, after the base Awake.
 	// Use this for initialization instead of Awake.
 	protected override void init() {
+		// Set up payload event listeners
 		if (payload_pickup) {
 			payload_pickup.e.AddListener(on_payload_pickup);
 		}
@@ -33,18 +28,6 @@ public class WC_assault_controller : win_condition_controller {
 		}
 		if (payload_delivery) {
 			payload_delivery.e.AddListener(on_payload_delivery);
-		}
-
-		player_stats_dict = new Dictionary<byte, player_assault_stats>();
-		team_stats_dict = new Dictionary<byte, team_assault_stats>();
-
-		foreach (byte player in WCAP.teams) {
-			byte team = (byte)WCAP.teams[player];
-			player_stats_dict.Add(player, new player_assault_stats(player, team));
-
-			if (!team_stats_dict.ContainsKey(team)) {
-				team_stats_dict.Add(team, new team_assault_stats(team));
-			}
 		}
 	}
 
@@ -59,7 +42,9 @@ public class WC_assault_controller : win_condition_controller {
 	}
 
 	private void on_payload_pickup(int playerID) {
-		// Todo - update stats
+		player_stats player = player_stats_dict[(byte)playerID];
+		player.payload_pickups++;
+		team_stats_dict[player.teamID].payload_pickups++;
 	}
 
 	private void on_payload_dropped(int playerID) {
@@ -67,7 +52,16 @@ public class WC_assault_controller : win_condition_controller {
 	}
 
 	private void on_payload_delivery(int playerID) {
-		// todo - update stats
+		player_stats player = player_stats_dict[(byte)playerID];
+		player.payload_deliveries++;
+		team_stats team = team_stats_dict[player.teamID];
+		team.payload_deliveries++;
+
+		int payload_delivery_limit = WCAP.win_Con_Config.int_options[winCon_int_option.payload_delivery_limit];
+		if (team.payload_deliveries >= payload_delivery_limit) {
+			end_game_general(false, team.teamID);
+		}
+
 		StartCoroutine(spawn_payload_delayed());
 	}
 
@@ -77,20 +71,19 @@ public class WC_assault_controller : win_condition_controller {
 		yield return null;
 	}
 
-}
-
-
-// These are player stat and team stat classes for you to store additional win condition info
-public class player_assault_stats : player_stats {
-	int payload_pickups = 0;
-	int payload_deliveries = 0;
-	public player_assault_stats(byte _playerID, byte _teamID) : base(_playerID, _teamID) {
+	protected override void on_timeout() {
+		List<byte> winning_teams = new List<byte>();
+		int max_deliveries = 0;
+		foreach (team_stats team in team_stats_dict.Values) {
+			if (team.payload_deliveries == max_deliveries) {
+				winning_teams.Add(team.teamID);
+			} else if (team.payload_deliveries > max_deliveries) {
+				winning_teams.Clear();
+				winning_teams.Add(team.teamID);
+				max_deliveries = team.payload_deliveries;
+			}
+		}
+		end_game_general(true, winning_teams);
 	}
-}
 
-public class team_assault_stats : team_stats {
-	int payload_pickups = 0;
-	int payload_deliveries = 0;
-	public team_assault_stats(byte _teamID) : base(_teamID) {
-	}
 }
