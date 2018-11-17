@@ -25,7 +25,7 @@ public class WC_kill_count_controller : win_condition_controller {
 	protected override void on_player_killed(death_event_data death_data) {
 		foreach (team_stats team in team_stats_dict.Values) {
 			if (team.kill_count > WCAP.win_Con_Config.int_options[winCon_int_option.kill_limit]) {
-				end_game_general(false, team.teamID);
+				end_game_general(team.teamID);
 			}
 		}
 	}
@@ -42,7 +42,7 @@ public class WC_kill_count_controller : win_condition_controller {
 				max_kill_count = team.kill_count;
 			}
 		}
-		end_game_general(true, winning_teams);
+		end_game_general(winning_teams);
 	}
 
 }

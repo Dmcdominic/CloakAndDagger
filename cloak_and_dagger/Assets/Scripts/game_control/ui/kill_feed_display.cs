@@ -50,11 +50,14 @@ public class kill_feed_display : MonoBehaviour {
 
 	public void display_slain(death_event_data DED) {
         string tmp = "";
-        if (DED.death_Type == death_type.dagger)
-            tmp = "Player " + DED.killerID + " has slain Player " + DED.playerID + "!\n";
-        else if (DED.death_Type == death_type.suicide)
-            tmp = "Player " + DED.playerID + " has commited suicide!\n";
-        /** The above strings for display are ONLY TEMPORARY and may subject to future
+		if (DED.death_Type == death_type.dagger) {
+			tmp = "Player " + DED.killerID + " has slain Player " + DED.playerID + "!\n";
+		} else if (DED.death_Type == death_type.fireball) {
+			tmp = "Player " + DED.killerID + " has incinerated Player " + DED.playerID + "!\n";
+		} else if (DED.death_Type == death_type.suicide) {
+			tmp = "Player " + DED.playerID + " has commited suicide!\n";
+		}
+		/** The above strings for display are ONLY TEMPORARY and may subject to future
          *  changes. Also, more death types (see death_event_object.cs) can be added
          *  in the future. */
         display_helper(tmp);
@@ -62,7 +65,7 @@ public class kill_feed_display : MonoBehaviour {
 
     public void display_terminated(death_event_data DED) {
         string tmp = "";
-        if (DED.death_Type == death_type.dagger)
+        if (DED.death_Type == death_type.dagger || DED.death_Type == death_type.fireball)
             tmp = "Player " + DED.killerID + " has terminated Player " + DED.playerID + "!\n";
         else if (DED.death_Type == death_type.suicide)
             tmp = "Player " + DED.playerID + " has self_terminated!\n";

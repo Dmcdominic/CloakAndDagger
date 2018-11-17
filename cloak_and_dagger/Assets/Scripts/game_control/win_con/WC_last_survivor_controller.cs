@@ -40,7 +40,7 @@ public class WC_last_survivor_controller : win_condition_controller {
 			}
 		}
 		if (remaining_teams <= 1) {
-			end_game_general(false, winning_teams);
+			end_game_general(winning_teams);
 		}
 	}
 
@@ -51,7 +51,7 @@ public class WC_last_survivor_controller : win_condition_controller {
 				winning_teams.Add(team.teamID);
 			}
 		}
-		end_game_general(true, winning_teams);
+		end_game_general(winning_teams);
 	}
 
 }

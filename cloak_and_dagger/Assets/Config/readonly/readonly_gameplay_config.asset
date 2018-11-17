@@ -15,11 +15,13 @@ MonoBehaviour:
     m_keys: 
     m_values: 
   float_options:
-    m_keys: 000000000100000002000000
+    m_keys: 0000000001000000020000000300000004000000
     m_values:
     - 0.02
     - 1.5
     - 150
+    - 0.02
+    - 1.5
   int_options:
     m_keys: 
     m_values: 

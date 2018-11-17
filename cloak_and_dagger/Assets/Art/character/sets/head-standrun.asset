@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: head-standrun
   m_EditorClassIdentifier: 
   palettes:
-  - {fileID: 11400000, guid: 9ed6ca10eec37174e923b40c4b79250b, type: 2}
-  - {fileID: 11400000, guid: c2a219c01421d1645b59c1b312981798, type: 2}
+  - {fileID: 11400000, guid: 0b21d16e94f721c4ba84e30ce7ccad0b, type: 2}
+  - {fileID: 11400000, guid: b1a864c860552714ab3f04bfd10c8a0d, type: 2}

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: cape-standrun
   m_EditorClassIdentifier: 
   palettes:
-  - {fileID: 11400000, guid: af61fad0dca80dd4b969401d7661f1b5, type: 2}
-  - {fileID: 11400000, guid: 387081d37f2af7c4cade9d60ff23e88f, type: 2}
+  - {fileID: 11400000, guid: 95abac0d0804da24c9f22a67a84a726e, type: 2}
+  - {fileID: 11400000, guid: 2aaf525655ad44a42a9ce7fe6ba0592e, type: 2}

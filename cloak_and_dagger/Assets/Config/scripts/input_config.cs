@@ -13,18 +13,27 @@ public class input_config : ScriptableObject {
 	KeyCode up;
 	[SerializeField]
 	KeyCode down;
+
 	[SerializeField]
 	KeyCode dagger_key;
 	public bool dagger
 	{
 		get {return Input.GetKeyDown(dagger_key);}
 	}
+
+	[SerializeField]
+	KeyCode fireball_key;
+	public bool fireball {
+		get { return Input.GetKeyDown(fireball_key); }
+	}
+
 	[SerializeField]
 	KeyCode dash_key;
 	public bool dash
 	{
 		get { return Input.GetKeyDown(dash_key); }
 	}
+
 	[SerializeField]
 	KeyCode reflect_key;
 	public bool reflect {

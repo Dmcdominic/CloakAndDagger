@@ -9,7 +9,7 @@ public class range_cap : MonoBehaviour {
 
 
 	private void Update() {
-		if (transform.position.magnitude > readonly_Gameplay_Config.float_options[readonly_gameplay_float_option.absolute_dagger_range]) {
+		if (transform.position.magnitude > readonly_Gameplay_Config.float_options[readonly_gameplay_float_option.absolute_projectile_range]) {
 			Destroy(gameObject);
 		}
 	}

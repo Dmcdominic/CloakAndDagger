@@ -25,13 +25,17 @@ public class payload_carrier : MonoBehaviour {
 			payload_carried = collision.gameObject;
 			payload_carried.transform.position = transform.position;
 			payload_carried.transform.SetParent(transform);
+			payload_carried.transform.localPosition = new Vector3(0.5f, 0);
 			payload_carried.GetComponent<Collider2D>().enabled = false;
 			payload_pickup.Invoke(network_Id.val);
 		} else if (collision.gameObject.CompareTag("Payload_delivery_zone") && payload_carried != null) {
 			// todo - check if it's the correct zone, based on team
-			Destroy(payload_carried);
-			payload_carried = null;
-			payload_delivered.Invoke(network_Id.val);
+			payload_delivery_zone PDZ = collision.gameObject.GetComponent<payload_delivery_zone>();
+			if (PDZ && PDZ.try_deliver_here((byte)network_Id.val)) {
+				Destroy(payload_carried);
+				payload_carried = null;
+				payload_delivered.Invoke(network_Id.val);
+			}
 		}
 	}
 

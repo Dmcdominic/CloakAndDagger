@@ -8,11 +8,13 @@ public abstract class win_condition_controller : MonoBehaviour {
 
 	[HideInInspector]
 	public win_condition_assets_packet WCAP;
-	
-	private float time_limit;
 
 	protected Dictionary<byte, player_stats> player_stats_dict;
 	protected Dictionary<byte, team_stats> team_stats_dict;
+
+	private float time_limit;
+#pragma warning disable 0414
+	private bool timed_out = false;
 
 
 	// Initialization
@@ -40,12 +42,10 @@ public abstract class win_condition_controller : MonoBehaviour {
 		foreach (byte player in WCAP.teams) {
 			byte team = (byte)WCAP.teams[player];
 
-			// todo - set teams like this instead?:
+			// todo - set teams like in free-for-all case?:
 			//bool free_for_all_enabled = WCAP.win_Con_Config.bool_options[winCon_bool_option.free_for_all];
 			//if (free_for_all_compatible && free_for_all_enabled) {
 			//	team = player;
-			//} else {
-			//	// Set team based on player's chosen color palette index
 			//}
 
 			player_stats new_player_stats = new player_stats(player, team, starting_lives);
@@ -74,6 +74,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 		if (WCAP.ingame_state.val) {
 			WCAP.game_timer.val += Time.deltaTime;
 			if (time_limit != 0 && time_limit < WCAP.game_timer.val) {
+				timed_out = true;
 				on_timeout();
 			}
 		}
@@ -128,15 +129,26 @@ public abstract class win_condition_controller : MonoBehaviour {
 	// Should be called when you want to end the game (i.e. when the win con is met or time runs out)
 	// Note that this may be called by a timeout, so if you need anything to occur before the game ends,
 	// You should override this and then call base.end_game_general(timeout) at the end.
-	protected void end_game_general(bool timeout, List<byte> winning_teams) {
+	protected void end_game_general(List<byte> winning_teams) {
 		WCAP.ingame_state.val = false;
+
+		// Update winner variables in teams and players
+		foreach (byte team in winning_teams) {
+			team_stats_dict[team].winner = true;
+		}
+		foreach (player_stats player_Stats in player_stats_dict.Values) {
+			if (winning_teams.Contains(player_Stats.teamID)) {
+				player_Stats.winner = true;
+			}
+		}
+
 		WCAP.trigger_on_game_over.Invoke();
 		Destroy(gameObject);
 	}
-	protected void end_game_general(bool timeout, byte winning_team) {
+	protected void end_game_general(byte winning_team) {
 		List<byte> winning_teams = new List<byte>();
 		winning_teams.Add(winning_team);
-		end_game_general(timeout, winning_teams);
+		end_game_general(winning_teams);
 	}
 }
 
@@ -155,6 +167,7 @@ public class team_stats {
 	public byte teamID;
 	public byte kill_count = 0;
 	public byte death_count = 0;
+	public bool winner = false;
 
 	public team_stats(byte _teamID, int _starting_lives) {
 		teamID = _teamID;

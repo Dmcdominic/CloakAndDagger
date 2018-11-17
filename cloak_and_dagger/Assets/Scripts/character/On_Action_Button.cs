@@ -20,6 +20,12 @@ public class On_Action_Button : MonoBehaviour {
 	[SerializeField]
 	player_bool dagger_on_cooldown;
 
+	// Fireball
+	[SerializeField]
+	int_float_event to_trigger_fireball;
+	[SerializeField]
+	player_bool fireball_on_cooldown;
+
 	// Blink/dash
 	[SerializeField]
 	int_float_event to_trigger_dash;
@@ -54,6 +60,10 @@ public class On_Action_Button : MonoBehaviour {
 			if (input_Config.dagger && !dagger_on_cooldown[network_Id.val])
 			{
 				to_trigger_dagger.Invoke(network_Id.val,gameplay_Config.float_options[gameplay_float_option.dagger_cooldown]);
+			}
+			else if (input_Config.fireball && !fireball_on_cooldown[network_Id.val])
+			{
+				to_trigger_fireball.Invoke(network_Id.val, gameplay_Config.float_options[gameplay_float_option.fireball_cooldown]);
 			}
 			else if (input_Config.dash && !dash_on_cooldown[network_Id.val])
             {

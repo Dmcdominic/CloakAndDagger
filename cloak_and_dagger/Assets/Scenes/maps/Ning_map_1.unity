@@ -23127,7 +23127,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4046926351200770, guid: 64080dea952cc0b49bfe4924c5edf76c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4046926351200770, guid: 64080dea952cc0b49bfe4924c5edf76c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -47675,7 +47675,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4046926351200770, guid: 64080dea952cc0b49bfe4924c5edf76c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 4046926351200770, guid: 64080dea952cc0b49bfe4924c5edf76c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -47723,6 +47723,11 @@ Prefab:
     - target: {fileID: 1139337147807054, guid: 64080dea952cc0b49bfe4924c5edf76c, type: 2}
       propertyPath: m_TagString
       value: Payload_delivery_zone
+      objectReference: {fileID: 0}
+    - target: {fileID: 114970278620163564, guid: 64080dea952cc0b49bfe4924c5edf76c,
+        type: 2}
+      propertyPath: teamID
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64080dea952cc0b49bfe4924c5edf76c, type: 2}

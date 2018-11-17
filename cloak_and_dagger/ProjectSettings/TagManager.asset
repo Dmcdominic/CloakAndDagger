@@ -8,6 +8,7 @@ TagManager:
   - Dagger
   - Payload
   - Payload_delivery_zone
+  - Fireball
   layers:
   - Default
   - TransparentFX

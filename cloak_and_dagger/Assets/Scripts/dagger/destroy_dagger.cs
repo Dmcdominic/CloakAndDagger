@@ -6,6 +6,7 @@ using System;
 [Serializable]
 public struct unit { }
 
+[RequireComponent(typeof(network_id))]
 public class destroy_dagger : sync_behaviour<unit> {
 
 	public int_event_object trigger_destroy;
@@ -17,8 +18,9 @@ public class destroy_dagger : sync_behaviour<unit> {
 		}
 	}
 
-	private void on_trigger_destroy(int dagger_instanceID) {
-		if (gameObject.GetInstanceID() != dagger_instanceID) {
+	private void on_trigger_destroy(int daggerID) {
+		network_id network_Id = GetComponent<network_id>();
+		if (network_Id.val != daggerID) {
 			return;
 		}
         

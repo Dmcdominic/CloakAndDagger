@@ -59,7 +59,7 @@ public class WC_assault_controller : win_condition_controller {
 
 		int payload_delivery_limit = WCAP.win_Con_Config.int_options[winCon_int_option.payload_delivery_limit];
 		if (team.payload_deliveries >= payload_delivery_limit) {
-			end_game_general(false, team.teamID);
+			end_game_general(team.teamID);
 		}
 
 		StartCoroutine(spawn_payload_delayed());
@@ -83,7 +83,7 @@ public class WC_assault_controller : win_condition_controller {
 				max_deliveries = team.payload_deliveries;
 			}
 		}
-		end_game_general(true, winning_teams);
+		end_game_general(winning_teams);
 	}
 
 }
