@@ -6,6 +6,7 @@ using UnityEngine;
 public class char_anim_helper : MonoBehaviour {
 
 	public player_event dagger_thrown;
+	public player_event fireball_thrown;
 
 	public float running_velo_threshhold;
 
@@ -19,6 +20,9 @@ public class char_anim_helper : MonoBehaviour {
 		if (dagger_thrown) {
 			dagger_thrown.e.AddListener(on_dagger_thrown);
 		}
+		if (fireball_thrown) {
+			fireball_thrown.e.AddListener(on_fireball_thrown);
+		}
 	}
 
 	private void Update() {
@@ -29,6 +33,11 @@ public class char_anim_helper : MonoBehaviour {
 	}
 
 	public void on_dagger_thrown(int placeholder, GameObject obj) {
+		if (obj == transform.parent.gameObject) {
+			animator.SetTrigger("throw");
+		}
+	}
+	public void on_fireball_thrown(int placeholder, GameObject obj) {
 		if (obj == transform.parent.gameObject) {
 			animator.SetTrigger("throw");
 		}

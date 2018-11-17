@@ -682,6 +682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dagger_thrown: {fileID: 11400000, guid: 3a8a68bcc7096ac478aa6c31393b3814, type: 2}
+  fireball_thrown: {fileID: 11400000, guid: 2b34c6207cb257a4ca70dd2f875b8fb3, type: 2}
   running_velo_threshhold: 5
 --- !u!114 &114861065466034230
 MonoBehaviour:

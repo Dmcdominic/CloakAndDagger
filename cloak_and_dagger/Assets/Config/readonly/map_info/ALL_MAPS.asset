@@ -13,12 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   map_infos:
     m_keys:
-    - Ragnarok
-    - Nuketown
     - Cave Demo
+    - Ning_map_1
     - Ning_map_3
     m_values:
-    - {fileID: 11400000, guid: 9f689dcd2323ebe40b2809d07c499e96, type: 2}
-    - {fileID: 11400000, guid: 4a93f3e5b29313647a296291096e166e, type: 2}
     - {fileID: 11400000, guid: 35a0bde3aa6930a4fb17bac1139d66ef, type: 2}
+    - {fileID: 11400000, guid: 3017e25030363fe4e9d07aaef12aa0d0, type: 2}
     - {fileID: 11400000, guid: fb80a103e3a2b904ba509b3098c019c0, type: 2}

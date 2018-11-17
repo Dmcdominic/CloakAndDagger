@@ -98,6 +98,7 @@ public class throw_fireball : sync_behaviour<throw_fireball_data> {
 		Rigidbody2D rb = my_fireball.GetComponent<Rigidbody2D>();
 		if (rb) {
 			rb.velocity = my_fireball.transform.right * gameplay_Config.float_options[gameplay_float_option.fireball_speed];
+			rb.angularVelocity = 720f * (Random.value > 0.5 ? 1 : -1); // Make it spin
 		}
 		inform_pmove.Invoke(gameObject_id.val, rotation.eulerAngles.z);
 		if (fireball_thrown) {
