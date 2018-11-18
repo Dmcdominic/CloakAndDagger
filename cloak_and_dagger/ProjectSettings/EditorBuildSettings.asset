@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/final_final_lobby.unity
     guid: 6a7e0cf99b1bd7c478db64ede2b07d00
   - enabled: 1
-    path: Assets/Scenes/temp_lobby.unity
-    guid: 769e378d0e958a34889087d33d4c3ebc
-  - enabled: 1
     path: Assets/Scenes/maps/Cave Demo.unity
     guid: f9952c8db80928e45af5aedef57d425a
+  - enabled: 1
+    path: Assets/Scenes/temp_lobby.unity
+    guid: 769e378d0e958a34889087d33d4c3ebc
   m_configObjects: {}

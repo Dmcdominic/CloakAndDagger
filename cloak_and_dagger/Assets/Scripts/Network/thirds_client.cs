@@ -145,7 +145,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
                 {
                     party_list = new List<string>();
                 }
-                party_event(new Party_Names(party_list.First(), party_list.Skip(1).ToList()));
+                try { party_event(new Party_Names(party_list.First(), party_list.Skip(1).ToList())); } catch(MissingReferenceException e) { }
                 if (debug) { print($"recieved party_list"); }
                 break;
             case Custom_msg_type.LEAVE_PARTY:

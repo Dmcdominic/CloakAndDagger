@@ -40,6 +40,9 @@ public class init : MonoBehaviour {
 
     [SerializeField]
     player_float respawn_times;
+
+    [SerializeField]
+    GameObject status_handler;
     
 
 	// Use this for initialization
@@ -51,6 +54,7 @@ public class init : MonoBehaviour {
     {
         yield return new WaitUntil(() => party.val.leader != "");
         SceneManager.LoadScene(game_scene.val);
+        status_handler.SetActive(true);
         yield return new WaitUntil(() => SceneManager.GetActiveScene().buildIndex == game_scene.val);
 
 		Vector2 spawn_point = map_Config.current_map_info.next_spawn_point;
