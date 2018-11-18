@@ -6,7 +6,7 @@ using UnityEngine;
 public enum win_condition { last_survivor, kill_count, assault }
 
 public enum winCon_bool_option { free_for_all, payload_carrier_revealed }
-public enum winCon_float_option { time_limit, payload_respawn_delay }
+public enum winCon_float_option { time_limit, payload_respawn_delay, payload_light_range }
 public enum winCon_int_option { lives, kill_limit, payload_delivery_limit }
 
 //[CreateAssetMenu(menuName = "config/win_con")]
