@@ -15,7 +15,7 @@ MonoBehaviour:
   right: 0
   up: 0
   down: 0
-  dagger_key: 32
+  dagger_key: 323
   fireball_key: 324
   dash_key: 113
   reflect_key: 101
