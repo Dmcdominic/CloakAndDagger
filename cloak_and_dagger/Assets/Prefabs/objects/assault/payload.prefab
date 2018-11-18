@@ -20,7 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4933575076862868}
   - component: {fileID: 212937254298556232}
+  - component: {fileID: 95142570500931670}
   - component: {fileID: 70792492158339978}
+  - component: {fileID: 114974548454151778}
   m_Layer: 0
   m_Name: payload
   m_TagString: Payload
@@ -56,6 +58,39 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 0.4}
   m_Direction: 1
+--- !u!95 &95142570500931670
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1668131086037320}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22878bb5d79d86140aedea0706b21d6a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114974548454151778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1668131086037320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68153c76d0bbb564f95049a585b7c30f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  local_id: {fileID: 0}
+  local_mat: {fileID: 0}
+  non_local_mat: {fileID: 0}
+  win_Con_Config: {fileID: 0}
 --- !u!212 &212937254298556232
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -71,7 +106,7 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 452412745e77c11439780ad97074aa54, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -89,9 +124,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1533127311
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: 7
-  m_Sprite: {fileID: 21300000, guid: 8651e8a9278780f4b8e9641e5c25c884, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2123c0ebd7735ea49aff179252724b27, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

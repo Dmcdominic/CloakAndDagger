@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.Linq;
 
 [RequireComponent(typeof(network_id))]
 public class Conditional_Rendering : MonoBehaviour {
@@ -21,11 +22,11 @@ public class Conditional_Rendering : MonoBehaviour {
 	[SerializeField]
 	bool_var spectator_reveal;
 
-	private SpriteRenderer[] srs;
+	private IEnumerable srs;
 
 	// Use this for initialization
 	void Start () {
-		srs = GetComponentsInChildren<SpriteRenderer>();
+		srs = GetComponentsInChildren<SpriteRenderer>().Where((sr) => !sr.CompareTag("Payload"));
 		update_material();
 	}
 
@@ -35,7 +36,7 @@ public class Conditional_Rendering : MonoBehaviour {
 
 	private void update_material() {
 		if (srs == null) {
-			srs = GetComponentsInChildren<SpriteRenderer>();
+			srs = GetComponentsInChildren<SpriteRenderer>().Where((sr) => !sr.CompareTag("Payload"));
 		}
 		if ((GetComponent<network_id>().val == local_id.val) || spectator_reveal.val) {
 			foreach (SpriteRenderer sr in srs) {
