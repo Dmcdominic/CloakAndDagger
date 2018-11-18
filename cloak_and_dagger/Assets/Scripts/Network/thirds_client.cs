@@ -10,8 +10,8 @@ using System.Linq;
 
 
 
-enum Custom_msg_type : byte
-{ CREATE_PLAYER, LOGIN, SEND_PLAYER_LIST, SEND_PARTY_LIST, LEAVE_PARTY, REQ_JOIN_PARTY, INVITE_PLAYER, START_GAME, LOGOUT, MTC, RPC, CMD, END_GAME, FIND_MATCH, ADD_FRIEND, GET_PLAYER_INFO, SET_PLAYER_INFO }
+enum Custom_msg_type 
+{ CREATE_PLAYER, LOGIN, SEND_PLAYER_LIST, SEND_PARTY_LIST, LEAVE_PARTY, REQ_JOIN_PARTY, INVITE_PLAYER, START_GAME, LOGOUT, MTC, RPC, CMD, END_GAME, FIND_MATCH, ADD_FRIEND, GET_PLAYER_INFO, SET_PLAYER_INFO, GET_FRIEND }
 
 [System.Serializable]
 struct Message_package
@@ -43,6 +43,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
     Action<string> invite_event;
     Action<string> request_event;
     Action<object> message_event;
+    Action<string> friend_request;
     Action<player_info> pi_event;
     bool connected = false;
     HostTopology topology;
@@ -65,6 +66,8 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
 
     [SerializeField]
     bool local;
+
+
 
 
     void Start()
@@ -133,6 +136,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
             case Custom_msg_type.LOGIN:
                 break;
             case Custom_msg_type.SEND_PLAYER_LIST:
+                friend_event?.Invoke((List<connection_struct>)message);
                 //ignore this for now
                 break;
             case Custom_msg_type.SEND_PARTY_LIST:
@@ -176,10 +180,15 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
             case Custom_msg_type.FIND_MATCH:
                 break;
             case Custom_msg_type.ADD_FRIEND:
-                friend_event?.Invoke((List<connection_struct>)message);
                 break;
             case Custom_msg_type.SET_PLAYER_INFO:
                 pi_event?.Invoke((player_info)message);
+                break;
+            case Custom_msg_type.GET_PLAYER_INFO:
+                break;
+            case Custom_msg_type.GET_FRIEND:
+                print($"{msg.arg1} wants to be your friend");
+                friend_request(msg.arg1);
                 break;
         }
     }
@@ -254,7 +263,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         host = NetworkTransport.AddHost(topology, 0);
         byte error;
         //progatoras is running on 15150. my ip: "71.61.58.16" localhost: "127.0.0.1"
-        conn_id = NetworkTransport.Connect(host, local ? "127.0.0.1" :"71.61.58.16", 15150, 0, out error);
+        conn_id = NetworkTransport.Connect(host, local ? "127.0.0.1" :"71.61.58.16", 15152, 0, out error);
         if (debug) print($"connecting {(NetworkError)error}");
         StartCoroutine(Receive(success,failure));
         return (NetworkError)error == NetworkError.Ok;
@@ -324,6 +333,11 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         return send_message(Custom_msg_type.LEAVE_PARTY, "", null, -1);
     }
 
+    public void leave_party()
+    {
+        Leave_Party();
+    }
+
     public bool Start_Game()
     {
         return send_message(Custom_msg_type.START_GAME, "", "", -1);
@@ -361,18 +375,29 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
     {
         send_message(Custom_msg_type.FIND_MATCH, "", "", -1);
     }
+    
 
-    public void add_friend(string name, Action success,Action failure)
+
+    public void Register_friend_callbacks(Action success, Action failure)
     {
-        send_message(Custom_msg_type.ADD_FRIEND, name, "", -1);
         handle_data_event.e.AddListener((t, o) =>
         {
             if (t.Item1 == Custom_msg_type.ADD_FRIEND) { if (t.Item2.target_connection == 1) success(); else failure(); }
         });
     }
+
+    public void add_friend(string name)
+    {
+        send_message(Custom_msg_type.ADD_FRIEND, name, "", -1);
+    }
     
     public void Register_friends(Action<List<connection_struct>> callback)
     {
         friend_event = callback;
+    }
+
+    public void Register_friend_requests(Action<string> callback)
+    {
+        friend_request = callback;
     }
 }

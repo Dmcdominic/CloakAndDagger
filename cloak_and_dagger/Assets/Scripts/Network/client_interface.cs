@@ -179,7 +179,9 @@ public interface IProtagoras_Client<Message_Type>
 
     void find_match();
 
-    void add_friend(string name,Action success, Action failure);
+    void add_friend(string name);
+
+    void Register_friend_callbacks(Action success, Action failure);
 
     void Register_friends(Action<List<connection_struct>> friends_event);
 }

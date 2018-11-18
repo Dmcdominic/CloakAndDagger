@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ui_manager : MonoBehaviour {
 
@@ -36,6 +37,9 @@ public class ui_manager : MonoBehaviour {
     friends_list my_friends;
 
     [SerializeField]
+    string_list my_friend_requests;
+
+    [SerializeField]
     GameObject title;
 
     [SerializeField]
@@ -53,6 +57,30 @@ public class ui_manager : MonoBehaviour {
     [SerializeField]
     string_event_object join_player;
 
+    [SerializeField]
+    event_object add_friend;
+
+    [SerializeField]
+    string_var friend_to_add;
+
+    [SerializeField]
+    event_object failed_to_find_friend;
+
+    [SerializeField]
+    event_object found_friend;
+
+    [SerializeField]
+    string_event_object add_this_friend;
+
+    [SerializeField]
+    int_var local_id;
+
+    [SerializeField]
+    GameObject Invited_button;
+
+    [SerializeField]
+    GameObject party_menu;
+
     bool connected = false;
 
 
@@ -62,14 +90,38 @@ public class ui_manager : MonoBehaviour {
         client.Connect(0, OnConnect, () => connect_error.SetActive(true));
         invite_player.e.AddListener(str => client.Invite_Player(str));
         join_player.e.AddListener(str => client.Join_Party(str));
+        add_friend.e.AddListener(() => client.add_friend(friend_to_add));
+        add_this_friend.e.AddListener(str => client.add_friend(str));
+        my_friend_requests.val = new List<string>();
+        client.Register_friend_requests(str => my_friend_requests.val.Add(str));
+        client.Register_Receive_Invite(Invited);
+        client.Register_Receive_Request(Requested);
 	}
+
+
+    void Invited(string name, Action accept)
+    {
+        GameObject but = Instantiate(Invited_button,transform);
+        but.GetComponent<invite_setter>().invite(name, () => { party_menu.SetActive(true); start_menu.SetActive(false);  accept(); });
+    }
+
+    void Requested(string name, Action accept)
+    {
+        GameObject but = Instantiate(Invited_button, transform);
+        but.GetComponent<invite_setter>().request(name, () => { party_menu.SetActive(true); start_menu.SetActive(false); accept(); });
+    }
 
     void OnConnect()
     {
         connected = true;
         client.Register_Message_Receive(to_splitter.Invoke);
-        client.Register_Party_List(pn => my_party.val = pn);
+        client.Register_Party_List(pn => 
+        {
+            my_party.val = pn; if (pn.members.Contains(name)) local_id.val = pn.members.IndexOf(name) + 1; else local_id.val = 0;
+        });
         client.Register_friends(fl => my_friends.val = fl);
+        client.Register_friend_callbacks(found_friend.Invoke, failed_to_find_friend.Invoke);
+        
         
     }
 

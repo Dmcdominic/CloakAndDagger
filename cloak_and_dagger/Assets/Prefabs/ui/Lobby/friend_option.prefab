@@ -72,6 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224752185593706236}
   - component: {fileID: 114516266477610628}
+  - component: {fileID: 114429064276019690}
   m_Layer: 5
   m_Name: friend_option
   m_TagString: Untagged
@@ -459,6 +460,25 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114429064276019690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1414927744924746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf9b66ab62a35a8489589b80a487e581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  my_name: {fileID: 114940489493266080}
+  info: {fileID: 114082517519673222}
+  invite: {fileID: 114172765145614552}
+  join: {fileID: 114215409804311654}
+  invite_player: {fileID: 11400000, guid: 66a7b667dbbc5714589445166c365d38, type: 2}
+  join_player: {fileID: 11400000, guid: 8a209ae183beebb46bcba6f958729b52, type: 2}
+  add_Friend: {fileID: 11400000, guid: 7a751e687bc90a141a981b9b042ac383, type: 2}
+  options: {fileID: 1931806349638548}
 --- !u!114 &114516266477610628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -764,13 +784,13 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1548362814051536}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224752185593706236}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 58.100006, y: -40.109985}
@@ -782,13 +802,13 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1931806349638548}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224752185593706236}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.9}
   m_AnchorMax: {x: 0.5, y: 0.9}
   m_AnchoredPosition: {x: 58.1, y: -11.872063}
@@ -888,7 +908,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 91.5, y: -0}
+  m_AnchoredPosition: {x: 1335.4873, y: 817.61145}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224819657656775502
