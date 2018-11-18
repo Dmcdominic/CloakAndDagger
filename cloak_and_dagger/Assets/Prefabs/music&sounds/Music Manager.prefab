@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d618d0069205c469c61983bf76ba1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 0}
-  bgm_trigger: {fileID: 0}
+  source: {fileID: 82276208898329774}
+  bgm_trigger: {fileID: 11400000, guid: e04d16c04c2c9f649b49d0df2c4be53f, type: 2}
   BGMs:
     m_keys: []
     m_values: []
