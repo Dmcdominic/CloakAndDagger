@@ -10,6 +10,8 @@ public class fireball_other_collision_trigger : MonoBehaviour {
 
 	public gameplay_config gameplay_Config;
 
+    public Sound_manager Sfx;
+
 	private network_id network_Id;
 
 
@@ -25,8 +27,11 @@ public class fireball_other_collision_trigger : MonoBehaviour {
 		}
 
 		if (tag == "Wall") {
+            Sfx.sfx_trigger.Invoke("Fireball_hit_wall");
 			to_trigger_on_collision.Invoke(network_Id.val);
-		} else if (tag == "Dagger" && (gameplay_Config.bool_options[gameplay_bool_option.daggers_destroy_fireballs])) {
+		} else if (tag == "Dagger"
+            && (gameplay_Config.bool_options[gameplay_bool_option.daggers_destroy_fireballs])) {
+            // sound effect invoked in dagger_other_collision_trigger.cs
 			to_trigger_on_collision.Invoke(network_Id.val);
 		}
 	}

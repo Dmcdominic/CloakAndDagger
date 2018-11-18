@@ -55,11 +55,21 @@ MonoBehaviour:
   SFXs:
     m_keys:
     - Dagger_hit_player
-    - Dagger_hit_wall
     - Throw_dagger
-    - Match_end
+    - Dagger_hit_wall
+    - Dagger_hit_dagger
+    - Dagger_hit_fireball
+    - Throw_fireball
+    - Dash
+    - Fireball_hit_wall
+    - Fireball_hit_player
     m_values:
     - {fileID: 8300000, guid: 4cad5c4d300b2594084306002392cc50, type: 3}
-    - {fileID: 8300000, guid: 863a8b0ff2fd30c45b0a919c9ef6457f, type: 3}
     - {fileID: 8300000, guid: ff932e6849811cb4a9a1c9b82a2c9581, type: 3}
-    - {fileID: 8300000, guid: eca220c5355bfab42a29052b1aaae154, type: 3}
+    - {fileID: 8300000, guid: 863a8b0ff2fd30c45b0a919c9ef6457f, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}

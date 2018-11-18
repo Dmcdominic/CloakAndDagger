@@ -10,14 +10,18 @@ public class Music_manager : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake() {
-        bgm_trigger.e.AddListener(play_by_name);
         DontDestroyOnLoad(gameObject);
+        bgm_trigger.e.AddListener(play_by_name);
     }
 
     void play_by_name(string bgm_name) {
         if (BGMs.ContainsKey(bgm_name)) {
             source.Stop();
             source.clip = BGMs[bgm_name];
+            if (bgm_name != "Match_end")
+                source.loop = true;
+            else
+                source.loop = false;
             source.Play();
         }
     }

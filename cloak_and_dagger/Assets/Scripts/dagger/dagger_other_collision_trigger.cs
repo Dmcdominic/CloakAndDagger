@@ -10,20 +10,28 @@ public class dagger_other_collision_trigger : MonoBehaviour {
 
 	public gameplay_config gameplay_Config;
 
+    public Sound_manager Sfx;
+
 
 	private void OnTriggerEnter2D(Collider2D collider) {
 		GameObject collided_with = collider.gameObject;
 		network_id network_Id = GetComponent<network_id>();
 		string tag = collided_with.tag;
 		if (tag == "Player") {
-			return;
+            return;
 		}
 
-		if (tag == "Wall" && !(gameplay_Config.bool_options[gameplay_bool_option.daggers_pierce_walls])) {
-			to_trigger_on_collision.Invoke(network_Id.val);
-		} else if (tag == "Dagger" && (gameplay_Config.bool_options[gameplay_bool_option.daggers_destroy_daggers])) {
-			to_trigger_on_collision.Invoke(network_Id.val);
-		} else if (tag == "Fireball") { // This means that fireballs will always destroy daggers
+		if (tag == "Wall"
+            && !(gameplay_Config.bool_options[gameplay_bool_option.daggers_pierce_walls])) {
+            Sfx.sfx_trigger.Invoke("Dagger_hit_wall");
+            to_trigger_on_collision.Invoke(network_Id.val);
+		} else if (tag == "Dagger"
+            && (gameplay_Config.bool_options[gameplay_bool_option.daggers_destroy_daggers])) {
+            Sfx.sfx_trigger.Invoke("Dagger_hit_dagger");
+            to_trigger_on_collision.Invoke(network_Id.val);
+		} else if (tag == "Fireball") {
+            // This means that fireballs will always destroy daggers
+            Sfx.sfx_trigger.Invoke("Dagger_hit_fireball");
 			to_trigger_on_collision.Invoke(network_Id.val);
 		}
 	}
