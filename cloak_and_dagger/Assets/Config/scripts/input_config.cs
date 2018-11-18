@@ -25,6 +25,11 @@ public class input_config : ScriptableObject {
 	{
 		get { return Input.GetKeyDown(dash_key); }
 	}
+	[SerializeField]
+	KeyCode reflect_key;
+	public bool reflect {
+		get { return Input.GetKeyDown(reflect_key); }
+	}
 
 	[SerializeField]
 	string horizontal_axis;
@@ -40,7 +45,7 @@ public class input_config : ScriptableObject {
 	{
 		if(use_axis)
 		{
-			return Input.GetAxis(horizontal_axis);
+			return Input.GetAxisRaw(horizontal_axis);
 		}
 		return adhoc(Input.GetKey(right)) - adhoc(Input.GetKey(left));
 	}
@@ -49,7 +54,7 @@ public class input_config : ScriptableObject {
 	{
 		if(use_axis)
 		{
-			return Input.GetAxis(vertical_axis);
+			return Input.GetAxisRaw(vertical_axis);
 		}
 		return adhoc(Input.GetKey(up)) - adhoc(Input.GetKey(down));
 	}

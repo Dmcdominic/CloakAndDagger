@@ -15,11 +15,11 @@ public abstract class config_input_field : MonoBehaviour {
 	public List<bool_input> toggle_dependencies = new List<bool_input>();
 	[HideInInspector]
 	public string description;
-
-	[HideInInspector]
-	public bool values_prepopulated = false;
+	
 	[HideInInspector]
 	public int encoded_enum, config_cat;
+
+	private object val_to_send;
 
 
 	private void Start() {
@@ -50,13 +50,24 @@ public abstract class config_input_field : MonoBehaviour {
 	}
 
 	protected void after_val_changed(object value) {
-		if (values_prepopulated) {
-			after_value_changed.Invoke(encoded_enum, value, config_cat);
+		val_to_send = value;
+	}
+
+	protected IEnumerator waiting_to_send_val() {
+		object prev_val;
+		while (true) {
+			prev_val = val_to_send;
+			yield return new WaitUntil(() => val_to_send != prev_val);
+			while (val_to_send != prev_val) {
+				prev_val = val_to_send;
+				yield return new WaitForSeconds(0.1f);
+			}
+			after_value_changed.Invoke(encoded_enum, val_to_send, config_cat);
 		}
 	}
 
 	protected void on_update_field_to(int inc_encoded_enum, object inc_value, int inc_config_cat) {
-		if (values_prepopulated && (inc_encoded_enum == encoded_enum) && (inc_config_cat == config_cat)) {
+		if ((inc_encoded_enum == encoded_enum) && (inc_config_cat == config_cat)) {
 			update_this_field_to(inc_value);
 		}
 	}

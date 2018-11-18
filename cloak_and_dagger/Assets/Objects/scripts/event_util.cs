@@ -39,3 +39,16 @@ public class gen_event<T,T2> : ScriptableObject
     public void Invoke(T arg,T2 arg2) { e.Invoke(arg,arg2); }
 
 }
+
+[Serializable]
+public class gen_event<T, T2, T3> : ScriptableObject {
+
+	private UnityEvent<T, T2, T3> _e;
+
+	public UnityEvent<T, T2, T3> e {
+		get { if (_e == null) _e = new adhoc_event<T, T2, T3>(); return _e; }
+	}
+
+	public void Invoke(T arg, T2 arg2, T3 arg3) { e.Invoke(arg, arg2, arg3); }
+
+}

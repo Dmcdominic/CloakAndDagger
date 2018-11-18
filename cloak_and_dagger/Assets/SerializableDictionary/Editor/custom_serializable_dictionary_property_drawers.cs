@@ -8,6 +8,7 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(Status_EventObject_Dict))]
 [CustomPropertyDrawer(typeof(Status_FloatEventObject_Dict))]
 [CustomPropertyDrawer(typeof(Status_Float_Dict))]
+[CustomPropertyDrawer(typeof(Status_FloatVar_Dict))]
 // ============= Data persistence dicts ================
 [CustomPropertyDrawer(typeof(ConfigCat_ScriptableObj_Dict))]
 // ============= Event dicts ===========================
@@ -33,6 +34,8 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(ReadonlyGameplayOption_Int_Dict))]
 [CustomPropertyDrawer(typeof(String_MapInfo_Dict))]
 [CustomPropertyDrawer(typeof(WinCon_WinConInfo_Dict))]
+// =========== Game control dictionaries ===============
+[CustomPropertyDrawer(typeof(WinCon_Controller_Dict))]
 public class Custom_AnySerializableDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer { }
 
 //[CustomPropertyDrawer(typeof(ColorArrayStorage))]

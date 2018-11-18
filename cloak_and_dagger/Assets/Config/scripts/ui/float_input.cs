@@ -30,15 +30,17 @@ public class float_input : config_input_field {
 
 		// on_value_change listeners
 		on_value_changed.AddListener(update_text_field());
+		on_value_changed.AddListener(update_slider());
 
-		// Enable values_prepopulated so that a config sync event will now get sent after edits
-		values_prepopulated = true;
+		// Start the coroutine which will listen for value changes to send
+		StartCoroutine(waiting_to_send_val());
 	}
 
 	public override void update_this_field_to(object new_val_obj) {
 		float new_val = (float)new_val_obj;
 		if (new_val != value) {
 			value = new_val;
+			slider.value = new_val;
 		}
 	}
 
@@ -65,6 +67,14 @@ public class float_input : config_input_field {
 		return input => {
 			if (input_field.text != input.ToString()) {
 				input_field.text = input.ToString();
+			}
+		};
+	}
+
+	private UnityAction<float> update_slider() {
+		return input => {
+			if (slider.value != input && slider.minValue <= input && input <= slider.maxValue) {
+				slider.value = input;
 			}
 		};
 	}

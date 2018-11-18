@@ -10,12 +10,16 @@ public struct throw_dagger_data {
 	public serializable_vec2 thrower_pos;
 	public serializable_vec2 target_dest;
 	public int network_id;
+	public int palette;
+	public bool reflected;
 
-	public throw_dagger_data(Vector2 _thrower_pos, Vector2 _target_dest) {
+	public throw_dagger_data(Vector2 _thrower_pos, Vector2 _target_dest, int _palette, bool _reflected = false) {
 		this.thrower_pos = _thrower_pos;
 		this.target_dest = _target_dest;
 		System.Random rand = new System.Random();
 		this.network_id = rand.Next(int.MinValue, int.MaxValue);
+		this.palette = _palette;
+		this.reflected = _reflected;
 	}
 }
 
@@ -36,6 +40,9 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 	int_float_event trigger;
 
 	[SerializeField]
+	int_vec2_int_event reflect_proc;
+
+	[SerializeField]
 	player_event dagger_thrown;
 
 	[SerializeField]
@@ -45,6 +52,9 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 
     [SerializeField]
     int_float_event inform_pmove;
+
+	[SerializeField]
+	anim_parent anim_Parent;
 
 	private network_id networkID;
 	private uint thrown_index_counter = 0;
@@ -60,6 +70,7 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
         if (is_local)
         {
             trigger.e.AddListener(local_throw);
+			reflect_proc.e.AddListener(local_reflect_proc);
         }
     }
 
@@ -67,7 +78,15 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
     private void local_throw(int id, float cooldown) {
         if (id != gameObject_id.val) return; 
 
-		throw_dagger_data throw_data = new throw_dagger_data(_origin.val, _dest.val);
+		throw_dagger_data throw_data = new throw_dagger_data(_origin.val, _dest.val, anim_Parent.palette_index);
+		send_state(throw_data);
+		throw_func(throw_data);
+	}
+
+	private void local_reflect_proc(int id, Vector2 dest, int palette) {
+		if (id != gameObject_id.val) return;
+
+		throw_dagger_data throw_data = new throw_dagger_data(_origin.val, dest, palette, true);
 		send_state(throw_data);
 		throw_func(throw_data);
 	}
@@ -89,13 +108,17 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 		my_dagger.GetComponent<dagger_data_carrier>().dagger_Data = create_dagger_data();
 		my_dagger.GetComponent<network_id>().val = throw_data.network_id;
 
+		my_dagger.GetComponentInChildren<anim_piece>().palette_index = throw_data.palette;
+
 		Rigidbody2D rb = my_dagger.GetComponent<Rigidbody2D>();
 		if (rb) {
 			rb.velocity = my_dagger.transform.right * gameplay_Config.float_options[gameplay_float_option.dagger_speed];
 		}
-        inform_pmove.Invoke(gameObject_id.val, rotation.eulerAngles.z);
-		if (dagger_thrown) {
-			dagger_thrown.Invoke(0, gameObject);
+		if (!throw_data.reflected) {
+			inform_pmove.Invoke(gameObject_id.val, rotation.eulerAngles.z);
+			if (dagger_thrown) {
+				dagger_thrown.Invoke(0, gameObject);
+			}
 		}
 	}
 

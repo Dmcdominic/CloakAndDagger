@@ -5,19 +5,9 @@ using UnityEngine;
 public abstract class win_condition_controller : MonoBehaviour {
 	public abstract win_condition win_Condition { get; }
 
-	public win_con_config win_Con_Config;
-
-	// Events to listen to
-	public event_object game_start_trigger;
-	public death_event_object player_killed;
-
-	// Events to trigger
-	public event_object trigger_on_game_over; // TODO - this needs to store some kind of game_over_data
-
-	// Game variables
-	public bool_var ingame_state;
-
-	public float_var game_timer;
+	[HideInInspector]
+	public win_condition_assets_packet WCAP;
+	
 	private float time_limit;
 
 	protected abstract player_stats get_player_stats(byte playerID);
@@ -25,46 +15,64 @@ public abstract class win_condition_controller : MonoBehaviour {
 
 
 	// Initialization
-	protected void Awake() {
-		if (win_Con_Config.win_Condition != win_Condition) {
+	private void Awake() {
+		if (WCAP.win_Con_Config.win_Condition != win_Condition) {
 			gameObject.SetActive(false);
 			return;
 		}
-		if (player_killed) {
-			player_killed.e.AddListener(on_player_killed_general);
+		if (WCAP.player_killed) {
+			WCAP.player_killed.e.AddListener(on_player_killed_general);
 		}
-		if (game_start_trigger) {
-			game_start_trigger.e.AddListener(on_game_start_general);
+		if (WCAP.done_initing) {
+			WCAP.done_initing.e.AddListener(on_done_initing);
 		}
-
-		ingame_state.val = false;
-		game_timer.val = 0;
-		time_limit = win_Con_Config.float_options[winCon_float_option.time_limit];
+		
+		WCAP.ingame_state.val = false;
+		WCAP.game_timer.val = 0;
+		time_limit = WCAP.win_Con_Config.float_options[winCon_float_option.time_limit];
 		init();
 	}
 	
 	// Manages the game timer.
 	// If you want to use update, make sure to call base.Update() as well.
 	protected void Update () {
-		game_timer.val += Time.deltaTime;
-		if (time_limit != 0 && time_limit < game_timer.val) {
-			end_game_general(true);
+		if (WCAP.ingame_state.val) {
+			WCAP.game_timer.val += Time.deltaTime;
+			if (time_limit != 0 && time_limit < WCAP.game_timer.val) {
+				end_game_general(true);
+			}
 		}
 	}
 
-	// Is called by the game_start_trigger event
+	private void on_done_initing() {
+		StartCoroutine(starting_countdown());
+	}
+
+	IEnumerator starting_countdown() {
+		int seconds_left = 3;
+		while (seconds_left > 0) {
+			WCAP.countdown_event.Invoke(seconds_left);
+			yield return new WaitForSeconds(1);
+			seconds_left--;
+		}
+		on_game_start_general();
+		yield return null;
+	}
+
+	// Is called at the end of the countdown
 	private void on_game_start_general() {
-		ingame_state.val = true;
+		WCAP.ingame_state.val = true;
+		WCAP.trigger_on_game_start.Invoke();
 		on_game_start();
 	}
 
 	// Is called by the player_killed event
 	private void on_player_killed_general(death_event_data death_data) {
-		player_stats killed = get_player_stats((byte)death_data.playerID);
+		player_stats killed = get_player_stats(death_data.playerID);
 		killed.death_count++;
 		get_team_stats(killed.teamID).death_count++;
 		if (death_data.death_Type != death_type.suicide) {
-			player_stats killer = get_player_stats((byte)death_data.killerID);
+			player_stats killer = get_player_stats(death_data.killerID);
 			killer.kill_count++;
 		}
 		on_player_killed(death_data);
@@ -81,10 +89,11 @@ public abstract class win_condition_controller : MonoBehaviour {
 	// Note that this may be called by a timeout, so if you need anything to occur before the game ends,
 	// You should override this and then call base.end_game_general(timeout) at the end.
 	protected void end_game_general(bool timeout) {
-		ingame_state.val = false;
-		trigger_on_game_over.Invoke();
+		WCAP.ingame_state.val = false;
+		WCAP.trigger_on_game_over.Invoke();
 		// TODO - some other stuff here, like the leaderboard?
-		// It can simply listen for the game_over event.
+		// Or that stuff can simply listen for the game_over event.
+		Destroy(gameObject);
 	}
 }
 
@@ -93,13 +102,20 @@ public abstract class win_condition_controller : MonoBehaviour {
 public class player_stats {
 	public byte playerID;
 	public byte teamID;
-	public int kill_count;
-	public int death_count;
+	public int kill_count = 0;
+	public int death_count = 0;
+	public player_stats(byte _playerID, byte _teamID) {
+		playerID = _playerID;
+		teamID = _teamID;
+	}
 }
 
 // Stores a single team's stats for this match
 public class team_stats {
 	public byte teamID;
-	public byte kill_count;
-	public byte death_count;
+	public byte kill_count = 0;
+	public byte death_count = 0;
+	public team_stats(byte _teamID) {
+		teamID = _teamID;
+	}
 }

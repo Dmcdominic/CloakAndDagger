@@ -14,12 +14,16 @@ public class save_and_load_presets : MonoBehaviour {
 
 	public int_event_object to_trigger_after_save;
 	public int_event_object to_trigger_after_load;
+	public event_object to_trigger_sync_all;
+
+	public text_asset_list jsons_to_preload;
 
 	// All editable configs, to be saved and loaded, should be serialized in this dictionary
 	public ConfigCat_ScriptableObj_Dict editable_configs = new ConfigCat_ScriptableObj_Dict();
 
 
 	private void Awake() {
+		DontDestroyOnLoad(gameObject);
 		if (save_trigger) {
 			save_trigger.e.AddListener(save_preset);
 		}
@@ -29,11 +33,14 @@ public class save_and_load_presets : MonoBehaviour {
 	}
 
 	private void Start() {
-		// FOR TESTING
-		// TODO - REMOVE
-		//save_preset("gameplay_AND_winCon_test_preset");
-		//get_available_presets();
-		//load_preset("gameplay_AND_winCon_test_preset");
+		if (jsons_to_preload) {
+			foreach(TextAsset preset in jsons_to_preload.text_assets) {
+				save_util.save_to_JSON(presets_subpath, preset.name, preset.text);
+			}
+		}
+#if !UNITY_EDITOR
+		load_preset(get_available_presets()[0]);
+#endif
 	}
 
 	public void save_preset(string preset_name) {
@@ -68,6 +75,7 @@ public class save_and_load_presets : MonoBehaviour {
 			return;
 		}
 
+		to_trigger_sync_all.Invoke();
 		output_result(false, true, loaded_preset.name);
 	}
 	public void load_preset() {

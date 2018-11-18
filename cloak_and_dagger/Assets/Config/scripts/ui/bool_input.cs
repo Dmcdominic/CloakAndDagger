@@ -32,15 +32,14 @@ public class bool_input : config_input_field {
 		// on_value_change listener
 		on_value_changed.AddListener(get_update_dependents_action());
 
-		// Enable values_prepopulated so that a config sync event will now get sent after edits
-		values_prepopulated = true;
+		// Start the coroutine which will listen for value changes to send
+		StartCoroutine(waiting_to_send_val());
 	}
 
 	public override void update_this_field_to(object new_val_obj) {
 		bool new_val = (bool)new_val_obj;
-		if (new_val != value) {
-			value = new_val;
-		}
+		value = new_val;
+		toggle.isOn = new_val;
 	}
 
 	private UnityAction<bool> on_toggle_value_change() {

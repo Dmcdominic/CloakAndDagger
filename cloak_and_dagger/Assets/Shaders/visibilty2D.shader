@@ -53,19 +53,22 @@
             #endif
 
             UNITY_INITIALIZE_OUTPUT(Input, o);
-            o.color = v.color * _Color * _RendererColor;
+			o.color = v.color * _Color * _RendererColor;
+			o.color.a = length(_LightColor0) + (1 - length(o.color));
         }
 
         void surf (Input IN, inout SurfaceOutput o)
         {
             _RevealTime -= unity_DeltaTime;
-            float intens = (_LightColor0.x + _LightColor0.y + _LightColor0.z) / _MaxLight;
-            fixed4 c = SampleSpriteTexture (IN.uv_MainTex) * IN.color;
-            float a = clamp(max(_RevealTime,intens),0,1);
-            if(a < .1) a = 0;
-            o.Albedo = c.rgb * a;
-            o.Alpha = a;
-        }
+			//float intens = (_LightColor0.x + _LightColor0.y + _LightColor0.z);
+            fixed4 c = SampleSpriteTexture(IN.uv_MainTex) * IN.color;
+            float a = clamp(_RevealTime,0,1);
+            //if(a < .1) a = 0;
+			o.Albedo = c.rgb * c.a;
+			o.Alpha = c.a;
+			
+				
+		}
         ENDCG
     }
 

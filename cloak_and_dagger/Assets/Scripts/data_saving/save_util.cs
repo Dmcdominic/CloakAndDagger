@@ -59,7 +59,12 @@ public static class save_util {
 	// Save an object as a .json to the persistent data path at file_name
 	public static void save_to_JSON(string subpath, string file_name, object data) {
 		string path = get_full_path_safe(subpath, file_name, ".json");
-		string data_json = JsonUtility.ToJson(data);
+		string data_json;
+		if (data is string) {
+			data_json = (string)data;
+		} else {
+			data_json = JsonUtility.ToJson(data);
+		}
 
 		if (!File.Exists(path)) {
 			File.Create(path).Dispose();
