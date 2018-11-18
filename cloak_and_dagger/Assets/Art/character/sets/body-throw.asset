@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Name: body-throw
   m_EditorClassIdentifier: 
   palettes:
+  - {fileID: 11400000, guid: dc5ff5cf27055d1448681b440b35496c, type: 2}
+  - {fileID: 11400000, guid: 5ea7d9197b99d794c9881ad70e5518a2, type: 2}
+  - {fileID: 11400000, guid: c4512b3175a83f74fa1c79732b739218, type: 2}
+  - {fileID: 11400000, guid: 001222cc10074974ebefbf35be66256c, type: 2}
   - {fileID: 11400000, guid: 6ec6c9687068e1e44bab1a6a57a58a80, type: 2}
   - {fileID: 11400000, guid: f645fb9263f6742478feb7387d7f86f6, type: 2}

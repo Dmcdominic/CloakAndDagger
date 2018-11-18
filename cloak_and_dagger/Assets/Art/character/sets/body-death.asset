@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Name: body-death
   m_EditorClassIdentifier: 
   palettes:
+  - {fileID: 11400000, guid: c5da4e05b729d9844a1e719543b55bac, type: 2}
+  - {fileID: 11400000, guid: 40f94510b7164a443bf1249a7407d68f, type: 2}
+  - {fileID: 11400000, guid: bc580084652527b4ea9340422119a95e, type: 2}
+  - {fileID: 11400000, guid: 2ca3e60dcfe8a144c8f714f0ab88d2b4, type: 2}
   - {fileID: 11400000, guid: faa149af75c566c4cbfd4f5809fda263, type: 2}
   - {fileID: 11400000, guid: 3d419d97043e30d469fdfdc8c9eea348, type: 2}

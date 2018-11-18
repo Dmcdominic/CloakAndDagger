@@ -68,9 +68,15 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 			network_id daggerID = collider.gameObject.GetComponent<network_id>();
 
 			if (reflecting[gameObject_id.val]) {
+				int palette = collider.gameObject.GetComponent<anim_piece>().palette_index;
 				destroy_dagger.Invoke(daggerID.val);
-				Vector2 dest = collider.transform.position;
-				int palette = anim_Parent.palette_index;
+
+				// For natural bounce away from player:
+				//Vector2 dest = collider.transform.position;
+
+				// For dagger to reflect back in the direction it came:
+				Vector2 dest = transform.position - collider.transform.right.normalized;
+
 				local_reflect_proc.e.Invoke(gameObject_id.val, dest, palette);
 				if (gameplay_Config.bool_options[gameplay_bool_option.fragile_reflect]) {
 					end_reflect.Invoke(gameObject_id.val);

@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Name: cape-death
   m_EditorClassIdentifier: 
   palettes:
+  - {fileID: 11400000, guid: d2cb3ae1a45fc6446842c7c2015362e7, type: 2}
+  - {fileID: 11400000, guid: 03a9780503fa6604cb3ca6ac99c37431, type: 2}
+  - {fileID: 11400000, guid: 714c37ced1ee16543a61d5d80fcdcbbc, type: 2}
+  - {fileID: 11400000, guid: d8f21ec3dc4403e4bae7b16658d53c80, type: 2}
   - {fileID: 11400000, guid: ccab44155278eda4cb582e13dd1221a2, type: 2}
   - {fileID: 11400000, guid: e36155a2123b5964eab4fe5ce4c525ec, type: 2}

@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Name: cape-throw
   m_EditorClassIdentifier: 
   palettes:
+  - {fileID: 11400000, guid: 6be2d42188c1cae4d9708bfa3fd0a033, type: 2}
+  - {fileID: 11400000, guid: d2dbccdd73194b84680c20fff6d38c61, type: 2}
+  - {fileID: 11400000, guid: d010dd019fa7193468dc0f13767d589f, type: 2}
+  - {fileID: 11400000, guid: 8bbfa0d615ef54d46bae43b35e0c247e, type: 2}
   - {fileID: 11400000, guid: c12fdfa4beb53104a861755b3c94ead8, type: 2}
   - {fileID: 11400000, guid: 8ef15959c37e3214e958fe0221cebfa5, type: 2}

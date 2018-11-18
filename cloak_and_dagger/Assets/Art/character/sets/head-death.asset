@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Name: head-death
   m_EditorClassIdentifier: 
   palettes:
+  - {fileID: 11400000, guid: 85cca90122201f24fa00e7de529b1671, type: 2}
+  - {fileID: 11400000, guid: 6f05ce2435de96348a73960bd4213117, type: 2}
+  - {fileID: 11400000, guid: 93864e82c59f50d439b6dd1f4ed4638a, type: 2}
+  - {fileID: 11400000, guid: 1e7f3c9bce68b7f46aa244985751e143, type: 2}
   - {fileID: 11400000, guid: 622dfef4f9259174caf3acf1f3156aa6, type: 2}
   - {fileID: 11400000, guid: 99fe583eeff04fd4db91cfa4718ced5f, type: 2}

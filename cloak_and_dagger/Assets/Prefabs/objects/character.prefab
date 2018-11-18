@@ -473,7 +473,7 @@ MonoBehaviour:
   anim_Palettes_Bundle: {fileID: 11400000, guid: d7ad639c930dec84a9847d6e52e70fbb,
     type: 2}
   animation_index: 0
-  palette_index: 0
+  palette_index: 2
   sprite_index: 0
 --- !u!114 &114330597803112994
 MonoBehaviour:
@@ -595,7 +595,7 @@ MonoBehaviour:
   anim_Palettes_Bundle: {fileID: 11400000, guid: cdafa467466f1b548ace0703084d698f,
     type: 2}
   animation_index: 0
-  palette_index: 0
+  palette_index: 2
   sprite_index: 0
 --- !u!114 &114519411291893160
 MonoBehaviour:
@@ -724,7 +724,7 @@ MonoBehaviour:
   anim_Palettes_Bundle: {fileID: 11400000, guid: 51c55809320738b4e9cfd9c265ddc4a2,
     type: 2}
   animation_index: 0
-  palette_index: 0
+  palette_index: 2
   sprite_index: 0
 --- !u!114 &114979525041593486
 MonoBehaviour:

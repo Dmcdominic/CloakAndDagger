@@ -75,9 +75,11 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 
     // This is the local player, and they pressed the throw dagger button, and it was off cooldown
     private void local_throw(int id, float cooldown) {
-        if (id != gameObject_id.val) return; 
+        if (id != gameObject_id.val) return;
 
-		throw_dagger_data throw_data = new throw_dagger_data(_origin.val, _dest.val, anim_Parent.palette_index);
+		//int palette = anim_Parent.palette_index;
+		int palette = GetComponentInChildren<anim_piece>().palette_index;
+		throw_dagger_data throw_data = new throw_dagger_data(_origin.val, _dest.val, palette);
 		send_state(throw_data);
 		throw_func(throw_data);
 	}

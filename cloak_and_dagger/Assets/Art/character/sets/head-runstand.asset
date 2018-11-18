@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Name: head-runstand
   m_EditorClassIdentifier: 
   palettes:
+  - {fileID: 11400000, guid: 3246731c226963149bb9ca48a612d11a, type: 2}
+  - {fileID: 11400000, guid: 9ce56fce48ee29f4ab23a10015049fe6, type: 2}
+  - {fileID: 11400000, guid: 77694d76f84434f4093d69ded740a855, type: 2}
+  - {fileID: 11400000, guid: 0f2bd0e3697907745ad9c026c7a084f5, type: 2}
   - {fileID: 11400000, guid: 1aa8527b410aec24f842bacfd3f42396, type: 2}
   - {fileID: 11400000, guid: 7468be4ec4e878d41aa4ba093be79168, type: 2}

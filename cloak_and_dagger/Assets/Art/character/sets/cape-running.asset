@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Name: cape-running
   m_EditorClassIdentifier: 
   palettes:
+  - {fileID: 11400000, guid: e1365dc79467b3a4d8299d4c7afa9d43, type: 2}
+  - {fileID: 11400000, guid: a636d0cafb8e69d459816ed8a28f4bea, type: 2}
+  - {fileID: 11400000, guid: b331574847b60314591e818f81e46327, type: 2}
+  - {fileID: 11400000, guid: 996c3920f9fc580458c1450129bfde19, type: 2}
   - {fileID: 11400000, guid: 657190d0868a76f49a98248510bfe79d, type: 2}
   - {fileID: 11400000, guid: f09e38063e517e441ad329099007c32d, type: 2}

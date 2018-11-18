@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Name: body-running
   m_EditorClassIdentifier: 
   palettes:
+  - {fileID: 11400000, guid: 27a30baeeb61c284fbdd8590c62cf830, type: 2}
+  - {fileID: 11400000, guid: 84366b7ca2e43c74b8978605efbd36e6, type: 2}
+  - {fileID: 11400000, guid: 88dceb89748d23145970bcd12d0c173a, type: 2}
+  - {fileID: 11400000, guid: 504e91dcac11bf14b8bf8e6bb375d6b2, type: 2}
   - {fileID: 11400000, guid: f7d14ec69b0900a4993be7bc075440d2, type: 2}
   - {fileID: 11400000, guid: 3b37f15dcb8bb9d4c807de2c792c1390, type: 2}
