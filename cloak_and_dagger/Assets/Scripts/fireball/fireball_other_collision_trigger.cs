@@ -24,9 +24,11 @@ public class fireball_other_collision_trigger : MonoBehaviour {
 			return;
 		}
 
-		if (tag == "Wall") {
+		if (tag == "Wall" && !gameplay_Config.bool_options[gameplay_bool_option.fireballs_pierce_walls]) {
 			to_trigger_on_collision.Invoke(network_Id.val);
 		} else if (tag == "Dagger" && (gameplay_Config.bool_options[gameplay_bool_option.daggers_destroy_fireballs])) {
+			to_trigger_on_collision.Invoke(network_Id.val);
+		} else if (tag == "Fireball" && (gameplay_Config.bool_options[gameplay_bool_option.fireballs_destroy_fireballs])) {
 			to_trigger_on_collision.Invoke(network_Id.val);
 		}
 	}

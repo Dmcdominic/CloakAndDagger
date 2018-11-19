@@ -109,7 +109,7 @@ public class throw_fireball : sync_behaviour<throw_fireball_data> {
 	// Edit the properties of the fireball here before throwing it
 	private fireball_data create_fireball_data() {
 		byte thrower_ID = (byte)networkID.val;
-        return new fireball_data(thrower_ID);
+        return new fireball_data(gameplay_Config.bool_options[gameplay_bool_option.fireball_collaterals], thrower_ID);
 	}
 	
 }

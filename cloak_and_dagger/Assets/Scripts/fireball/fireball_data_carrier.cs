@@ -12,9 +12,11 @@ public class fireball_data_carrier : MonoBehaviour {
 [System.Serializable]
 public struct fireball_data {
 	// Add more fireball_data properties here, and include them in the constructor
+	public bool collaterals;
 	public byte thrower;
 
-	public fireball_data(byte thrower) {
+	public fireball_data(bool collaterals, byte thrower) {
+		this.collaterals = collaterals;
         this.thrower = thrower;
 	}
 }

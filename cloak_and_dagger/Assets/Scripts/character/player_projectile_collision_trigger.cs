@@ -93,7 +93,10 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 			fireball_data fireball_Data = collider.gameObject.GetComponent<fireball_data_carrier>().fireball_Data;
 			network_id fireballID = collider.gameObject.GetComponent<network_id>();
 
-			destroy_fireball.Invoke(fireballID.val);
+			if (!fireball_Data.collaterals) {
+				destroy_fireball.Invoke(fireballID.val);
+			}
+
 			rectify(Time.time, new death_event_data((byte)gameObject_id.val, death_type.fireball, fireball_Data.thrower));
 			send_state(new death_event_data((byte)gameObject_id.val, death_type.fireball, fireball_Data.thrower));
 		}

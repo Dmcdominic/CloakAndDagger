@@ -23,7 +23,7 @@ public class dagger_other_collision_trigger : MonoBehaviour {
 			to_trigger_on_collision.Invoke(network_Id.val);
 		} else if (tag == "Dagger" && (gameplay_Config.bool_options[gameplay_bool_option.daggers_destroy_daggers])) {
 			to_trigger_on_collision.Invoke(network_Id.val);
-		} else if (tag == "Fireball") { // This means that fireballs will always destroy daggers
+		} else if (tag == "Fireball" && (gameplay_Config.bool_options[gameplay_bool_option.fireballs_destroy_daggers])) {
 			to_trigger_on_collision.Invoke(network_Id.val);
 		}
 	}

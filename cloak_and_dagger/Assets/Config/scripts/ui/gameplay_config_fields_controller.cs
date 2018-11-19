@@ -35,14 +35,20 @@ public class gameplay_config_fields_controller : config_fields_controller<gamepl
 		ui_parameters_ordered.Add(gameplay_float_option.dagger_speed, new ui_float_info<gameplay_bool_option>(1f, 40f, 0f, 250f, "The speed of a dagger after it is thrown."));
 		ui_parameters_ordered.Add(gameplay_float_option.dagger_light_radius, new ui_float_info<gameplay_bool_option>(10f, 90f, 1f, 179f, "The size of the area which is made visible around a dagger."));
 		ui_parameters_ordered.Add(gameplay_bool_option.dagger_collaterals, new ui_bool_info<gameplay_bool_option>("Daggers can pierce through multiple players."));
+		ui_parameters_ordered.Add(gameplay_bool_option.daggers_pierce_walls, new ui_bool_info<gameplay_bool_option>("Daggers can pass through walls."));
+
+		// Dagger/fireball collisions
 		ui_parameters_ordered.Add(gameplay_bool_option.daggers_destroy_daggers, new ui_bool_info<gameplay_bool_option>("Daggers will destroy each other when they collide."));
 		ui_parameters_ordered.Add(gameplay_bool_option.daggers_destroy_fireballs, new ui_bool_info<gameplay_bool_option>("Daggers will destroy fireballs when they collide."));
-		ui_parameters_ordered.Add(gameplay_bool_option.daggers_pierce_walls, new ui_bool_info<gameplay_bool_option>("Daggers can pass through walls."));
+		ui_parameters_ordered.Add(gameplay_bool_option.fireballs_destroy_daggers, new ui_bool_info<gameplay_bool_option>("Fireballs will destroy daggers when they collide."));
+		ui_parameters_ordered.Add(gameplay_bool_option.fireballs_destroy_fireballs, new ui_bool_info<gameplay_bool_option>("Fireballs will destroy each other when they collide."));
 
 		// Fireballs
 		ui_parameters_ordered.Add(gameplay_float_option.fireball_cooldown, new ui_float_info<gameplay_bool_option>(3f, 60f, 0f, 250f, "The cooldown for throwing a fireball."));
 		ui_parameters_ordered.Add(gameplay_float_option.fireball_speed, new ui_float_info<gameplay_bool_option>(1f, 20f, 0f, 250f, "The speed of a fireball after it is thrown."));
 		ui_parameters_ordered.Add(gameplay_float_option.fireball_light_range, new ui_float_info<gameplay_bool_option>(3f, 12f, 1f, 50f, "The range of the light emitted by a fireball."));
+		ui_parameters_ordered.Add(gameplay_bool_option.fireball_collaterals, new ui_bool_info<gameplay_bool_option>("Fireballs can pierce through multiple players."));
+		ui_parameters_ordered.Add(gameplay_bool_option.fireballs_pierce_walls, new ui_bool_info<gameplay_bool_option>("Fireballs can pass through walls."));
 
 		// Blink
 		ui_parameters_ordered.Add(gameplay_float_option.blink_range, new ui_float_info<gameplay_bool_option>(0.1f, 20f, 0f, 100f, "Maximum range of the blink ability. Blink is a short range teleportation."));
