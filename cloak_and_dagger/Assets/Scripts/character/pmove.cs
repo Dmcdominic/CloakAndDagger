@@ -118,7 +118,7 @@ public class pmove : sync_behaviour<player_state>
 
         transform.eulerAngles = Vector3.forward * Mathf.SmoothDampAngle(
                                 transform.eulerAngles.z, target_theta, 
-                                ref smooth_rot_vel, .01f);
+                                ref smooth_rot_vel, .06f);
 
         state = new player_state(transform.position, rb.velocity,transform.eulerAngles.z);
 
