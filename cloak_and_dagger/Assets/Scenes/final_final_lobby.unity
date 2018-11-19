@@ -1115,7 +1115,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &115420112
 GameObject:
@@ -2124,57 +2124,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   friend_name: {fileID: 1752805339}
---- !u!1001 &378691483
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4491820199344692, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 430.15283
-      objectReference: {fileID: 0}
-    - target: {fileID: 4491820199344692, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 154.79886
-      objectReference: {fileID: 0}
-    - target: {fileID: 4491820199344692, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.41939977
-      objectReference: {fileID: 0}
-    - target: {fileID: 4491820199344692, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4491820199344692, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4491820199344692, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4491820199344692, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4491820199344692, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1271832467573936, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
-      propertyPath: m_Name
-      value: client (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114638553666161056, guid: adb94b9d6042d554f8a6d40245452680,
-        type: 2}
-      propertyPath: local
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &386096421
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,7 +2551,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &490816577
 GameObject:
@@ -3340,7 +3289,7 @@ RectTransform:
   - {fileID: 490816578}
   - {fileID: 1945344569}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3358,7 +3307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263d0b4bd89c4ac4ea11acb9f1fd5dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  client: {fileID: 941472507}
+  client: {fileID: 11400000, guid: b34ad676f19c39f4eb6498a6b838be72, type: 2}
   my_name: {fileID: 11400000, guid: 704b1696cb8499c479c077820b659856, type: 2}
   pass: {fileID: 11400000, guid: 72830dc1ef18e3543a1dc64d8564dbb9, type: 2}
   login_table: {fileID: 115420112}
@@ -3865,7 +3814,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 941472507}
+      - m_Target: {fileID: 0}
         m_MethodName: find_match
         m_Mode: 1
         m_Arguments:
@@ -4257,12 +4206,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 930964761}
   m_CullTransparentMesh: 0
---- !u!114 &941472507 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114638553666161056, guid: adb94b9d6042d554f8a6d40245452680,
-    type: 2}
-  m_PrefabInternal: {fileID: 378691483}
-  m_Script: {fileID: 11500000, guid: 77b7b73d2b0dc914084014c0d24a7076, type: 3}
 --- !u!1 &953242879
 GameObject:
   m_ObjectHideFlags: 0
@@ -7396,7 +7339,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 941472507}
+      - m_Target: {fileID: 0}
         m_MethodName: leave_party
         m_Mode: 1
         m_Arguments:

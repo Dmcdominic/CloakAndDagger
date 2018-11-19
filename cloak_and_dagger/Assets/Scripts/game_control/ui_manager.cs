@@ -7,7 +7,7 @@ using System.Linq;
 public class ui_manager : MonoBehaviour {
 
     [SerializeField]
-    thirds_client client;
+    client_var client;
 
     [SerializeField]
     string_var my_name;
@@ -91,15 +91,15 @@ public class ui_manager : MonoBehaviour {
 
 	// Use this for initialization
 	public void Start () {
-        client.Connect(0, OnConnect, () => connect_error.SetActive(true));
-        invite_player.e.AddListener(str => client.Invite_Player(str));
-        join_player.e.AddListener(str => client.Join_Party(str));
-        add_friend.e.AddListener(() => client.add_friend(friend_to_add));
-        add_this_friend.e.AddListener(str => { client.add_friend(str); my_friend_requests.val.Remove(str); });
+        client.val.Connect(0, OnConnect, () => connect_error.SetActive(true));
+        invite_player.e.AddListener(str => client.val.Invite_Player(str));
+        join_player.e.AddListener(str => client.val.Join_Party(str));
+        add_friend.e.AddListener(() => client.val.add_friend(friend_to_add));
+        add_this_friend.e.AddListener(str => { client.val.add_friend(str); my_friend_requests.val.Remove(str); });
         my_friend_requests.val = new List<string>();
-        client.Register_friend_requests(str => my_friend_requests.val.Add(str));
-        client.Register_Receive_Invite(Invited);
-        client.Register_Receive_Request(Requested);
+        client.val.Register_friend_requests(str => my_friend_requests.val.Add(str));
+        client.val.Register_Receive_Invite(Invited);
+        client.val.Register_Receive_Request(Requested);
 	}
 
 
@@ -118,8 +118,8 @@ public class ui_manager : MonoBehaviour {
     void OnConnect()
     {
         connected = true;
-        client.Register_Message_Receive(to_splitter.Invoke);
-        client.Register_Party_List(pn => 
+        client.val.Register_Message_Receive(to_splitter.Invoke);
+        client.val.Register_Party_List(pn => 
         {
             my_party.val = pn;
             if (pn.members.Contains(my_name))
@@ -136,8 +136,8 @@ public class ui_manager : MonoBehaviour {
             if (pn.members.Any(_ => true)) { start_menu.SetActive(false); party_menu.SetActive(true); print("yooo"); } 
 
         });
-        client.Register_friends(fl => my_friends.val = fl);
-        client.Register_friend_callbacks(found_friend.Invoke, failed_to_find_friend.Invoke);
+        client.val.Register_friends(fl => my_friends.val = fl);
+        client.val.Register_friend_callbacks(found_friend.Invoke, failed_to_find_friend.Invoke);
         
         
     }
@@ -150,7 +150,7 @@ public class ui_manager : MonoBehaviour {
     IEnumerator delay_sign_up()
     {
         yield return new WaitUntil(() => connected);
-        client.Create_Player(my_name, pass, () => StartCoroutine(delay_sign_in()), 
+        client.val.Create_Player(my_name, pass, () => StartCoroutine(delay_sign_in()), 
             () => { sign_up_error.SetActive(true);  loading.SetActive(false); });
     }
     
@@ -162,7 +162,7 @@ public class ui_manager : MonoBehaviour {
     IEnumerator delay_sign_in()
     {
         yield return new WaitUntil(() => connected);
-        client.Login(my_name, pass, () => { loading.SetActive(false); title.SetActive(false); start_menu.SetActive(true); }
+        client.val.Login(my_name, pass, () => { loading.SetActive(false); title.SetActive(false); start_menu.SetActive(true); }
             ,() => { login_error.SetActive(true); loading.SetActive(false); });
     }
 
