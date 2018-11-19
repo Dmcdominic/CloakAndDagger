@@ -31,7 +31,7 @@ public class gameplay_config_fields_controller : config_fields_controller<gamepl
 		ui_parameters_ordered.Add(gameplay_float_option.heartbeat_interval, new ui_float_info<gameplay_bool_option>(gameplay_bool_option.heartbeat, 1f, 20f, 0f, 100f, "The interval between each heartbeat reveal, in seconds."));
 
 		// Daggers
-		ui_parameters_ordered.Add(gameplay_float_option.dagger_cooldown, new ui_float_info<gameplay_bool_option>(0.1f, 30f, 0f, 250f, "The cooldown for throwing a dagger."));
+		ui_parameters_ordered.Add(gameplay_float_option.dagger_cooldown, new ui_float_info<gameplay_bool_option>(4f, 30f, 0f, 250f, "The cooldown for throwing a dagger."));
 		ui_parameters_ordered.Add(gameplay_float_option.dagger_speed, new ui_float_info<gameplay_bool_option>(1f, 40f, 0f, 250f, "The speed of a dagger after it is thrown."));
 		ui_parameters_ordered.Add(gameplay_float_option.dagger_light_radius, new ui_float_info<gameplay_bool_option>(10f, 90f, 1f, 179f, "The size of the area which is made visible around a dagger."));
 		ui_parameters_ordered.Add(gameplay_bool_option.dagger_collaterals, new ui_bool_info<gameplay_bool_option>("Daggers can pierce through multiple players."));
