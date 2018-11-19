@@ -67,13 +67,17 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
     [SerializeField]
     bool local;
 
+    [SerializeField]
+    client_var client;
+
 
 
 
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        
+
+        client.val = this;
         in_multicast.e.AddListener(mtc);
         in_unreliable.e.AddListener(mtc_unrel);
         start_in.e.AddListener(() => Start_Game());
