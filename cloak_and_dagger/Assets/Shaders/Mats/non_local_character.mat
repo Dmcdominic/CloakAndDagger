@@ -68,7 +68,11 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+<<<<<<< HEAD
+    - _MaxLight: 0.87
+=======
     - _MaxLight: 6.72
+>>>>>>> develop
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1

@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1271832467573936
 GameObject:
   m_ObjectHideFlags: 0
@@ -52,6 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4197213907057204}
   - component: {fileID: 114312076050607240}
+  - component: {fileID: 114659664648262114}
   m_Layer: 0
   m_Name: heartbeat_repeater
   m_TagString: Untagged
@@ -233,7 +234,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   message_in: {fileID: 11400000, guid: e646a766baa65fc46a85417a5afc652c, type: 2}
   local_events:
+<<<<<<< HEAD
     m_keys: 0001040305020607
+=======
+    m_keys: 00010403050206
+>>>>>>> dev2
     m_values:
     - {fileID: 11400000, guid: f825901c86abbd443a8261f8754ed9a1, type: 2}
     - {fileID: 11400000, guid: 62b7d49aefcf6fa4ab1f00d1875a56cd, type: 2}
@@ -241,10 +246,16 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 0a4dd1ac8d4d40c478c44022ddc40c1c, type: 2}
     - {fileID: 11400000, guid: f9ba7aa2e3a2205469ba19ae816cef37, type: 2}
     - {fileID: 11400000, guid: 83fda4d6f40ad144c9b161ae2154b115, type: 2}
+<<<<<<< HEAD
     - {fileID: 11400000, guid: 4a7d90202633a8b48a37873c3d4c488e, type: 2}
     - {fileID: 11400000, guid: d6bd81920fd13594f9fb5d0e723b738e, type: 2}
   network_events:
     m_keys: 0001040305020607
+=======
+    - {fileID: 11400000, guid: e9e57bbd4bf152546b730ebb7b857eed, type: 2}
+  network_events:
+    m_keys: 00010403050206
+>>>>>>> dev2
     m_values:
     - {fileID: 11400000, guid: f7d22b945dd5bd44a8a6aea1e5b0c6f6, type: 2}
     - {fileID: 11400000, guid: 82fd9c3e638984e42b9b775780d7385f, type: 2}
@@ -252,8 +263,12 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 1cdc8d19303f9b04abbc0ab475113b3e, type: 2}
     - {fileID: 11400000, guid: 28e3be81a7e789d4f8997a2ec7d09947, type: 2}
     - {fileID: 11400000, guid: ca778a649221f3c4891069680a386bc1, type: 2}
+<<<<<<< HEAD
     - {fileID: 11400000, guid: b4656e98d7492bd42b6c86f2609ff57e, type: 2}
     - {fileID: 11400000, guid: 23c9c0be74a779e438705bc1b264ae65, type: 2}
+=======
+    - {fileID: 11400000, guid: b4b9e0577c7c4fb449caf44ad7ad790d, type: 2}
+>>>>>>> dev2
   out_unreliable: {fileID: 11400000, guid: 99b73b994ade95149bbe1b7616ee0397, type: 2}
   out_large: {fileID: 11400000, guid: 14b56887b4680c84a89544f7301ced15, type: 2}
   out_mtc: {fileID: 11400000, guid: 11f3c22c330b0cb499df42eeaeb444ad, type: 2}
@@ -293,6 +308,7 @@ MonoBehaviour:
     m_values:
     - {fileID: 11400000, guid: 5522c9ca6af1c2d419a3026a079974e2, type: 2}
     - {fileID: 11400000, guid: ebfa06e17ce69e640966e61f761a892a, type: 2}
+<<<<<<< HEAD
   local_cooldowns:
     m_keys: 01000000020000000300000006000000
     m_values:
@@ -300,6 +316,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 1305692eaed1d264dae269566e820d38, type: 2}
     - {fileID: 11400000, guid: 5afffbd4afe91ae4c8e0af9a97e5aae0, type: 2}
     - {fileID: 11400000, guid: e53c6c7e4266ebe41b2369aca21b3c93, type: 2}
+=======
+>>>>>>> dev2
   local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
 --- !u!114 &114312076050607240
 MonoBehaviour:
@@ -328,13 +346,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b7b73d2b0dc914084014c0d24a7076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
+  debug: 1
   in_multicast: {fileID: 11400000, guid: 11f3c22c330b0cb499df42eeaeb444ad, type: 2}
   in_unreliable: {fileID: 11400000, guid: 99b73b994ade95149bbe1b7616ee0397, type: 2}
   in_large: {fileID: 11400000, guid: 14b56887b4680c84a89544f7301ced15, type: 2}
   start_event: {fileID: 11400000, guid: 7f1fcba0038477d4d90bcba572f87cf6, type: 2}
   start_in: {fileID: 11400000, guid: b679b10936335874abe4e4a88ba87c2e, type: 2}
-  local: 0
+  local: 1
+--- !u!114 &114659664648262114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1412115730446792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d41b7cfab31a342aeb04e4569e81cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  game_started: {fileID: 0}
+  event_to_trigger: {fileID: 11400000, guid: 566665ec96310f541876a867afffb402, type: 2}
 --- !u!114 &114700959637492258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -358,6 +390,7 @@ MonoBehaviour:
   local_network_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
   t0: {fileID: 11400000, guid: 57bb56410a2f79c4aaa77d261a3079f8, type: 2}
   respawn_times: {fileID: 11400000, guid: 1a83130fc7c8bd84389b07c46ce4daaa, type: 2}
+  status_handler: {fileID: 0}
 --- !u!114 &114836982731032744
 MonoBehaviour:
   m_ObjectHideFlags: 1

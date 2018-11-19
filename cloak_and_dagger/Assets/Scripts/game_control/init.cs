@@ -37,6 +37,9 @@ public class init : MonoBehaviour {
 
     [SerializeField]
     player_float respawn_times;
+
+    [SerializeField]
+    GameObject status_handler;
     
 
 	// Use this for initialization
@@ -44,10 +47,12 @@ public class init : MonoBehaviour {
         start.e.AddListener((t) => StartCoroutine(go(t)));
 	}
 
-	IEnumerator go(float t) {
+	IEnumerator go(float t)
+    {
 		yield return new WaitUntil(() => party.val.leader != "");
 		SceneManager.LoadScene(map_Config.map);
-		yield return new WaitUntil(() => SceneManager.GetActiveScene().name == map_Config.map);
+        status_handler.SetActive(true);
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == map_Config.map);
 
 		Vector2 spawn_point = map_Config.current_map_info.next_spawn_point;
 		GameObject leader_go = Instantiate(player_prefab, spawn_point, Quaternion.identity);
