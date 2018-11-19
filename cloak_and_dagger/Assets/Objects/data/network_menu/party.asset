@@ -11,3 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148994aa54cacb34f9065a507950cb32, type: 3}
   m_Name: party
   m_EditorClassIdentifier: 
+  use_constant: 0
+  constant:
+    leader: 
+    members: []
+  value:
+    leader: C
+    members: []
