@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
+[Serializable]
 public struct Party_Names
 {
+    [SerializeField]
     public string leader;
+    [SerializeField]
     public List<string> members;
 
     public Party_Names(string leader, List<string> members)

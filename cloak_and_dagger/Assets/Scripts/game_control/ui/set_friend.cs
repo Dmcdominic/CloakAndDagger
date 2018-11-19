@@ -34,8 +34,10 @@ public class set_friend : MonoBehaviour {
         
         if(cs.online)
         {
+            if (info.text == "Offline") options.SetActive(true);
             if (cs.is_in_game)
             {
+
                 info.text = "In Game ";
             } else if(cs.is_in_party)
             {
@@ -76,9 +78,8 @@ public class set_friend : MonoBehaviour {
         my_name.text = name;
         info.text = "Wants to join your party!";
         invite.GetComponentInChildren<Text>().text = "Accept";
-        print("Wooohowowowowoowowow!");
         invite.onClick.RemoveAllListeners();
-        invite.onClick.AddListener(() => { add_Friend.Invoke(name); foreach (Button b in GetComponentsInChildren<Button>()) b.gameObject.SetActive(false); });
+        invite.onClick.AddListener(() => { add_Friend.Invoke(name); Destroy(gameObject); });
         join.GetComponentInChildren<Text>().text = "Ignore"; //lol this does nothing
         join.onClick.RemoveAllListeners();
         join.onClick.AddListener(() =>

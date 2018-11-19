@@ -37,13 +37,14 @@ public class party_ui_setter : MonoBehaviour {
             } else
             {
                 cur_member = transform.GetChild(i).gameObject;
+                cur_member.SetActive(true);
             }
 
             cur_member.GetComponent<character_icon_setter>().setter(i, pn.val.members[i - 1]);
         }
-        for(int j = i; j < transform.childCount;j++)
+        for (int j = i; j < transform.childCount;j++)
         {
-            transform.GetChild(i).gameObject.SetActive(false);
+            transform.GetChild(j).gameObject.SetActive(false);
         }
 	}
 }

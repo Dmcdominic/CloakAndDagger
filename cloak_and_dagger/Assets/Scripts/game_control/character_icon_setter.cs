@@ -42,7 +42,8 @@ public class character_icon_setter : MonoBehaviour {
                 my_color = pallette % 2;
             }
         });
-        local_character_select.e.AddListener((d, o, i) => { my_char = (int)o / 2; my_color = (int)o % 2; });
+        local_character_select.e.AddListener((d, o, i) => {
+            if (i == transform.GetSiblingIndex()) { my_char = (int)o / 2; my_color = (int)o % 2; } });
     }
 
     public void setter(int i, string name)

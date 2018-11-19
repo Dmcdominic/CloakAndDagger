@@ -294,8 +294,10 @@ MonoBehaviour:
   my_picture: {fileID: 114301722207198234}
   local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
   local_stuff: {fileID: 1662612637392098}
-  network_character_select: {fileID: 0}
-  local_character_select: {fileID: 0}
+  network_character_select: {fileID: 11400000, guid: b4b9e0577c7c4fb449caf44ad7ad790d,
+    type: 2}
+  local_character_select: {fileID: 11400000, guid: e9e57bbd4bf152546b730ebb7b857eed,
+    type: 2}
   my_char: -1
 --- !u!114 &114633369396000944
 MonoBehaviour:
@@ -403,13 +405,13 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1162726828169494}
-  m_LocalRotation: {x: -0.70710725, y: -0.7071064, z: -0.00000007260298, w: -0.000000067055225}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224005087440320548}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -179.99998, z: 90.00001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -18.7, y: -58.2}

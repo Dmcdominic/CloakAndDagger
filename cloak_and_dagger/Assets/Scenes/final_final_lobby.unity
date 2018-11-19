@@ -1115,7 +1115,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &115420112
 GameObject:
@@ -2161,7 +2161,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4491820199344692, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1271832467573936, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
       propertyPath: m_Name
@@ -3350,7 +3350,7 @@ RectTransform:
   - {fileID: 490816578}
   - {fileID: 1945344569}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5263,7 +5263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.14162964}
   m_AnchorMax: {x: 0.7343959, y: 0.38155553}
-  m_AnchoredPosition: {x: -56, y: -10.5}
+  m_AnchoredPosition: {x: -169, y: -10.5}
   m_SizeDelta: {x: -350, y: -159}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1168301640
@@ -5297,7 +5297,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: 25
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -7997,48 +7997,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 224036422245826300, guid: 6b67f05c01636e04e8e0986a71e1f05b,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224036422245826300, guid: 6b67f05c01636e04e8e0986a71e1f05b,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224036422245826300, guid: 6b67f05c01636e04e8e0986a71e1f05b,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 224036422245826300, guid: 6b67f05c01636e04e8e0986a71e1f05b,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 224036422245826300, guid: 6b67f05c01636e04e8e0986a71e1f05b,
-        type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224036422245826300, guid: 6b67f05c01636e04e8e0986a71e1f05b,
-        type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 114585572983607552, guid: 6b67f05c01636e04e8e0986a71e1f05b,
-        type: 2}
-      propertyPath: network_character_select
-      value: 
-      objectReference: {fileID: 11400000, guid: b4b9e0577c7c4fb449caf44ad7ad790d,
-        type: 2}
-    - target: {fileID: 114585572983607552, guid: 6b67f05c01636e04e8e0986a71e1f05b,
-        type: 2}
-      propertyPath: local_character_select
-      value: 
-      objectReference: {fileID: 11400000, guid: e9e57bbd4bf152546b730ebb7b857eed,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b67f05c01636e04e8e0986a71e1f05b, type: 2}
   m_IsPrefabAsset: 0

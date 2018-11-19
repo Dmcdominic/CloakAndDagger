@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class ui_manager : MonoBehaviour {
 
@@ -81,6 +82,9 @@ public class ui_manager : MonoBehaviour {
     [SerializeField]
     GameObject party_menu;
 
+    [SerializeField]
+    bool_var host_var;
+
     bool connected = false;
 
 
@@ -91,7 +95,7 @@ public class ui_manager : MonoBehaviour {
         invite_player.e.AddListener(str => client.Invite_Player(str));
         join_player.e.AddListener(str => client.Join_Party(str));
         add_friend.e.AddListener(() => client.add_friend(friend_to_add));
-        add_this_friend.e.AddListener(str => client.add_friend(str));
+        add_this_friend.e.AddListener(str => { client.add_friend(str); my_friend_requests.val.Remove(str); });
         my_friend_requests.val = new List<string>();
         client.Register_friend_requests(str => my_friend_requests.val.Add(str));
         client.Register_Receive_Invite(Invited);
@@ -117,7 +121,20 @@ public class ui_manager : MonoBehaviour {
         client.Register_Message_Receive(to_splitter.Invoke);
         client.Register_Party_List(pn => 
         {
-            my_party.val = pn; if (pn.members.Contains(name)) local_id.val = pn.members.IndexOf(name) + 1; else local_id.val = 0;
+            my_party.val = pn;
+            if (pn.members.Contains(my_name))
+            {
+                local_id.val = pn.members.IndexOf(my_name) + 1;
+                host_var.val = false;
+            }
+            else
+            {
+                local_id.val = 0;
+                host_var.val = true;
+            }
+
+            if (pn.members.Any(_ => true)) { start_menu.SetActive(false); party_menu.SetActive(true); print("yooo"); } 
+
         });
         client.Register_friends(fl => my_friends.val = fl);
         client.Register_friend_callbacks(found_friend.Invoke, failed_to_find_friend.Invoke);
