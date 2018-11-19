@@ -2167,6 +2167,11 @@ Prefab:
       propertyPath: m_Name
       value: client (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114638553666161056, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: local
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
   m_IsPrefabAsset: 0
@@ -3380,7 +3385,7 @@ MonoBehaviour:
   Invited_button: {fileID: 1810095447813412, guid: 023a9e21096ff3b4e9f888e08dca9f00,
     type: 2}
   party_menu: {fileID: 1945344568}
-  host_var: {fileID: 0}
+  host_var: {fileID: 11400000, guid: fe42b619e3bccd34eaf8ce7c03e77e41, type: 2}
 --- !u!1 &704814499
 GameObject:
   m_ObjectHideFlags: 0
