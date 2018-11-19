@@ -9,6 +9,7 @@ TagManager:
   - Payload
   - Payload_delivery_zone
   - Fireball
+  - Background_Camera
   layers:
   - Default
   - TransparentFX
