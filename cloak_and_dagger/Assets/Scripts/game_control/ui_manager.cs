@@ -159,6 +159,16 @@ public class ui_manager : MonoBehaviour {
         StartCoroutine(delay_sign_in());
     }
 
+    public void leave()
+    {
+        client.val.leave_party();
+    }
+
+    public void find()
+    {
+        client.val.find_match();
+    }
+
     IEnumerator delay_sign_in()
     {
         yield return new WaitUntil(() => connected);
