@@ -1321,12 +1321,12 @@ Prefab:
     - target: {fileID: 224597320654436894, guid: cacaad257154dd74daedb8d92ea220bc,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -17.6
+      value: -17.600037
       objectReference: {fileID: 0}
     - target: {fileID: 224597320654436894, guid: cacaad257154dd74daedb8d92ea220bc,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 8.1
+      value: 8.099998
       objectReference: {fileID: 0}
     - target: {fileID: 224597320654436894, guid: cacaad257154dd74daedb8d92ea220bc,
         type: 2}
@@ -3479,6 +3479,7 @@ MonoBehaviour:
     type: 2}
   party_menu: {fileID: 1945344568}
   host_var: {fileID: 11400000, guid: fe42b619e3bccd34eaf8ce7c03e77e41, type: 2}
+  notify_parties: {fileID: 11400000, guid: ff2c3b412cbba164b93e9922610a3ed3, type: 2}
 --- !u!1 &704814499
 GameObject:
   m_ObjectHideFlags: 0

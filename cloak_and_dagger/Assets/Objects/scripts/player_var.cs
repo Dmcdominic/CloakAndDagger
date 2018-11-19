@@ -41,7 +41,8 @@ public class player_var<T> : ScriptableObject, IEnumerable<int>
 
     public int Count
     {
-        get { return D.Keys.Count; }
+        
+        get { if (D == null) D = new Dictionary<int, T>(); return D.Keys.Count; }
     }
 
     public T mine(int i)

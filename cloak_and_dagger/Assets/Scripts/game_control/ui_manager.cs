@@ -85,6 +85,9 @@ public class ui_manager : MonoBehaviour {
     [SerializeField]
     bool_var host_var;
 
+    [SerializeField]
+    event_object notify_parties;
+
     bool connected = false;
 
 
@@ -100,8 +103,21 @@ public class ui_manager : MonoBehaviour {
         client.val.Register_friend_requests(str => my_friend_requests.val.Add(str));
         client.val.Register_Receive_Invite(Invited);
         client.val.Register_Receive_Request(Requested);
-	}
 
+	}
+    IEnumerator notify_party_change(event_object notify)
+    {
+        yield return new WaitUntil(() => my_party.val.members != null);
+        while (true)
+        {
+            Party_Names pn = my_party.val;
+            yield return new WaitUntil(
+                () => !pn.members.SequenceEqual(my_party.val.members)
+                      || pn.leader != my_party.val.leader
+                );
+            notify_parties.Invoke();
+        }
+    }
 
     void Invited(string name, Action accept)
     {
@@ -138,8 +154,8 @@ public class ui_manager : MonoBehaviour {
         });
         client.val.Register_friends(fl => my_friends.val = fl);
         client.val.Register_friend_callbacks(found_friend.Invoke, failed_to_find_friend.Invoke);
-        
-        
+
+        StartCoroutine(notify_party_change(notify_parties));
     }
 
     public void sign_up()
