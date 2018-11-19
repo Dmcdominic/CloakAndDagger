@@ -597,7 +597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 80, y: -15}
+  m_AnchoredPosition: {x: 80, y: -15.000015}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &66006936
@@ -2167,16 +2167,6 @@ Prefab:
       propertyPath: m_Name
       value: client (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 114638553666161056, guid: adb94b9d6042d554f8a6d40245452680,
-        type: 2}
-      propertyPath: local
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114700959637492258, guid: adb94b9d6042d554f8a6d40245452680,
-        type: 2}
-      propertyPath: status_handler
-      value: 
-      objectReference: {fileID: 462774526}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
   m_IsPrefabAsset: 0
@@ -2609,11 +2599,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &462774526 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1120360346721810, guid: adb94b9d6042d554f8a6d40245452680,
-    type: 2}
-  m_PrefabInternal: {fileID: 378691483}
 --- !u!1 &490816577
 GameObject:
   m_ObjectHideFlags: 0
@@ -3395,6 +3380,7 @@ MonoBehaviour:
   Invited_button: {fileID: 1810095447813412, guid: 023a9e21096ff3b4e9f888e08dca9f00,
     type: 2}
   party_menu: {fileID: 1945344568}
+  host_var: {fileID: 0}
 --- !u!1 &704814499
 GameObject:
   m_ObjectHideFlags: 0
