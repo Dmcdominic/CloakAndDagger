@@ -486,9 +486,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07999be70d3b5e3438529b0f9c25f588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_event: {fileID: 0}
+  out_event: {fileID: 0}
+  local_id: {fileID: 0}
+  t0: {fileID: 0}
+  sync_rate: 0
   payload_pickup: {fileID: 11400000, guid: 1e85ee8d760c31c4d89422e43288679c, type: 2}
   payload_dropped: {fileID: 11400000, guid: e6616da01b0b212499d9c070d314c87c, type: 2}
   payload_delivered: {fileID: 11400000, guid: 95b2f7417a0e2ee47ab64b77132f7188, type: 2}
+  pre_local_death: {fileID: 11400000, guid: 1dde9f7150fc37e498a1171d1f71ab25, type: 2}
 --- !u!114 &114336950006474412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -747,6 +753,7 @@ MonoBehaviour:
     death_Type: 0
     killerID: 0
   kill_out: {fileID: 11400000, guid: a8382b71a4b25b34c8e81f0433bfba56, type: 2}
+  pre_local_death: {fileID: 11400000, guid: 1dde9f7150fc37e498a1171d1f71ab25, type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   destroy_dagger: {fileID: 11400000, guid: 62a0507375e0cc34dbba2a270381c1e6, type: 2}
   destroy_fireball: {fileID: 11400000, guid: a7fd9b93908c39041add1b7194882863, type: 2}
