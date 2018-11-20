@@ -173,6 +173,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		bool_input new_input_object = Instantiate(bool_input_prefab.gameObject).GetComponent<bool_input>();
 		current_fields.Add(new_input_object.transform);
 		new_input_object.transform.SetParent(this.transform);
+		new_input_object.transform.localScale = Vector3.one;
 
 		new_input_object.encoded_enum = get_encoded_enum_bool_opt(option);
 		new_input_object.config_cat = (int)config_Category;
@@ -212,6 +213,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		float_input new_input_object = Instantiate(float_input_prefab.gameObject).GetComponent<float_input>();
 		current_fields.Add(new_input_object.transform);
 		new_input_object.transform.SetParent(this.transform);
+		new_input_object.transform.localScale = Vector3.one;
 
 		new_input_object.encoded_enum = get_encoded_enum_float_opt(option);
 		new_input_object.config_cat = (int)config_Category;
@@ -259,6 +261,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		int_input new_input_object = Instantiate(int_input_prefab.gameObject).GetComponent<int_input>();
 		current_fields.Add(new_input_object.transform);
 		new_input_object.transform.SetParent(this.transform);
+		new_input_object.transform.localScale = Vector3.one;
 
 		new_input_object.encoded_enum = get_encoded_enum_int_opt(option);
 		new_input_object.config_cat = (int)config_Category;

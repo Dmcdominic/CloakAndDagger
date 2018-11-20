@@ -69,6 +69,7 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 		Dropdown dropdown = Instantiate(win_con_dropdown_prefab.gameObject).GetComponent<Dropdown>();
 		current_fields.Add(dropdown.transform);
 		dropdown.transform.SetParent(this.transform);
+		dropdown.transform.localScale = Vector3.one;
 
 		List<Dropdown.OptionData> dropdown_options = new List<Dropdown.OptionData>();
 		foreach (win_condition win_con in Enum.GetValues(typeof(win_condition))) {

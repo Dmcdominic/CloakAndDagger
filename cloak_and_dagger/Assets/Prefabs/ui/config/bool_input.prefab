@@ -220,7 +220,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 15
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -381,7 +381,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 452.3, y: -20}
-  m_SizeDelta: {x: 884.6, y: 40}
+  m_SizeDelta: {x: 884.6, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224828388105133210
 RectTransform:
