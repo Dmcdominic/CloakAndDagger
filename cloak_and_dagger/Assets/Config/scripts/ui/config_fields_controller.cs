@@ -59,6 +59,10 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		validate_all_options();
 	}
 
+	protected void OnEnable() {
+		refresh_all_fields_if_currently_open();
+	}
+
 	// Make sure that all three option dictionaries contain all the respective keys, and all values are within their bounds.
 	private void validate_all_options() {
 		foreach (T0 t0 in System.Enum.GetValues(typeof(T0))) {
