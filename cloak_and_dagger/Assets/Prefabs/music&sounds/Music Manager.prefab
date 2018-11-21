@@ -152,5 +152,7 @@ MonoBehaviour:
   BGMs:
     m_keys:
     - Match_end
+    - Title_screen
     m_values:
     - {fileID: 8300000, guid: eca220c5355bfab42a29052b1aaae154, type: 3}
+    - {fileID: 8300000, guid: 96955b233a03f814589f8c6a776cf7b3, type: 3}
