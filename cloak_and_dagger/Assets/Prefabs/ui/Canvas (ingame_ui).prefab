@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224609631433291628}
   - component: {fileID: 114225663425965620}
+  - component: {fileID: 95914829989010680}
   m_Layer: 0
   m_Name: Reflect cooldown indicator
   m_TagString: Untagged
@@ -104,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224997904754196888}
   - component: {fileID: 114257780189678044}
+  - component: {fileID: 95303703038060386}
   m_Layer: 0
   m_Name: Fireball cooldown indicator
   m_TagString: Untagged
@@ -221,6 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224126048405320886}
   - component: {fileID: 114364696266838474}
+  - component: {fileID: 95021353483133810}
   m_Layer: 0
   m_Name: Dagger cooldown indicator
   m_TagString: Untagged
@@ -288,6 +291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224775875491226026}
   - component: {fileID: 114132474644933172}
+  - component: {fileID: 95099567254369630}
   m_Layer: 0
   m_Name: Blink cooldown indicator
   m_TagString: Untagged
@@ -466,6 +470,78 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &95021353483133810
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411122869437368}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5eb6f99b364f5f943a88c13ff7ea0d94, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95099567254369630
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486185038266882}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5eb6f99b364f5f943a88c13ff7ea0d94, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95303703038060386
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1187525418417418}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5eb6f99b364f5f943a88c13ff7ea0d94, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95914829989010680
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1023914854790544}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5eb6f99b364f5f943a88c13ff7ea0d94, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114015792789684424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -595,6 +671,7 @@ MonoBehaviour:
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   cooldown_type: 2
   current_cooldown: {fileID: 11400000, guid: 1305692eaed1d264dae269566e820d38, type: 2}
+  pulse_event: {fileID: 11400000, guid: 6a83415607d04234a93723ed4636d446, type: 2}
 --- !u!114 &114137062238335448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -665,6 +742,7 @@ MonoBehaviour:
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   cooldown_type: 10
   current_cooldown: {fileID: 11400000, guid: 5afffbd4afe91ae4c8e0af9a97e5aae0, type: 2}
+  pulse_event: {fileID: 11400000, guid: 8e1d97b32f58ad74e95b0b168501ac25, type: 2}
 --- !u!114 &114236987780108730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -708,6 +786,7 @@ MonoBehaviour:
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   cooldown_type: 11
   current_cooldown: {fileID: 11400000, guid: e53c6c7e4266ebe41b2369aca21b3c93, type: 2}
+  pulse_event: {fileID: 11400000, guid: a05c244257155134fb8a53e220cd72ab, type: 2}
 --- !u!114 &114260729691215316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -740,6 +819,7 @@ MonoBehaviour:
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   cooldown_type: 1
   current_cooldown: {fileID: 11400000, guid: aa25a0d4ea1b3954caff92a7c22c2885, type: 2}
+  pulse_event: {fileID: 11400000, guid: 9e787839c092aca45a742c1b8a38c1e3, type: 2}
 --- !u!114 &114386138810035154
 MonoBehaviour:
   m_ObjectHideFlags: 1
