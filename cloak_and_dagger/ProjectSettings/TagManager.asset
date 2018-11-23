@@ -10,6 +10,7 @@ TagManager:
   - Payload_delivery_zone
   - Fireball
   - Background_Camera
+  - Trap
   layers:
   - Default
   - TransparentFX
@@ -55,6 +56,9 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Placed-Objects
+    uniqueID: 893366737
     locked: 0
   - name: Players
     uniqueID: 2761839985

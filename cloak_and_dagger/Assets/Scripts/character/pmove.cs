@@ -66,6 +66,9 @@ public class pmove : sync_behaviour<player_state>
     [SerializeField]
     player_bool is_stun;
 
+	[SerializeField]
+	player_bool is_trapped;
+
     [SerializeField]
     int_float_event dagger_in;
 
@@ -88,7 +91,7 @@ public class pmove : sync_behaviour<player_state>
     // Update is called once per frame
     void Update()
     {
-        if (is_stun[gameObject_id.val] || !ingame_state.val)
+        if (!ingame_state.val || is_stun[gameObject_id.val] || is_trapped[gameObject_id.val])
         {
             rb.velocity = Vector2.zero;
             return;

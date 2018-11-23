@@ -32,13 +32,16 @@ public class payload_carrier : sync_behaviour<payload_event_struct> {
 	private payload payload {
 		get {
 			if (!_payload) {
+				if (!global_payload.val) {
+					return null;
+				}
 				_payload = global_payload.val.GetComponent<payload>();
 			}
 			return _payload;
 		}
 	}
 
-	public bool carrying { get { return payload.carried && payload.carrier_id == gameObject_id.val; } }
+	public bool carrying { get { return payload && payload.carried && payload.carrier_id == gameObject_id.val; } }
 
 
 	private void Awake() {

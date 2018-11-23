@@ -42,9 +42,7 @@ public class On_Action_Button : MonoBehaviour {
 
 	// Reflect
 	[SerializeField]
-	int_float_event to_trigger_reflect_cooldown;
-	[SerializeField]
-	int_float_event to_trigger_reflect_time;
+	int_float_event to_trigger_reflect;
 	[SerializeField]
 	event_object to_trigger_reflect_pulse;
 	[SerializeField]
@@ -71,6 +69,9 @@ public class On_Action_Button : MonoBehaviour {
 
     [SerializeField]
     int_var local_id;
+
+	[SerializeField]
+	player_bool currently_trapped;
 
 	private network_id network_Id;
 	private payload_carrier payload_Carrier;
@@ -108,7 +109,8 @@ public class On_Action_Button : MonoBehaviour {
 
 			// Dash/blink
 			if (input_Config.dash) {
-				if (!dash_on_cooldown[network_Id.val] && check_carrier_pass(winCon_bool_option.carrier_blink_disabled)) {
+				// Trapped players can't blink/dash
+				if (!dash_on_cooldown[network_Id.val] && check_carrier_pass(winCon_bool_option.carrier_blink_disabled) && !currently_trapped[network_Id.val]) {
 					to_trigger_dash.Invoke(network_Id.val, gameplay_Config.float_options[gameplay_float_option.blink_cooldown]);
 				} else {
 					to_trigger_dash_pulse.Invoke();
@@ -118,8 +120,7 @@ public class On_Action_Button : MonoBehaviour {
 			// Reflect
 			if (input_Config.reflect) {
 				if (!reflect_on_cooldown[network_Id.val] && check_carrier_pass(winCon_bool_option.carrier_reflect_disabled)) {
-					to_trigger_reflect_cooldown.Invoke(network_Id.val, gameplay_Config.float_options[gameplay_float_option.reflect_cooldown]);
-					to_trigger_reflect_time.Invoke(network_Id.val, gameplay_Config.float_options[gameplay_float_option.reflect_time]);
+					to_trigger_reflect.Invoke(network_Id.val, gameplay_Config.float_options[gameplay_float_option.blink_cooldown]);
 				} else {
 					to_trigger_reflect_pulse.Invoke();
 				}

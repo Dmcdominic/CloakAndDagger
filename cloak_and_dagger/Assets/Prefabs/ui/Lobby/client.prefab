@@ -233,7 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   message_in: {fileID: 11400000, guid: e646a766baa65fc46a85417a5afc652c, type: 2}
   local_events:
-    m_keys: 000104030502080607090a0b0c
+    m_keys: 000104030502080607090a0b0c0d
     m_values:
     - {fileID: 11400000, guid: f825901c86abbd443a8261f8754ed9a1, type: 2}
     - {fileID: 11400000, guid: 62b7d49aefcf6fa4ab1f00d1875a56cd, type: 2}
@@ -248,8 +248,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c67d86b37c7a7da4eb3cbbf855623e9a, type: 2}
     - {fileID: 11400000, guid: b64483eea10406c43b5eb6ce0b6c2086, type: 2}
     - {fileID: 11400000, guid: 859b17f3d4875234e9bf1ae2a73b8d01, type: 2}
+    - {fileID: 11400000, guid: 72d627094d9115043848e2338bea0540, type: 2}
   network_events:
-    m_keys: 000104030502080607090a0b0c
+    m_keys: 000104030502080607090a0b0c0d
     m_values:
     - {fileID: 11400000, guid: f7d22b945dd5bd44a8a6aea1e5b0c6f6, type: 2}
     - {fileID: 11400000, guid: 82fd9c3e638984e42b9b775780d7385f, type: 2}
@@ -264,6 +265,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 90e6e29aaebaf684997edf97033cf12d, type: 2}
     - {fileID: 11400000, guid: 99fd4f107f1d83a4d9ec00ed173dc3cf, type: 2}
     - {fileID: 11400000, guid: ae8ce05cb4c2ebc42b2ee8ad8dd57136, type: 2}
+    - {fileID: 11400000, guid: cd7874dedf9e8474e950e19e2c3ff34e, type: 2}
   out_unreliable: {fileID: 11400000, guid: 99b73b994ade95149bbe1b7616ee0397, type: 2}
   out_large: {fileID: 11400000, guid: 14b56887b4680c84a89544f7301ced15, type: 2}
   out_mtc: {fileID: 11400000, guid: 11f3c22c330b0cb499df42eeaeb444ad, type: 2}
@@ -279,7 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    m_keys: 000000000100000002000000030000000400000005000000060000000700000008000000
+    m_keys: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
     m_values:
     - {fileID: 11400000, guid: b606f126309b3944fbf2ec7e7b3b09a2, type: 2}
     - {fileID: 11400000, guid: fa68461f70c2565479f2ad6740b69db0, type: 2}
@@ -290,8 +292,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 4e1542f8020a44447beef842f1c0d7cd, type: 2}
     - {fileID: 11400000, guid: 74ba819600422c54a8b63fcecc7d83b2, type: 2}
     - {fileID: 11400000, guid: 88df1e0332e3b0644af311fc51fc5568, type: 2}
+    - {fileID: 11400000, guid: 2cff4d228214bce40b0c1e7db9a6de9f, type: 2}
   on_triggers:
-    m_keys: 000000000100000002000000030000000400000005000000060000000700000008000000
+    m_keys: 00000000010000000200000003000000040000000500000006000000070000000800000009000000
     m_values:
     - {fileID: 11400000, guid: 8a12398b55b5a6b43ab8f07664a4b7ed, type: 2}
     - {fileID: 11400000, guid: 5adfb4030633d6c4195a90424c62c663, type: 2}
@@ -302,11 +305,13 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7e190c4794a164c46a645fc4ad6f4359, type: 2}
     - {fileID: 11400000, guid: 96a59347af961ce41ad24f35493ce894, type: 2}
     - {fileID: 11400000, guid: 9293d9d649ae69f4b8083411d7efd40e, type: 2}
+    - {fileID: 11400000, guid: 0a4e38ce6a0779c47ad07cf949e7e6d3, type: 2}
   off_triggers:
-    m_keys: 0400000005000000
+    m_keys: 040000000500000009000000
     m_values:
     - {fileID: 11400000, guid: 5522c9ca6af1c2d419a3026a079974e2, type: 2}
     - {fileID: 11400000, guid: ebfa06e17ce69e640966e61f761a892a, type: 2}
+    - {fileID: 11400000, guid: 5522c9ca6af1c2d419a3026a079974e2, type: 2}
   local_cooldowns:
     m_keys: 010000000200000003000000060000000700000008000000
     m_values:
