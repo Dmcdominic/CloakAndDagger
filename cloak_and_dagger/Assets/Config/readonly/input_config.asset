@@ -19,6 +19,8 @@ MonoBehaviour:
   fireball_key: 324
   dash_key: 113
   reflect_key: 101
+  torch_key: 32
+  trap_key: 114
   horizontal_axis: Horizontal
   vertical_axis: Vertical
   use_axis: 1

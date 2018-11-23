@@ -389,6 +389,14 @@ MonoBehaviour:
     type: 2}
   reflect_on_cooldown: {fileID: 11400000, guid: 13ea3477d48dfb341831c08f1585e3a5,
     type: 2}
+  to_trigger_torch: {fileID: 11400000, guid: 96a59347af961ce41ad24f35493ce894, type: 2}
+  to_trigger_torch_pulse: {fileID: 11400000, guid: bd72b3a212240a840b02c80d0333ed76,
+    type: 2}
+  torch_on_cooldown: {fileID: 11400000, guid: 74ba819600422c54a8b63fcecc7d83b2, type: 2}
+  to_trigger_trap: {fileID: 11400000, guid: 9293d9d649ae69f4b8083411d7efd40e, type: 2}
+  to_trigger_trap_pulse: {fileID: 11400000, guid: cbf9d58796ce6a746a6e0c7b9757d9ab,
+    type: 2}
+  trap_on_cooldown: {fileID: 11400000, guid: 88df1e0332e3b0644af311fc51fc5568, type: 2}
   ingame_state: {fileID: 11400000, guid: 651e92a3b77baf94ea1cf6097bf34214, type: 2}
   local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
 --- !u!114 &114067254127311388

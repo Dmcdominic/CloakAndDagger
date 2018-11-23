@@ -118,7 +118,7 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 		if (!throw_data.reflected) {
 			inform_pmove.Invoke(gameObject_id.val, rotation.eulerAngles.z);
 			if (dagger_thrown) {
-				dagger_thrown.Invoke(0, gameObject);
+				dagger_thrown.Invoke(gameObject_id.val, gameObject);
 			}
 		}
 	}

@@ -50,6 +50,22 @@ public class On_Action_Button : MonoBehaviour {
 	[SerializeField]
 	player_bool reflect_on_cooldown;
 
+	// Torch
+	[SerializeField]
+	int_float_event to_trigger_torch;
+	[SerializeField]
+	event_object to_trigger_torch_pulse;
+	[SerializeField]
+	player_bool torch_on_cooldown;
+
+	// Trap
+	[SerializeField]
+	int_float_event to_trigger_trap;
+	[SerializeField]
+	event_object to_trigger_trap_pulse;
+	[SerializeField]
+	player_bool trap_on_cooldown;
+
 	[SerializeField]
 	bool_var ingame_state;
 
@@ -106,6 +122,24 @@ public class On_Action_Button : MonoBehaviour {
 					to_trigger_reflect_time.Invoke(network_Id.val, gameplay_Config.float_options[gameplay_float_option.reflect_time]);
 				} else {
 					to_trigger_reflect_pulse.Invoke();
+				}
+			}
+
+			// Torch
+			if (input_Config.torch) {
+				if (!torch_on_cooldown[network_Id.val] && check_carrier_pass(winCon_bool_option.carrier_torch_disabled)) {
+					to_trigger_torch.Invoke(network_Id.val, gameplay_Config.float_options[gameplay_float_option.torch_cooldown]);
+				} else {
+					to_trigger_torch_pulse.Invoke();
+				}
+			}
+
+			// Trap
+			if (input_Config.trap) {
+				if (!trap_on_cooldown[network_Id.val] && check_carrier_pass(winCon_bool_option.carrier_trap_disabled)) {
+					to_trigger_trap.Invoke(network_Id.val, gameplay_Config.float_options[gameplay_float_option.trap_cooldown]);
+				} else {
+					to_trigger_trap_pulse.Invoke();
 				}
 			}
 		}

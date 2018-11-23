@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public enum mtc_Type : byte { player_state, dagger_throw, dagger_die, player_die, config_update, dash, fireball_throw, fireball_die, character_select, payload_event }
+public enum mtc_Type : byte { player_state, dagger_throw, dagger_die, player_die, config_update, dash, fireball_throw, fireball_die, character_select, payload_event, torch_placed, trap_placed, trap_caught }
 
 
 
