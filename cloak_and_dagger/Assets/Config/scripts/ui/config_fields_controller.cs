@@ -55,10 +55,12 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		current_fields = new List<Transform>();
 	}
 
+	// Once the option UI parameters have been populated, validate the option dictionaries.
 	protected void Start() {
 		validate_all_options();
 	}
 
+	// Refresh all fields in order to keep listeners active
 	protected void OnEnable() {
 		refresh_all_fields_if_currently_open();
 	}
@@ -108,6 +110,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		}
 	}
 
+	// Find the ui parameters for an option that has been removed from the main dictionary as a dependent.
 	private object get_missing_ui_parameter(object option) {
 		foreach (OrderedDictionary dict in ui_dependents.Values) {
 			foreach (object key in dict.Keys) {
@@ -118,7 +121,8 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		}
 		return null;
 	}
-
+	
+	// Override these to convert each enum into its encoded integer value
 	public abstract int get_encoded_enum_bool_opt(T0 option);
 	public abstract int get_encoded_enum_float_opt(T1 option);
 	public abstract int get_encoded_enum_int_opt(T2 option);
@@ -157,7 +161,9 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		}
 	}
 
-	// Methods for instantiating UI fields
+	// ================== Instantiating UI fields ==================
+
+	// Instantiate a bool input toggle
 	private bool_input create_toggle(T0 option, List<bool_input> dependencies) {
 		if (limited_options_only && !limited_bool_options.Contains(option)) {
 			return null;
@@ -171,7 +177,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		}
 		bool value;
 		if (!config.bool_options.TryGetValue(option, out value)) {
-			// Set default here?
+			Debug.LogError("Option: " + option + " not found in bool options dict.");
 		}
 
 		bool_input new_input_object = Instantiate(bool_input_prefab.gameObject).GetComponent<bool_input>();
@@ -197,6 +203,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		return new_input_object;
 	}
 
+	// Instantiate a float input slider
 	private float_input create_float_slider(T1 option, List<bool_input> dependencies) {
 		if (limited_options_only && !limited_float_options.Contains(option)) {
 			return null;
@@ -210,7 +217,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		}
 		float value;
 		if (!config.float_options.TryGetValue(option, out value)) {
-			// Set default here?
+			Debug.LogError("Option: " + option + " not found in float options dict.");
 		}
 		value = (config.float_options[option] = Mathf.Clamp(value, ui_info.min, ui_info.max));
 
@@ -245,6 +252,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		return new_input_object;
 	}
 
+	// Instantiate an int input toggle
 	private int_input create_int_slider(T2 option, List<bool_input> dependencies) {
 		if (limited_options_only && !limited_int_options.Contains(option)) {
 			return null;
@@ -258,7 +266,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 		}
 		int value;
 		if (!config.int_options.TryGetValue(option, out value)) {
-			// Set default here?
+			Debug.LogError("Option: " + option + " not found in int options dict.");
 		}
 		value = (config.int_options[option] = Mathf.Clamp(value, ui_info.min, ui_info.max));
 
