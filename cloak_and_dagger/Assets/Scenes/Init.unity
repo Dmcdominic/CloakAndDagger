@@ -651,10 +651,30 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114305223639537142, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: stats.m_keys.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114305223639537142, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: stats.m_values.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114305223639537142, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: on_triggers.m_keys.Array.size
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 114151201741709174, guid: adb94b9d6042d554f8a6d40245452680,
         type: 2}
       propertyPath: local_events.m_keys.Array.size
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 114305223639537142, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: on_triggers.m_values.Array.size
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 114151201741709174, guid: adb94b9d6042d554f8a6d40245452680,
         type: 2}
@@ -773,6 +793,28 @@ Prefab:
       propertyPath: network_events.m_values.Array.data[13]
       value: 
       objectReference: {fileID: 11400000, guid: 8d72176a63051a7428880922d90acaab,
+        type: 2}
+    - target: {fileID: 114305223639537142, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: stats.m_keys.Array.data[10]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114305223639537142, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: stats.m_values.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: b8e76e2c0ca6927409ce912cb78a1b7d,
+        type: 2}
+    - target: {fileID: 114305223639537142, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: on_triggers.m_keys.Array.data[10]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114305223639537142, guid: adb94b9d6042d554f8a6d40245452680,
+        type: 2}
+      propertyPath: on_triggers.m_values.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: f3ff7449ed3e34e4ba38bfc58aa2dadc,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adb94b9d6042d554f8a6d40245452680, type: 2}

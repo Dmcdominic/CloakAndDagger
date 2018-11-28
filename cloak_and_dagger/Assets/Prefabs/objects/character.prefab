@@ -700,7 +700,8 @@ MonoBehaviour:
     type: 2}
   stun_out: {fileID: 11400000, guid: 8a12398b55b5a6b43ab8f07664a4b7ed, type: 2}
   cooldown_out: {fileID: 11400000, guid: 0c2ab5da8ab37f6499586658fe6c97a5, type: 2}
-  blink_trail_prefab: {fileID: 0}
+  blink_trail_prefab: {fileID: 1912555637128888, guid: 6400213a1651af449b02608c9ca5c10e,
+    type: 2}
   mini_stun: 0.1
 --- !u!114 &114506177324433398
 MonoBehaviour:
@@ -748,7 +749,8 @@ MonoBehaviour:
   local_mat: {fileID: 2100000, guid: e8bf8d2dbacf1c747a09b365bd7b0b03, type: 2}
   non_local_mat: {fileID: 2100000, guid: 452412745e77c11439780ad97074aa54, type: 2}
   spectator_reveal: {fileID: 11400000, guid: 4ad75e48cfa56ae45ade9765d99053d9, type: 2}
-  is_king: {fileID: 0}
+  is_king: {fileID: 11400000, guid: 30c9fceb0f208f7499b6615b083da8d0, type: 2}
+  bump_reveal: {fileID: 11400000, guid: b8e76e2c0ca6927409ce912cb78a1b7d, type: 2}
 --- !u!114 &114614145169798730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -835,6 +837,7 @@ MonoBehaviour:
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   light_spawn_trigger: {fileID: 11400000, guid: ecca28e87029d9940927a70137884b99,
     type: 2}
+  trigger: {fileID: 11400000, guid: f3ff7449ed3e34e4ba38bfc58aa2dadc, type: 2}
 --- !u!114 &114938384083110894
 MonoBehaviour:
   m_ObjectHideFlags: 1

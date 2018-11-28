@@ -20,7 +20,7 @@ public class gameplay_config_fields_controller : config_fields_controller<gamepl
 		// See gameplay_config_fields_controller as an example of this.
 
 		// Player movement
-		ui_parameters_ordered.Add(gameplay_float_option.player_movespeed, new ui_float_info<gameplay_bool_option>(20f, 200f, 0f, 500f, "The movespeed of all players."));
+		ui_parameters_ordered.Add(gameplay_float_option.player_movespeed, new ui_float_info<gameplay_bool_option>(4f, 10f, -50f, 50f, "The movespeed of all players."));
 
 		// Spawning
 		ui_parameters_ordered.Add(gameplay_bool_option.initial_reveal, new ui_bool_info<gameplay_bool_option>("All players are revealed briefly before the match begins."));

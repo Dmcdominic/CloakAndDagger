@@ -24,6 +24,9 @@ public class Conditional_Rendering : MonoBehaviour {
 
     [SerializeField]
     player_bool is_king;
+
+    [SerializeField]
+    player_bool bump_reveal;
     
 
 	private IEnumerable srs;
@@ -56,7 +59,7 @@ public class Conditional_Rendering : MonoBehaviour {
         {
             if(king_circle) king_circle.enabled = false;
         }
-        if (id == local_id.val || is_king[id] || spectator_reveal.val) {
+        if (id == local_id.val || is_king[id] || bump_reveal[id] || spectator_reveal.val) {
 		foreach (SpriteRenderer sr in srs) {
 			sr.material = local_mat;
 		}
