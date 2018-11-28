@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class death_blood_splatter_overlay : MonoBehaviour {
 
-	public int_event_object pre_local_death;
+	public sync_event local_death;
 	public int_var local_id;
 
 	private Animator animator;
 
 
 	private void Awake() {
-		if (pre_local_death) {
-			pre_local_death.e.AddListener(on_local_death);
+		if (local_death) {
+			local_death.e.AddListener(on_local_death);
 		}
 		animator = GetComponent<Animator>();
 	}
 
-	private void on_local_death(int placeholder) {
+	private void on_local_death(float t, object o, int i) {
 		animator.SetTrigger("splatter");
 	}
 

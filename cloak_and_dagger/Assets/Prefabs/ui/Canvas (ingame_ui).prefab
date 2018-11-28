@@ -1247,7 +1247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e54729b00eec0459a11ce5e3bbcf3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pre_local_death: {fileID: 11400000, guid: 1dde9f7150fc37e498a1171d1f71ab25, type: 2}
+  local_death: {fileID: 11400000, guid: 0a4dd1ac8d4d40c478c44022ddc40c1c, type: 2}
   local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
 --- !u!114 &114467902764684202
 MonoBehaviour:
