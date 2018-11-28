@@ -57,13 +57,10 @@ public class WC_regicide : win_condition_controller
 
     protected override void on_player_killed(death_event_data death_data)
     {
-        if(king == 255) // initial king
-            set_king(player_stats_dict[death_data.killerID].teamID);
+       
+        un_set_king(player_stats_dict[death_data.playerID].teamID);
+        set_king(player_stats_dict[death_data.killerID].teamID);
 
-        if (player_stats_dict[death_data.playerID].teamID != king) return;
-        if(king >= 0)
-            un_set_king(player_stats_dict[death_data.playerID].teamID);
-        
     }
 
     protected override void on_timeout()
