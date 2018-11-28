@@ -25,6 +25,9 @@ public class character_icon_setter : MonoBehaviour {
 
     [SerializeField]
     sync_event local_character_select;
+
+    [SerializeField]
+    team_setter team_selecter;
     
 
     public int my_char = -1;
@@ -52,6 +55,7 @@ public class character_icon_setter : MonoBehaviour {
         if (my_char == -1) my_char = i;
         my_picture.sprite = sprite_lookup.data[new Vector2(my_char, my_color)];
         local_stuff.SetActive(i == local_id);
+        team_selecter.id = transform.GetSiblingIndex();
     }
 
     public void color_right()

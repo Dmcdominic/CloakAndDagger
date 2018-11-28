@@ -10,6 +10,7 @@ TagManager:
   - Payload_delivery_zone
   - Fireball
   - Background_Camera
+  - light_map
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - mask
+  - walls
   - 
   - 
   - 

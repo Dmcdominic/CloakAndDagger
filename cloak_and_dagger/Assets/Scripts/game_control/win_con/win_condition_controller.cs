@@ -6,7 +6,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 	public abstract win_condition win_Condition { get; }
 	public abstract bool free_for_all_compatible { get; }
 
-	[HideInInspector]
+	//[HideInInspector]
 	public win_condition_assets_packet WCAP;
 
 	protected Dictionary<byte, player_stats> player_stats_dict;
@@ -168,6 +168,8 @@ public class team_stats {
 	public byte kill_count = 0;
 	public byte death_count = 0;
 	public bool winner = false;
+    public float time_in_hill = 0.0f;
+    public float time_as_king = 0.0f;
 
 	public team_stats(byte _teamID, int _starting_lives) {
 		teamID = _teamID;
