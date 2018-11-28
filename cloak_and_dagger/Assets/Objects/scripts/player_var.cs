@@ -12,6 +12,11 @@ public class player_var<T> : ScriptableObject, IEnumerable<int>
     }
     private Dictionary<int, T> D;
 
+    public void init(Dictionary<int,T> ND)
+    {
+        D = ND;
+    }
+
     public T this[int i]
     {
         get
