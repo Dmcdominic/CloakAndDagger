@@ -52,6 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4197213907057204}
   - component: {fileID: 114312076050607240}
+  - component: {fileID: 114659664648262114}
   m_Layer: 0
   m_Name: heartbeat_repeater
   m_TagString: Untagged
@@ -357,6 +358,20 @@ MonoBehaviour:
   start_in: {fileID: 11400000, guid: b679b10936335874abe4e4a88ba87c2e, type: 2}
   local: 0
   client: {fileID: 11400000, guid: b34ad676f19c39f4eb6498a6b838be72, type: 2}
+--- !u!114 &114659664648262114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1412115730446792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54d41b7cfab31a342aeb04e4569e81cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  game_started: {fileID: 11400000, guid: bbc6a7507da56154c93cab2aa0809747, type: 2}
+  event_to_trigger: {fileID: 11400000, guid: 566665ec96310f541876a867afffb402, type: 2}
 --- !u!114 &114700959637492258
 MonoBehaviour:
   m_ObjectHideFlags: 1

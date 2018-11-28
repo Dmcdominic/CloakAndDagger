@@ -155,7 +155,7 @@ public class ui_manager : MonoBehaviour {
         client.val.Register_friends(fl => my_friends.val = fl);
         client.val.Register_friend_callbacks(found_friend.Invoke, failed_to_find_friend.Invoke);
 
-        StartCoroutine(notify_party_change(notify_parties));
+        StartCoroutine(notify_party_change(notify_parties   ));
     }
 
     public void sign_up()

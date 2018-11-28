@@ -35,6 +35,9 @@ public class dash : sync_behaviour<serializable_vec2> {
     int_float_event cooldown_out;
 
     [SerializeField]
+    GameObject blink_trail_prefab;
+
+    [SerializeField]
     float mini_stun;
 
 
@@ -62,10 +65,12 @@ public class dash : sync_behaviour<serializable_vec2> {
 
         if(blink(_origin + (Vector2)displacement))
         {
-           
             cooldown_out.Invoke(gameObject_id.val, cooldown);
+            send_state((Vector2)transform.position);
+            GameObject trail = Instantiate(blink_trail_prefab,transform.position,Quaternion.identity);
+            trail.GetComponent<move_between>().run(_origin.val, transform.position, 5, Time.deltaTime);
         }
-        send_state((Vector2)transform.position);
+
     }
 
     public override void rectify(float f, serializable_vec2 v2)
