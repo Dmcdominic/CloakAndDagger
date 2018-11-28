@@ -1401,8 +1401,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 132855907}
   m_CullTransparentMesh: 0
-<<<<<<< HEAD
-=======
 --- !u!1001 &143060736
 Prefab:
   m_ObjectHideFlags: 0
@@ -1547,7 +1545,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cacaad257154dd74daedb8d92ea220bc, type: 2}
   m_IsPrefabAsset: 0
->>>>>>> carter_dev
 --- !u!224 &143060737 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224597320654436894, guid: cacaad257154dd74daedb8d92ea220bc,
