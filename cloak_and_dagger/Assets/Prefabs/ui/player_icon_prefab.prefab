@@ -663,12 +663,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dd: {fileID: 114528534190373932}
   party: {fileID: 11400000, guid: af142701058b0424d90947e0d77e7de9, type: 2}
-  team: {fileID: 0}
-  also_team: {fileID: 0}
-  local_id: {fileID: 0}
+  team: {fileID: 11400000, guid: 4fcf671cfd5708a4e8f866cbacb7b8fa, type: 2}
+  also_team: {fileID: 11400000, guid: 3e6fb11ac1e910349b8e078c4edc1c78, type: 2}
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
   id: 0
-  team_swap_in: {fileID: 0}
-  team_swap_out: {fileID: 0}
+  team_swap_in: {fileID: 11400000, guid: 8d72176a63051a7428880922d90acaab, type: 2}
+  team_swap_out: {fileID: 11400000, guid: 384856cbaecc21546a66c3e418d38167, type: 2}
 --- !u!114 &114494374126650762
 MonoBehaviour:
   m_ObjectHideFlags: 1
