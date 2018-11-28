@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: king_of_the_hill
   m_EditorClassIdentifier: 
   win_Condition: 4
-  default_map: ning_map_3
+  default_map: Ning_map_3
   compatible_bool_options: 00000000
   compatible_float_options: 000000000300000004000000
   compatible_int_options: 

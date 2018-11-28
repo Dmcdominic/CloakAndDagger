@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114447421547217292}
   - component: {fileID: 114478431849710816}
   - component: {fileID: 114686792641224136}
+  - component: {fileID: 120163909426105612}
   m_Layer: 0
   m_Name: character
   m_TagString: Player
@@ -176,7 +177,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1479639472354148}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 6.6530013, y: -0.654164, z: 0}
+  m_LocalPosition: {x: 5.739582, y: -1.2396104, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4286915255765376}
@@ -796,7 +797,7 @@ MonoBehaviour:
   output: {fileID: 11400000, guid: 4bbc87b548ed62b4c957d33abd733964, type: 2}
 --- !u!114 &114686792641224136
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1479639472354148}
@@ -927,6 +928,131 @@ MonoBehaviour:
   is_stun: {fileID: 11400000, guid: b606f126309b3944fbf2ec7e7b3b09a2, type: 2}
   is_trapped: {fileID: 11400000, guid: 2cff4d228214bce40b0c1e7db9a6de9f, type: 2}
   dagger_in: {fileID: 11400000, guid: 61155ee5589bc0e46ab15225bb13c462, type: 2}
+--- !u!120 &120163909426105612
+LineRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479639472354148}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0.7, y: 0, z: 0}
+  - {x: 0.6887507, y: 0.12498982, z: 0}
+  - {x: 0.6553644, y: 0.24596238, z: 0}
+  - {x: 0.6009141, y: 0.35902953, z: 0}
+  - {x: 0.52715003, y: 0.4605571, z: 0}
+  - {x: 0.43644285, y: 0.54728204, z: 0}
+  - {x: 0.331708, y: 0.6164169, z: 0}
+  - {x: 0.21631187, y: 0.6657396, z: 0}
+  - {x: 0.093963295, y: 0.6936648, z: 0}
+  - {x: -0.031405423, y: 0.6992951, z: 0}
+  - {x: -0.15576465, y: 0.6824495, z: 0}
+  - {x: -0.27511758, y: 0.64366937, z: 0}
+  - {x: -0.38562799, y: 0.5842012, z: 0}
+  - {x: -0.48374385, y: 0.5059564, z: 0}
+  - {x: -0.56631196, y: 0.4114496, z: 0}
+  - {x: -0.63067824, y: 0.3037185, z: 0}
+  - {x: -0.674774, y: 0.1862258, z: 0}
+  - {x: -0.697182, y: 0.06274748, z: 0}
+  - {x: -0.697182, y: -0.062747605, z: 0}
+  - {x: -0.67477393, y: -0.18622594, z: 0}
+  - {x: -0.6306782, y: -0.30371863, z: 0}
+  - {x: -0.56631184, y: -0.41144976, z: 0}
+  - {x: -0.48374376, y: -0.5059565, z: 0}
+  - {x: -0.38562772, y: -0.58420134, z: 0}
+  - {x: -0.2751173, y: -0.6436695, z: 0}
+  - {x: -0.1557647, y: -0.6824495, z: 0}
+  - {x: -0.031405386, y: -0.6992951, z: 0}
+  - {x: 0.093963325, y: -0.6936648, z: 0}
+  - {x: 0.21631198, y: -0.66573954, z: 0}
+  - {x: 0.3317082, y: -0.6164168, z: 0}
+  - {x: 0.43644303, y: -0.5472819, z: 0}
+  - {x: 0.5271502, y: -0.46055692, z: 0}
+  - {x: 0.6009141, y: -0.35902953, z: 0}
+  - {x: 0.6553644, y: -0.24596237, z: 0}
+  - {x: 0.68875074, y: -0.124989755, z: 0}
+  m_Parameters:
+    serializedVersion: 2
+    widthMultiplier: 1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.047893524
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 0, b: 0, a: 0.7254902}
+      key1: {r: 1, g: 0, b: 0, a: 0.7254902}
+      key2: {r: 0, g: 0, b: 0, a: 1}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 193
+      atime1: 65535
+      atime2: 65535
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
+    generateLightingData: 0
+  m_UseWorldSpace: 0
+  m_Loop: 1
 --- !u!120 &120258990004645872
 LineRenderer:
   m_ObjectHideFlags: 1
