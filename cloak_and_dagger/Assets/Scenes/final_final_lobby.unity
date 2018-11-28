@@ -756,6 +756,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1168301639}
     m_Modifications:
+    - target: {fileID: 114528534190373932, guid: 6b67f05c01636e04e8e0986a71e1f05b,
+        type: 2}
+      propertyPath: m_Options.m_Options.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224326127221498552, guid: 6b67f05c01636e04e8e0986a71e1f05b,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -845,6 +850,21 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114528534190373932, guid: 6b67f05c01636e04e8e0986a71e1f05b,
+        type: 2}
+      propertyPath: m_Options.m_Options.Array.data[2].m_Text
+      value: Option C
+      objectReference: {fileID: 0}
+    - target: {fileID: 114528534190373932, guid: 6b67f05c01636e04e8e0986a71e1f05b,
+        type: 2}
+      propertyPath: m_Options.m_Options.Array.data[1].m_Text
+      value: Option B
+      objectReference: {fileID: 0}
+    - target: {fileID: 114528534190373932, guid: 6b67f05c01636e04e8e0986a71e1f05b,
+        type: 2}
+      propertyPath: m_Options.m_Options.Array.data[0].m_Text
+      value: Option A
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b67f05c01636e04e8e0986a71e1f05b, type: 2}
