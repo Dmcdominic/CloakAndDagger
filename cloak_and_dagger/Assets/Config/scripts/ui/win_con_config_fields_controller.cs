@@ -47,7 +47,15 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 
 		ui_parameters_ordered.Add(winCon_int_option.payload_delivery_limit, new ui_int_info<winCon_bool_option>(1, 10, 1, 100, "Number of payload deliveries required to win."));
 		ui_parameters_ordered.Add(winCon_float_option.payload_respawn_delay, new ui_float_info<winCon_bool_option>(0, 20, 0, 120, "Delay in seconds before the payload respawns after being delivered."));
-		ui_parameters_ordered.Add(winCon_bool_option.payload_carrier_revealed, new ui_bool_info<winCon_bool_option>("The player remains visible while carrying the payload."));
+		ui_parameters_ordered.Add(winCon_float_option.payload_light_range, new ui_float_info<winCon_bool_option>(2f, 10f, 1f, 50f, "The range of the light emitted by the payload."));
+		ui_parameters_ordered.Add(winCon_bool_option.payload_carrier_revealed, new ui_bool_info<winCon_bool_option>("The payload light stays on while being carried."));
+
+		ui_parameters_ordered.Add(winCon_bool_option.carrier_dagger_disabled, new ui_bool_info<winCon_bool_option>("The payload carrier can not use their dagger ability."));
+		ui_parameters_ordered.Add(winCon_bool_option.carrier_fireball_disabled, new ui_bool_info<winCon_bool_option>("The payload carrier can not use their fireball ability."));
+		ui_parameters_ordered.Add(winCon_bool_option.carrier_blink_disabled, new ui_bool_info<winCon_bool_option>("The payload carrier can not use their blink ability."));
+		ui_parameters_ordered.Add(winCon_bool_option.carrier_reflect_disabled, new ui_bool_info<winCon_bool_option>("The payload carrier can not use their reflect ability."));
+		ui_parameters_ordered.Add(winCon_bool_option.carrier_torch_disabled, new ui_bool_info<winCon_bool_option>("The payload carrier can not use their torch ability."));
+		ui_parameters_ordered.Add(winCon_bool_option.carrier_trap_disabled, new ui_bool_info<winCon_bool_option>("The payload carrier can not use their trap ability."));
 
 		base.populate_ui_dependents();
 		base.Awake();
@@ -68,6 +76,7 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 		Dropdown dropdown = Instantiate(win_con_dropdown_prefab.gameObject).GetComponent<Dropdown>();
 		current_fields.Add(dropdown.transform);
 		dropdown.transform.SetParent(this.transform);
+		dropdown.transform.localScale = Vector3.one;
 
 		List<Dropdown.OptionData> dropdown_options = new List<Dropdown.OptionData>();
 		foreach (win_condition win_con in Enum.GetValues(typeof(win_condition))) {

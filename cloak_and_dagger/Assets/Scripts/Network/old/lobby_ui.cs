@@ -11,7 +11,7 @@ public class lobby_ui : NetworkBehaviour {
 	bool_var ready;
 	[SerializeField]
 	player_list players;
-	NetworkIdentity net_id;
+	//NetworkIdentity net_id;
 	[SerializeField]
 	int_var game_scene;
 	[SerializeField]
@@ -34,7 +34,7 @@ public class lobby_ui : NetworkBehaviour {
 
 	void Start()
 	{
-		net_id = GetComponent<NetworkIdentity>();
+		//net_id = GetComponent<NetworkIdentity>();
 		players.add();
 		if(isServer) InvokeRepeating("ready_check",1,.5f);
 		spawn_on_scene.val = true;

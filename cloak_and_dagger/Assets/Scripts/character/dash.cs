@@ -37,15 +37,17 @@ public class dash : sync_behaviour<serializable_vec2> {
     [SerializeField]
     float mini_stun;
 
+<<<<<<< HEAD
     [SerializeField]
     Sound_manager Sfx;
 
 	private Rigidbody2D rb;
+=======
+>>>>>>> develop
 
 	// Use this for initialization
 	public override void Start () {
         base.Start();
-		rb = GetComponent<Rigidbody2D>();
 		if (is_local) {
 			trigger.e.AddListener(dash_func);
 		}

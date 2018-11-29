@@ -13,6 +13,10 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(ConfigCat_ScriptableObj_Dict))]
 // ============= Event dicts ===========================
 [CustomPropertyDrawer(typeof(mtc_object_event_dict))]
+[CustomPropertyDrawer(typeof(Animation_Trigger_Dict))]
+[CustomPropertyDrawer(typeof(Int_var_to_string))]
+[CustomPropertyDrawer(typeof(Float_var_to_string))]
+[CustomPropertyDrawer(typeof(Bool_var_to_string))]
 // ========== Config object enum dictionaries ==========
 [CustomPropertyDrawer(typeof(GameplayOption_Bool_Dict))]
 [CustomPropertyDrawer(typeof(GameplayOption_Float_Dict))]
@@ -23,6 +27,7 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(MapOption_Bool_Dict))]
 [CustomPropertyDrawer(typeof(MapOption_Float_Dict))]
 [CustomPropertyDrawer(typeof(MapOption_Int_Dict))]
+[CustomPropertyDrawer(typeof(sprite_dict))]
 // =========== Readonly config dictionaries ============
 [CustomPropertyDrawer(typeof(ReadonlyGameplayOption_Bool_Dict))]
 [CustomPropertyDrawer(typeof(ReadonlyGameplayOption_Float_Dict))]
@@ -31,6 +36,7 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(WinCon_WinConInfo_Dict))]
 // =========== Game control dictionaries ===============
 [CustomPropertyDrawer(typeof(WinCon_Controller_Dict))]
+// ==================== Other ======================
 [CustomPropertyDrawer(typeof(String_Audioclip_Dict))]
 public class Custom_AnySerializableDictionaryPropertyDrawer : SerializableDictionaryPropertyDrawer { }
 

@@ -102,7 +102,7 @@ public class throw_fireball : sync_behaviour<throw_fireball_data> {
 		Rigidbody2D rb = my_fireball.GetComponent<Rigidbody2D>();
 		if (rb) {
 			rb.velocity = my_fireball.transform.right * gameplay_Config.float_options[gameplay_float_option.fireball_speed];
-			rb.angularVelocity = 720f * (Random.value > 0.5 ? 1 : -1); // Make it spin
+			//rb.angularVelocity = 720f * (Random.value > 0.5 ? 1 : -1); // Make it spin
 		}
 		inform_pmove.Invoke(gameObject_id.val, rotation.eulerAngles.z);
 		if (fireball_thrown) {
@@ -113,7 +113,7 @@ public class throw_fireball : sync_behaviour<throw_fireball_data> {
 	// Edit the properties of the fireball here before throwing it
 	private fireball_data create_fireball_data() {
 		byte thrower_ID = (byte)networkID.val;
-        return new fireball_data(thrower_ID);
+        return new fireball_data(gameplay_Config.bool_options[gameplay_bool_option.fireball_collaterals], thrower_ID);
 	}
 	
 }

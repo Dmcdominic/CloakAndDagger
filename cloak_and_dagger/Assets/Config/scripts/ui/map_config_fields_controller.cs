@@ -68,6 +68,7 @@ public class map_config_fields_controller : config_fields_controller<map_bool_op
 		dropdown = Instantiate(map_dropdown_prefab.gameObject).GetComponent<Dropdown>();
 		current_fields.Add(dropdown.transform);
 		dropdown.transform.SetParent(this.transform);
+		dropdown.transform.localScale = Vector3.one;
 
 		List<Dropdown.OptionData> dropdown_options = new List<Dropdown.OptionData>();
 		current_map_options = new List<string>();

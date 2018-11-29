@@ -27,6 +27,9 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 	[SerializeField]
 	int_float_event kill_out;
 
+	[SerializeField]
+	int_event_object pre_local_death;
+
     [SerializeField]
     gameplay_config gameplay_Config;
 
@@ -95,7 +98,10 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 			fireball_data fireball_Data = collider.gameObject.GetComponent<fireball_data_carrier>().fireball_Data;
 			network_id fireballID = collider.gameObject.GetComponent<network_id>();
 
-			destroy_fireball.Invoke(fireballID.val);
+			if (!fireball_Data.collaterals) {
+				destroy_fireball.Invoke(fireballID.val);
+			}
+
 			rectify(Time.time, new death_event_data((byte)gameObject_id.val, death_type.fireball, fireball_Data.thrower));
 			send_state(new death_event_data((byte)gameObject_id.val, death_type.fireball, fireball_Data.thrower));
 		}
@@ -104,10 +110,14 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 	
     public override void rectify(float f, death_event_data DD) {
 		spawn_dead_body(DD);
+<<<<<<< HEAD
         if (DD.death_Type == death_type.dagger)
             Sfx.sfx_trigger.Invoke("Dagger_hit_player");
         else if (DD.death_Type == death_type.fireball)
             Sfx.sfx_trigger.Invoke("Fireball_hit_player");
+=======
+		pre_local_death.Invoke(gameObject_id.val);
+>>>>>>> develop
 		kill_out.Invoke(gameObject_id.val, gameplay_Config.float_options[gameplay_float_option.respawn_delay]);
     }
 

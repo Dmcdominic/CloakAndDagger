@@ -41,6 +41,18 @@ public class input_config : ScriptableObject {
 	}
 
 	[SerializeField]
+	KeyCode torch_key;
+	public bool torch {
+		get { return Input.GetKeyDown(torch_key); }
+	}
+
+	[SerializeField]
+	KeyCode trap_key;
+	public bool trap {
+		get { return Input.GetKeyDown(trap_key); }
+	}
+
+	[SerializeField]
 	string horizontal_axis;
 	[SerializeField]
 	string vertical_axis;

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System;
 using System.Linq;
 using UnityEngine.Events;
-
+/*
 public class player_manager : MonoBehaviour {
 
     [SerializeField]
@@ -151,3 +151,5 @@ public class player_manager : MonoBehaviour {
     }
 
 }
+*/
+
