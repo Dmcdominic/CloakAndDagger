@@ -57,7 +57,7 @@ public class WC_regicide : win_condition_controller
 
     protected override void on_player_killed(death_event_data death_data)
     {
-       
+        print("hey boy");
         un_set_king(player_stats_dict[death_data.playerID].teamID);
         set_king(player_stats_dict[death_data.killerID].teamID);
 
