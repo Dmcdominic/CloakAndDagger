@@ -48,7 +48,7 @@ public class hill_script : MonoBehaviour {
     // Use this for initialization
     void Start () {
         id = transform.GetSiblingIndex();
-        activate.e.AddListener(() => { if (id == 0 && local_id)
+        activate.e.AddListener(() => { if (id == 0 && local_id == 0)
             {
                 run();
                 activate.e.RemoveAllListeners();
