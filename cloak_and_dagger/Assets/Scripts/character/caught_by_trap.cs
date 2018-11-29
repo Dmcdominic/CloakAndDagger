@@ -32,7 +32,7 @@ public class caught_by_trap : sync_behaviour<unit> {
 	}
 
 	private void caught_func() {
-		to_trigger_trapped_time.Invoke(gameObject_id.val, gameplay_Config.float_options[gameplay_float_option.reflect_time]);
+		to_trigger_trapped_time.Invoke(gameObject_id.val, gameplay_Config.float_options[gameplay_float_option.trap_hold_duration]);
 	}
 
 }
