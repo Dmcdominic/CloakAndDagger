@@ -502,6 +502,7 @@ MonoBehaviour:
     type: 2}
   inform_pmove: {fileID: 11400000, guid: 61155ee5589bc0e46ab15225bb13c462, type: 2}
   anim_Parent: {fileID: 114614145169798730}
+  Sfx: {fileID: 114442754885530496, guid: 3f242b71025bcc94c9dca00b110b1e99, type: 2}
 --- !u!114 &114208676034183456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -620,6 +621,7 @@ MonoBehaviour:
     type: 2}
   inform_pmove: {fileID: 11400000, guid: 61155ee5589bc0e46ab15225bb13c462, type: 2}
   anim_Parent: {fileID: 114614145169798730}
+  Sfx: {fileID: 114442754885530496, guid: 3f242b71025bcc94c9dca00b110b1e99, type: 2}
 --- !u!114 &114441103273347528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -708,6 +710,7 @@ MonoBehaviour:
   blink_trail_prefab: {fileID: 1912555637128888, guid: 6400213a1651af449b02608c9ca5c10e,
     type: 2}
   mini_stun: 0.1
+  Sfx: {fileID: 114442754885530496, guid: 3f242b71025bcc94c9dca00b110b1e99, type: 2}
 --- !u!114 &114506177324433398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -902,6 +905,7 @@ MonoBehaviour:
   local_reflect_proc: {fileID: 11400000, guid: fae1982a6eb4c7342a2052b0162a5d39, type: 2}
   end_reflect: {fileID: 11400000, guid: ebfa06e17ce69e640966e61f761a892a, type: 2}
   anim_Parent: {fileID: 114614145169798730}
+  Sfx: {fileID: 114442754885530496, guid: 3f242b71025bcc94c9dca00b110b1e99, type: 2}
   trigger: {fileID: 11400000, guid: 5073091540451ef49aab435b616bee52, type: 2}
 --- !u!114 &114990156458923406
 MonoBehaviour:

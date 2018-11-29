@@ -21,7 +21,6 @@ public class dagger_other_collision_trigger : MonoBehaviour {
             return;
 		}
 
-<<<<<<< HEAD
 		if (tag == "Wall"
             && !(gameplay_Config.bool_options[gameplay_bool_option.daggers_pierce_walls])) {
             Sfx.sfx_trigger.Invoke("Dagger_hit_wall");
@@ -33,15 +32,7 @@ public class dagger_other_collision_trigger : MonoBehaviour {
 		} else if (tag == "Fireball") {
             // This means that fireballs will always destroy daggers
             Sfx.sfx_trigger.Invoke("Dagger_hit_fireball");
-=======
-		if (tag == "Wall" && !(gameplay_Config.bool_options[gameplay_bool_option.daggers_pierce_walls])) {
-			to_trigger_on_collision.Invoke(network_Id.val);
-		} else if (tag == "Dagger" && (gameplay_Config.bool_options[gameplay_bool_option.daggers_destroy_daggers])) {
-			to_trigger_on_collision.Invoke(network_Id.val);
-		} else if (tag == "Fireball" && (gameplay_Config.bool_options[gameplay_bool_option.fireballs_destroy_daggers])) {
->>>>>>> develop
 			to_trigger_on_collision.Invoke(network_Id.val);
 		}
 	}
-
 }

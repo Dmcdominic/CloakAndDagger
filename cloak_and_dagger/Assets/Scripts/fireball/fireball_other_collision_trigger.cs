@@ -26,19 +26,18 @@ public class fireball_other_collision_trigger : MonoBehaviour {
 			return;
 		}
 
-<<<<<<< HEAD
-		if (tag == "Wall") {
+		if (tag == "Wall"
+            && !gameplay_Config.bool_options[gameplay_bool_option.fireballs_pierce_walls]) {
             Sfx.sfx_trigger.Invoke("Fireball_hit_wall");
-=======
-		if (tag == "Wall" && !gameplay_Config.bool_options[gameplay_bool_option.fireballs_pierce_walls]) {
->>>>>>> develop
 			to_trigger_on_collision.Invoke(network_Id.val);
 		} else if (tag == "Dagger"
             && (gameplay_Config.bool_options[gameplay_bool_option.daggers_destroy_fireballs])) {
             // sound effect invoked in dagger_other_collision_trigger.cs
 			to_trigger_on_collision.Invoke(network_Id.val);
-		} else if (tag == "Fireball" && (gameplay_Config.bool_options[gameplay_bool_option.fireballs_destroy_fireballs])) {
-			to_trigger_on_collision.Invoke(network_Id.val);
+		} else if (tag == "Fireball"
+            && (gameplay_Config.bool_options[gameplay_bool_option.fireballs_destroy_fireballs])) {
+            Sfx.sfx_trigger.Invoke("Fire_hit_fire");
+            to_trigger_on_collision.Invoke(network_Id.val);
 		}
 	}
 

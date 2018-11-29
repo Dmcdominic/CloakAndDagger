@@ -55,11 +55,10 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 	anim_parent anim_Parent;
 
     [SerializeField]
-<<<<<<< HEAD
     Sound_manager Sfx;
-=======
+
+    [SerializeField]
     death_event_object trigger;
->>>>>>> develop
 
 	public override void Start()
     {
@@ -114,14 +113,11 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 	
     public override void rectify(float f, death_event_data DD) {
 		spawn_dead_body(DD);
-<<<<<<< HEAD
         if (DD.death_Type == death_type.dagger)
             Sfx.sfx_trigger.Invoke("Dagger_hit_player");
         else if (DD.death_Type == death_type.fireball)
             Sfx.sfx_trigger.Invoke("Fireball_hit_player");
-=======
 		pre_local_death.Invoke(gameObject_id.val);
->>>>>>> develop
 		kill_out.Invoke(gameObject_id.val, gameplay_Config.float_options[gameplay_float_option.respawn_delay]);
         trigger.Invoke(DD);
     }

@@ -229,6 +229,7 @@ MonoBehaviour:
   to_trigger_on_collision: {fileID: 11400000, guid: a7fd9b93908c39041add1b7194882863,
     type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  Sfx: {fileID: 114442754885530496, guid: 3f242b71025bcc94c9dca00b110b1e99, type: 2}
 --- !u!114 &114921839629645788
 MonoBehaviour:
   m_ObjectHideFlags: 1

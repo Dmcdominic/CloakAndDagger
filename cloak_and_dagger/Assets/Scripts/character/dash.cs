@@ -40,13 +40,10 @@ public class dash : sync_behaviour<serializable_vec2> {
     [SerializeField]
     float mini_stun;
 
-<<<<<<< HEAD
     [SerializeField]
     Sound_manager Sfx;
 
 	private Rigidbody2D rb;
-=======
->>>>>>> develop
 
 	// Use this for initialization
 	public override void Start () {
@@ -101,7 +98,6 @@ public class dash : sync_behaviour<serializable_vec2> {
         stun_out.Invoke(gameObject_id.val, mini_stun);
         return true;
     }
-
 
     public bool restrictions(Vector2 dest)
     {

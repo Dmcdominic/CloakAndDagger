@@ -68,6 +68,7 @@ MonoBehaviour:
     - Trigger_trap
     - Place_torch
     - Dagger_reflect
+    - Fire_hit_fire
     m_values:
     - {fileID: 8300000, guid: 4cad5c4d300b2594084306002392cc50, type: 3}
     - {fileID: 8300000, guid: ff932e6849811cb4a9a1c9b82a2c9581, type: 3}
@@ -83,3 +84,4 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 5bd7c5223e64ccb469b906414e798742, type: 3}
     - {fileID: 8300000, guid: b0a1cb2d4c8162c4c951d80b085bc1d9, type: 3}
     - {fileID: 8300000, guid: 32bdaea777ce734448edf07c07199cd4, type: 3}
+    - {fileID: 0}
