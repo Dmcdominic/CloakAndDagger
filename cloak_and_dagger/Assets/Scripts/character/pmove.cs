@@ -91,17 +91,17 @@ public class pmove : sync_behaviour<player_state>
     // Update is called once per frame
     void Update()
     {
-        if (!ingame_state.val || is_stun[gameObject_id.val] || is_trapped[gameObject_id.val])
-        {
-            rb.velocity = Vector2.zero;
-            state = new player_state(transform.position, rb.velocity, transform.eulerAngles.z);
-            return;
-        }
         if (!is_local) //you are not the local go
         {
             if (Vector3.Distance(transform.position, target_pos) > 5) transform.position = target_pos;
             if (Mathf.Abs(((Vector2)transform.position - target_pos).magnitude) > 1) return;
             transform.position = Vector3.SmoothDamp(transform.position, target_pos, ref smooth_vel, .005f);
+            return;
+        }
+        if (!ingame_state.val || is_stun[gameObject_id.val] || is_trapped[gameObject_id.val])
+        {
+            rb.velocity = Vector2.zero;
+            state = new player_state(transform.position, rb.velocity, transform.eulerAngles.z);
             return;
         }
         if (rb.velocity.x * input_vec.val.x < 0) rb.velocity = Vector2.up * rb.velocity;
