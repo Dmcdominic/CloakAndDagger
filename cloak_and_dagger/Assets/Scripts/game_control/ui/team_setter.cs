@@ -43,18 +43,19 @@ public class team_setter : MonoBehaviour {
 	void Start () {
         B.onClick.AddListener(() =>
         {
-            team_swap_out.Invoke(0, null, local_id);
+            team_swap_out.Invoke(0, (int)my_team, local_id);
             team[id] = (int)(my_team == color.blue ? color.red : color.blue);
             also_team[id] = (int)(my_team == color.blue ? color.red : color.blue);
-            toggle();
+            toggle(my_team);
         });
-        team_swap_in.e.AddListener((f, o, i) => { if (i == id) toggle(); });
-        if (Random.value > .5f) toggle();
+        team_swap_in.e = new adhoc_event<float, object, int>();
+        team_swap_in.e.AddListener((f, o, i) => { if (i == id) toggle((color)o); });
+        if (Random.value > .5f) toggle(my_team);
     }
 
-    void toggle()
+    void toggle(color c)
     {
-        if (my_team == color.blue)
+        if (c == color.blue)
         {
             my_team = color.red;
             B.image = red_image;
