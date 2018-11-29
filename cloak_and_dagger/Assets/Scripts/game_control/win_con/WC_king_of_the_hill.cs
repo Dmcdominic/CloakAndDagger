@@ -36,7 +36,6 @@ public class WC_king_of_the_hill : win_condition_controller {
         {
             team_stats t = team_stats_dict[player_stats_dict[(byte)i].teamID];
             t.time_in_hill += f;
-            print(t.time_in_hill);
             if (t.time_in_hill > WCAP.win_Con_Config.float_options[winCon_float_option.time_to_win])
                 end_game_general(new List<byte>(new byte[] { t.teamID })); 
         });
