@@ -6,7 +6,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 	public abstract win_condition win_Condition { get; }
 	public abstract bool free_for_all_compatible { get; }
 
-	[HideInInspector]
+	//[HideInInspector]
 	public win_condition_assets_packet WCAP;
 
 	protected Dictionary<byte, player_stats> player_stats_dict;
@@ -39,6 +39,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 
 		// Populate the stats dictionaries
 		int starting_lives = WCAP.win_Con_Config.int_options[winCon_int_option.lives];
+		print("WCAP.teams has count: " + WCAP.teams.Count);
 		foreach (byte player in WCAP.teams) {
 			byte team = (byte)WCAP.teams[player];
 
@@ -47,6 +48,8 @@ public abstract class win_condition_controller : MonoBehaviour {
 			//if (free_for_all_compatible && free_for_all_enabled) {
 			//	team = player;
 			//}
+
+			print("Adding player: " + player + " on team: " + team);
 
 			player_stats new_player_stats = new player_stats(player, team, starting_lives);
 			player_stats_dict.Add(player, new_player_stats);
@@ -168,6 +171,8 @@ public class team_stats {
 	public byte kill_count = 0;
 	public byte death_count = 0;
 	public bool winner = false;
+    public float time_in_hill = 0.0f;
+    public float time_as_king = 0.0f;
 
 	public team_stats(byte _teamID, int _starting_lives) {
 		teamID = _teamID;

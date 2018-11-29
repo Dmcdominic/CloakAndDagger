@@ -12,13 +12,15 @@ public class bump_reveal : MonoBehaviour {
 	light_spawn_event_object light_spawn_trigger;
 
 
+
+    [SerializeField]
+    int_float_event trigger;
+
+
 	private void OnCollisionEnter2D(Collision2D collision) {
 		if (collision.gameObject.tag == "Player") {
-			// todo - replace this with a reveal float var that only reveals the players to each other locally
-			Vector2 position = (collision.transform.position + transform.position) / 2f;
-			light_spawn_data light_data = new light_spawn_data(position, gameplay_Config.float_options[gameplay_float_option.bump_reveal_time]);
-			light_spawn_trigger.Invoke(light_data);
+            // todo - replace this with a reveal float var that only reveals the players to each other locally
+            trigger.Invoke(gameObject.GetComponent<network_id>().val,1);
 		}
 	}
-
 }

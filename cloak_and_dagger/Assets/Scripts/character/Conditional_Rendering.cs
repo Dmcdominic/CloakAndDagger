@@ -22,12 +22,23 @@ public class Conditional_Rendering : MonoBehaviour {
 	[SerializeField]
 	bool_var spectator_reveal;
 
+    [SerializeField]
+    player_bool is_king;
+
+    [SerializeField]
+    player_bool bump_reveal;
+    
+
 	private IEnumerable srs;
+
+    LineRenderer king_circle;
 
 	// Use this for initialization
 	void Start () {
 		srs = GetComponentsInChildren<SpriteRenderer>().Where((sr) => !sr.CompareTag("Payload"));
 		update_material();
+        king_circle = GetComponent<LineRenderer>();
+        if(king_circle) king_circle.enabled = false;
 	}
 
 	private void Update() {
@@ -36,12 +47,22 @@ public class Conditional_Rendering : MonoBehaviour {
 
 	private void update_material() {
 		if (srs == null) {
+            //lol
 			srs = GetComponentsInChildren<SpriteRenderer>().Where((sr) => !sr.CompareTag("Payload"));
 		}
-		if ((GetComponent<network_id>().val == local_id.val) || spectator_reveal.val) {
-			foreach (SpriteRenderer sr in srs) {
-				sr.material = local_mat;
-			}
+        int id = GetComponent<network_id>().val;
+        if (is_king[id])
+        {
+            if(king_circle) king_circle.enabled = true;
+        }
+        else
+        {
+            if(king_circle) king_circle.enabled = false;
+        }
+        if (id == local_id.val || is_king[id] || bump_reveal[id] || spectator_reveal.val) {
+		foreach (SpriteRenderer sr in srs) {
+			sr.material = local_mat;
+		}
 		} else {
 			foreach (SpriteRenderer sr in srs) {
 				sr.material = non_local_mat;

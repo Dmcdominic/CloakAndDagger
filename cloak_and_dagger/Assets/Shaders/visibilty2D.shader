@@ -17,11 +17,11 @@
     {
         Tags
         {
-            "Queue"="Transparent"
-            "IgnoreProjector"="True"
-            "RenderType"="Transparent"
-            "PreviewType"="Plane"
-            "CanUseSpriteAtlas"="True"
+			"Queue" = "Geometry"
+			"IgnoreProjector" = "True"
+			"RenderType" = "TransparentCutout"
+			"PreviewType" = "Plane"
+			"CanUseSpriteAtlas" = "True"
         }
 
         Cull Off
@@ -30,7 +30,7 @@
         Blend One OneMinusSrcAlpha
 
         CGPROGRAM
-        #pragma surface surf Lambert vertex:vert nofog nolightmap nodynlightmap keepalpha noinstancing
+        #pragma  surface surf Lambert vertex:vert nofog keepalpha noinstancing addshadow fullforwardshadows
         #pragma multi_compile _ PIXELSNAP_ON
         #pragma multi_compile _ ETC1_EXTERNAL_ALPHA
         #include "UnitySprites.cginc"
@@ -53,8 +53,10 @@
             #endif
 
             UNITY_INITIALIZE_OUTPUT(Input, o);
-			o.color = v.color * _Color * _RendererColor;
-			o.color.a = length(_LightColor0) + (1 - length(o.color));
+			o.color = v.color * _Color;
+			float l = 0.3086 * v.color.r + 0.6094 * v.color.g + 0.0820 * v.color.b;
+			
+			o.color.a = pow(length(_LightColor0) * v.color.a,2);
         }
 
         void surf (Input IN, inout SurfaceOutput o)
@@ -72,5 +74,4 @@
         ENDCG
     }
 
-Fallback "Transparent/VertexLit"
 }

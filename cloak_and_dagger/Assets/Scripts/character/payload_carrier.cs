@@ -108,6 +108,7 @@ public class payload_carrier : sync_behaviour<payload_event_struct> {
 	}
 
 	private void deliver_payload() {
+		payload.transform.SetParent(null);
 		payload.deliver();
 		payload_delivered.Invoke(gameObject_id.val);
 	}

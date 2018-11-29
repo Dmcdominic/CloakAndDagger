@@ -243,6 +243,49 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84d1cf02e71853042b9111443c4ad5e1, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &991739920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 991739921}
+  - component: {fileID: 991739922}
+  m_Layer: 0
+  m_Name: regicide
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &991739921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 991739920}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 995417700}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &991739922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 991739920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64a78602371753245a169b7a0db4bb7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
+  is_king: {fileID: 11400000, guid: 30c9fceb0f208f7499b6615b083da8d0, type: 2}
 --- !u!1001 &995417699
 Prefab:
   m_ObjectHideFlags: 0
@@ -250,6 +293,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114462569691076326, guid: 35ab82797fe1bb5479480e1bb6d6a794,
+        type: 2}
+      propertyPath: WC_controller_prefabs.m_keys.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114462569691076326, guid: 35ab82797fe1bb5479480e1bb6d6a794,
+        type: 2}
+      propertyPath: WC_controller_prefabs.m_values.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4738424570576098, guid: 35ab82797fe1bb5479480e1bb6d6a794, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -282,9 +335,52 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114058240854290130, guid: 35ab82797fe1bb5479480e1bb6d6a794,
+        type: 2}
+      propertyPath: WCAP
+      value: 
+      objectReference: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4,
+        type: 2}
+    - target: {fileID: 114977693231741110, guid: 35ab82797fe1bb5479480e1bb6d6a794,
+        type: 2}
+      propertyPath: WCAP
+      value: 
+      objectReference: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4,
+        type: 2}
+    - target: {fileID: 114627081766228654, guid: 35ab82797fe1bb5479480e1bb6d6a794,
+        type: 2}
+      propertyPath: WCAP
+      value: 
+      objectReference: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4,
+        type: 2}
+    - target: {fileID: 114462569691076326, guid: 35ab82797fe1bb5479480e1bb6d6a794,
+        type: 2}
+      propertyPath: WC_controller_prefabs.m_keys.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114462569691076326, guid: 35ab82797fe1bb5479480e1bb6d6a794,
+        type: 2}
+      propertyPath: WC_controller_prefabs.m_values.Array.data[3]
+      value: 
+      objectReference: {fileID: 1254038720}
+    - target: {fileID: 114462569691076326, guid: 35ab82797fe1bb5479480e1bb6d6a794,
+        type: 2}
+      propertyPath: WC_controller_prefabs.m_keys.Array.data[4]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114462569691076326, guid: 35ab82797fe1bb5479480e1bb6d6a794,
+        type: 2}
+      propertyPath: WC_controller_prefabs.m_values.Array.data[4]
+      value: 
+      objectReference: {fileID: 991739922}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35ab82797fe1bb5479480e1bb6d6a794, type: 2}
   m_IsPrefabAsset: 0
+--- !u!4 &995417700 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4738424570576098, guid: 35ab82797fe1bb5479480e1bb6d6a794,
+    type: 2}
+  m_PrefabInternal: {fileID: 995417699}
 --- !u!1001 &1056637402
 Prefab:
   m_ObjectHideFlags: 0
@@ -427,6 +523,50 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2f5a1c98cefd3947803273fed8efab7, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1254038718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1254038719}
+  - component: {fileID: 1254038720}
+  m_Layer: 0
+  m_Name: king of the hill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1254038719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1254038718}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 995417700}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1254038720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1254038718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8beede0f8d113af469c23e8fb44eabbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
+  time_in: {fileID: 11400000, guid: b78fe389e187d134caff10519b7a4456, type: 2}
+  time_score: {fileID: 11400000, guid: f09251d62b55ae445899dd3f66da5825, type: 2}
+  activate_hills: {fileID: 11400000, guid: 31d73016893119b4090ab6000e4a9468, type: 2}
 --- !u!1 &1406377704
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +642,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1822064346
 Prefab:
@@ -541,7 +681,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4491820199344692, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adb94b9d6042d554f8a6d40245452680, type: 2}

@@ -42,6 +42,8 @@ public class payload : MonoBehaviour {
 	public void spawn() {
 		carrier_id = -1;
 		carried = false;
+		collider2D.enabled = true;
+		light.enabled = true;
 		gameObject.SetActive(true);
 	}
 
