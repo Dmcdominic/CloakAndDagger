@@ -384,6 +384,7 @@ MonoBehaviour:
     type: 2}
   trigger: {fileID: 11400000, guid: 96a59347af961ce41ad24f35493ce894, type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  Sfx: {fileID: 114442754885530496, guid: 3f242b71025bcc94c9dca00b110b1e99, type: 2}
 --- !u!114 &114038434851701454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -466,6 +467,7 @@ MonoBehaviour:
     type: 2}
   trigger: {fileID: 11400000, guid: 9293d9d649ae69f4b8083411d7efd40e, type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  Sfx: {fileID: 114442754885530496, guid: 3f242b71025bcc94c9dca00b110b1e99, type: 2}
 --- !u!114 &114202914130332176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -658,6 +660,7 @@ MonoBehaviour:
     type: 2}
   to_trigger_trap_catch: {fileID: 11400000, guid: e75edf4ea91f1c14d832def32a32e909,
     type: 2}
+  Sfx: {fileID: 114442754885530496, guid: 3f242b71025bcc94c9dca00b110b1e99, type: 2}
 --- !u!114 &114478431849710816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -680,6 +683,7 @@ MonoBehaviour:
     type: 2}
   to_trigger_reflect_time: {fileID: 11400000, guid: fc8afad6a5509924baa58bb8968b80e5,
     type: 2}
+  Sfx: {fileID: 114442754885530496, guid: 3f242b71025bcc94c9dca00b110b1e99, type: 2}
 --- !u!114 &114487284874482236
 MonoBehaviour:
   m_ObjectHideFlags: 1

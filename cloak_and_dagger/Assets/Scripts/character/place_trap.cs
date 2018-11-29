@@ -29,6 +29,8 @@ public class place_trap : sync_behaviour<trap_state> {
 	[SerializeField]
 	gameplay_config gameplay_Config;
 
+    [SerializeField]
+    Sound_manager Sfx;
 
 	public override void Start() {
 		base.Start();
@@ -40,6 +42,7 @@ public class place_trap : sync_behaviour<trap_state> {
 	private void local_place(int id, float cooldown) {
 		if (id != gameObject_id.val) return;
 
+        Sfx.sfx_trigger.Invoke("Place_trap");
 		trap_state trap_State = new trap_state(_origin.val);
 		send_state(trap_State);
 		place_func(trap_State);

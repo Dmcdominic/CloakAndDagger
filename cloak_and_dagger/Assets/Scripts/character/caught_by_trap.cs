@@ -14,6 +14,8 @@ public class caught_by_trap : sync_behaviour<int> {
 	[SerializeField]
 	int_event_object to_trigger_trap_catch;
 
+    [SerializeField]
+    Sound_manager Sfx;
 
 	private void OnTriggerEnter2D(Collider2D collision) {
 		if (is_local && collision.gameObject.CompareTag("Trap")) {
@@ -31,6 +33,7 @@ public class caught_by_trap : sync_behaviour<int> {
 	}
 
 	public override void rectify(float t, int state) {
+        Sfx.sfx_trigger.Invoke("Trigger_trap");
 		caught_func(state);
 	}
 

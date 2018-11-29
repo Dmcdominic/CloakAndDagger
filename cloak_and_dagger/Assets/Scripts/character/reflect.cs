@@ -15,6 +15,8 @@ public class reflect : sync_behaviour<unit> {
 	[SerializeField]
 	int_float_event to_trigger_reflect_time;
 
+    [SerializeField]
+    Sound_manager Sfx;
 
 	public override void Start() {
 		base.Start();
@@ -31,6 +33,7 @@ public class reflect : sync_behaviour<unit> {
 	}
 
 	public override void rectify(float t, unit state) {
+        Sfx.sfx_trigger.Invoke("Shield");
 		reflect_func();
 	}
 
