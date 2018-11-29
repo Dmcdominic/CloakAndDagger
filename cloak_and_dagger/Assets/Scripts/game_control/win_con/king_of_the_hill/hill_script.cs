@@ -49,7 +49,7 @@ public class hill_script : MonoBehaviour {
     void Start () {
         id = transform.GetSiblingIndex();
         activate.e.AddListener(() => { if (id == 0 && local_id == 0) { run(); activate.e.RemoveAllListeners(); } });
-        players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
+        
         score_in.e.AddListener((f, o, i) => { if(active) score.Invoke(i, (float)o); });
         move_in.r.AddListener((f, o, i) => 
         {
@@ -74,6 +74,7 @@ public class hill_script : MonoBehaviour {
 
     IEnumerator go()
     {
+        players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
         float wait_time = 
                 UnityEngine.Random.value * 5 - 2.5f + WCAP.win_Con_Config.float_options[winCon_float_option.hill_duration];
         active = true;

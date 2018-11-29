@@ -5,14 +5,17 @@ using UnityEngine.UI;
 
 public class team_setter : MonoBehaviour {
 
+    enum color : int {blue, red }
+
     [SerializeField]
-    Dropdown dd;
+    Button B;
 
     [SerializeField]
     party_var party;
 
     [SerializeField]
     player_int team;
+
 
     [SerializeField]
     player_int also_team;
@@ -28,32 +31,48 @@ public class team_setter : MonoBehaviour {
     [SerializeField]
     sync_event team_swap_out;
 
+    color my_team = color.blue;
+
+    [SerializeField]
+    Image blue_image;
+
+    [SerializeField]
+    Image red_image;
+
 	// Use this for initialization
 	void Start () {
-        dd.onValueChanged.AddListener(i => 
+        B.onClick.AddListener(() =>
         {
-            team_swap_out.Invoke(0, i, local_id);
-            team[id] = i;
-            also_team[id] = i;
+            team_swap_out.Invoke(0, null, local_id);
+            team[id] = (int)(my_team == color.blue ? color.red : color.blue);
+            also_team[id] = (int)(my_team == color.blue ? color.red : color.blue);
+            toggle();
         });
-        team_swap_out.e.AddListener((f, o, i) => { if (i == id) dd.value = (int)o; });
+        team_swap_in.e.AddListener((f, o, i) => { if (i == id) toggle(); });
+        if (Random.value > .5f) toggle();
+    }
+
+    void toggle()
+    {
+        if (my_team == color.blue)
+        {
+            my_team = color.red;
+            B.image = red_image;
+            red_image.gameObject.SetActive(true);
+            blue_image.gameObject.SetActive(false);
+        }
+        else
+        {
+            my_team = color.blue;
+            B.image = blue_image;
+            red_image.gameObject.SetActive(false);
+            blue_image.gameObject.SetActive(true);
+        }
     }
 	
 	// Update is called once per frame
 	void Update () {
-        int i = dd.options.Count;
-		for(; i < party.val.members.Count + 1; i++)
-        {
-            dd.options.Add(new Dropdown.OptionData($"Team {i}"));
-        }
-        while(dd.options.Count > party.val.members.Count + 1)
-        {
-            dd.options.Remove(dd.options[party.val.members.Count + 1]);
-        }
-
-        dd.interactable = id == local_id;
-
-       
+        B.interactable = id == local_id;
 
 	}
 }
