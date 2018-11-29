@@ -48,7 +48,6 @@ public class team_setter : MonoBehaviour {
             also_team[id] = (int)(my_team == color.blue ? color.red : color.blue);
             toggle();
         });
-        team_swap_in.e = new adhoc_event<float, object, int>();
         team_swap_in.e.AddListener((f, o, i) => { if (i == id) toggle(); });
         
     }
