@@ -54,6 +54,8 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 	[SerializeField]
 	anim_parent anim_Parent;
 
+    [SerializeField]
+    death_event_object trigger;
 
 	public override void Start()
     {
@@ -110,6 +112,7 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 		spawn_dead_body(DD);
 		pre_local_death.Invoke(gameObject_id.val);
 		kill_out.Invoke(gameObject_id.val, gameplay_Config.float_options[gameplay_float_option.respawn_delay]);
+        trigger.Invoke(DD);
     }
 
 	private void spawn_dead_body(death_event_data DD) {

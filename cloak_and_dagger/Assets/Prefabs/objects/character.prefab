@@ -902,6 +902,7 @@ MonoBehaviour:
   local_reflect_proc: {fileID: 11400000, guid: fae1982a6eb4c7342a2052b0162a5d39, type: 2}
   end_reflect: {fileID: 11400000, guid: ebfa06e17ce69e640966e61f761a892a, type: 2}
   anim_Parent: {fileID: 114614145169798730}
+  trigger: {fileID: 11400000, guid: 5073091540451ef49aab435b616bee52, type: 2}
 --- !u!114 &114990156458923406
 MonoBehaviour:
   m_ObjectHideFlags: 1
