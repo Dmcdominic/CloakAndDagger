@@ -50,7 +50,7 @@ public class team_setter : MonoBehaviour {
         });
         team_swap_in.e = new adhoc_event<float, object, int>();
         team_swap_in.e.AddListener((f, o, i) => { if (i == id) toggle((color)o); });
-        if (Random.value > .5f) toggle(my_team);
+        
     }
 
     void toggle(color c)
