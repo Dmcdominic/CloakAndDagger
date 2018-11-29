@@ -49,7 +49,9 @@ public class team_setter : MonoBehaviour {
             toggle();
         });
         team_swap_in.e.AddListener((f, o, i) => { if (i == id) toggle(); });
-        
+        team[id] = (int)color.blue;
+        also_team[id] = (int)color.blue;
+
     }
 
     void toggle()
