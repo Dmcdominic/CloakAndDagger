@@ -5,8 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public struct trap_state {
 	public serializable_vec2 position;
+	public int trap_id;
 	public trap_state(Vector2 _position) {
 		position = _position;
+
+		System.Random rand = new System.Random();
+		trap_id = rand.Next(int.MinValue, int.MaxValue);
 	}
 }
 
@@ -49,6 +53,7 @@ public class place_trap : sync_behaviour<trap_state> {
 		placed_trap new_trap = Instantiate(trap_prefab).GetComponent<placed_trap>();
 		new_trap.transform.position = trap_State.position;
 		new_trap.placer_id = gameObject_id.val;
+		new_trap.set_network_id(trap_State.trap_id);
 
 		// todo - sound effect for placing trap here
 	}

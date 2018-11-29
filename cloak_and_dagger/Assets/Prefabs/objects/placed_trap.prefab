@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  trap_catch_event: {fileID: 11400000, guid: e75edf4ea91f1c14d832def32a32e909, type: 2}
   placer_id: 0
   buffer_time: 0.2
 --- !u!212 &212495509047536522
