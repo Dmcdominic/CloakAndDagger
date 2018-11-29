@@ -94,6 +94,7 @@ public class pmove : sync_behaviour<player_state>
         if (!ingame_state.val || is_stun[gameObject_id.val] || is_trapped[gameObject_id.val])
         {
             rb.velocity = Vector2.zero;
+            state = new player_state(transform.position, rb.velocity, transform.eulerAngles.z);
             return;
         }
         if (!is_local) //you are not the local go
