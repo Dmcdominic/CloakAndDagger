@@ -99,6 +99,7 @@ public class pmove : sync_behaviour<player_state>
         }
         if (!is_local) //you are not the local go
         {
+            if (Vector3.Distance(transform.position, target_pos) > 5) transform.position = target_pos;
             if (Mathf.Abs(((Vector2)transform.position - target_pos).magnitude) > 1) return;
             transform.position = Vector3.SmoothDamp(transform.position, target_pos, ref smooth_vel, .005f);
             return;
