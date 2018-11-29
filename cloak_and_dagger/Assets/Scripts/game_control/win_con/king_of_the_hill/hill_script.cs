@@ -48,7 +48,12 @@ public class hill_script : MonoBehaviour {
     // Use this for initialization
     void Start () {
         id = transform.GetSiblingIndex();
-        activate.e.AddListener(() => { if (id == 0 && local_id == 0) { run(); activate.e.RemoveAllListeners(); } });
+        activate.e.AddListener(() => { if (id == 0 && local_id)
+            {
+                run();
+                activate.e.RemoveAllListeners();
+                move_out.Invoke(0, 0, 0, reliable: true);
+            } });
         
         score_in.e.AddListener((f, o, i) => { if(active) score.Invoke(i, (float)o); });
         move_in.r.AddListener((f, o, i) => 
