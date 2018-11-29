@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/maps/Ning_map_3.unity
     guid: 9d4fa3e7cc6c20741bd31d3894924515
+  - enabled: 1
+    path: Assets/Scenes/maps/Fully Visible.unity
+    guid: 0789a475ec369c54ba79038b4d31fb69
   m_configObjects: {}

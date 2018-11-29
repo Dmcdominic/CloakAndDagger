@@ -13,7 +13,7 @@ public class torch_flicker : MonoBehaviour {
 
     private bool intensityChanging;
     private bool rangeChanging;
-    private Light light;
+    private new Light light;
 
     void Start () {
         light = this.GetComponent<Light>();
