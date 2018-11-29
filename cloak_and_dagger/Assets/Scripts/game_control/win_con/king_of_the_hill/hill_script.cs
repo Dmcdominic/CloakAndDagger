@@ -101,7 +101,8 @@ public class hill_script : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(active)
+        if(players == null) players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
+        if (active)
         {
             foreach(GameObject player in players)
             {
