@@ -227,8 +227,8 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
             channel = large_data_channel;
         }
         NetworkTransport.Send(host, conn_id, channel, data, data.Length, out error);
-        if(debug) print($"trying to send {type}: {(NetworkError)error} at channel: {channel}" +
-            $" on host {host} on conn {conn_id}");
+        //if(debug) print($"trying to send {type}: {(NetworkError)error} at channel: {channel}" +
+        //    $" on host {host} on conn {conn_id}");
         return (NetworkError)error == NetworkError.Ok;
     }
 
