@@ -52,11 +52,11 @@ public class hill_script : MonoBehaviour {
             {
                 run();
                 activate.e.RemoveAllListeners();
-                move_out.Invoke(0, 0, 0, reliable: true);
+                move_out.Invoke(0, 0, 0);
             } });
         
         score_in.e.AddListener((f, o, i) => { if(active) score.Invoke(i, (float)o); });
-        move_in.r.AddListener((f, o, i) => 
+        move_in.e.AddListener((f, o, i) => 
         {
             if (i == transform.GetSiblingIndex())
             {
@@ -94,7 +94,7 @@ public class hill_script : MonoBehaviour {
             i = rnd.Next(0, transform.parent.childCount);
         }
         transform.parent.GetChild(i).GetComponent<hill_script>().run();
-        move_out.Invoke(0,0,i,reliable:true);
+        move_out.Invoke(0,0,i);
 
 
     }
