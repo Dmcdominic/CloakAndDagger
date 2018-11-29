@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 95549608203243356}
   - component: {fileID: 70540043791598290}
   - component: {fileID: 114421092884175526}
+  - component: {fileID: 114225690469477038}
   m_Layer: 0
   m_Name: placed_trap
   m_TagString: Trap
@@ -143,6 +144,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114225690469477038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1659218563094142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8de38d8c22502b43a20d86905feb161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
 --- !u!114 &114421092884175526
 MonoBehaviour:
   m_ObjectHideFlags: 1
