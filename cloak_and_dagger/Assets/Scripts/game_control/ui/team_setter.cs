@@ -45,7 +45,6 @@ public class team_setter : MonoBehaviour {
         B.onClick.AddListener(() =>
         {
             team_swap_out.Invoke(0, null, local_id);
-            team[id] = (int)(my_team == color.blue ? color.red : color.blue);
             toggle();
         });
         team_swap_in.e.AddListener((f, o, i) => { if (i == id) toggle(); });
@@ -70,6 +69,7 @@ public class team_setter : MonoBehaviour {
             red_image.gameObject.SetActive(false);
             blue_image.gameObject.SetActive(true);
         }
+        team[id] = (int)(my_team == color.blue ? color.blue : color.red);
     }
 	
 	// Update is called once per frame
