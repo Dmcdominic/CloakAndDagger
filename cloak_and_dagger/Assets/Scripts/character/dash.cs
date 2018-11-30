@@ -44,8 +44,6 @@ public class dash : sync_behaviour<serializable_vec2> {
     [SerializeField]
     Sound_manager Sfx;
 
-	private Rigidbody2D rb;
-
     Rigidbody2D rb;
 
 	// Use this for initialization
