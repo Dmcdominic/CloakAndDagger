@@ -46,7 +46,7 @@ public class heartbeat_repeater : MonoBehaviour {
 	}
 
 	private void on_countdown_event(int seconds_left) {
-		if (seconds_left == 2 && gameplay_Config.bool_options[gameplay_bool_option.initial_reveal]) {
+		if (seconds_left == 1 && gameplay_Config.bool_options[gameplay_bool_option.initial_reveal]) {
 			global_heartbeat_to_trigger.Invoke();
 		}
 	}

@@ -108,7 +108,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 		player_stats killed = player_stats_dict[death_data.playerID];
 		killed.death_count++;
 		team_stats_dict[killed.teamID].death_count++;
-		if (death_data.death_Type != death_type.suicide) {
+		if (death_data.playerID != death_data.killerID) {
 			player_stats killer = player_stats_dict[death_data.killerID];
 			killer.kill_count++;
 		}

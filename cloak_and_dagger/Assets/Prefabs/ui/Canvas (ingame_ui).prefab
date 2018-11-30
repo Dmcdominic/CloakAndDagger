@@ -11,6 +11,23 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1742556634012286}
   m_IsPrefabAsset: 1
+--- !u!1 &1009495341689084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224416787417665562}
+  - component: {fileID: 114617290704141980}
+  - component: {fileID: 114401959335255228}
+  m_Layer: 5
+  m_Name: kill_feed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &1023914854790544
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,6 +1253,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 0
   m_FillOrigin: 2
+--- !u!114 &114401959335255228
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009495341689084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe1e503624030954ab72d18401e2ba2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trigger: {fileID: 11400000, guid: 5073091540451ef49aab435b616bee52, type: 2}
+  feed_line_prefab: {fileID: 114270267225303870, guid: 0fea36ef4c474334da5cccf663a26cee,
+    type: 2}
+  game_Stats: {fileID: 11400000, guid: f04a2873a8466a1429412658e2af4b63, type: 2}
+  win_Con_Config: {fileID: 11400000, guid: 4a15c59b8048876449a6497af431e6a7, type: 2}
+  party: {fileID: 11400000, guid: af142701058b0424d90947e0d77e7de9, type: 2}
 --- !u!114 &114452603536324458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1533,6 +1567,28 @@ MonoBehaviour:
   cooldown_type: 11
   current_cooldown: {fileID: 11400000, guid: e53c6c7e4266ebe41b2369aca21b3c93, type: 2}
   pulse_event: {fileID: 11400000, guid: a05c244257155134fb8a53e220cd72ab, type: 2}
+--- !u!114 &114617290704141980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009495341689084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1297475563, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 20
+    m_Right: 0
+    m_Top: 10
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 5
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 0
 --- !u!114 &114639331649716548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2191,7 +2247,7 @@ RectTransform:
   m_Children:
   - {fileID: 224839049818566086}
   m_Father: {fileID: 224704367869811838}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2383,6 +2439,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224416787417665562
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1009495341689084}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224704367869811838}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.8}
+  m_AnchorMax: {x: 0.25, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224486100333529656
 RectTransform:
   m_ObjectHideFlags: 1
@@ -2431,7 +2505,7 @@ RectTransform:
   m_Children:
   - {fileID: 224742204413099800}
   m_Father: {fileID: 224704367869811838}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.25, y: 0.2}
   m_AnchorMax: {x: 0.75, y: 0.8}
@@ -2568,6 +2642,7 @@ RectTransform:
   - {fileID: 224609631433291628}
   - {fileID: 224144845036739704}
   - {fileID: 224997904754196888}
+  - {fileID: 224416787417665562}
   - {fileID: 224139114568421158}
   - {fileID: 224551885916702080}
   m_Father: {fileID: 0}
