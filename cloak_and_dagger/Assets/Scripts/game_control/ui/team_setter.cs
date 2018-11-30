@@ -55,7 +55,7 @@ public class team_setter : MonoBehaviour {
 
     void toggle()
     {
-        if (my_team == color.blue)
+        if (my_team == color.blue) //sink on enter
         {
             my_team = color.red;
             B.image = red_image;
