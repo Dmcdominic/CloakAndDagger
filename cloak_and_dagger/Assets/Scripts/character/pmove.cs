@@ -98,10 +98,17 @@ public class pmove : sync_behaviour<player_state>
             transform.position = Vector3.SmoothDamp(transform.position, target_pos, ref smooth_vel, .005f);
             return;
         }
+        if (((Vector2)input_vec).sqrMagnitude > .1f && !ignore_input)
+            target_theta = Mathf.Rad2Deg * Mathf.Atan2(input_vec.val.y, input_vec.val.x);
+
+        transform.eulerAngles = Vector3.forward * Mathf.SmoothDampAngle(
+                                transform.eulerAngles.z, target_theta,
+                                ref smooth_rot_vel, .06f);
         if (!ingame_state.val || is_stun[gameObject_id.val] || is_trapped[gameObject_id.val])
         {
             rb.velocity = Vector2.zero;
             state = new player_state(transform.position, rb.velocity, transform.eulerAngles.z);
+
             return;
         }
         if (rb.velocity.x * input_vec.val.x < 0) rb.velocity = Vector2.up * rb.velocity;
@@ -116,15 +123,7 @@ public class pmove : sync_behaviour<player_state>
         rb.velocity = input_vec.val.normalized * config_movespeed;
 
       
-        
-
-        if(((Vector2)input_vec).sqrMagnitude > .1f && !ignore_input)
-            target_theta = Mathf.Rad2Deg * Mathf.Atan2(input_vec.val.y, input_vec.val.x);
-
-        transform.eulerAngles = Vector3.forward * Mathf.SmoothDampAngle(
-                                transform.eulerAngles.z, target_theta, 
-                                ref smooth_rot_vel, .06f);
-
+       
         state = new player_state(transform.position, rb.velocity,transform.eulerAngles.z);
 
     }

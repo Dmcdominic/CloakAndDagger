@@ -14,7 +14,8 @@ public class event_repeater : MonoBehaviour {
 	[SerializeField]
 	private event_object event_to_trigger;
 
-	private float interval = 10f;
+	[SerializeField]
+	private float interval;
 
 
 	private void Awake() {

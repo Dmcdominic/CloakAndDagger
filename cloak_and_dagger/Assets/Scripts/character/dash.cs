@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Events;
+using System.Linq;
 
 public struct dash_state
 { //use this if you want to put the network players on cooldown on their machine
@@ -45,13 +46,15 @@ public class dash : sync_behaviour<serializable_vec2> {
 
 	private Rigidbody2D rb;
 
+    Rigidbody2D rb;
+
 	// Use this for initialization
 	public override void Start () {
         base.Start();
 		if (is_local) {
 			trigger.e.AddListener(dash_func);
 		}
-
+        rb = GetComponent<Rigidbody2D>();
 		max_distance = gameplay_Config.float_options[gameplay_float_option.blink_range];
 	}
 
@@ -67,13 +70,13 @@ public class dash : sync_behaviour<serializable_vec2> {
             displacement = displacement.normalized * max_distance;
         }
 
-        if(blink(_origin + (Vector2)displacement))
-        {
-            cooldown_out.Invoke(gameObject_id.val, cooldown);
-            send_state((Vector2)transform.position);
-            GameObject trail = Instantiate(blink_trail_prefab,transform.position,Quaternion.identity);
-            trail.GetComponent<move_between>().run(_origin.val, transform.position, 5, Time.deltaTime);
-        }
+        blink(_origin,displacement);
+        
+        cooldown_out.Invoke(gameObject_id.val, cooldown);
+        send_state((Vector2)transform.position);
+        GameObject trail = Instantiate(blink_trail_prefab,transform.position,Quaternion.identity);
+        trail.GetComponent<move_between>().run(_origin.val, transform.position, 5, Time.deltaTime);
+        
 
     }
 
@@ -86,22 +89,22 @@ public class dash : sync_behaviour<serializable_vec2> {
         stun_out.Invoke(gameObject_id.val,mini_stun);
     }
 
-    bool blink(Vector2 dest)
+    bool blink(Vector2 origin,Vector2 delta)
     {
         // Spawn light at origin
         light_spawn_data light_data = new light_spawn_data(_origin.val, 2f);
         light_spawn_trigger.Invoke(light_data);
 
-        if (!restrictions(dest)) return false;
+        RaycastHit2D[] hits = new RaycastHit2D[1];
 
-        transform.position = dest;
+        transform.position = origin + delta;
+        while (rb.Cast(Vector3.zero, hits, 0) > 0)
+        {
+            transform.position -= (Vector3)delta.normalized * .1f;
+        }
+        
         stun_out.Invoke(gameObject_id.val, mini_stun);
         return true;
-    }
-
-    public bool restrictions(Vector2 dest)
-    {
-        return true; //add some restrictions
     }
 
 }

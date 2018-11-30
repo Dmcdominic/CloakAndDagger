@@ -14,6 +14,7 @@ public class player_var<T> : ScriptableObject, IEnumerable<int>
 
     public void init(Dictionary<int,T> ND)
     {
+        Debug.Log("initing dict");
         D = ND;
     }
 
@@ -22,7 +23,7 @@ public class player_var<T> : ScriptableObject, IEnumerable<int>
         get
         {
             if (D == null) D = new Dictionary<int, T>();
-            if (!D.ContainsKey(i)) D[i] = default(T);
+            if (!D.ContainsKey(i)) { D[i] = default(T); Debug.Log($"Key Not Found. Key  {i}"); }
             return D[i];
         }
         set

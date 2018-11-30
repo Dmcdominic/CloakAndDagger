@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System;
 
-public enum death_type { dagger, fireball, suicide };
+public enum death_type { dagger, fireball };
 
 [Serializable]
 public struct death_event_data
