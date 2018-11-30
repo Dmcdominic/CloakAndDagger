@@ -54,6 +54,8 @@ public class init : MonoBehaviour {
         status_handler.SetActive(true);
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == map_Config.map);
 
+        map_Config.current_map_info.init_spawnpoints();
+
 		Vector2 spawn_point = map_Config.current_map_info.next_spawn_point;
 		GameObject leader_go = Instantiate(player_prefab, spawn_point, Quaternion.identity);
 

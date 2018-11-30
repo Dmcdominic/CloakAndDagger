@@ -10,6 +10,9 @@ public class dagger_other_collision_trigger : MonoBehaviour {
 
 	public gameplay_config gameplay_Config;
 
+    [SerializeField]
+    GameObject particles;
+
 
 	private void OnTriggerEnter2D(Collider2D collider) {
 		GameObject collided_with = collider.gameObject;
@@ -21,11 +24,14 @@ public class dagger_other_collision_trigger : MonoBehaviour {
 
 		if (tag == "Wall" && !(gameplay_Config.bool_options[gameplay_bool_option.daggers_pierce_walls])) {
 			to_trigger_on_collision.Invoke(network_Id.val);
+            Instantiate(particles, transform.position, transform.rotation);
 		} else if (tag == "Dagger" && (gameplay_Config.bool_options[gameplay_bool_option.daggers_destroy_daggers])) {
 			to_trigger_on_collision.Invoke(network_Id.val);
-		} else if (tag == "Fireball" && (gameplay_Config.bool_options[gameplay_bool_option.fireballs_destroy_daggers])) {
+            Instantiate(particles, transform.position, transform.rotation);
+        } else if (tag == "Fireball" && (gameplay_Config.bool_options[gameplay_bool_option.fireballs_destroy_daggers])) {
 			to_trigger_on_collision.Invoke(network_Id.val);
-		}
+            Instantiate(particles, transform.position, transform.rotation);
+        }
 	}
 
 }

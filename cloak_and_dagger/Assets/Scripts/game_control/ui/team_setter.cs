@@ -18,9 +18,6 @@ public class team_setter : MonoBehaviour {
 
 
     [SerializeField]
-    player_int also_team;
-
-    [SerializeField]
     int_var local_id;
 
     public int id;
@@ -39,18 +36,21 @@ public class team_setter : MonoBehaviour {
     [SerializeField]
     Image red_image;
 
+    
+    [SerializeField]
+    win_con_config wcc;
+
 	// Use this for initialization
 	void Start () {
         B.onClick.AddListener(() =>
         {
             team_swap_out.Invoke(0, null, local_id);
             team[id] = (int)(my_team == color.blue ? color.red : color.blue);
-            also_team[id] = (int)(my_team == color.blue ? color.red : color.blue);
             toggle();
         });
         team_swap_in.e.AddListener((f, o, i) => { if (i == id) toggle(); });
         team[id] = (int)color.blue;
-        also_team[id] = (int)color.blue;
+        StartCoroutine(hide());
 
     }
 
@@ -77,4 +77,32 @@ public class team_setter : MonoBehaviour {
         B.interactable = id == local_id;
 
 	}
+
+    IEnumerator hide()
+    {
+        while (true)
+        {
+            
+            yield return new WaitUntil(() => wcc.bool_options[winCon_bool_option.free_for_all]);
+            
+            foreach(Transform t in transform)
+            {
+                t.gameObject.SetActive(false);
+            }
+            yield return new WaitUntil(() => !wcc.bool_options[winCon_bool_option.free_for_all]);
+            foreach(Transform t in transform)
+            {
+                t.gameObject.SetActive(true);
+            }
+            if (my_team == color.blue)
+                red_image.gameObject.SetActive(false);
+            else
+                blue_image.gameObject.SetActive(false);
+            
+            yield return null;
+        }
+
+    }
+
 }
+

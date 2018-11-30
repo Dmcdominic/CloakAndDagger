@@ -28,6 +28,9 @@ public class character_icon_setter : MonoBehaviour {
 
     [SerializeField]
     team_setter team_selecter;
+
+    [SerializeField]
+    player_int character_chosen;
     
 
     public int my_char = -1;
@@ -36,6 +39,7 @@ public class character_icon_setter : MonoBehaviour {
 
     public void Start()
     {
+        
         network_character_select.e.AddListener((d, o, i) => 
         {
             int pallette = (int)o;
@@ -43,16 +47,18 @@ public class character_icon_setter : MonoBehaviour {
             {
                 my_char = pallette / 2;
                 my_color = pallette % 2;
+                character_chosen[i] = pallette;
             }
         });
         local_character_select.e.AddListener((d, o, i) => {
-            if (i == transform.GetSiblingIndex()) { my_char = (int)o / 2; my_color = (int)o % 2; } });
+            if (i == transform.GetSiblingIndex()) { my_char = (int)o / 2; my_color = (int)o % 2; character_chosen[i] = (int)o; } });
     }
 
     public void setter(int i, string name)
     {
         my_name.text = name;
         if (my_char == -1) my_char = i;
+        //character_chosen[transform.GetSiblingIndex()] = i;
         my_picture.sprite = sprite_lookup.data[new Vector2(my_char, my_color)];
         local_stuff.SetActive(i == local_id);
         team_selecter.id = transform.GetSiblingIndex();
@@ -61,6 +67,7 @@ public class character_icon_setter : MonoBehaviour {
     public void color_right()
     { 
         local_character_select.Invoke(0, (my_char * 2) + (my_color + 1) % 2, local_id, reliable: true);
+        print($" id: {transform.GetSiblingIndex()}, color: {character_chosen[transform.GetSiblingIndex()]}");
     }
 
     public void color_left()

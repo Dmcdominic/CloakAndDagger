@@ -13,10 +13,25 @@ public class char_anim_helper : MonoBehaviour {
 	private Animator animator;
 	private Rigidbody2D rb;
 
+    [SerializeField]
+    player_int character_chosen;
+
+    int net_id;
+
+
 
 	private void Awake() {
 		animator = GetComponent<Animator>();
 		rb = GetComponentInParent<Rigidbody2D>();
+        if(GetComponentInParent<network_id>())
+        {
+            net_id = GetComponentInParent<network_id>().val;
+            anim_parent ap = GetComponent<anim_parent>();
+            ap.set_all_palette(character_chosen[net_id]);
+        }
+        
+
+
 		if (dagger_thrown) {
 			dagger_thrown.e.AddListener(on_dagger_thrown);
 		}

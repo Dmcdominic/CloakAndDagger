@@ -18,6 +18,10 @@ public class vec2_list : ScriptableObject
         set { this.value = value; }
     }
 
+    public void set_counter(int i)
+    {
+        pos = i;
+    }
     public Vector2 next
     {
         get { pos++; pos %= value.Count; return value[pos]; }
