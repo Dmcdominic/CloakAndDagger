@@ -111,7 +111,7 @@ public abstract class config_fields_controller<T0, T1, T2> : MonoBehaviour where
 	}
 
 	// Find the ui parameters for an option that has been removed from the main dictionary as a dependent.
-	private object get_missing_ui_parameter(object option) {
+	protected object get_missing_ui_parameter(object option) {
 		foreach (OrderedDictionary dict in ui_dependents.Values) {
 			foreach (object key in dict.Keys) {
 				if ((int)key == (int)option) {

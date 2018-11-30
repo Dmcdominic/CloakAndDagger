@@ -35,6 +35,7 @@ GameObject:
   - component: {fileID: 114979525041593486}
   - component: {fileID: 114208676034183456}
   - component: {fileID: 114861065466034230}
+  - component: {fileID: 114751369460390050}
   - component: {fileID: 114330597803112994}
   - component: {fileID: 114016115699150332}
   - component: {fileID: 114156292998170134}
@@ -828,6 +829,21 @@ MonoBehaviour:
   dagger_thrown: {fileID: 11400000, guid: 3a8a68bcc7096ac478aa6c31393b3814, type: 2}
   fireball_thrown: {fileID: 11400000, guid: 2b34c6207cb257a4ca70dd2f875b8fb3, type: 2}
   running_velo_threshhold: 5
+--- !u!114 &114751369460390050
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479639472354148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dbec76f3c746204f9ccc1bd0035384e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  win_Con_Config: {fileID: 11400000, guid: 4a15c59b8048876449a6497af431e6a7, type: 2}
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
+  teams: {fileID: 11400000, guid: 3e6fb11ac1e910349b8e078c4edc1c78, type: 2}
+  trigger: {fileID: 11400000, guid: f3ff7449ed3e34e4ba38bfc58aa2dadc, type: 2}
 --- !u!114 &114861065466034230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -840,8 +856,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
-  light_spawn_trigger: {fileID: 11400000, guid: ecca28e87029d9940927a70137884b99,
-    type: 2}
   trigger: {fileID: 11400000, guid: f3ff7449ed3e34e4ba38bfc58aa2dadc, type: 2}
 --- !u!114 &114938384083110894
 MonoBehaviour:
