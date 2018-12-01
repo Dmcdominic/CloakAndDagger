@@ -25,6 +25,8 @@ public class place_torch : sync_behaviour<torch_state> {
 	[SerializeField]
 	gameplay_config gameplay_Config;
 
+    [SerializeField]
+    Sound_manager Sfx;
 
 	public override void Start() {
 		base.Start();
@@ -42,6 +44,7 @@ public class place_torch : sync_behaviour<torch_state> {
 	}
 
 	public override void rectify(float t, torch_state state) {
+        Sfx.sfx_trigger.Invoke("Place_torch");
 		place_func(state);
 	}
 

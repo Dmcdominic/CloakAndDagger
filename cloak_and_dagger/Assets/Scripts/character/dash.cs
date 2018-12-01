@@ -41,6 +41,8 @@ public class dash : sync_behaviour<serializable_vec2> {
     [SerializeField]
     float mini_stun;
 
+    [SerializeField]
+    Sound_manager Sfx;
 
     Rigidbody2D rb;
 
@@ -80,6 +82,7 @@ public class dash : sync_behaviour<serializable_vec2> {
     {
         light_spawn_data light_data = new light_spawn_data(_origin.val, 2f);
         light_spawn_trigger.Invoke(light_data);
+        Sfx.sfx_trigger.Invoke("Dash");
         transform.position = v2;
         stun_out.Invoke(gameObject_id.val,mini_stun);
     }
@@ -101,7 +104,5 @@ public class dash : sync_behaviour<serializable_vec2> {
         stun_out.Invoke(gameObject_id.val, mini_stun);
         return true;
     }
-
-
 
 }
