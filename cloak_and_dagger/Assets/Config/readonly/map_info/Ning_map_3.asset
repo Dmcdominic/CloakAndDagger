@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   map_name: Ning_map_3
   thumbnail: {fileID: 0}
-  compatible_win_cons: 0000000001000000
+  compatible_win_cons: 00000000010000000400000003000000
   compatible_bool_options: 
   compatible_float_options: 
   compatible_int_options: 

@@ -16,6 +16,8 @@ public class map_info : ScriptableObject {
 
 	public vec2_list _spawn_points;
 
+    public void init_spawnpoints() { _spawn_points.set_counter(0); }
+
 	public List<Vector2> spawn_points {
 		get { return _spawn_points.val; }
 		set { this._spawn_points.val = value; }

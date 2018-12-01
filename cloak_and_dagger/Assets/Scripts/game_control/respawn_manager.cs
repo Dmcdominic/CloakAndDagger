@@ -26,6 +26,7 @@ public class respawn_manager : MonoBehaviour {
 
 	IEnumerator revive(int id,GameObject go)
     {
+        yield return new WaitUntil(() => dead[id]);
         yield return new WaitUntil(() => !dead[id]);
         Vector2 target = map.current_map_info._spawn_points.next;
         while(!good_to_move(target))

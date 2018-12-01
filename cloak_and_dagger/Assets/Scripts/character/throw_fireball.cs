@@ -51,6 +51,9 @@ public class throw_fireball : sync_behaviour<throw_fireball_data> {
 	[SerializeField]
 	anim_parent anim_Parent;
 
+    [SerializeField]
+    Sound_manager Sfx;
+
 	private network_id networkID;
 
 
@@ -78,7 +81,6 @@ public class throw_fireball : sync_behaviour<throw_fireball_data> {
 
 	// Received a throw_fireball event
 	public override void rectify(float t, throw_fireball_data state) {
-		// todo - account for lag with t?
 		throw_func(state);
 	}
 	
@@ -104,6 +106,8 @@ public class throw_fireball : sync_behaviour<throw_fireball_data> {
 		if (fireball_thrown) {
 			fireball_thrown.Invoke(0, gameObject);
 		}
+
+		Sfx.sfx_trigger.Invoke("Throw_fireball");
 	}
 
 	// Edit the properties of the fireball here before throwing it

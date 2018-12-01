@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 using UnityEngine.Events;
 
 
-public enum status {stun, dagger_on_cooldown, dash_on_cooldown, reflect_on_cooldown, dead, reflecting, fireball_on_cooldown }
+public enum status {stun, dagger_on_cooldown, dash_on_cooldown, reflect_on_cooldown, dead, reflecting, fireball_on_cooldown, torch_on_cooldown, trap_on_cooldown, trapped, revealed}
 
 public class status_handler : MonoBehaviour {
 

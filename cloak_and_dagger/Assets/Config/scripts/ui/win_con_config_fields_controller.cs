@@ -41,14 +41,30 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 		// See gameplay_config_fields_controller as an example of this.
 		ui_parameters_ordered.Add(winCon_bool_option.free_for_all, new ui_bool_info<winCon_bool_option>("Each player battles for individual victory - No teams allowed."));
 		ui_parameters_ordered.Add(winCon_float_option.time_limit, new ui_float_info<winCon_bool_option>(0, 300, 0, 3600, "Time in seconds before the game ends. Set to \"0\" for no limit."));
+		ui_parameters_ordered.Add(winCon_bool_option.teammates_revealed, new ui_bool_info<winCon_bool_option>("Your teammates, if any, are always visible to you."));
+
+		// Kill Count
 		ui_parameters_ordered.Add(winCon_int_option.kill_limit, new ui_int_info<winCon_bool_option>(1, 100, 1, 1000, "Number of kills required to win."));
 
+		// Last Survivor
 		ui_parameters_ordered.Add(winCon_int_option.lives, new ui_int_info<winCon_bool_option>(1, 100, 0, 1000, "Number of lives that each player has. Set to \"0\" for no limit."));
 
+		// Regicide/King of the Hill
+		ui_parameters_ordered.Add(winCon_float_option.time_to_win, new ui_float_info<winCon_bool_option>(1, 300, 0, 3600, "How much time in seconds you need to spend holding the objective to win"));
+		ui_parameters_ordered.Add(winCon_float_option.hill_duration, new ui_float_info<winCon_bool_option>(1, 30, 1, 600, "How many seconds each hill stays active for."));
+
+		// Assault
 		ui_parameters_ordered.Add(winCon_int_option.payload_delivery_limit, new ui_int_info<winCon_bool_option>(1, 10, 1, 100, "Number of payload deliveries required to win."));
 		ui_parameters_ordered.Add(winCon_float_option.payload_respawn_delay, new ui_float_info<winCon_bool_option>(0, 20, 0, 120, "Delay in seconds before the payload respawns after being delivered."));
 		ui_parameters_ordered.Add(winCon_float_option.payload_light_range, new ui_float_info<winCon_bool_option>(2f, 10f, 1f, 50f, "The range of the light emitted by the payload."));
 		ui_parameters_ordered.Add(winCon_bool_option.payload_carrier_revealed, new ui_bool_info<winCon_bool_option>("The payload light stays on while being carried."));
+
+		ui_parameters_ordered.Add(winCon_bool_option.carrier_dagger_disabled, new ui_bool_info<winCon_bool_option>("The payload carrier can not use their dagger ability."));
+		ui_parameters_ordered.Add(winCon_bool_option.carrier_fireball_disabled, new ui_bool_info<winCon_bool_option>("The payload carrier can not use their fireball ability."));
+		ui_parameters_ordered.Add(winCon_bool_option.carrier_blink_disabled, new ui_bool_info<winCon_bool_option>("The payload carrier can not use their blink ability."));
+		ui_parameters_ordered.Add(winCon_bool_option.carrier_reflect_disabled, new ui_bool_info<winCon_bool_option>("The payload carrier can not use their reflect ability."));
+		ui_parameters_ordered.Add(winCon_bool_option.carrier_torch_disabled, new ui_bool_info<winCon_bool_option>("The payload carrier can not use their torch ability."));
+		ui_parameters_ordered.Add(winCon_bool_option.carrier_trap_disabled, new ui_bool_info<winCon_bool_option>("The payload carrier can not use their trap ability."));
 
 		base.populate_ui_dependents();
 		base.Awake();
@@ -87,6 +103,13 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 	private void switch_win_con_by_index(int index) {
 		config.switch_win_con(index);
 		update_one_config_value.Invoke(-2, index, (int)config_Category);
+		validate_free_for_fall();
+	}
+
+	private void validate_free_for_fall() {
+		if (!all_Win_Cons_List.win_con_infos[config.win_Condition].compatible_bool_options.Contains(winCon_bool_option.free_for_all)) {
+			config.bool_options[winCon_bool_option.free_for_all] = false;
+		}
 	}
 
 	private void check_map_compatibility() {

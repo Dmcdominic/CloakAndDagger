@@ -12,10 +12,16 @@ public class cooldown_indicator : MonoBehaviour {
 	public gameplay_float_option cooldown_type;
 	
 	public float_var current_cooldown;
-	
+
+	public event_object pulse_event;
+
+	private Animator animator;
+
 
     // initialize
     void Start() {
+		animator = GetComponent<Animator>();
+		pulse_event.e.AddListener(pulse);
         timerMask.fillAmount = 0;
         timeRemaining.text = "";
     }
@@ -26,8 +32,13 @@ public class cooldown_indicator : MonoBehaviour {
 		completeAction();
 	}
 
-    void updateUI() {
-        timerMask.fillAmount = current_cooldown.val / gameplay_Config.float_options[cooldown_type];
+	void updateUI() {
+		float total_cooldown = gameplay_Config.float_options[cooldown_type];
+		if (total_cooldown == 0) {
+			timerMask.fillAmount = 0;
+		} else {
+			timerMask.fillAmount = current_cooldown.val / gameplay_Config.float_options[cooldown_type];
+		}
         if (current_cooldown.val >= 1)
             timeRemaining.text = "" + Mathf.FloorToInt(current_cooldown.val);
         else
@@ -40,4 +51,9 @@ public class cooldown_indicator : MonoBehaviour {
             return;
         timeRemaining.text = "";
     }
+
+	// trigger the indicator pulse
+	public void pulse() {
+		animator.SetTrigger("pulse");
+	}
 }

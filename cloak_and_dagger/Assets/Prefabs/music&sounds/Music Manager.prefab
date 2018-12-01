@@ -150,5 +150,9 @@ MonoBehaviour:
   source: {fileID: 82276208898329774}
   bgm_trigger: {fileID: 11400000, guid: e04d16c04c2c9f649b49d0df2c4be53f, type: 2}
   BGMs:
-    m_keys: []
-    m_values: []
+    m_keys:
+    - Match_end
+    - Title_screen
+    m_values:
+    - {fileID: 8300000, guid: eca220c5355bfab42a29052b1aaae154, type: 3}
+    - {fileID: 8300000, guid: 96955b233a03f814589f8c6a776cf7b3, type: 3}

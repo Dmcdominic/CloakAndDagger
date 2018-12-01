@@ -56,6 +56,9 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 	[SerializeField]
 	anim_parent anim_Parent;
 
+    [SerializeField]
+    Sound_manager Sfx;
+
 	private network_id networkID;
 
 
@@ -79,7 +82,8 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 
 		//int palette = anim_Parent.palette_index;
 		int palette = GetComponentInChildren<anim_piece>().palette_index;
-		throw_dagger_data throw_data = new throw_dagger_data(_origin.val, _dest.val, palette);
+        Vector2 dir = autoaim(_origin.val,_dest.val - _origin.val);
+		throw_dagger_data throw_data = new throw_dagger_data(_origin.val, _origin.val + dir, palette);
 		send_state(throw_data);
 		throw_func(throw_data);
 	}
@@ -94,9 +98,35 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 
 	// Received a throw_dagger event
 	public override void rectify(float t, throw_dagger_data state) {
-		// todo - account for lag with t?
 		throw_func(state);
 	}
+
+    Vector2 autoaim(Vector2 origin,Vector2 dir)
+    {
+        float theta = gameplay_Config.float_options[gameplay_float_option.autoaim_theta];
+        float i = 0;
+        RaycastHit2D rh = new RaycastHit2D();
+        float autoaim_dist = 25;
+        float std = Mathf.Atan2(dir.y, dir.x);
+        for (; i < theta / 2 ; i += .01f)
+        {
+            Vector2 dest = new Vector2(Mathf.Cos(std + i),Mathf.Sin(std + i));
+            rh = Physics2D.Raycast(origin + dest, dest,autoaim_dist);
+            if(rh && rh.transform.tag == "Player")
+            {
+                print($"clockwise");
+                return dest;
+            }
+            dest = new Vector2(Mathf.Cos(std - i),Mathf.Sin(std - i));
+            rh = Physics2D.Raycast(origin + dest, dest, autoaim_dist);
+            if(rh && rh.transform.tag == "Player")
+            {
+                print("counterclockwise");
+                return dest;
+            }
+        }
+        return dir;
+    }
 	
 	// Actually spawn a dagger
 	public void throw_func(throw_dagger_data throw_data) { //too many times have I tried to name a func throw.
@@ -118,8 +148,14 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 		if (!throw_data.reflected) {
 			inform_pmove.Invoke(gameObject_id.val, rotation.eulerAngles.z);
 			if (dagger_thrown) {
-				dagger_thrown.Invoke(0, gameObject);
+				dagger_thrown.Invoke(gameObject_id.val, gameObject);
 			}
+		}
+
+		if (throw_data.reflected) {
+			Sfx.sfx_trigger.Invoke("Dagger_reflect");
+		} else {
+			Sfx.sfx_trigger.Invoke("Throw_dagger");
 		}
 	}
 

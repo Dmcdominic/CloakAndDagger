@@ -68,6 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   payload_prefab: {fileID: 1668131086037320, guid: c6ddb1c0471b0754ebab8e2d93942f44,
     type: 2}
+  global_payload: {fileID: 11400000, guid: ec71e6b7cfde623449a1c7de77c511d4, type: 2}
   spawn_payload_trigger: {fileID: 11400000, guid: 0943b9ec4d9078c4d9412bb09cd9db0f,
     type: 2}
 --- !u!212 &212593215050327770

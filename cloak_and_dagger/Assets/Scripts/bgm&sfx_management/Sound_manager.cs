@@ -5,21 +5,26 @@ using UnityEngine;
 public class Sound_manager : MonoBehaviour {
 
     public string_event_object sfx_trigger;
-    public String_Audioclip_Dict SFXs;
+	public AudioSource audio_source_prefab;
+
+	public String_Audioclip_Dict SFXs;
+
 
     // Use this for initialization
     void Awake() {
-        sfx_trigger.e.AddListener(play_by_name);
-        DontDestroyOnLoad(gameObject);
+		DontDestroyOnLoad(gameObject);
+		sfx_trigger.e.AddListener(play_by_name);
     }
 
     void play_by_name(string sfx_name) {
-        if (SFXs.ContainsKey(sfx_name)) {
-            AudioSource source = new AudioSource();
+		print("Received sfx trigger event by name: " + sfx_name);
+        if (SFXs.ContainsKey(sfx_name) && SFXs[sfx_name] != null) {
+			print("Found the effect. Playing it now");
+			AudioSource source = Instantiate(audio_source_prefab, transform);
             source.playOnAwake = false;
             source.clip = SFXs[sfx_name];
             source.Play();
-            Destroy(source);
+            Destroy(source.gameObject, source.clip.length + 0.5f);
         }
     }
 }

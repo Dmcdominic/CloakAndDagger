@@ -6,7 +6,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 	public abstract win_condition win_Condition { get; }
 	public abstract bool free_for_all_compatible { get; }
 
-	[HideInInspector]
+	//[HideInInspector]
 	public win_condition_assets_packet WCAP;
 
 	protected Dictionary<byte, player_stats> player_stats_dict;
@@ -40,13 +40,14 @@ public abstract class win_condition_controller : MonoBehaviour {
 		// Populate the stats dictionaries
 		int starting_lives = WCAP.win_Con_Config.int_options[winCon_int_option.lives];
 		foreach (byte player in WCAP.teams) {
-			byte team = (byte)WCAP.teams[player];
+			byte team;
 
-			// todo - set teams like in free-for-all case?:
-			//bool free_for_all_enabled = WCAP.win_Con_Config.bool_options[winCon_bool_option.free_for_all];
-			//if (free_for_all_compatible && free_for_all_enabled) {
-			//	team = player;
-			//}
+			bool free_for_all_enabled = WCAP.win_Con_Config.bool_options[winCon_bool_option.free_for_all];
+			if (free_for_all_compatible && free_for_all_enabled) {
+				team = player;
+			} else {
+				team = (byte)WCAP.teams[player];
+			}
 
 			player_stats new_player_stats = new player_stats(player, team, starting_lives);
 			player_stats_dict.Add(player, new_player_stats);
@@ -107,7 +108,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 		player_stats killed = player_stats_dict[death_data.playerID];
 		killed.death_count++;
 		team_stats_dict[killed.teamID].death_count++;
-		if (death_data.death_Type != death_type.suicide) {
+		if (death_data.playerID != death_data.killerID) {
 			player_stats killer = player_stats_dict[death_data.killerID];
 			killer.kill_count++;
 		}
@@ -168,6 +169,8 @@ public class team_stats {
 	public byte kill_count = 0;
 	public byte death_count = 0;
 	public bool winner = false;
+    public float time_in_hill = 0.0f;
+    public float time_as_king = 0.0f;
 
 	public team_stats(byte _teamID, int _starting_lives) {
 		teamID = _teamID;

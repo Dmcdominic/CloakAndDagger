@@ -20,7 +20,7 @@ public class gameplay_config_fields_controller : config_fields_controller<gamepl
 		// See gameplay_config_fields_controller as an example of this.
 
 		// Player movement
-		ui_parameters_ordered.Add(gameplay_float_option.player_movespeed, new ui_float_info<gameplay_bool_option>(20f, 200f, 0f, 500f, "The movespeed of all players."));
+		ui_parameters_ordered.Add(gameplay_float_option.player_movespeed, new ui_float_info<gameplay_bool_option>(4f, 10f, -50f, 50f, "The movespeed of all players."));
 
 		// Spawning
 		ui_parameters_ordered.Add(gameplay_bool_option.initial_reveal, new ui_bool_info<gameplay_bool_option>("All players are revealed briefly before the match begins."));
@@ -36,6 +36,7 @@ public class gameplay_config_fields_controller : config_fields_controller<gamepl
 		ui_parameters_ordered.Add(gameplay_float_option.dagger_light_radius, new ui_float_info<gameplay_bool_option>(10f, 90f, 1f, 179f, "The size of the area which is made visible around a dagger."));
 		ui_parameters_ordered.Add(gameplay_bool_option.dagger_collaterals, new ui_bool_info<gameplay_bool_option>("Daggers can pierce through multiple players."));
 		ui_parameters_ordered.Add(gameplay_bool_option.daggers_pierce_walls, new ui_bool_info<gameplay_bool_option>("Daggers can pass through walls."));
+        ui_parameters_ordered.Add(gameplay_float_option.autoaim_theta, new ui_float_info<gameplay_bool_option>(0, .5f * Mathf.PI, 0, 2 * Mathf.PI,"The angle in radians of aim assist."));
 
 		// Dagger/fireball collisions
 		ui_parameters_ordered.Add(gameplay_bool_option.daggers_destroy_daggers, new ui_bool_info<gameplay_bool_option>("Daggers will destroy each other when they collide."));
@@ -58,6 +59,17 @@ public class gameplay_config_fields_controller : config_fields_controller<gamepl
 		ui_parameters_ordered.Add(gameplay_float_option.reflect_time, new ui_float_info<gameplay_bool_option>(0.1f, 3f, 0f, 100f, "Duration of the reflect ability. While active, any daggers that would collide with the player will instead be reflected in the opposite direction."));
 		ui_parameters_ordered.Add(gameplay_float_option.reflect_cooldown, new ui_float_info<gameplay_bool_option>(2f, 30f, 0f, 100f, "Cooldown of the reflect ability."));
 		ui_parameters_ordered.Add(gameplay_bool_option.fragile_reflect, new ui_bool_info<gameplay_bool_option>("The reflect ability can only reflect one dagger each time it is used."));
+
+		// Torch
+		ui_parameters_ordered.Add(gameplay_float_option.torch_cooldown, new ui_float_info<gameplay_bool_option>(10f, 60f, 0f, 250f, "The cooldown for placing a torch, which illuminates an area to all players"));
+		ui_parameters_ordered.Add(gameplay_float_option.torch_duration, new ui_float_info<gameplay_bool_option>(10f, 60f, 0f, 250f, "The amount of time that a placed torch will stay lit."));
+		ui_parameters_ordered.Add(gameplay_float_option.torch_light_range, new ui_float_info<gameplay_bool_option>(3f, 12f, 1f, 50f, "The range of the light emitted by a torch."));
+
+		// Trap
+		ui_parameters_ordered.Add(gameplay_float_option.trap_cooldown, new ui_float_info<gameplay_bool_option>(10f, 60f, 0f, 250f, "The cooldown for placing a trap, which will catch and illuminate the first player that walks into it."));
+		ui_parameters_ordered.Add(gameplay_float_option.trap_waiting_duration, new ui_float_info<gameplay_bool_option>(10f, 60f, 0f, 250f, "The amount of time that a placed trap will remain on the map before expiring."));
+		ui_parameters_ordered.Add(gameplay_float_option.trap_hold_duration, new ui_float_info<gameplay_bool_option>(1f, 10f, 0f, 100f, "The amount of time that a trap will hold a player in place before releasing them."));
+		ui_parameters_ordered.Add(gameplay_float_option.trap_light_range, new ui_float_info<gameplay_bool_option>(3f, 12f, 1f, 50f, "The range of the light emitted by a trap while holding a player in place."));
 
 		// Other
 		ui_parameters_ordered.Add(gameplay_float_option.bump_reveal_time, new ui_float_info<gameplay_bool_option>(0.5f, 5f, 0f, 100f, "The duration for which each player will be revealed to the other if they touch."));

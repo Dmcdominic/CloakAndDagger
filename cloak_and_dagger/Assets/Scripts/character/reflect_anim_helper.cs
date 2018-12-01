@@ -30,6 +30,10 @@ public class reflect_anim_helper : MonoBehaviour {
 		}
 	}
 
+	private void OnDisable() {
+		sr.enabled = false;
+	}
+
 	private void on_reflect_time(int id, float time) {
 		if (network_Id.val != id) return;
 

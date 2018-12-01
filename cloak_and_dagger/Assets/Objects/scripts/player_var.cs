@@ -12,12 +12,18 @@ public class player_var<T> : ScriptableObject, IEnumerable<int>
     }
     private Dictionary<int, T> D;
 
+    public void init(Dictionary<int,T> ND)
+    {
+        Debug.Log("initing dict");
+        D = ND;
+    }
+
     public T this[int i]
     {
         get
         {
             if (D == null) D = new Dictionary<int, T>();
-            if (!D.ContainsKey(i)) D[i] = default(T);
+            if (!D.ContainsKey(i)) { D[i] = default(T); Debug.Log($"Key Not Found. Key  {i}"); }
             return D[i];
         }
         set
