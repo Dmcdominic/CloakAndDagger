@@ -402,7 +402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   death_trigger: {fileID: 11400000, guid: 65ce5342acaa7e445bbeb3beebbaf218, type: 2}
   dead: {fileID: 11400000, guid: 9fad67e37486e6f449ee3829119a152b, type: 2}
-  map: {fileID: 11400000, guid: 311d7573890fff64598a6d804ea6e720, type: 2}
+  map_Config: {fileID: 11400000, guid: 311d7573890fff64598a6d804ea6e720, type: 2}
 --- !u!114 &114953025827821182
 MonoBehaviour:
   m_ObjectHideFlags: 1

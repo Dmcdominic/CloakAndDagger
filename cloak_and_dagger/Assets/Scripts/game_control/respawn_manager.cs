@@ -11,7 +11,7 @@ public class respawn_manager : MonoBehaviour {
     player_bool dead;
 
     [SerializeField]
-    map_config map;
+    map_config map_Config;
 
 	// Use this for initialization
 	void Start () {
@@ -28,11 +28,11 @@ public class respawn_manager : MonoBehaviour {
     {
         yield return new WaitUntil(() => dead[id]);
         yield return new WaitUntil(() => !dead[id]);
-        Vector2 target = map.current_map_info._spawn_points.next;
-        while(!good_to_move(target))
+        Vector2 target = map_Config.next_spawn_point(id);
+		while (!good_to_move(target))
         {
-            target = map.current_map_info._spawn_points.next;
-            yield return null;
+            target = map_Config.next_spawn_point(id);
+			yield return null;
         }
         go.transform.position = target;
         go.SetActive(true);

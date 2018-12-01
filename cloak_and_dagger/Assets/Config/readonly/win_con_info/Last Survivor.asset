@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Last Survivor
   m_EditorClassIdentifier: 
   win_Condition: 0
-  default_map: Ning_map_3
+  default_map: The Caverns of Nenghan
   compatible_bool_options: 0000000001000000
   compatible_float_options: 
   compatible_int_options: 00000000
