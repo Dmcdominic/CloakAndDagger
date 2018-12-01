@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Collider2D), typeof(SpriteRenderer))]
 public class payload : MonoBehaviour {
 
 	[SerializeField]
@@ -19,6 +19,8 @@ public class payload : MonoBehaviour {
 	[HideInInspector]
 	public float last_pickup_time;
 
+	public SpriteRenderer spriteRenderer { get; set; }
+
 	private new Collider2D collider2D;
 	private new Light light;
 
@@ -34,6 +36,7 @@ public class payload : MonoBehaviour {
 		
 		collider2D = GetComponent<Collider2D>();
 		light = GetComponentInChildren<Light>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
 		
 		carrier_revealed = win_Con_Config.bool_options[winCon_bool_option.payload_carrier_revealed];
 		light.range = win_Con_Config.float_options[winCon_float_option.payload_light_range];
@@ -44,6 +47,7 @@ public class payload : MonoBehaviour {
 		carried = false;
 		collider2D.enabled = true;
 		light.enabled = true;
+		transform.rotation = Quaternion.identity;
 		gameObject.SetActive(true);
 	}
 

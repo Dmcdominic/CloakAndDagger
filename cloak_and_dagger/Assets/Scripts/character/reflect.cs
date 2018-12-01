@@ -33,13 +33,13 @@ public class reflect : sync_behaviour<unit> {
 	}
 
 	public override void rectify(float t, unit state) {
-        Sfx.sfx_trigger.Invoke("Shield");
 		reflect_func();
 	}
 
 	private void reflect_func() {
 		to_trigger_reflect_cooldown.Invoke(gameObject_id.val, gameplay_Config.float_options[gameplay_float_option.reflect_cooldown]);
 		to_trigger_reflect_time.Invoke(gameObject_id.val, gameplay_Config.float_options[gameplay_float_option.reflect_time]);
+		Sfx.sfx_trigger.Invoke("Shield");
 	}
 
 }

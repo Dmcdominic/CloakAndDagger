@@ -98,8 +98,6 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 
 	// Received a throw_dagger event
 	public override void rectify(float t, throw_dagger_data state) {
-        // todo - account for lag with t?
-        Sfx.sfx_trigger.Invoke("Throw_dagger");
 		throw_func(state);
 	}
 
@@ -152,6 +150,12 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 			if (dagger_thrown) {
 				dagger_thrown.Invoke(gameObject_id.val, gameObject);
 			}
+		}
+
+		if (throw_data.reflected) {
+			Sfx.sfx_trigger.Invoke("Dagger_reflect");
+		} else {
+			Sfx.sfx_trigger.Invoke("Throw_dagger");
 		}
 	}
 

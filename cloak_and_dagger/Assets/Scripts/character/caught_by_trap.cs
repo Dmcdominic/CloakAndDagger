@@ -33,13 +33,13 @@ public class caught_by_trap : sync_behaviour<int> {
 	}
 
 	public override void rectify(float t, int state) {
-        Sfx.sfx_trigger.Invoke("Trigger_trap");
 		caught_func(state);
 	}
 
 	private void caught_func(int trap_id) {
 		to_trigger_trapped_time.Invoke(gameObject_id.val, gameplay_Config.float_options[gameplay_float_option.trap_hold_duration]);
 		to_trigger_trap_catch.Invoke(trap_id);
+		Sfx.sfx_trigger.Invoke("Trigger_trap");
 	}
 
 }

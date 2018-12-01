@@ -72,7 +72,7 @@ public class dash : sync_behaviour<serializable_vec2> {
         
         cooldown_out.Invoke(gameObject_id.val, cooldown);
         send_state((Vector2)transform.position);
-        GameObject trail = Instantiate(blink_trail_prefab,transform.position,Quaternion.identity);
+		GameObject trail = Instantiate(blink_trail_prefab,transform.position,Quaternion.identity);
         trail.GetComponent<move_between>().run(_origin.val, transform.position, 5, Time.deltaTime);
         
 
@@ -102,7 +102,8 @@ public class dash : sync_behaviour<serializable_vec2> {
         }
         
         stun_out.Invoke(gameObject_id.val, mini_stun);
-        return true;
+		Sfx.sfx_trigger.Invoke("Dash");
+		return true;
     }
 
 }

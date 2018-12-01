@@ -42,7 +42,6 @@ public class place_trap : sync_behaviour<trap_state> {
 	private void local_place(int id, float cooldown) {
 		if (id != gameObject_id.val) return;
 
-        Sfx.sfx_trigger.Invoke("Place_trap");
 		trap_state trap_State = new trap_state(_origin.val);
 		send_state(trap_State);
 		place_func(trap_State);
@@ -57,8 +56,8 @@ public class place_trap : sync_behaviour<trap_state> {
 		new_trap.transform.position = trap_State.position;
 		new_trap.placer_id = gameObject_id.val;
 		new_trap.set_network_id(trap_State.trap_id);
-
-		// todo - sound effect for placing trap here
+		
+		Sfx.sfx_trigger.Invoke("Place_trap");
 	}
 
 }
