@@ -51,6 +51,15 @@ public class player_var<T> : ScriptableObject, IEnumerable<int>
         get { if (D == null) D = new Dictionary<int, T>(); return D.Keys.Count; }
     }
 
+    public bool Contains(int id)
+    {
+        if (D != null)
+            return D.ContainsKey(id);
+        else
+            D = new Dictionary<int, T>();
+        return false;
+    }
+
     public T mine(int i)
     {
 

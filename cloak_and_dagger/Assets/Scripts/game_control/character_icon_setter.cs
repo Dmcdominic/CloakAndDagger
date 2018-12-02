@@ -31,6 +31,9 @@ public class character_icon_setter : MonoBehaviour {
 
     [SerializeField]
     player_int character_chosen;
+
+    [SerializeField]
+    event_object party_changed;
     
 
     public int my_char = -1;
@@ -52,13 +55,16 @@ public class character_icon_setter : MonoBehaviour {
         });
         local_character_select.e.AddListener((d, o, i) => {
             if (i == transform.GetSiblingIndex()) { my_char = (int)o / 2; my_color = (int)o % 2; character_chosen[i] = (int)o; } });
+        party_changed.e.AddListener(() => local_character_select.Invoke(0, (my_char * 2) + Mathf.Abs((my_color - 1) % 2),local_id));
     }
 
     public void setter(int i, string name)
     {
         my_name.text = name;
         if (my_char == -1) my_char = i;
-        //character_chosen[transform.GetSiblingIndex()] = i;
+        if(!character_chosen.Contains(i))
+            character_chosen[i] = i;
+
         my_picture.sprite = sprite_lookup.data[new Vector2(my_char, my_color)];
         local_stuff.SetActive(i == local_id);
         team_selecter.id = transform.GetSiblingIndex();
@@ -72,7 +78,7 @@ public class character_icon_setter : MonoBehaviour {
 
     public void color_left()
     {
-        local_character_select.Invoke(0, (my_char * 2) + Mathf.Abs((my_color - 1) % 2), local_id, reliable: true);
+        local_character_select.Invoke(0, (my_char * 2) + Mathf.Abs((my_color - 1) % 2), local_id);
 
     }
 }
