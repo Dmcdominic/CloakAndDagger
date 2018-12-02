@@ -90,6 +90,10 @@ public class ui_manager : MonoBehaviour {
 
     bool connected = false;
 
+    [SerializeField]
+    event_object login;
+
+
 
 
 	// Use this for initialization
@@ -156,6 +160,7 @@ public class ui_manager : MonoBehaviour {
         client.val.Register_friend_callbacks(found_friend.Invoke, failed_to_find_friend.Invoke);
 
         StartCoroutine(notify_party_change(notify_parties   ));
+
     }
 
     public void sign_up()
@@ -188,7 +193,7 @@ public class ui_manager : MonoBehaviour {
     IEnumerator delay_sign_in()
     {
         yield return new WaitUntil(() => connected);
-        client.val.Login(my_name, pass, () => { loading.SetActive(false); title.SetActive(false); start_menu.SetActive(true); }
+        client.val.Login(my_name, pass, () => { loading.SetActive(false); title.SetActive(false); start_menu.SetActive(true); login.Invoke(); }
             ,() => { login_error.SetActive(true); loading.SetActive(false); });
     }
 
