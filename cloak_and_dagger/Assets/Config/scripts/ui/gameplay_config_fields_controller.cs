@@ -36,7 +36,6 @@ public class gameplay_config_fields_controller : config_fields_controller<gamepl
 		ui_parameters_ordered.Add(gameplay_float_option.dagger_light_radius, new ui_float_info<gameplay_bool_option>(10f, 90f, 1f, 179f, "The size of the area which is made visible around a dagger."));
 		ui_parameters_ordered.Add(gameplay_bool_option.dagger_collaterals, new ui_bool_info<gameplay_bool_option>("Daggers can pierce through multiple players."));
 		ui_parameters_ordered.Add(gameplay_bool_option.daggers_pierce_walls, new ui_bool_info<gameplay_bool_option>("Daggers can pass through walls."));
-        ui_parameters_ordered.Add(gameplay_float_option.autoaim_theta, new ui_float_info<gameplay_bool_option>(0, .5f * Mathf.PI, 0, 2 * Mathf.PI,"The angle in radians of aim assist."));
 
 		// Dagger/fireball collisions
 		ui_parameters_ordered.Add(gameplay_bool_option.daggers_destroy_daggers, new ui_bool_info<gameplay_bool_option>("Daggers will destroy each other when they collide."));

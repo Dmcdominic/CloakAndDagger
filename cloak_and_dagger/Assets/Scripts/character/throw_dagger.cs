@@ -103,7 +103,7 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 
     Vector2 autoaim(Vector2 origin,Vector2 dir)
     {
-        float theta = gameplay_Config.float_options[gameplay_float_option.autoaim_theta];
+        float theta = readonly_Gameplay_Config.float_options[readonly_gameplay_float_option.autoaim_theta];
         float i = 0;
         RaycastHit2D rh = new RaycastHit2D();
         float autoaim_dist = 25;

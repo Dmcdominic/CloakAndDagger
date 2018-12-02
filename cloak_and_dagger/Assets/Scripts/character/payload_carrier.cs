@@ -102,6 +102,8 @@ public class payload_carrier : sync_behaviour<payload_event_struct> {
 
 		if (is_local) {
 			payload.spriteRenderer.material = conditional_Rendering.local_mat;
+		} else {
+			payload.spriteRenderer.material = conditional_Rendering.non_local_mat;
 		}
 		payload.pick_up(gameObject_id.val, t);
 		payload_pickup.Invoke(gameObject_id.val);
@@ -109,14 +111,14 @@ public class payload_carrier : sync_behaviour<payload_event_struct> {
 
 	private void drop_payload() {
 		payload.transform.SetParent(null);
-		payload.spriteRenderer.material = conditional_Rendering.non_local_mat;
+		payload.spriteRenderer.material = conditional_Rendering.local_mat;
 		payload.drop();
 		payload_dropped.Invoke(gameObject_id.val);
 	}
 
 	private void deliver_payload() {
 		payload.transform.SetParent(null);
-		payload.spriteRenderer.material = conditional_Rendering.non_local_mat;
+		payload.spriteRenderer.material = conditional_Rendering.local_mat;
 		payload.deliver();
 		payload_delivered.Invoke(gameObject_id.val);
 	}

@@ -59,6 +59,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &1639841948057730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4342245820078564}
+  - component: {fileID: 114032317696455398}
+  m_Layer: 0
+  m_Name: regicide
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!1 &1924699800826390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4017133709017186}
+  - component: {fileID: 114646763758222664}
+  m_Layer: 0
+  m_Name: king of the hill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &1976182503014990
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,6 +107,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!4 &4017133709017186
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1924699800826390}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4738424570576098}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4156863910189934
 Transform:
   m_ObjectHideFlags: 1
@@ -87,6 +132,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4738424570576098}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4342245820078564
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1639841948057730}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4738424570576098}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4576649971311402
 Transform:
@@ -114,6 +172,8 @@ Transform:
   - {fileID: 4576649971311402}
   - {fileID: 4826361174197486}
   - {fileID: 4156863910189934}
+  - {fileID: 4017133709017186}
+  - {fileID: 4342245820078564}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -130,6 +190,20 @@ Transform:
   m_Father: {fileID: 4738424570576098}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114032317696455398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1639841948057730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64a78602371753245a169b7a0db4bb7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
+  is_king: {fileID: 11400000, guid: 30c9fceb0f208f7499b6615b083da8d0, type: 2}
 --- !u!114 &114058240854290130
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072ffe9121368e14db8f10d342f5a760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WCAP: {fileID: 0}
+  WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
 --- !u!114 &114462569691076326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,11 +230,13 @@ MonoBehaviour:
   start_in: {fileID: 11400000, guid: 7f1fcba0038477d4d90bcba572f87cf6, type: 2}
   WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
   WC_controller_prefabs:
-    m_keys: 000000000100000002000000
+    m_keys: 0000000001000000020000000400000003000000
     m_values:
     - {fileID: 114058240854290130}
     - {fileID: 114977693231741110}
     - {fileID: 114627081766228654}
+    - {fileID: 114646763758222664}
+    - {fileID: 114032317696455398}
 --- !u!114 &114627081766228654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,11 +248,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a56b6b8c4e330449bef18d7094ad82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WCAP: {fileID: 0}
+  WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
   payload_pickup: {fileID: 11400000, guid: 1e85ee8d760c31c4d89422e43288679c, type: 2}
   payload_dropped: {fileID: 11400000, guid: e6616da01b0b212499d9c070d314c87c, type: 2}
   payload_delivery: {fileID: 11400000, guid: 95b2f7417a0e2ee47ab64b77132f7188, type: 2}
   spawn_payload: {fileID: 11400000, guid: 0943b9ec4d9078c4d9412bb09cd9db0f, type: 2}
+--- !u!114 &114646763758222664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1924699800826390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8beede0f8d113af469c23e8fb44eabbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
+  time_in: {fileID: 11400000, guid: b78fe389e187d134caff10519b7a4456, type: 2}
+  time_score: {fileID: 11400000, guid: f09251d62b55ae445899dd3f66da5825, type: 2}
+  activate_hills: {fileID: 11400000, guid: 31d73016893119b4090ab6000e4a9468, type: 2}
 --- !u!114 &114977693231741110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,4 +279,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dd5b2c495e1b44ea56733b486ba8a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WCAP: {fileID: 0}
+  WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
