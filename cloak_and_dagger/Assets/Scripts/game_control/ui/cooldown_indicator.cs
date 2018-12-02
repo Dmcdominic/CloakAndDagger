@@ -32,8 +32,13 @@ public class cooldown_indicator : MonoBehaviour {
 		completeAction();
 	}
 
-    void updateUI() {
-        timerMask.fillAmount = current_cooldown.val / gameplay_Config.float_options[cooldown_type];
+	void updateUI() {
+		float total_cooldown = gameplay_Config.float_options[cooldown_type];
+		if (total_cooldown == 0) {
+			timerMask.fillAmount = 0;
+		} else {
+			timerMask.fillAmount = current_cooldown.val / gameplay_Config.float_options[cooldown_type];
+		}
         if (current_cooldown.val >= 1)
             timeRemaining.text = "" + Mathf.FloorToInt(current_cooldown.val);
         else

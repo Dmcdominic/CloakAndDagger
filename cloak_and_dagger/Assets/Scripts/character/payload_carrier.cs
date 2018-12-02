@@ -12,7 +12,7 @@ public struct payload_event_struct {
 	}
 }
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Collider2D), typeof(Conditional_Rendering))]
 public class payload_carrier : sync_behaviour<payload_event_struct> {
 
 	[SerializeField]
@@ -27,6 +27,8 @@ public class payload_carrier : sync_behaviour<payload_event_struct> {
 
 	[SerializeField]
 	private gameobject_var global_payload;
+
+	private Conditional_Rendering conditional_Rendering;
 
 	private payload _payload;
 	private payload payload {
@@ -45,6 +47,7 @@ public class payload_carrier : sync_behaviour<payload_event_struct> {
 
 
 	private void Awake() {
+		conditional_Rendering = GetComponent<Conditional_Rendering>();
 		if (pre_local_death) {
 			pre_local_death.e.AddListener(on_pre_local_death);
 		}
@@ -97,18 +100,23 @@ public class payload_carrier : sync_behaviour<payload_event_struct> {
 		payload.transform.localPosition = new Vector3(0.5f, 0);
 		payload.transform.rotation = Quaternion.identity;
 
+		if (is_local) {
+			payload.spriteRenderer.material = conditional_Rendering.local_mat;
+		}
 		payload.pick_up(gameObject_id.val, t);
 		payload_pickup.Invoke(gameObject_id.val);
 	}
 
 	private void drop_payload() {
 		payload.transform.SetParent(null);
+		payload.spriteRenderer.material = conditional_Rendering.non_local_mat;
 		payload.drop();
 		payload_dropped.Invoke(gameObject_id.val);
 	}
 
 	private void deliver_payload() {
 		payload.transform.SetParent(null);
+		payload.spriteRenderer.material = conditional_Rendering.non_local_mat;
 		payload.deliver();
 		payload_delivered.Invoke(gameObject_id.val);
 	}

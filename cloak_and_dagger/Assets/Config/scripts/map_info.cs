@@ -14,17 +14,29 @@ public class map_info : ScriptableObject {
 	public List<map_float_option> compatible_float_options;
 	public List<map_int_option> compatible_int_options;
 
-	public vec2_list _spawn_points;
+	[SerializeField]
+	vec2_list ffa_spawn_points;
 
-    public void init_spawnpoints() { _spawn_points.set_counter(0); }
+	[SerializeField]
+	vec2_list blue_spawn_points;
 
-	public List<Vector2> spawn_points {
-		get { return _spawn_points.val; }
-		set { this._spawn_points.val = value; }
+	[SerializeField]
+	vec2_list red_spawn_points;
+
+    public void init_spawnpoints() {
+		ffa_spawn_points.set_counter(0);
+		blue_spawn_points.set_counter(0);
+		red_spawn_points.set_counter(0);
 	}
 
-	public Vector2 next_spawn_point {
-		get { return _spawn_points.next; }
+	public vec2_list spawn_points(bool free_for_all, int team_id) {
+		if (free_for_all) {
+			return ffa_spawn_points;
+		} else if (team_id == 0) {
+			return blue_spawn_points;
+		} else {
+			return red_spawn_points;
+		}
 	}
 
 }

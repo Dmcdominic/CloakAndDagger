@@ -12,15 +12,24 @@ EditorBuildSettings:
     path: Assets/Scenes/final_final_lobby.unity
     guid: 6a7e0cf99b1bd7c478db64ede2b07d00
   - enabled: 1
-    path: Assets/Scenes/maps/Cave Demo.unity
-    guid: f9952c8db80928e45af5aedef57d425a
+    path: Assets/Scenes/maps/Atlantis.unity
+    guid: 3065907ddf2b81c408d794610a2ec70c
   - enabled: 1
-    path: Assets/Scenes/maps/Ning_map_1.unity
+    path: Assets/Scenes/maps/Fragments of Nenghan.unity
     guid: d1e2c1e31bbcc6d448a2108950fe6e15
-  - enabled: 1
-    path: Assets/Scenes/maps/Ning_map_3.unity
-    guid: 9d4fa3e7cc6c20741bd31d3894924515
   - enabled: 1
     path: Assets/Scenes/maps/Fully Visible.unity
     guid: 0789a475ec369c54ba79038b4d31fb69
+  - enabled: 1
+    path: Assets/Scenes/maps/Neptune's Trident.unity
+    guid: d028d70f82bbb6e478629797a7d98eda
+  - enabled: 1
+    path: Assets/Scenes/maps/Summoning Circle.unity
+    guid: f0e8da09637805c40a2cef84ca547afe
+  - enabled: 1
+    path: Assets/Scenes/maps/The Caverns of Nenghan.unity
+    guid: 9d4fa3e7cc6c20741bd31d3894924515
+  - enabled: 1
+    path: Assets/Scenes/maps/The Den.unity
+    guid: f9952c8db80928e45af5aedef57d425a
   m_configObjects: {}

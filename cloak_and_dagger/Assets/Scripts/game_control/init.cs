@@ -56,7 +56,7 @@ public class init : MonoBehaviour {
 
         map_Config.current_map_info.init_spawnpoints();
 
-		Vector2 spawn_point = map_Config.current_map_info.next_spawn_point;
+		Vector2 spawn_point = map_Config.next_spawn_point(0);
 		GameObject leader_go = Instantiate(player_prefab, spawn_point, Quaternion.identity);
 
 		network_id leader_id = leader_go.GetComponent<network_id>();
@@ -70,8 +70,10 @@ public class init : MonoBehaviour {
 		network_id net_id;
 		int i = 1;
 		if (party && party.val.members != null) {
-			foreach (string member in party.val.members) {
-				spawn_point = map_Config.current_map_info.next_spawn_point;
+			//foreach (string member in party.val.members) {
+			for (int id = 1; id < party.val.members.Count + 1; id++) {
+				string member = party.val.members[id - 1];
+				spawn_point = map_Config.next_spawn_point(id);
 				member_go = Instantiate(player_prefab, spawn_point, Quaternion.identity);
 				net_id = member_go.GetComponent<network_id>();
 				net_id.val = i;

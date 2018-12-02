@@ -23,13 +23,20 @@ public class map_config : config_object<map_bool_option, map_float_option, map_i
 		}
 	}
 	public all_maps_list all_map_infos;
+	public event_object map_changed;
+	public config_option_event_object update_one_config_value;
+	public win_con_config win_Con_Config;
+	public player_int teams;
+
 	public map_info current_map_info {
 		get {
 			return all_map_infos.map_infos[map];
 		}
 	}
-	public event_object map_changed;
-	public config_option_event_object update_one_config_value;
+	public Vector2 next_spawn_point(int player_id) {
+		bool ffa = win_Con_Config.bool_options[winCon_bool_option.free_for_all];
+		return current_map_info.spawn_points(ffa, teams[player_id]).next;
+	}
 
 	public new MapOption_Bool_Dict bool_options = new MapOption_Bool_Dict();
 	public new MapOption_Float_Dict float_options = new MapOption_Float_Dict();

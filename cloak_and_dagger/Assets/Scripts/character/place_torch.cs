@@ -44,14 +44,13 @@ public class place_torch : sync_behaviour<torch_state> {
 	}
 
 	public override void rectify(float t, torch_state state) {
-        Sfx.sfx_trigger.Invoke("Place_torch");
 		place_func(state);
 	}
 
 	private void place_func(torch_state torch_State) {
 		GameObject new_torch = Instantiate(torch_prefab);
 		new_torch.transform.position = torch_State.position;
-		// todo - sound effect for placing torch here
+		Sfx.sfx_trigger.Invoke("Place_torch");
 	}
 
 }

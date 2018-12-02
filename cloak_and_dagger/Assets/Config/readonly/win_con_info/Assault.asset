@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Assault
   m_EditorClassIdentifier: 
   win_Condition: 2
-  default_map: Ning_map_1
+  default_map: Fragments of Nenghan
   compatible_bool_options: 0100000002000000030000000400000005000000060000000700000007000000
   compatible_float_options: 010000000000000002000000
   compatible_int_options: 02000000

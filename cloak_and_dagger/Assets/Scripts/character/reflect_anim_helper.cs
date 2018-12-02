@@ -30,6 +30,10 @@ public class reflect_anim_helper : MonoBehaviour {
 		}
 	}
 
+	private void OnDisable() {
+		sr.enabled = false;
+	}
+
 	private void on_reflect_time(int id, float time) {
 		if (network_Id.val != id) return;
 
@@ -45,9 +49,7 @@ public class reflect_anim_helper : MonoBehaviour {
 
 	IEnumerator reflect_anim_for_time(float time) {
 		sr.enabled = true;
-		//yield return new WaitForSeconds(time);
-		yield return new WaitForEndOfFrame();
-		yield return new WaitForEndOfFrame();
+		yield return null;
 		yield return new WaitUntil(() => !reflecting[network_Id.val]);
 		sr.enabled = false;
 	}

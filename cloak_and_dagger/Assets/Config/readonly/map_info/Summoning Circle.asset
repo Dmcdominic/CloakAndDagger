@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 019db4baa5f216141ad9ba1380bbcf12, type: 3}
+  m_Name: Summoning Circle
+  m_EditorClassIdentifier: 
+  map_name: Summoning Circle
+  thumbnail: {fileID: 0}
+  compatible_win_cons: 000000000100000003000000
+  compatible_bool_options: 
+  compatible_float_options: 
+  compatible_int_options: 
+  ffa_spawn_points: {fileID: 11400000, guid: c71c1634e56751c43bb4a53000a528e6, type: 2}
+  blue_spawn_points: {fileID: 11400000, guid: 6fafcca504e77c54480bcb04ae7ce89b, type: 2}
+  red_spawn_points: {fileID: 11400000, guid: 985fb1d35d14df24a9a0af73d8f5358d, type: 2}

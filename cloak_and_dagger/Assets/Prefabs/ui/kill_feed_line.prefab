@@ -40,8 +40,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85c4ebb9ad48bb4a85efc205d51e5e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fully_visible_time: 5
-  fade_time: 2
+  fully_visible_time: 8
+  fade_time: 3
 --- !u!114 &114270267225303870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -62,7 +62,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 3183b64e6126b4e6d88cf0097dedc7b0, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 1

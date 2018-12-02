@@ -16,6 +16,8 @@ MonoBehaviour:
   map_changed: {fileID: 11400000, guid: da845d93557c85b42b37da10ce4adaa8, type: 2}
   update_one_config_value: {fileID: 11400000, guid: ef2268ebe1777c848b9d9af100f0b891,
     type: 2}
+  win_Con_Config: {fileID: 11400000, guid: 4a15c59b8048876449a6497af431e6a7, type: 2}
+  teams: {fileID: 11400000, guid: 3e6fb11ac1e910349b8e078c4edc1c78, type: 2}
   bool_options:
     m_keys: 0000000001000000
     m_values: 0000
