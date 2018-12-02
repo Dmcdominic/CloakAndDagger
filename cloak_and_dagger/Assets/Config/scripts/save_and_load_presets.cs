@@ -39,7 +39,7 @@ public class save_and_load_presets : MonoBehaviour {
 			}
 		}
 #if !UNITY_EDITOR
-		load_preset(get_available_presets()[0]);
+		load_preset(get_available_presets()[0], false);
 #endif
 	}
 
@@ -63,7 +63,7 @@ public class save_and_load_presets : MonoBehaviour {
 		save_preset(preset_name_to_save.val);
 	}
 
-	public void load_preset(string preset_name) {
+	public void load_preset(string preset_name, bool sync = true) {
 		preset loaded_preset;
 		if (!save_util.try_load_from_JSON<preset>(presets_subpath, preset_name, out loaded_preset)) {
 			output_result(false, false, loaded_preset.name);
@@ -75,7 +75,9 @@ public class save_and_load_presets : MonoBehaviour {
 			return;
 		}
 
-		to_trigger_sync_all.Invoke();
+		if (sync) {
+			to_trigger_sync_all.Invoke();
+		}
 		output_result(false, true, loaded_preset.name);
 	}
 	public void load_preset() {

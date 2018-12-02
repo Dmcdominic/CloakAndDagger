@@ -5,8 +5,8 @@ using UnityEngine;
 
 // Add options here
 public enum gameplay_bool_option { heartbeat, initial_reveal, dagger_collaterals, daggers_destroy_daggers, daggers_destroy_fireballs, fireballs_destroy_daggers, fireballs_destroy_fireballs, daggers_pierce_walls, fireballs_pierce_walls, fireball_collaterals, fragile_reflect }
-public enum gameplay_float_option { heartbeat_interval, dagger_cooldown, blink_cooldown, blink_range, reflect_time, respawn_delay, dagger_speed, dagger_light_radius, player_movespeed, bump_reveal_time, reflect_cooldown, autoaim_theta,
-    fireball_cooldown, fireball_speed, fireball_light_range, torch_cooldown, torch_duration, torch_light_range, trap_cooldown, trap_waiting_duration, trap_hold_duration, trap_light_range }
+public enum gameplay_float_option { heartbeat_interval, dagger_cooldown, blink_cooldown, blink_range, reflect_time, respawn_delay, dagger_speed, dagger_light_radius, player_movespeed, bump_reveal_time, reflect_cooldown,
+	fireball_cooldown, fireball_speed, fireball_light_range, torch_cooldown, torch_duration, torch_light_range, trap_cooldown, trap_waiting_duration, trap_hold_duration, trap_light_range }
 
 public enum gameplay_int_option { }
 
