@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Kill Count
   m_EditorClassIdentifier: 
   win_Condition: 1
-  default_map: Fragments of Nenghan
+  default_map: Neptune's Trident
   compatible_bool_options: 0000000001000000
   compatible_float_options: 00000000
   compatible_int_options: 01000000

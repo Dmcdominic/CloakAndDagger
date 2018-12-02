@@ -17,8 +17,14 @@ MonoBehaviour:
     - The Caverns of Nenghan
     - Fully Visible
     - The Den
+    - Summoning Circle
+    - Neptune's Trident
+    - Atlantis
     m_values:
     - {fileID: 11400000, guid: 3017e25030363fe4e9d07aaef12aa0d0, type: 2}
     - {fileID: 11400000, guid: fb80a103e3a2b904ba509b3098c019c0, type: 2}
     - {fileID: 11400000, guid: 3eb3b01db0dcc3f4f80a5e6e7d600807, type: 2}
     - {fileID: 11400000, guid: 35a0bde3aa6930a4fb17bac1139d66ef, type: 2}
+    - {fileID: 11400000, guid: d8e795a0295f4a94ca6833d2184c9704, type: 2}
+    - {fileID: 11400000, guid: 4e18d8b2977146c4e9d857143405aff1, type: 2}
+    - {fileID: 11400000, guid: 00885d35449d9dc41af4ca973ca140c3, type: 2}
