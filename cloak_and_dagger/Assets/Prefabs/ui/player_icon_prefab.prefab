@@ -308,7 +308,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 16ef1add25a54134db866000574263d4, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -431,6 +431,7 @@ MonoBehaviour:
     type: 2}
   team_selecter: {fileID: 114175030181350126}
   character_chosen: {fileID: 11400000, guid: 8676a73670a120f4489ffe9e14a36517, type: 2}
+  party_changed: {fileID: 11400000, guid: ff2c3b412cbba164b93e9922610a3ed3, type: 2}
   my_char: -1
 --- !u!114 &114610207679444314
 MonoBehaviour:

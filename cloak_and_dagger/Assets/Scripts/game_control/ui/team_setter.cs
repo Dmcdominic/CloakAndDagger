@@ -44,13 +44,25 @@ public class team_setter : MonoBehaviour {
 	void Start () {
         B.onClick.AddListener(() =>
         {
-            team_swap_out.Invoke(0, null, local_id);
             toggle();
+            team_swap_out.Invoke(0, my_team, local_id);
         });
-        team_swap_in.e.AddListener((f, o, i) => { if (i == id) toggle(); });
+        team_swap_in.e.AddListener((f, o, i) => { if (i == id && my_team != (color)o) toggle(); });
         team[id] = (int)color.blue;
         StartCoroutine(hide());
+        StartCoroutine(party_changed());
 
+    }
+
+    IEnumerator party_changed()
+    {
+        while(true)
+        {
+            int i = party.val.members.Count;
+            yield return new WaitUntil(() => i != party.val.members.Count && local_id == id);
+            team_swap_out.Invoke(0, my_team, local_id);
+        }
+       
     }
 
     void toggle()
