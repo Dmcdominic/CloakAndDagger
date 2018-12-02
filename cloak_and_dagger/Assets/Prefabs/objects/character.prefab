@@ -381,6 +381,7 @@ MonoBehaviour:
       x: 0
       y: 0
   _origin: {fileID: 11400000, guid: 276cb45050efbd24c925199d72e92b6b, type: 2}
+  _target_dest: {fileID: 11400000, guid: 52b66ea0c6126b2458922cc811debf1f, type: 2}
   torch_prefab: {fileID: 1364437081968310, guid: 2808d63230b91294f9ec609324e5a699,
     type: 2}
   trigger: {fileID: 11400000, guid: 96a59347af961ce41ad24f35493ce894, type: 2}
