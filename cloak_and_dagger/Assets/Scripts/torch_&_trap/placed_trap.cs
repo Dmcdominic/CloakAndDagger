@@ -9,6 +9,7 @@ public class placed_trap : MonoBehaviour {
 
 	public int_event_object trap_catch_event;
 
+	private bool unlimited_wait_time = false;
 	private float wait_time_remaining;
 	private float hold_time_remaining;
 
@@ -32,6 +33,7 @@ public class placed_trap : MonoBehaviour {
 		light.enabled = false;
 		light.range = gameplay_Config.float_options[gameplay_float_option.trap_light_range];
 		wait_time_remaining = gameplay_Config.float_options[gameplay_float_option.trap_waiting_duration];
+		unlimited_wait_time = (wait_time_remaining == 0);
 		trap_catch_event.e.AddListener(on_trap_catch_event);
 	}
 
@@ -46,7 +48,7 @@ public class placed_trap : MonoBehaviour {
 			if (hold_time_remaining <= 0) {
 				release_player();
 			}
-		} else {
+		} else if (!unlimited_wait_time) {
 			wait_time_remaining -= Time.deltaTime;
 			if (wait_time_remaining <= 0) {
 				destroy_trap();

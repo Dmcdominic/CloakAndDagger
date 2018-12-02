@@ -51,7 +51,7 @@ public class gameplay_config_fields_controller : config_fields_controller<gamepl
 		ui_parameters_ordered.Add(gameplay_bool_option.fireballs_pierce_walls, new ui_bool_info<gameplay_bool_option>("Fireballs can pass through walls."));
 
 		// Blink
-		ui_parameters_ordered.Add(gameplay_float_option.blink_range, new ui_float_info<gameplay_bool_option>(0.1f, 20f, 0f, 100f, "Maximum range of the blink ability. Blink is a short range teleportation."));
+		ui_parameters_ordered.Add(gameplay_float_option.blink_range, new ui_float_info<gameplay_bool_option>(2f, 20f, 0f, 100f, "Maximum range of the blink ability, a short range teleportation (to your mouse position)."));
 		ui_parameters_ordered.Add(gameplay_float_option.blink_cooldown, new ui_float_info<gameplay_bool_option>(0.1f, 60f, 0f, 250f, "Cooldown of the blink ability."));
 
 		// Reflect
@@ -60,13 +60,14 @@ public class gameplay_config_fields_controller : config_fields_controller<gamepl
 		ui_parameters_ordered.Add(gameplay_bool_option.fragile_reflect, new ui_bool_info<gameplay_bool_option>("The reflect ability can only reflect one dagger each time it is used."));
 
 		// Torch
-		ui_parameters_ordered.Add(gameplay_float_option.torch_cooldown, new ui_float_info<gameplay_bool_option>(10f, 60f, 0f, 250f, "The cooldown for placing a torch, which illuminates an area to all players"));
+		ui_parameters_ordered.Add(gameplay_float_option.torch_cooldown, new ui_float_info<gameplay_bool_option>(10f, 60f, 0f, 250f, "The cooldown for placing a torch (at your mouse position), which illuminates an area to all players."));
 		ui_parameters_ordered.Add(gameplay_float_option.torch_duration, new ui_float_info<gameplay_bool_option>(10f, 60f, 0f, 250f, "The amount of time that a placed torch will stay lit."));
+		ui_parameters_ordered.Add(gameplay_float_option.torch_placement_range, new ui_float_info<gameplay_bool_option>(2f, 20f, 0f, 100f, "The maximum range from which you can place a torch."));
 		ui_parameters_ordered.Add(gameplay_float_option.torch_light_range, new ui_float_info<gameplay_bool_option>(3f, 12f, 1f, 50f, "The range of the light emitted by a torch."));
 
 		// Trap
-		ui_parameters_ordered.Add(gameplay_float_option.trap_cooldown, new ui_float_info<gameplay_bool_option>(10f, 60f, 0f, 250f, "The cooldown for placing a trap, which will catch and illuminate the first player that walks into it."));
-		ui_parameters_ordered.Add(gameplay_float_option.trap_waiting_duration, new ui_float_info<gameplay_bool_option>(10f, 60f, 0f, 250f, "The amount of time that a placed trap will remain on the map before expiring."));
+		ui_parameters_ordered.Add(gameplay_float_option.trap_cooldown, new ui_float_info<gameplay_bool_option>(10f, 60f, 0f, 250f, "The cooldown for placing a trap (underneath you), which will catch and illuminate the first player that walks into it."));
+		ui_parameters_ordered.Add(gameplay_float_option.trap_waiting_duration, new ui_float_info<gameplay_bool_option>(10f, 60f, 0f, 250f, "The amount of time that a placed trap will remain on the map before expiring. Set to 0 for unlimited duration."));
 		ui_parameters_ordered.Add(gameplay_float_option.trap_hold_duration, new ui_float_info<gameplay_bool_option>(1f, 10f, 0f, 100f, "The amount of time that a trap will hold a player in place before releasing them."));
 		ui_parameters_ordered.Add(gameplay_float_option.trap_light_range, new ui_float_info<gameplay_bool_option>(3f, 12f, 1f, 50f, "The range of the light emitted by a trap while holding a player in place."));
 
