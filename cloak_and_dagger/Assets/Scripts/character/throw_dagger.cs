@@ -114,14 +114,12 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
             rh = Physics2D.Raycast(origin + dest, dest,autoaim_dist);
             if(rh && rh.transform.tag == "Player")
             {
-                print($"clockwise");
                 return dest;
             }
             dest = new Vector2(Mathf.Cos(std - i),Mathf.Sin(std - i));
             rh = Physics2D.Raycast(origin + dest, dest, autoaim_dist);
             if(rh && rh.transform.tag == "Player")
             {
-                print("counterclockwise");
                 return dest;
             }
         }

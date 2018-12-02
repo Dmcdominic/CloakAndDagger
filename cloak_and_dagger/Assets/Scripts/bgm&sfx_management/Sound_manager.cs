@@ -17,9 +17,7 @@ public class Sound_manager : MonoBehaviour {
     }
 
     void play_by_name(string sfx_name) {
-		print("Received sfx trigger event by name: " + sfx_name);
         if (SFXs.ContainsKey(sfx_name) && SFXs[sfx_name] != null) {
-			print("Found the effect. Playing it now");
 			AudioSource source = Instantiate(audio_source_prefab, transform);
             source.playOnAwake = false;
             source.clip = SFXs[sfx_name];
