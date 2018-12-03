@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   win_Condition: 4
   default_map: Atlantis
-  compatible_bool_options: 0000000001000000
+  compatible_bool_options: 0000000001000000090000000a000000
   compatible_float_options: 000000000300000004000000
   compatible_int_options: 
