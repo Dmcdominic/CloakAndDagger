@@ -4,7 +4,8 @@ using UnityEngine;
 
 // Add options here
 public enum readonly_gameplay_bool_option { }
-public enum readonly_gameplay_float_option { dagger_stun_time, dagger_buffer, absolute_projectile_range, fireball_stun_time, fireball_buffer, autoaim_theta }
+public enum readonly_gameplay_float_option { dagger_stun_time, dagger_buffer, absolute_projectile_range, fireball_stun_time, fireball_buffer, autoaim_theta,
+	host_start_delay, host_backup_start_time, min_loading_time, countdown_time_interval }
 public enum readonly_gameplay_int_option { }
 
 //[CreateAssetMenu(menuName = "config/readonly_gameplay")]

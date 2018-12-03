@@ -2,6 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct win_con_init_struct {
+	public bool loaded_and_ready_msg;
+	public bool start_countdown_msg;
+
+	public win_con_init_struct (bool _loaded_and_ready_msg, bool _start_countdown_msg) {
+		loaded_and_ready_msg = _loaded_and_ready_msg;
+		start_countdown_msg = _start_countdown_msg;
+	}
+}
+
 public abstract class win_condition_controller : MonoBehaviour {
 	public abstract win_condition win_Condition { get; }
 	public abstract bool free_for_all_compatible { get; }
@@ -11,6 +22,10 @@ public abstract class win_condition_controller : MonoBehaviour {
 
 	protected Dictionary<byte, player_stats> player_stats_dict;
 	protected Dictionary<byte, team_stats> team_stats_dict;
+
+	private int loaded_and_ready_msgs_received = 0;
+	private bool countdown_triggered = false;
+	private float min_loading_timer;
 
 	private float time_limit;
 #pragma warning disable 0414
@@ -29,6 +44,9 @@ public abstract class win_condition_controller : MonoBehaviour {
 		}
 		if (WCAP.done_initing) {
 			WCAP.done_initing.e.AddListener(on_done_initing);
+		}
+		if (WCAP.in_event) {
+			WCAP.in_event.e.AddListener(fake_rectify);
 		}
 
 		// Initialize stats dictionaries and set WCAP references
@@ -68,28 +86,66 @@ public abstract class win_condition_controller : MonoBehaviour {
 		// Let the WC subclass do its initialization
 		init();
 	}
-	
-	// Manages the game timer.
-	// If you want to use update, make sure to call base.Update() as well.
-	protected void Update () {
-		if (WCAP.ingame_state.val) {
-			WCAP.game_timer.val += Time.deltaTime;
-			if (time_limit != 0 && time_limit < WCAP.game_timer.val) {
-				timed_out = true;
-				on_timeout();
+
+	// Once the scene has fully loaded and the client is done initing.
+	private void on_done_initing() {
+		if (WCAP.host.val) {
+			loaded_and_ready_msgs_received++;
+			StartCoroutine(backup_start_host_only());
+			min_loading_timer = WCAP.readonly_Gameplay_Config.float_options[readonly_gameplay_float_option.min_loading_time];
+			check_if_all_ready();
+		} else {
+			WCAP.out_event.Invoke(0, new win_con_init_struct(true, false), 0);
+		}
+	}
+
+	public void fake_rectify(float t, object state, int placeholder) {
+		win_con_init_struct init_struct = (win_con_init_struct)state;
+		if (init_struct.loaded_and_ready_msg && WCAP.host.val) {
+			loaded_and_ready_msgs_received++;
+			check_if_all_ready();
+		}
+
+		if (init_struct.start_countdown_msg && !WCAP.host.val) {
+			StartCoroutine(starting_countdown());
+		}
+	}
+
+	// This should be called by the host once it is ready.
+	// It will send the start_countdown_msg after a delay, if not sent already.
+	IEnumerator backup_start_host_only() {
+		if (WCAP.host.val) {
+			yield return new WaitForSeconds(WCAP.readonly_Gameplay_Config.float_options[readonly_gameplay_float_option.host_backup_start_time]);
+			if (!countdown_triggered) {
+				on_all_ready_host_only();
 			}
 		}
 	}
 
-	private void on_done_initing() {
-		StartCoroutine(starting_countdown());
+	private void check_if_all_ready() {
+		if (loaded_and_ready_msgs_received >= player_stats_dict.Count) {
+			StartCoroutine(on_all_ready_host_only());
+		}
 	}
 
+	// This should be called by the host once everyone is ready.
+	IEnumerator on_all_ready_host_only() {
+		if (WCAP.host.val) {
+			yield return new WaitUntil(() => min_loading_timer <= 0);
+			WCAP.out_event.Invoke(0, new win_con_init_struct(false, true), 0);
+			countdown_triggered = true;
+			yield return new WaitForSeconds(WCAP.readonly_Gameplay_Config.float_options[readonly_gameplay_float_option.host_start_delay]);
+			StartCoroutine(starting_countdown());
+		}
+	}
+
+	// Start this coroutine to activate the countdown.
+	// Will call on_game_start_general after the countdown.
 	IEnumerator starting_countdown() {
-		int seconds_left = 3;
+		int seconds_left = 5;
 		while (seconds_left > 0) {
 			WCAP.countdown_event.Invoke(seconds_left);
-			yield return new WaitForSeconds(1);
+			yield return new WaitForSeconds(WCAP.readonly_Gameplay_Config.float_options[readonly_gameplay_float_option.countdown_time_interval]);
 			seconds_left--;
 		}
 		on_game_start_general();
@@ -101,6 +157,22 @@ public abstract class win_condition_controller : MonoBehaviour {
 		WCAP.ingame_state.val = true;
 		WCAP.trigger_on_game_start.Invoke();
 		on_game_start();
+	}
+
+	// Manages the game timer.
+	// If you want to use update, make sure to call base.Update() as well.
+	protected void Update() {
+		if (min_loading_timer > 0) {
+			min_loading_timer -= Time.deltaTime;
+		}
+
+		if (WCAP.ingame_state.val) {
+			WCAP.game_timer.val += Time.deltaTime;
+			if (time_limit != 0 && time_limit < WCAP.game_timer.val) {
+				timed_out = true;
+				on_timeout();
+			}
+		}
 	}
 
 	// Is called by the player_killed event

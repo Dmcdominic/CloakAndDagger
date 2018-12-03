@@ -7,7 +7,6 @@ public class fireball_light : MonoBehaviour {
 
 	public gameplay_config gameplay_Config;
 	public float z_height;
-	public float light_growth_time;
 
 	private new Light light;
 	private float target_range;

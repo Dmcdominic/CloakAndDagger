@@ -168,7 +168,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  camera_Config: {fileID: 11400000, guid: 8c93fd8fdf0a3854baca4e567117d888, type: 2}
+  camera_shake_event: {fileID: 11400000, guid: a3d436fe35cb07249890b1d61c20eb0c, type: 2}
   trap_catch_event: {fileID: 11400000, guid: e75edf4ea91f1c14d832def32a32e909, type: 2}
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
   placer_id: 0
   buffer_time: 0.2
 --- !u!212 &212495509047536522

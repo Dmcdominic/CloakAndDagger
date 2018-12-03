@@ -504,6 +504,8 @@ MonoBehaviour:
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   readonly_Gameplay_Config: {fileID: 11400000, guid: 8ba77d9a33059e049866b4542e18f72a,
     type: 2}
+  camera_Config: {fileID: 11400000, guid: 8c93fd8fdf0a3854baca4e567117d888, type: 2}
+  camera_shake_event: {fileID: 11400000, guid: a3d436fe35cb07249890b1d61c20eb0c, type: 2}
   inform_pmove: {fileID: 11400000, guid: 61155ee5589bc0e46ab15225bb13c462, type: 2}
   anim_Parent: {fileID: 114614145169798730}
   Sfx: {fileID: 114442754885530496, guid: 3f242b71025bcc94c9dca00b110b1e99, type: 2}
@@ -623,6 +625,8 @@ MonoBehaviour:
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   readonly_Gameplay_Config: {fileID: 11400000, guid: 8ba77d9a33059e049866b4542e18f72a,
     type: 2}
+  camera_Config: {fileID: 11400000, guid: 8c93fd8fdf0a3854baca4e567117d888, type: 2}
+  camera_shake_event: {fileID: 11400000, guid: a3d436fe35cb07249890b1d61c20eb0c, type: 2}
   inform_pmove: {fileID: 11400000, guid: 61155ee5589bc0e46ab15225bb13c462, type: 2}
   anim_Parent: {fileID: 114614145169798730}
   Sfx: {fileID: 114442754885530496, guid: 3f242b71025bcc94c9dca00b110b1e99, type: 2}
@@ -917,9 +921,15 @@ MonoBehaviour:
   kill_out: {fileID: 11400000, guid: a8382b71a4b25b34c8e81f0433bfba56, type: 2}
   pre_local_death: {fileID: 11400000, guid: 1dde9f7150fc37e498a1171d1f71ab25, type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  win_Con_Config: {fileID: 11400000, guid: 4a15c59b8048876449a6497af431e6a7, type: 2}
+  camera_Config: {fileID: 11400000, guid: 8c93fd8fdf0a3854baca4e567117d888, type: 2}
+  camera_shake_event: {fileID: 11400000, guid: a3d436fe35cb07249890b1d61c20eb0c, type: 2}
+  teams: {fileID: 11400000, guid: 3e6fb11ac1e910349b8e078c4edc1c78, type: 2}
   destroy_dagger: {fileID: 11400000, guid: 62a0507375e0cc34dbba2a270381c1e6, type: 2}
   destroy_fireball: {fileID: 11400000, guid: a7fd9b93908c39041add1b7194882863, type: 2}
   dead_body_prefab: {fileID: 1479639472354148, guid: 1de9f5e2b87dcf54f8f318a273340a7c,
+    type: 2}
+  incineration_prefab: {fileID: 1854626503747728, guid: a5303344e987e0047a5457699f5b623a,
     type: 2}
   reflecting: {fileID: 11400000, guid: a9eb7bc703aa53343b2d85148742a033, type: 2}
   local_reflect_proc: {fileID: 11400000, guid: fae1982a6eb4c7342a2052b0162a5d39, type: 2}

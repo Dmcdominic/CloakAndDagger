@@ -175,6 +175,8 @@ MonoBehaviour:
   to_trigger_on_collision: {fileID: 11400000, guid: 62a0507375e0cc34dbba2a270381c1e6,
     type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  camera_Config: {fileID: 11400000, guid: 8c93fd8fdf0a3854baca4e567117d888, type: 2}
+  camera_shake_event: {fileID: 11400000, guid: a3d436fe35cb07249890b1d61c20eb0c, type: 2}
   Sfx: {fileID: 114442754885530496, guid: 3f242b71025bcc94c9dca00b110b1e99, type: 2}
   particles: {fileID: 1638746233387126, guid: e432b1039f113ca419380fa0ca9c1ca8, type: 2}
 --- !u!114 &114431764849634566

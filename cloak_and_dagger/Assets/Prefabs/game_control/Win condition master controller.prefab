@@ -202,7 +202,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
-  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
   is_king: {fileID: 11400000, guid: 30c9fceb0f208f7499b6615b083da8d0, type: 2}
 --- !u!114 &114058240854290130
 MonoBehaviour:

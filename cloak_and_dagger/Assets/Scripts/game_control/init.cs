@@ -17,6 +17,9 @@ public class init : MonoBehaviour {
     [SerializeField]
     gameplay_config gc;
 
+	[SerializeField]
+	string_event_object load_map;
+
     [SerializeField]
     bool_var ingame;
 
@@ -50,11 +53,26 @@ public class init : MonoBehaviour {
 	IEnumerator go(float t)
     {
 		yield return new WaitUntil(() => party.val.leader != "");
+
+		// Original version
+		yield return new WaitForSeconds(0.5f);
 		SceneManager.LoadScene(map_Config.map);
-        status_handler.SetActive(true);
+
+		// Full pre-load version (must uncomment lines in map_loader
+		//load_map.Invoke(map_Config.map);
+
+		// Single async load version
+		//AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(map_Config.map);
+		//asyncOperation.allowSceneActivation = false;
+		//while (asyncOperation.progress < 0.9f) {
+		//	yield return null;
+		//}
+		//asyncOperation.allowSceneActivation = true;
+
+		status_handler.SetActive(true);
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == map_Config.map);
 
-        map_Config.current_map_info.init_spawnpoints();
+		map_Config.current_map_info.init_spawnpoints();
 
 		Vector2 spawn_point = map_Config.next_spawn_point(0);
 		GameObject leader_go = Instantiate(player_prefab, spawn_point, Quaternion.identity);

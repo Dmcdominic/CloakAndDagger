@@ -9,8 +9,11 @@ public class fireball_other_collision_trigger : MonoBehaviour {
 	public int_event_object to_trigger_on_collision;
 
 	public gameplay_config gameplay_Config;
+	public readonly_camera_config camera_Config;
 
-    public Sound_manager Sfx;
+	public float_event_object camera_shake_event;
+
+	public Sound_manager Sfx;
 
 	private network_id network_Id;
 
@@ -26,19 +29,20 @@ public class fireball_other_collision_trigger : MonoBehaviour {
 			return;
 		}
 
-		if (tag == "Wall"
-            && !gameplay_Config.bool_options[gameplay_bool_option.fireballs_pierce_walls]) {
+		if (tag == "Wall" && !gameplay_Config.bool_options[gameplay_bool_option.fireballs_pierce_walls]) {
             Sfx.sfx_trigger.Invoke("Fireball_hit_wall");
-			to_trigger_on_collision.Invoke(network_Id.val);
-		} else if (tag == "Dagger"
-            && (gameplay_Config.bool_options[gameplay_bool_option.daggers_destroy_fireballs])) {
-            // sound effect invoked in dagger_other_collision_trigger.cs
-			to_trigger_on_collision.Invoke(network_Id.val);
-		} else if (tag == "Fireball"
-            && (gameplay_Config.bool_options[gameplay_bool_option.fireballs_destroy_fireballs])) {
+			on_any_collision();
+		} else if (tag == "Dagger" && (gameplay_Config.bool_options[gameplay_bool_option.daggers_destroy_fireballs])) {
+			// sound effect invoked in dagger_other_collision_trigger.cs
+			on_any_collision();
+		} else if (tag == "Fireball" && (gameplay_Config.bool_options[gameplay_bool_option.fireballs_destroy_fireballs])) {
             Sfx.sfx_trigger.Invoke("Fire_hit_fire");
-            to_trigger_on_collision.Invoke(network_Id.val);
+			on_any_collision();
 		}
 	}
 
+	private void on_any_collision() {
+		to_trigger_on_collision.Invoke(network_Id.val);
+		camera_shake_event.Invoke(camera_Config.float_options[readonly_camera_float_option.fireball_hit_object_shake]);
+	}
 }

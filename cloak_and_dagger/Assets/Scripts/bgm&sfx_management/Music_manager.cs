@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class Music_manager : MonoBehaviour {
 
     public AudioSource source;
-    public string_event_object bgm_trigger;
+	public string_event_object bgm_trigger;
     public String_Audioclip_Dict BGMs;
+
+	public int_var maps_starting_build_index;
 
 	private string current_track = "";
 
@@ -20,7 +22,7 @@ public class Music_manager : MonoBehaviour {
     }
 
 	private void on_scene_loaded(Scene arg0, LoadSceneMode arg1) {
-		bool in_lobby = arg0.buildIndex < 2;
+		bool in_lobby = arg0.buildIndex < maps_starting_build_index.val;
 		if (in_lobby) {
 			play_by_name("Title_screen");
 		} else {

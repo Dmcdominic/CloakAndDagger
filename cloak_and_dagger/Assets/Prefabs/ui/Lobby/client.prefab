@@ -233,7 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   message_in: {fileID: 11400000, guid: e646a766baa65fc46a85417a5afc652c, type: 2}
   local_events:
-    m_keys: 000104030502080607090a0f0e100d0b0c
+    m_keys: 000104030502080607090a0f0e100d0b0c11
     m_values:
     - {fileID: 11400000, guid: f825901c86abbd443a8261f8754ed9a1, type: 2}
     - {fileID: 11400000, guid: 62b7d49aefcf6fa4ab1f00d1875a56cd, type: 2}
@@ -252,8 +252,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 72d627094d9115043848e2338bea0540, type: 2}
     - {fileID: 11400000, guid: b64483eea10406c43b5eb6ce0b6c2086, type: 2}
     - {fileID: 11400000, guid: 859b17f3d4875234e9bf1ae2a73b8d01, type: 2}
+    - {fileID: 11400000, guid: 4fbb887e5d5b8ca44ade588d73a79f47, type: 2}
   network_events:
-    m_keys: 000104030502080607090a0e0f100d0b0c
+    m_keys: 000104030502080607090a0e0f100d0b0c11
     m_values:
     - {fileID: 11400000, guid: f7d22b945dd5bd44a8a6aea1e5b0c6f6, type: 2}
     - {fileID: 11400000, guid: 82fd9c3e638984e42b9b775780d7385f, type: 2}
@@ -272,6 +273,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: cd7874dedf9e8474e950e19e2c3ff34e, type: 2}
     - {fileID: 11400000, guid: 99fd4f107f1d83a4d9ec00ed173dc3cf, type: 2}
     - {fileID: 11400000, guid: ae8ce05cb4c2ebc42b2ee8ad8dd57136, type: 2}
+    - {fileID: 11400000, guid: fcf6a99c5dedb7e42abb0c235102cec3, type: 2}
   out_unreliable: {fileID: 11400000, guid: 99b73b994ade95149bbe1b7616ee0397, type: 2}
   out_large: {fileID: 11400000, guid: 14b56887b4680c84a89544f7301ced15, type: 2}
   out_mtc: {fileID: 11400000, guid: 11f3c22c330b0cb499df42eeaeb444ad, type: 2}
@@ -380,6 +382,7 @@ MonoBehaviour:
   done_initing: {fileID: 11400000, guid: d3e0ab02c632bb84d8ec92942cd5dcc5, type: 2}
   map_Config: {fileID: 11400000, guid: 311d7573890fff64598a6d804ea6e720, type: 2}
   gc: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  load_map: {fileID: 11400000, guid: 0081db4e2dc85f341b9729d129728cbf, type: 2}
   ingame: {fileID: 11400000, guid: 651e92a3b77baf94ea1cf6097bf34214, type: 2}
   party: {fileID: 11400000, guid: af142701058b0424d90947e0d77e7de9, type: 2}
   player_prefab: {fileID: 1479639472354148, guid: 409b4a96beb9eec4aae70c7407d93c43,
