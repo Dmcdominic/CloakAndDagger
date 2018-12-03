@@ -43,6 +43,9 @@ public class win_con_config_fields_controller : config_fields_controller<winCon_
 		ui_parameters_ordered.Add(winCon_float_option.time_limit, new ui_float_info<winCon_bool_option>(0, 300, 0, 3600, "Time in seconds before the game ends. Set to \"0\" for no limit."));
 		ui_parameters_ordered.Add(winCon_bool_option.teammates_revealed, new ui_bool_info<winCon_bool_option>("Your teammates, if any, are always visible to you."));
 
+		ui_parameters_ordered.Add(winCon_bool_option.friendly_fire, new ui_bool_info<winCon_bool_option>("Teammates can be killed by your daggers and fireballs."));
+		ui_parameters_ordered.Add(winCon_bool_option.suicide, new ui_bool_info<winCon_bool_option>("You can be killed by your own daggers and fireballs."));
+
 		// Kill Count
 		ui_parameters_ordered.Add(winCon_int_option.kill_limit, new ui_int_info<winCon_bool_option>(1, 100, 1, 1000, "Number of kills required to win."));
 

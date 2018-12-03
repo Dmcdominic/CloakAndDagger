@@ -6,8 +6,13 @@ using UnityEngine;
 public class placed_trap : MonoBehaviour {
 
 	public gameplay_config gameplay_Config;
+	public readonly_camera_config camera_Config;
+
+	public float_event_object camera_shake_event;
 
 	public int_event_object trap_catch_event;
+
+	public int_var local_id;
 
 	private bool unlimited_wait_time = false;
 	private float wait_time_remaining;
@@ -60,7 +65,7 @@ public class placed_trap : MonoBehaviour {
 		if (buffer_time > 0 && player_id == placer_id) {
 			return false;
 		}
-		when_player_caught();
+		when_player_caught(true);
 		return true;
 	}
 
@@ -68,10 +73,10 @@ public class placed_trap : MonoBehaviour {
 		if (trap_id != network_Id.val || holding) {
 			return;
 		}
-		when_player_caught();
+		when_player_caught(false);
 	}
 
-	private void when_player_caught() {
+	private void when_player_caught(bool local) {
 		hold_time_remaining = gameplay_Config.float_options[gameplay_float_option.trap_hold_duration];
 		holding = true;
 
@@ -79,11 +84,16 @@ public class placed_trap : MonoBehaviour {
 		light.enabled = true;
 
 		animator.SetTrigger("catch_player");
-		// todo - sfx for catching the player goes here
+
+		// Camera shake
+		if (local) {
+			camera_shake_event.Invoke(camera_Config.float_options[readonly_camera_float_option.trap_catches_you]);
+		} else {
+			camera_shake_event.Invoke(camera_Config.float_options[readonly_camera_float_option.trap_catches_other]);
+		}
 	}
 
 	public void release_player() {
-		// todo - releasing the player needs to do anything?
 		destroy_trap();
 	}
 

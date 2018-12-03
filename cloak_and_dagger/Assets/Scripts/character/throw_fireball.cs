@@ -44,8 +44,13 @@ public class throw_fireball : sync_behaviour<throw_fireball_data> {
 	gameplay_config gameplay_Config;
 	[SerializeField]
 	readonly_gameplay_config readonly_Gameplay_Config;
+	[SerializeField]
+	readonly_camera_config camera_Config;
 
-    [SerializeField]
+	[SerializeField]
+	float_event_object camera_shake_event;
+
+	[SerializeField]
     int_float_event inform_pmove;
 
 	[SerializeField]
@@ -107,7 +112,15 @@ public class throw_fireball : sync_behaviour<throw_fireball_data> {
 			fireball_thrown.Invoke(0, gameObject);
 		}
 
+		// Sound effect
 		Sfx.sfx_trigger.Invoke("Throw_fireball");
+		
+		// Camera shake
+		if (is_local) {
+			camera_shake_event.Invoke(camera_Config.float_options[readonly_camera_float_option.fireball_you_throw_shake]);
+		} else {
+			camera_shake_event.Invoke(camera_Config.float_options[readonly_camera_float_option.fireball_other_throw_shake]);
+		}
 	}
 
 	// Edit the properties of the fireball here before throwing it

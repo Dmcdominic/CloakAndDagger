@@ -32,8 +32,18 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 
     [SerializeField]
     gameplay_config gameplay_Config;
+	[SerializeField]
+	win_con_config win_Con_Config;
+	[SerializeField]
+	readonly_camera_config camera_Config;
 
-    [SerializeField]
+	[SerializeField]
+	float_event_object camera_shake_event;
+
+	[SerializeField]
+	player_int teams;
+
+	[SerializeField]
     int_event_object destroy_dagger;
 
 	[SerializeField]
@@ -41,6 +51,9 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 
 	[SerializeField]
 	GameObject dead_body_prefab;
+
+	[SerializeField]
+	GameObject incineration_prefab;
 
 	[SerializeField]
 	player_bool reflecting;
@@ -75,6 +88,10 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 			dagger_data dagger_Data = collider.gameObject.GetComponent<dagger_data_carrier>().dagger_Data;
 			network_id daggerID = collider.gameObject.GetComponent<network_id>();
 
+			if (!can_be_killed_by(dagger_Data.thrower)) {
+				return;
+			}
+
 			if (reflecting[gameObject_id.val]) {
 				int palette = collider.gameObject.GetComponent<anim_piece>().palette_index;
 				destroy_dagger.Invoke(daggerID.val);
@@ -101,6 +118,10 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 			fireball_data fireball_Data = collider.gameObject.GetComponent<fireball_data_carrier>().fireball_Data;
 			network_id fireballID = collider.gameObject.GetComponent<network_id>();
 
+			if (!can_be_killed_by(fireball_Data.thrower)) {
+				return;
+			}
+
 			if (!fireball_Data.collaterals) {
 				destroy_fireball.Invoke(fireballID.val);
 			}
@@ -112,12 +133,35 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 
 
 	public override void rectify(float f, death_event_data DD) {
-		spawn_dead_body(DD);
 		if (DD.death_Type == death_type.dagger) {
+			spawn_dead_body(DD);
 			Sfx.sfx_trigger.Invoke("Dagger_hit_player");
+
+			// Camera shake
+			if (is_local) {
+				camera_shake_event.Invoke(camera_Config.float_options[readonly_camera_float_option.dagger_you_die_shake]);
+			} else if (DD.killerID == gameObject_id.val) {
+				camera_shake_event.Invoke(camera_Config.float_options[readonly_camera_float_option.dagger_you_kill_shake]);
+			} else {
+				camera_shake_event.Invoke(camera_Config.float_options[readonly_camera_float_option.dagger_other_die_shake]);
+			}
 		} else if (DD.death_Type == death_type.fireball) {
+			spawn_incineration(DD);
 			Sfx.sfx_trigger.Invoke("Fireball_hit_player");
+
+			// Camera shake
+			if (is_local) {
+				camera_shake_event.Invoke(camera_Config.float_options[readonly_camera_float_option.fireball_you_die_shake]);
+			} else if (DD.killerID == gameObject_id.val) {
+				camera_shake_event.Invoke(camera_Config.float_options[readonly_camera_float_option.fireball_you_kill_shake]);
+			} else {
+				camera_shake_event.Invoke(camera_Config.float_options[readonly_camera_float_option.fireball_other_die_shake]);
+			}
+		} else { // Default
+			spawn_dead_body(DD);
+			Sfx.sfx_trigger.Invoke("Dagger_hit_player");
 		}
+
 		pre_local_death.Invoke(gameObject_id.val);
 		kill_out.Invoke(gameObject_id.val, gameplay_Config.float_options[gameplay_float_option.respawn_delay]);
         trigger.Invoke(DD);
@@ -130,6 +174,22 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 		body_anim_parent.set_all_palette(anim_Parent.palette_index);
 		char_anim_helper body_char_anim_helper = dead_body.GetComponentInChildren<char_anim_helper>();
 		body_char_anim_helper.play_death_anim();
+	}
+
+	private void spawn_incineration(death_event_data DD) {
+		GameObject incineration = Instantiate(incineration_prefab, transform.position, transform.rotation);
+	}
+
+	private bool can_be_killed_by(int id) {
+		if (gameObject_id.val == id) {
+			return (win_Con_Config.bool_options[winCon_bool_option.suicide]);
+		}
+
+		if (teams[gameObject_id.val] == teams[id]) {
+			return (win_Con_Config.bool_options[winCon_bool_option.friendly_fire]);
+		}
+
+		return true;
 	}
 
 }

@@ -32,6 +32,9 @@ using UnityEditor;
 [CustomPropertyDrawer(typeof(ReadonlyGameplayOption_Bool_Dict))]
 [CustomPropertyDrawer(typeof(ReadonlyGameplayOption_Float_Dict))]
 [CustomPropertyDrawer(typeof(ReadonlyGameplayOption_Int_Dict))]
+[CustomPropertyDrawer(typeof(ReadonlyCameraOption_Bool_Dict))]
+[CustomPropertyDrawer(typeof(ReadonlyCameraOption_Float_Dict))]
+[CustomPropertyDrawer(typeof(ReadonlyCameraOption_Int_Dict))]
 [CustomPropertyDrawer(typeof(String_MapInfo_Dict))]
 [CustomPropertyDrawer(typeof(WinCon_WinConInfo_Dict))]
 // =========== Game control dictionaries ===============

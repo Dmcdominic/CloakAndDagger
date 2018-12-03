@@ -49,8 +49,13 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 	gameplay_config gameplay_Config;
 	[SerializeField]
 	readonly_gameplay_config readonly_Gameplay_Config;
+	[SerializeField]
+	readonly_camera_config camera_Config;
 
-    [SerializeField]
+	[SerializeField]
+	float_event_object camera_shake_event;
+
+	[SerializeField]
     int_float_event inform_pmove;
 
 	[SerializeField]
@@ -150,10 +155,18 @@ public class throw_dagger : sync_behaviour<throw_dagger_data> {
 			}
 		}
 
+		// Sound effect
 		if (throw_data.reflected) {
 			Sfx.sfx_trigger.Invoke("Dagger_reflect");
 		} else {
 			Sfx.sfx_trigger.Invoke("Throw_dagger");
+		}
+
+		// Camera shake
+		if (is_local) {
+			camera_shake_event.Invoke(camera_Config.float_options[readonly_camera_float_option.dagger_you_throw_shake]);
+		} else {
+			camera_shake_event.Invoke(camera_Config.float_options[readonly_camera_float_option.dagger_other_throw_shake]);
 		}
 	}
 
