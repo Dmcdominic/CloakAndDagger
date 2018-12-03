@@ -158,3 +158,5 @@ MonoBehaviour:
     - {fileID: 8300000, guid: eca220c5355bfab42a29052b1aaae154, type: 3}
     - {fileID: 8300000, guid: 96955b233a03f814589f8c6a776cf7b3, type: 3}
     - {fileID: 8300000, guid: 674fe6822671d1d40bfe22803b1b356e, type: 3}
+  maps_starting_build_index: {fileID: 11400000, guid: 3d000b589d227f14daa449f0bd73c425,
+    type: 2}

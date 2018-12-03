@@ -382,6 +382,7 @@ MonoBehaviour:
   done_initing: {fileID: 11400000, guid: d3e0ab02c632bb84d8ec92942cd5dcc5, type: 2}
   map_Config: {fileID: 11400000, guid: 311d7573890fff64598a6d804ea6e720, type: 2}
   gc: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  load_map: {fileID: 11400000, guid: 0081db4e2dc85f341b9729d129728cbf, type: 2}
   ingame: {fileID: 11400000, guid: 651e92a3b77baf94ea1cf6097bf34214, type: 2}
   party: {fileID: 11400000, guid: af142701058b0424d90947e0d77e7de9, type: 2}
   player_prefab: {fileID: 1479639472354148, guid: 409b4a96beb9eec4aae70c7407d93c43,
