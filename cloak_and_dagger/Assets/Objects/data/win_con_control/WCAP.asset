@@ -13,6 +13,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   win_Con_Config: {fileID: 11400000, guid: 4a15c59b8048876449a6497af431e6a7, type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
+  readonly_Gameplay_Config: {fileID: 11400000, guid: 8ba77d9a33059e049866b4542e18f72a,
+    type: 2}
+  in_event: {fileID: 11400000, guid: fcf6a99c5dedb7e42abb0c235102cec3, type: 2}
+  out_event: {fileID: 11400000, guid: 4fbb887e5d5b8ca44ade588d73a79f47, type: 2}
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
+  t0: {fileID: 11400000, guid: 57bb56410a2f79c4aaa77d261a3079f8, type: 2}
+  host: {fileID: 11400000, guid: fe42b619e3bccd34eaf8ce7c03e77e41, type: 2}
   done_initing: {fileID: 11400000, guid: d3e0ab02c632bb84d8ec92942cd5dcc5, type: 2}
   player_killed: {fileID: 11400000, guid: 5073091540451ef49aab435b616bee52, type: 2}
   countdown_event: {fileID: 11400000, guid: af29c19964ac99e4dabd392708532a54, type: 2}

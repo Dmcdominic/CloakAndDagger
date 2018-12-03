@@ -8,6 +8,16 @@ public class win_condition_assets_packet : ScriptableObject {
 	// Config objects
 	public win_con_config win_Con_Config;
 	public gameplay_config gameplay_Config;
+	public readonly_gameplay_config readonly_Gameplay_Config;
+
+	// sync_behavior fields
+	public sync_event in_event;
+	public sync_event out_event;
+	public int_var local_id;
+	public float_var t0;
+
+	// Local player info
+	public bool_var host;
 
 	// Events to listen to
 	public event_object done_initing;
@@ -16,7 +26,7 @@ public class win_condition_assets_packet : ScriptableObject {
 	// Events to trigger
 	public int_event_object countdown_event;
 	public event_object trigger_on_game_start;
-	public event_object trigger_on_game_over; // TODO - this needs to send some kind of game_over_data?
+	public event_object trigger_on_game_over;
 
 	// Player stats and team stats SO
 	public game_stats game_Stats;

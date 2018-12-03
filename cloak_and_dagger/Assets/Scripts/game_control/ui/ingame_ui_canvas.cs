@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class ingame_ui_canvas : MonoBehaviour {
 
+	public GameObject pre_countdown_overlay;
+	public float_event_object start_in;
+
 	public event_object enable_trigger;
 	public List<event_object> disable_triggers;
 
 
 	private void Awake() {
 		DontDestroyOnLoad(gameObject);
+		if (start_in) {
+			start_in.e.AddListener(enable_pre_countdown_overlay);
+		}
 		if (enable_trigger) {
 			enable_trigger.e.AddListener(enable);
 		}
@@ -29,6 +35,10 @@ public class ingame_ui_canvas : MonoBehaviour {
 		foreach (Transform child in transform) {
 			child.gameObject.SetActive(false);
 		}
+	}
+
+	private void enable_pre_countdown_overlay(float placeholder) {
+		pre_countdown_overlay.SetActive(true);
 	}
 
 }

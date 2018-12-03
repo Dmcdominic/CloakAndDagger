@@ -16,7 +16,7 @@ public class sync_behaviour<T> : MonoBehaviour {
     public int_var local_id;
 
     [SerializeField]
-    float_var t0;
+    public float_var t0;
 
     [SerializeField]
     [Range(1,27)]

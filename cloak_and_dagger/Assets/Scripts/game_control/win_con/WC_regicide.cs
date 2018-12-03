@@ -7,9 +7,6 @@ public class WC_regicide : win_condition_controller
 {
 
     [SerializeField]
-    int_var local_id;
-
-    [SerializeField]
     player_bool is_king;
 
     byte king = 255;
