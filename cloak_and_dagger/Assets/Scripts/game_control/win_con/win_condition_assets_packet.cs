@@ -10,11 +10,9 @@ public class win_condition_assets_packet : ScriptableObject {
 	public gameplay_config gameplay_Config;
 	public readonly_gameplay_config readonly_Gameplay_Config;
 
-	// sync_behavior fields
+	// sync_events
 	public sync_event in_event;
 	public sync_event out_event;
-	public int_var local_id;
-	public float_var t0;
 
 	// Local player info
 	public bool_var host;

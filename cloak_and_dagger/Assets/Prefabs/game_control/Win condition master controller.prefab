@@ -201,14 +201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a78602371753245a169b7a0db4bb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_event: {fileID: 0}
-  out_event: {fileID: 0}
-  local_id: {fileID: 0}
-  t0: {fileID: 0}
-  sync_rate: 0
-  state:
-    loaded_and_ready_msg: 0
-    start_countdown_msg: 0
   WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
   is_king: {fileID: 11400000, guid: 30c9fceb0f208f7499b6615b083da8d0, type: 2}
 --- !u!114 &114058240854290130
@@ -222,14 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072ffe9121368e14db8f10d342f5a760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_event: {fileID: 0}
-  out_event: {fileID: 0}
-  local_id: {fileID: 0}
-  t0: {fileID: 0}
-  sync_rate: 0
-  state:
-    loaded_and_ready_msg: 0
-    start_countdown_msg: 0
   WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
 --- !u!114 &114462569691076326
 MonoBehaviour:
@@ -263,14 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a56b6b8c4e330449bef18d7094ad82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_event: {fileID: 0}
-  out_event: {fileID: 0}
-  local_id: {fileID: 0}
-  t0: {fileID: 0}
-  sync_rate: 0
-  state:
-    loaded_and_ready_msg: 0
-    start_countdown_msg: 0
   WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
   payload_pickup: {fileID: 11400000, guid: 1e85ee8d760c31c4d89422e43288679c, type: 2}
   payload_dropped: {fileID: 11400000, guid: e6616da01b0b212499d9c070d314c87c, type: 2}
@@ -287,14 +263,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8beede0f8d113af469c23e8fb44eabbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_event: {fileID: 0}
-  out_event: {fileID: 0}
-  local_id: {fileID: 0}
-  t0: {fileID: 0}
-  sync_rate: 0
-  state:
-    loaded_and_ready_msg: 0
-    start_countdown_msg: 0
   WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
   time_in: {fileID: 11400000, guid: b78fe389e187d134caff10519b7a4456, type: 2}
   time_score: {fileID: 11400000, guid: f09251d62b55ae445899dd3f66da5825, type: 2}
@@ -310,12 +278,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dd5b2c495e1b44ea56733b486ba8a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_event: {fileID: 0}
-  out_event: {fileID: 0}
-  local_id: {fileID: 0}
-  t0: {fileID: 0}
-  sync_rate: 0
-  state:
-    loaded_and_ready_msg: 0
-    start_countdown_msg: 0
   WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}

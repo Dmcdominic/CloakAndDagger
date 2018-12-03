@@ -50,11 +50,11 @@ public class init : MonoBehaviour {
 	IEnumerator go(float t)
     {
 		yield return new WaitUntil(() => party.val.leader != "");
-		SceneManager.LoadScene(map_Config.map);
+		SceneManager.LoadSceneAsync(map_Config.map);
         status_handler.SetActive(true);
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == map_Config.map);
 
-        map_Config.current_map_info.init_spawnpoints();
+		map_Config.current_map_info.init_spawnpoints();
 
 		Vector2 spawn_point = map_Config.next_spawn_point(0);
 		GameObject leader_go = Instantiate(player_prefab, spawn_point, Quaternion.identity);
