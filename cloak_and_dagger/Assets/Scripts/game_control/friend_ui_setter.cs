@@ -23,6 +23,7 @@ public class friend_ui_setter : MonoBehaviour {
 	void Update () {
 
         requests.val = requests.val.Where(str => !my_friends.val.Exists(cs => cs.name == str)).ToList();
+        requests.val = requests.val.Distinct().ToList();
 
         GameObject cur_friend;
         int i;

@@ -28,7 +28,8 @@ public class map_loader : MonoBehaviour {
 	}
 
 	private void on_load_scene_event(string scene_name) {
-		//print("Allowing scene activation for scene w/ scene_name: " + scene_name);
-		//loaded_scenes[scene_name].allowSceneActivation = true;
-	}
+        //print("Allowing scene activation for scene w/ scene_name: " + scene_name);
+        //loaded_scenes[scene_name].allowSceneActivation = true;
+        //SceneManager.UnloadSceneAsync
+    }
 }

@@ -93,20 +93,32 @@ public class ui_manager : MonoBehaviour {
     [SerializeField]
     event_object login;
 
-
+    [SerializeField]
+    bool_var meno;
 
 
 	// Use this for initialization
 	public void Start () {
-        client.val.Connect(0, OnConnect, () => connect_error.SetActive(true));
-        invite_player.e.AddListener(str => client.val.Invite_Player(str));
-        join_player.e.AddListener(str => client.val.Join_Party(str));
-        add_friend.e.AddListener(() => client.val.add_friend(friend_to_add));
-        add_this_friend.e.AddListener(str => { client.val.add_friend(str); my_friend_requests.val.Remove(str); });
-        my_friend_requests.val = new List<string>();
-        client.val.Register_friend_requests(str => my_friend_requests.val.Add(str));
-        client.val.Register_Receive_Invite(Invited);
-        client.val.Register_Receive_Request(Requested);
+        if (meno.val)
+        {
+            party_menu.SetActive(true);
+            title.SetActive(false);
+            login_table.SetActive(false);
+
+        }
+        else
+        {
+            client.val.Connect(0, OnConnect, () => connect_error.SetActive(true));
+            invite_player.e.AddListener(str => client.val.Invite_Player(str));
+            join_player.e.AddListener(str => client.val.Join_Party(str));
+            add_friend.e.AddListener(() => client.val.add_friend(friend_to_add));
+            add_this_friend.e.AddListener(str => { client.val.add_friend(str); my_friend_requests.val.Remove(str); });
+            my_friend_requests.val = new List<string>();
+            client.val.Register_friend_requests(str => my_friend_requests.val.Add(str));
+            client.val.Register_Receive_Invite(Invited);
+            client.val.Register_Receive_Request(Requested);
+        }
+        
 	}
 
     IEnumerator notify_party_change(event_object notify)

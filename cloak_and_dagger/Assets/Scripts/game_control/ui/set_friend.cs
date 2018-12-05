@@ -76,7 +76,7 @@ public class set_friend : MonoBehaviour {
         join.gameObject.SetActive(true);
         options.SetActive(false);
         my_name.text = name;
-        info.text = "Wants to join your party!";
+        info.text = "Wants to be your friend!";
         invite.GetComponentInChildren<Text>().text = "Accept";
         invite.onClick.RemoveAllListeners();
         invite.onClick.AddListener(() => { add_Friend.Invoke(name); Destroy(gameObject); });

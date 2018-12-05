@@ -111,6 +111,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
                     {
                         msg = (Message_obj)msg_p.message;
                     }
+                    print($"received {msg_p.type}");
                     handle_message(msg_p.type,msg,msg_p.message);
                     handle_data_event.Invoke(new Tuple<Custom_msg_type, Message_obj>(msg_p.type, msg), msg_p.message);
                     break;
