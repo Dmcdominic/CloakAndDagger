@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   win_Condition: 0
   default_map: Summoning Circle
-  compatible_bool_options: 0000000001000000
+  compatible_bool_options: 0000000001000000090000000a000000
   compatible_float_options: 
   compatible_int_options: 00000000
