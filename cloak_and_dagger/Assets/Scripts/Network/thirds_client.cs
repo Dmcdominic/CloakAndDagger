@@ -181,7 +181,6 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
             case Custom_msg_type.CMD:
                 break;
             case Custom_msg_type.END_GAME:
-                message_event("your game is over");
                 break;
             case Custom_msg_type.FIND_MATCH:
                 break;

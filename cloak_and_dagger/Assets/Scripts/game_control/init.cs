@@ -52,8 +52,9 @@ public class init : MonoBehaviour {
 
 	IEnumerator go(float t)
     {
+        print("**");
 		yield return new WaitUntil(() => party.val.leader != "");
-
+        print("#@");
 		// Original version
 		yield return new WaitForSeconds(0.5f);
 		SceneManager.LoadScene(map_Config.map);

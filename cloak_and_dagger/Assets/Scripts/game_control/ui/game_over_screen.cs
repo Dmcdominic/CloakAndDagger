@@ -11,10 +11,15 @@ public class game_over_screen : MonoBehaviour {
 		if (game_over) {
 			game_over.e.AddListener(on_game_over);
 		}
-		set_children_active(false);
+		
 	}
 
-	private void on_game_over() {
+    private void OnEnable()
+    {
+        set_children_active(false);
+    }
+
+    private void on_game_over() {
 		set_children_active(true);
 	}
 
