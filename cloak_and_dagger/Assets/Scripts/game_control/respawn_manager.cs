@@ -7,11 +7,15 @@ public class respawn_manager : MonoBehaviour {
     [SerializeField]
     player_event death_trigger;
 
+	[SerializeField]
+	int_event_object respawn;
+
     [SerializeField]
     player_bool dead;
 
     [SerializeField]
     map_config map_Config;
+
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +40,7 @@ public class respawn_manager : MonoBehaviour {
         }
         go.transform.position = target;
         go.SetActive(true);
+		respawn.Invoke(id);
     }
 
     bool good_to_move(Vector2 pos)

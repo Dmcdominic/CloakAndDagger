@@ -25,6 +25,12 @@ public class status_handler : MonoBehaviour {
 	[SerializeField]
 	int_var local_id;
 
+	[SerializeField]
+	win_con_config win_Con_Config;
+
+	[SerializeField]
+	game_stats game_Stats;
+
 	Status_Float_Dict times = new Status_Float_Dict();
 
 
@@ -68,6 +74,10 @@ public class status_handler : MonoBehaviour {
 				if (times[stat][id] > 0) {
 					times[stat][id] -= Time.deltaTime;
 					stats[stat][id] = true;
+				} else if (stat == status.dead) {
+					if (!(win_Con_Config.win_Condition == win_condition.last_survivor) || game_Stats.player_Stats[(byte)id].lives_remaining > 0) {
+						stats[stat][id] = false;
+					}
 				} else {
 					stats[stat][id] = false;
 				}
