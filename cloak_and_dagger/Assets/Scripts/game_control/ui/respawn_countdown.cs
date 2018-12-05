@@ -44,10 +44,11 @@ public class respawn_countdown : MonoBehaviour {
 			on_respawn_anim_triggered = false;
 			return_from_bar_triggered = false;
 			text.text = Mathf.CeilToInt(respawn_time_left.val).ToString();
+			on_bar = true;
 		}
 		animator.SetTrigger("on_death");
-		animator.SetBool("descend_to_bar", respawn_delay >= min_respawn_time_to_use_bar);
-		on_bar = respawn_delay >= min_respawn_time_to_use_bar;
+		on_bar = on_bar || respawn_delay >= min_respawn_time_to_use_bar;
+		animator.SetBool("descend_to_bar", on_bar);
 		show_skull();
 	}
 
