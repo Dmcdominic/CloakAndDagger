@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 [Serializable]
 public class player_var<T> : ScriptableObject, IEnumerable<int>
@@ -58,6 +59,11 @@ public class player_var<T> : ScriptableObject, IEnumerable<int>
         else
             D = new Dictionary<int, T>();
         return false;
+    }
+
+    public IEnumerable<KeyValuePair<int,T>> filter(Func<KeyValuePair<int, T>,bool> p)
+    {
+        return D.Where(p);
     }
 
     public T mine(int i)

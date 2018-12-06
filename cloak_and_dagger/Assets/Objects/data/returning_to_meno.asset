@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   use_constant: 0
   constant: 0
-  value: 0
+  value: 1

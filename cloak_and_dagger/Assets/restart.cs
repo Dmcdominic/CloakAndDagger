@@ -17,7 +17,7 @@ public class restart : MonoBehaviour {
 
     public void OnEnable()
     { 
-        end_game.e.AddListener(() => Invoke("go",3));
+        //end_game.e.AddListener(() => Invoke("go",3));
     }
 
     public void go()
