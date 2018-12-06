@@ -195,6 +195,7 @@ MonoBehaviour:
     - Place_torch
     - Dagger_reflect
     - Fire_hit_fire
+    - Payload_delivered
     m_values:
     - {fileID: 8300000, guid: 4cad5c4d300b2594084306002392cc50, type: 3}
     - {fileID: 8300000, guid: ff932e6849811cb4a9a1c9b82a2c9581, type: 3}
@@ -211,3 +212,4 @@ MonoBehaviour:
     - {fileID: 8300000, guid: b0a1cb2d4c8162c4c951d80b085bc1d9, type: 3}
     - {fileID: 8300000, guid: 32bdaea777ce734448edf07c07199cd4, type: 3}
     - {fileID: 8300000, guid: a018c83acd1311045ba30a45b5a92adc, type: 3}
+    - {fileID: 8300000, guid: 6fc71ff36e660fe41b01bc0379191f32, type: 3}

@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   global_payload: {fileID: 11400000, guid: ec71e6b7cfde623449a1c7de77c511d4, type: 2}
   win_Con_Config: {fileID: 11400000, guid: 4a15c59b8048876449a6497af431e6a7, type: 2}
+  Sfx: {fileID: 114442754885530496, guid: 3f242b71025bcc94c9dca00b110b1e99, type: 2}
   carried: 0
   carrier_id: 0
   last_pickup_time: 0
