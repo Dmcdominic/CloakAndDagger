@@ -4282,28 +4282,6 @@ MonoBehaviour:
           m_StringArgument: party
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1487919089}
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: up
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 262188261}
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: party
-          m_BoolArgument: 0
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &783125828
@@ -8563,12 +8541,12 @@ Prefab:
     - target: {fileID: 224804215890587406, guid: cacaad257154dd74daedb8d92ea220bc,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0000076293945
+      value: 0.000015258789
       objectReference: {fileID: 0}
     - target: {fileID: 224151212933499406, guid: cacaad257154dd74daedb8d92ea220bc,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.00000017881393
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1500158623796416, guid: cacaad257154dd74daedb8d92ea220bc, type: 2}
       propertyPath: m_IsActive
@@ -8639,12 +8617,12 @@ Prefab:
     - target: {fileID: 224524197341043676, guid: cacaad257154dd74daedb8d92ea220bc,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0.16
+      value: 0.16000366
       objectReference: {fileID: 0}
     - target: {fileID: 224524197341043676, guid: cacaad257154dd74daedb8d92ea220bc,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -0.59
+      value: -0.59000015
       objectReference: {fileID: 0}
     - target: {fileID: 224524197341043676, guid: cacaad257154dd74daedb8d92ea220bc,
         type: 2}
@@ -8709,6 +8687,91 @@ Prefab:
     - target: {fileID: 114160853054854320, guid: cacaad257154dd74daedb8d92ea220bc,
         type: 2}
       propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224665417781265632, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.699997
+      objectReference: {fileID: 0}
+    - target: {fileID: 224565391081013042, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 72.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 224565391081013042, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 50.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 224565391081013042, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -272.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 224565391081013042, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 174.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 224225535807369506, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.949997
+      objectReference: {fileID: 0}
+    - target: {fileID: 224225535807369506, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 137.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 224225535807369506, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -272.77997
+      objectReference: {fileID: 0}
+    - target: {fileID: 224225535807369506, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 831.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 224667846618066426, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.5999985
+      objectReference: {fileID: 0}
+    - target: {fileID: 224376584303259468, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.559967
+      objectReference: {fileID: 0}
+    - target: {fileID: 224427206231534756, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.559967
+      objectReference: {fileID: 0}
+    - target: {fileID: 224665276755582244, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.559968
+      objectReference: {fileID: 0}
+    - target: {fileID: 224140005613890406, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -3.5599976
+      objectReference: {fileID: 0}
+    - target: {fileID: 224804215890587406, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0000076293945
+      objectReference: {fileID: 0}
+    - target: {fileID: 114644441897842094, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114644441897842094, guid: cacaad257154dd74daedb8d92ea220bc,
+        type: 2}
+      propertyPath: m_Size
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -9502,16 +9565,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 262188261}
-        m_MethodName: SetTrigger
-        m_Mode: 5
+      - m_Target: {fileID: 569135508}
+        m_MethodName: find
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: party
-          m_BoolArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 262188261}
         m_MethodName: SetTrigger
@@ -9522,18 +9585,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: party
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1487919089}
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: up
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -10243,7 +10295,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Settings
+  m_Text: Customization
 --- !u!222 &2056871410
 CanvasRenderer:
   m_ObjectHideFlags: 0
