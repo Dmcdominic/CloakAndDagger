@@ -31,6 +31,9 @@ public abstract class win_condition_controller : MonoBehaviour {
 #pragma warning disable 0414
 	private bool timed_out = false;
 
+    [SerializeField]
+    event_object die;
+
 
 	// Initialization
 	private void Awake() {
@@ -97,6 +100,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 		} else {
 			WCAP.out_event.Invoke(0, new win_con_init_struct(true, false), 0);
 		}
+        transform.SetParent(null);
 	}
 
 	public void fake_rectify(float t, object state, int placeholder) {
