@@ -92,24 +92,33 @@ public class win_con_ui : MonoBehaviour {
                     case win_condition.last_survivor:
                         transform.GetChild(i).GetComponent<Text>().text += 
                             $"{WCAP.game_Stats.team_Stats[WCAP.game_Stats.player_Stats[(byte)i].teamID].lives_remaining} ";
+                        transform.GetChild(i).GetComponent<Text>().text += "/" +
+                            WCAP.win_Con_Config.int_options[winCon_int_option.lives].ToString();
                         break;
                     case win_condition.kill_count:
                         transform.GetChild(i).GetComponent<Text>().text +=
                              $"{WCAP.game_Stats.team_Stats[WCAP.game_Stats.player_Stats[(byte)i].teamID].kill_count} ";
+                        transform.GetChild(i).GetComponent<Text>().text += "/" +
+                            WCAP.win_Con_Config.int_options[winCon_int_option.kill_limit].ToString();
                         break;
                     case win_condition.assault:
                         transform.GetChild(i).GetComponent<Text>().text +=
                              $"{WCAP.game_Stats.team_Stats[WCAP.game_Stats.player_Stats[(byte)i].teamID].payload_deliveries} ";
+                        transform.GetChild(i).GetComponent<Text>().text += "/" +
+                            WCAP.win_Con_Config.int_options[winCon_int_option.payload_delivery_limit].ToString();
                         break;
                     case win_condition.regicide:
                         transform.GetChild(i).GetComponent<Text>().text +=
                              WCAP.game_Stats.team_Stats[WCAP.game_Stats.player_Stats[(byte)i].teamID].time_as_king.ToString("N1");
-
+                        transform.GetChild(i).GetComponent<Text>().text += "/" +
+                            WCAP.win_Con_Config.float_options[winCon_float_option.time_to_win].ToString();
 
                         break;
                     case win_condition.king_of_the_hill:
                         transform.GetChild(i).GetComponent<Text>().text +=
                              WCAP.game_Stats.team_Stats[WCAP.game_Stats.player_Stats[(byte)i].teamID].time_in_hill.ToString("N1");
+                        transform.GetChild(i).GetComponent<Text>().text += "/" +
+                            WCAP.win_Con_Config.float_options[winCon_float_option.time_to_win].ToString();
                         break;
                 }
             }
