@@ -12,9 +12,12 @@ public class restart : MonoBehaviour {
     [SerializeField]
     client_var client;
 
+    [SerializeField]
+    event_object end_game;
+
     public void OnEnable()
-    {
-        Invoke("go",3);
+    { 
+        end_game.e.AddListener(() => Invoke("go",3));
     }
 
     public void go()
