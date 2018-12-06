@@ -29,6 +29,9 @@ public class dash : sync_behaviour<serializable_vec2> {
 	[SerializeField]
 	light_spawn_event_object light_spawn_trigger;
 
+	[SerializeField]
+	GameObject particles_prefab;
+
     [SerializeField]
     int_float_event stun_out;
 
@@ -80,9 +83,17 @@ public class dash : sync_behaviour<serializable_vec2> {
 
     public override void rectify(float f, serializable_vec2 v2)
     {
-        light_spawn_data light_data = new light_spawn_data(_origin.val, 2f);
-        light_spawn_trigger.Invoke(light_data);
-        Sfx.sfx_trigger.Invoke("Dash");
+		// Spawn light at origin
+		light_spawn_data light_data = new light_spawn_data(_origin.val, 2f);
+		light_spawn_trigger.Invoke(light_data);
+
+		// Spawn particle effects
+		GameObject particles = Instantiate(particles_prefab);
+		particles.transform.position = _origin.val;
+
+		// Trigger sound effect
+		Sfx.sfx_trigger.Invoke("Dash");
+		
         transform.position = v2;
         stun_out.Invoke(gameObject_id.val,mini_stun);
     }
@@ -93,7 +104,14 @@ public class dash : sync_behaviour<serializable_vec2> {
         light_spawn_data light_data = new light_spawn_data(_origin.val, 2f);
         light_spawn_trigger.Invoke(light_data);
 
-        RaycastHit2D[] hits = new RaycastHit2D[1];
+		// Spawn particle effects
+		GameObject particles = Instantiate(particles_prefab);
+		particles.transform.position = _origin.val;
+
+		// Trigger sound effect
+		Sfx.sfx_trigger.Invoke("Dash");
+
+		RaycastHit2D[] hits = new RaycastHit2D[1];
 
         transform.position = origin + delta;
         while (rb.Cast(Vector3.zero, hits, 0) > 0)
@@ -102,7 +120,6 @@ public class dash : sync_behaviour<serializable_vec2> {
         }
         
         stun_out.Invoke(gameObject_id.val, mini_stun);
-		Sfx.sfx_trigger.Invoke("Dash");
 		return true;
     }
 
