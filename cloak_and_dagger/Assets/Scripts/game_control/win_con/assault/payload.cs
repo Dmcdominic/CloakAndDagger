@@ -11,6 +11,9 @@ public class payload : MonoBehaviour {
 	[SerializeField]
 	win_con_config win_Con_Config;
 
+	[SerializeField]
+	Sound_manager Sfx;
+
 	[HideInInspector]
 	public bool carried;
 	[HideInInspector]
@@ -71,5 +74,6 @@ public class payload : MonoBehaviour {
 	public void deliver() {
 		carried = false;
 		gameObject.SetActive(false);
+		Sfx.sfx_trigger.Invoke("Payload_delivered");
 	}
 }
