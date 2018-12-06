@@ -8,6 +8,8 @@ public class fireball_other_collision_trigger : MonoBehaviour {
 
 	public int_event_object to_trigger_on_collision;
 
+	public GameObject incineration_prefab;
+
 	public gameplay_config gameplay_Config;
 	public readonly_camera_config camera_Config;
 
@@ -44,5 +46,7 @@ public class fireball_other_collision_trigger : MonoBehaviour {
 	private void on_any_collision() {
 		to_trigger_on_collision.Invoke(network_Id.val);
 		camera_shake_event.Invoke(camera_Config.float_options[readonly_camera_float_option.fireball_hit_object_shake]);
+		GameObject incineration = Instantiate(incineration_prefab);
+		incineration.transform.position = gameObject.transform.position;
 	}
 }

@@ -197,7 +197,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   z_height: -2
-  light_growth_time: 2
 --- !u!114 &114642336885906736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,6 +226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   to_trigger_on_collision: {fileID: 11400000, guid: a7fd9b93908c39041add1b7194882863,
+    type: 2}
+  incineration_prefab: {fileID: 1854626503747728, guid: a5303344e987e0047a5457699f5b623a,
     type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   camera_Config: {fileID: 11400000, guid: 8c93fd8fdf0a3854baca4e567117d888, type: 2}
