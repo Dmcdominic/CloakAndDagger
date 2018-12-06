@@ -58,6 +58,7 @@ public class character_icon_setter : MonoBehaviour {
                 my_char = pallette / 2;
                 my_color = pallette % 2;
                 character_chosen[i] = pallette;
+                print($"{pallette} pallete");
             }
         });
         local_character_select.e.AddListener((d, o, i) => {
