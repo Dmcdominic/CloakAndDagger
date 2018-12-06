@@ -32,6 +32,8 @@ public class win_con_ui : MonoBehaviour {
     GameObject blue_wax;
     [SerializeField]
     GameObject red_wax;
+    [SerializeField]
+    GameObject Exit;
 
     // Use this for initialization
     void Start() {
@@ -40,6 +42,7 @@ public class win_con_ui : MonoBehaviour {
 
     void go()
     {
+        Exit.SetActive(true);
         switch (WCAP.win_Con_Config.win_Condition)
         {
             case win_condition.last_survivor:
@@ -78,7 +81,7 @@ public class win_con_ui : MonoBehaviour {
         }
         for(;i < transform.childCount; i++)
         {
-            Destroy(transform.GetChild(i));
+            Destroy(transform.GetChild(i).gameObject);
         }
         while(true)
         {
@@ -131,8 +134,8 @@ public class win_con_ui : MonoBehaviour {
     {
         team_ui.SetActive(true);
         yield return new WaitUntil(() => WCAP.game_Stats.team_Stats.Count > 1);
-        blue_wax.SetActive(teams_dict[local_id] == 0);
-        red_wax.SetActive(teams_dict[local_id] == 1);
+        blue_wax.SetActive(teams_dict[local_id.val] == 0);
+        red_wax.SetActive(teams_dict[local_id.val] == 1);
 
 
         while (true)

@@ -497,7 +497,7 @@ Prefab:
     - target: {fileID: 114638553666161056, guid: adb94b9d6042d554f8a6d40245452680,
         type: 2}
       propertyPath: local
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adb94b9d6042d554f8a6d40245452680, type: 2}
@@ -695,7 +695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d75db0c8e1dcb24397a6d7ef6a8e742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  my_bool: {fileID: 0}
+  my_bool: {fileID: 11400000, guid: 296bbc5aa4b9e2f4d986961c0e831a1c, type: 2}
   value: 0
 --- !u!1 &908098680
 GameObject:
@@ -961,7 +961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1268087605
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1182,7 +1182,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1516250460
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1310,10 +1310,11 @@ MonoBehaviour:
   blue: {fileID: 1800653512}
   player_text: {fileID: 1145601720645238, guid: 65ef15564e2af974db832ecdc4c1c4bd,
     type: 2}
-  teams_dict: {fileID: 0}
-  local_id: {fileID: 0}
-  blue_wax: {fileID: 0}
-  red_wax: {fileID: 0}
+  teams_dict: {fileID: 11400000, guid: 3e6fb11ac1e910349b8e078c4edc1c78, type: 2}
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
+  blue_wax: {fileID: 1516250459}
+  red_wax: {fileID: 1268087604}
+  Exit: {fileID: 60581307}
 --- !u!1 &1670169009
 GameObject:
   m_ObjectHideFlags: 0
