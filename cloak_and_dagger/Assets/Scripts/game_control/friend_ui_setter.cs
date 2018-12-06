@@ -45,6 +45,7 @@ public class friend_ui_setter : MonoBehaviour {
             {
                 cur_friend.GetComponent<set_friend>().set_me(my_friends.val[i - requests.val.Count]);
             }
+            cur_friend.SetActive(true);
         }
         for(int j = i; j < transform.childCount; j++)
         {
