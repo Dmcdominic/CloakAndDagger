@@ -51,7 +51,17 @@ public class team_setter : MonoBehaviour {
         team[id] = (int)color.blue;
         StartCoroutine(hide());
         StartCoroutine(party_changed());
+        StartCoroutine(sync());
 
+    }
+
+    IEnumerator sync()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(.5f);
+            team_swap_out.Invoke(0, my_team, local_id);
+        }
     }
 
     IEnumerator party_changed()
