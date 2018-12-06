@@ -24,6 +24,14 @@ public class win_con_ui : MonoBehaviour {
     Text blue;
     [SerializeField]
     GameObject player_text;
+    [SerializeField]
+    player_int teams_dict;
+    [SerializeField]
+    int_var local_id;
+    [SerializeField]
+    GameObject blue_wax;
+    [SerializeField]
+    GameObject red_wax;
 
     // Use this for initialization
     void Start() {
@@ -114,6 +122,10 @@ public class win_con_ui : MonoBehaviour {
     {
         team_ui.SetActive(true);
         yield return new WaitUntil(() => WCAP.game_Stats.team_Stats.Count > 1);
+        blue_wax.SetActive(teams_dict[local_id] == 0);
+        red_wax.SetActive(teams_dict[local_id] == 1);
+
+
         while (true)
         {
             switch (WCAP.win_Con_Config.win_Condition)
