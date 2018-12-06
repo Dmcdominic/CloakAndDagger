@@ -51,7 +51,7 @@ public class team_setter : MonoBehaviour {
         team[id] = (int)color.blue;
         StartCoroutine(hide());
         StartCoroutine(party_changed());
-        StartCoroutine(sync());
+        //StartCoroutine(sync());
 
     }
 
