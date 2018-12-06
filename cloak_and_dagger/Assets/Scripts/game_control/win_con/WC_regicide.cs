@@ -28,7 +28,7 @@ public class WC_regicide : win_condition_controller
 
     protected override void on_game_start()
     {
-        
+        StartCoroutine(score_king());
     }
 
     public void un_set_king(byte team_id)
@@ -64,10 +64,20 @@ public class WC_regicide : win_condition_controller
     {
         end_game_general(new List<byte>(new byte[] { team_stats_dict.Values.Aggregate((old_max, new_id) => (old_max.time_in_hill > new_id.time_in_hill) ? old_max : new_id).teamID}));
     }
+
+    IEnumerator score_king()
+    {
+        yield return new WaitUntil(() => king != 255);
+        while(true)
+        {
+            yield return null;
+            team_stats_dict[king].time_as_king += Time.deltaTime;
+        }
+    }
 	
     IEnumerator check_winner()
     {
-        yield return new WaitUntil(() => team_stats_dict[king].time_in_hill > WCAP.win_Con_Config.float_options[winCon_float_option.time_to_win]);
+        yield return new WaitUntil(() => team_stats_dict[king].time_as_king > WCAP.win_Con_Config.float_options[winCon_float_option.time_to_win]);
         end_game_general(new List<byte>(new byte[] { king }));
     }
 }

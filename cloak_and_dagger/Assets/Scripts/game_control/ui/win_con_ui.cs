@@ -95,12 +95,13 @@ public class win_con_ui : MonoBehaviour {
                         break;
                     case win_condition.regicide:
                         transform.GetChild(i).GetComponent<Text>().text +=
-                             $"{WCAP.game_Stats.team_Stats[WCAP.game_Stats.player_Stats[(byte)i].teamID].time_as_king} ";
-                        
+                             WCAP.game_Stats.team_Stats[WCAP.game_Stats.player_Stats[(byte)i].teamID].time_as_king.ToString("N1");
+
+
                         break;
                     case win_condition.king_of_the_hill:
                         transform.GetChild(i).GetComponent<Text>().text +=
-                             $"{WCAP.game_Stats.team_Stats[WCAP.game_Stats.player_Stats[(byte)i].teamID].time_in_hill} ";
+                             WCAP.game_Stats.team_Stats[WCAP.game_Stats.player_Stats[(byte)i].teamID].time_in_hill.ToString("N1");
                         break;
                 }
             }
