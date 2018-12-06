@@ -57,7 +57,7 @@ public class camera_shake : MonoBehaviour {
 		PosY *= mag * damper * damper;
 		Vector3 target = new Vector3(originalPos.x + PosX, originalPos.y + PosY, originalPos.z);
 
-		while (elapsedTime < dur + mag * mag + .5f * mag) {
+		while (elapsedTime < dur + mag * mag * mag + .1f * mag) {
 
 			elapsedTime += Time.deltaTime;
 			stepTime += Time.deltaTime;
