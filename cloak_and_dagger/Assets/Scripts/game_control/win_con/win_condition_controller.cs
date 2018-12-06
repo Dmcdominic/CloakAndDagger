@@ -146,7 +146,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 	// Start this coroutine to activate the countdown.
 	// Will call on_game_start_general after the countdown.
 	IEnumerator starting_countdown() {
-        transform.SetParent(null);
+        
         int seconds_left = 5;
 		while (seconds_left > 0) {
 			WCAP.countdown_event.Invoke(seconds_left);
@@ -155,7 +155,8 @@ public abstract class win_condition_controller : MonoBehaviour {
 		}
 		on_game_start_general();
 		yield return null;
-	}
+        //transform.SetParent(null);
+    }
 
 	// Is called at the end of the countdown
 	private void on_game_start_general() {
