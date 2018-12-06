@@ -100,7 +100,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 		} else {
 			WCAP.out_event.Invoke(0, new win_con_init_struct(true, false), 0);
 		}
-        transform.SetParent(null);
+       
 	}
 
 	public void fake_rectify(float t, object state, int placeholder) {
@@ -146,7 +146,8 @@ public abstract class win_condition_controller : MonoBehaviour {
 	// Start this coroutine to activate the countdown.
 	// Will call on_game_start_general after the countdown.
 	IEnumerator starting_countdown() {
-		int seconds_left = 5;
+        transform.SetParent(null);
+        int seconds_left = 5;
 		while (seconds_left > 0) {
 			WCAP.countdown_event.Invoke(seconds_left);
 			yield return new WaitForSeconds(WCAP.readonly_Gameplay_Config.float_options[readonly_gameplay_float_option.countdown_time_interval]);
