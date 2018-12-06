@@ -633,7 +633,6 @@ GameObject:
   - component: {fileID: 861149961}
   - component: {fileID: 861149962}
   - component: {fileID: 861149964}
-  - component: {fileID: 861149963}
   m_Layer: 0
   m_Name: load next scene
   m_TagString: Untagged
@@ -651,12 +650,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1497193000}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 960, y: 540}
+  m_AnchoredPosition: {x: -430, y: -155}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &861149962
@@ -671,19 +670,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 1
---- !u!114 &861149963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 861149960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d75db0c8e1dcb24397a6d7ef6a8e742, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  my_bool: {fileID: 11400000, guid: 296bbc5aa4b9e2f4d986961c0e831a1c, type: 2}
-  value: 0
 --- !u!114 &861149964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1166,6 +1152,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1497193000 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4491820199344692, guid: adb94b9d6042d554f8a6d40245452680,
+    type: 2}
+  m_PrefabInternal: {fileID: 327706410}
 --- !u!1 &1516250459
 GameObject:
   m_ObjectHideFlags: 0
