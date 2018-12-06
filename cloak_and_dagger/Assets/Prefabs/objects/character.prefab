@@ -715,6 +715,8 @@ MonoBehaviour:
   trigger: {fileID: 11400000, guid: f1cd2a170e0a5a341905078728b92222, type: 2}
   light_spawn_trigger: {fileID: 11400000, guid: ecca28e87029d9940927a70137884b99,
     type: 2}
+  particles_prefab: {fileID: 1656133545478592, guid: 6114d57b4018843d0b0323f6c6a3b3e7,
+    type: 2}
   stun_out: {fileID: 11400000, guid: 8a12398b55b5a6b43ab8f07664a4b7ed, type: 2}
   cooldown_out: {fileID: 11400000, guid: 0c2ab5da8ab37f6499586658fe6c97a5, type: 2}
   blink_trail_prefab: {fileID: 1912555637128888, guid: 6400213a1651af449b02608c9ca5c10e,
@@ -918,6 +920,9 @@ MonoBehaviour:
     playerID: 0
     death_Type: 0
     killerID: 0
+    dagger_direction:
+      x: 0
+      y: 0
   kill_out: {fileID: 11400000, guid: a8382b71a4b25b34c8e81f0433bfba56, type: 2}
   pre_local_death: {fileID: 11400000, guid: 1dde9f7150fc37e498a1171d1f71ab25, type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
@@ -928,6 +933,8 @@ MonoBehaviour:
   destroy_dagger: {fileID: 11400000, guid: 62a0507375e0cc34dbba2a270381c1e6, type: 2}
   destroy_fireball: {fileID: 11400000, guid: a7fd9b93908c39041add1b7194882863, type: 2}
   dead_body_prefab: {fileID: 1479639472354148, guid: 1de9f5e2b87dcf54f8f318a273340a7c,
+    type: 2}
+  blood_spray_prefab: {fileID: 1513920308232636, guid: fac69f29f1cc54aaaa29db2ae21d2136,
     type: 2}
   incineration_prefab: {fileID: 1854626503747728, guid: a5303344e987e0047a5457699f5b623a,
     type: 2}

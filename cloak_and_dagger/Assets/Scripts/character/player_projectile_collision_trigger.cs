@@ -9,16 +9,18 @@ public enum death_type { dagger, fireball };
 [Serializable]
 public struct death_event_data
 {
-    public death_event_data(byte playerID, death_type death_Type, byte killerID)
+    public death_event_data(byte playerID, death_type death_Type, byte killerID, float dagger_z_rotation)
     {
         this.playerID = playerID;
         this.death_Type = death_Type;
         this.killerID = killerID;
+		this.dagger_z_rotation = dagger_z_rotation;
     }
 
     public byte playerID;
     public death_type death_Type;
     public byte killerID;
+	public float dagger_z_rotation;
 }
 
 [RequireComponent(typeof(Collider2D))]
@@ -51,6 +53,9 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 
 	[SerializeField]
 	GameObject dead_body_prefab;
+
+	[SerializeField]
+	GameObject blood_spray_prefab;
 
 	[SerializeField]
 	GameObject incineration_prefab;
@@ -111,8 +116,9 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 					destroy_dagger.Invoke(daggerID.val);
 				}
 
-				rectify(Time.time, new death_event_data((byte)gameObject_id.val, death_type.dagger, dagger_Data.thrower));
-				send_state(new death_event_data((byte)gameObject_id.val, death_type.dagger, dagger_Data.thrower));
+				float dagger_z_rotation = collider.transform.rotation.eulerAngles.z;
+				rectify(Time.time, new death_event_data((byte)gameObject_id.val, death_type.dagger, dagger_Data.thrower, dagger_z_rotation));
+				send_state(new death_event_data((byte)gameObject_id.val, death_type.dagger, dagger_Data.thrower, dagger_z_rotation));
 			}
 		} else if (collider_tag.Equals("Fireball")) {
 			fireball_data fireball_Data = collider.gameObject.GetComponent<fireball_data_carrier>().fireball_Data;
@@ -126,8 +132,8 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 				destroy_fireball.Invoke(fireballID.val);
 			}
 
-			rectify(Time.time, new death_event_data((byte)gameObject_id.val, death_type.fireball, fireball_Data.thrower));
-			send_state(new death_event_data((byte)gameObject_id.val, death_type.fireball, fireball_Data.thrower));
+			rectify(Time.time, new death_event_data((byte)gameObject_id.val, death_type.fireball, fireball_Data.thrower, 0));
+			send_state(new death_event_data((byte)gameObject_id.val, death_type.fireball, fireball_Data.thrower, 0));
 		}
 	}
 
@@ -136,6 +142,11 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 		if (DD.death_Type == death_type.dagger) {
 			spawn_dead_body(DD);
 			Sfx.sfx_trigger.Invoke("Dagger_hit_player");
+
+			//GameObject spray = Instantiate(blood_spray_prefab);
+			//spray.transform.position = transform.position;
+			//print("DAGGER ROTATION: " + DD.dagger_z_rotation);
+			//spray.GetComponent<ParticleSystem>().shape.rotation = new Vector3(-90, spray.transform.rotation.eulerAngles.y, DD.dagger_z_rotation)
 
 			// Camera shake
 			if (is_local) {
