@@ -14,6 +14,9 @@ public class payload : MonoBehaviour {
 	[SerializeField]
 	Sound_manager Sfx;
 
+	[SerializeField]
+	GameObject bomb_particles;
+
 	[HideInInspector]
 	public bool carried;
 	[HideInInspector]
@@ -40,6 +43,8 @@ public class payload : MonoBehaviour {
 		collider2D = GetComponent<Collider2D>();
 		light = GetComponentInChildren<Light>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
+
+		Instantiate(bomb_particles, transform);
 		
 		carrier_revealed = win_Con_Config.bool_options[winCon_bool_option.payload_carrier_revealed];
 		light.range = win_Con_Config.float_options[winCon_float_option.payload_light_range];

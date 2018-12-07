@@ -143,10 +143,12 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 			spawn_dead_body(DD);
 			Sfx.sfx_trigger.Invoke("Dagger_hit_player");
 
-			//GameObject spray = Instantiate(blood_spray_prefab);
-			//spray.transform.position = transform.position;
-			//print("DAGGER ROTATION: " + DD.dagger_z_rotation);
-			//spray.GetComponent<ParticleSystem>().shape.rotation = new Vector3(-90, spray.transform.rotation.eulerAngles.y, DD.dagger_z_rotation)
+			GameObject spray = Instantiate(blood_spray_prefab);
+			spray.transform.position = transform.position;
+			print("Dagger rotation:" + DD.dagger_z_rotation);
+			ParticleSystem.ShapeModule shape = spray.GetComponent<ParticleSystem>().shape;
+			shape.rotation = new Vector3(0, 90f + -DD.dagger_z_rotation, 0);
+			print("Shape rotation:" + shape.rotation);
 
 			// Camera shake
 			if (is_local) {

@@ -54,7 +54,11 @@ public class place_trap : sync_behaviour<trap_state> {
 	private void place_func(trap_state trap_State) {
 		placed_trap new_trap = Instantiate(trap_prefab).GetComponent<placed_trap>();
 		new_trap.transform.position = trap_State.position;
+		new_trap.transform.rotation = transform.rotation;
 		new_trap.placer_id = gameObject_id.val;
+		if (is_local) {
+			new_trap.GetComponent<SpriteRenderer>().material = GetComponent<Conditional_Rendering>().local_mat;
+		}
 		new_trap.set_network_id(trap_State.trap_id);
 		
 		Sfx.sfx_trigger.Invoke("Place_trap");
