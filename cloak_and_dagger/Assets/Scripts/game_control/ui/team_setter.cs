@@ -49,10 +49,14 @@ public class team_setter : MonoBehaviour {
         });
         team_swap_in.e.AddListener((f, o, i) => { if (i == id && my_team != (color)o) toggle(); });
         team[id] = (int)color.blue;
-        StartCoroutine(hide());
         StartCoroutine(party_changed());
-        //StartCoroutine(sync());
+        StartCoroutine(sync());
 
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(hide());
     }
 
     IEnumerator sync()
@@ -60,7 +64,7 @@ public class team_setter : MonoBehaviour {
         while(true)
         {
             yield return new WaitForSeconds(.5f);
-            team_swap_out.Invoke(0, my_team, local_id);
+            if(local_id == id) team_swap_out.Invoke(0, my_team, local_id);
         }
     }
 
@@ -104,15 +108,7 @@ public class team_setter : MonoBehaviour {
     {
         while (true)
         {
-            
-            yield return new WaitUntil(() => wcc.bool_options[winCon_bool_option.free_for_all]);
-            
-            foreach(Transform t in transform)
-            {
-                t.gameObject.SetActive(false);
-            }
-            yield return new WaitUntil(() => !wcc.bool_options[winCon_bool_option.free_for_all]);
-            foreach(Transform t in transform)
+            foreach (Transform t in transform)
             {
                 t.gameObject.SetActive(true);
             }
@@ -120,6 +116,14 @@ public class team_setter : MonoBehaviour {
                 red_image.gameObject.SetActive(false);
             else
                 blue_image.gameObject.SetActive(false);
+            yield return new WaitUntil(() => wcc.bool_options[winCon_bool_option.free_for_all]);
+            
+            foreach(Transform t in transform)
+            {
+                t.gameObject.SetActive(false);
+            }
+            yield return new WaitUntil(() => !wcc.bool_options[winCon_bool_option.free_for_all]);
+            
             
             yield return null;
         }

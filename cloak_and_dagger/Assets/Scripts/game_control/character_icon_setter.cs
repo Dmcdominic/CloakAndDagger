@@ -64,7 +64,6 @@ public class character_icon_setter : MonoBehaviour {
         local_character_select.e.AddListener((d, o, i) => {
             if (i == transform.GetSiblingIndex()) { my_char = (int)o / 2; my_color = (int)o % 2; character_chosen[i] = (int)o; } });
         party_changed.e.AddListener(() => {if(local_id == transform.GetSiblingIndex())  local_character_select.Invoke(0, (my_char * 2) + Mathf.Abs((my_color) % 2), transform.GetSiblingIndex()); });
-        
     }
 
     public void setter(int i, string name)
@@ -90,6 +89,11 @@ public class character_icon_setter : MonoBehaviour {
     public void color_left()
     {
         local_character_select.Invoke(0, (my_char * 2) + Mathf.Abs((my_color - 1) % 2), local_id);
-
+        string s = "";
+        foreach(int i in character_chosen)
+        {
+            s += $"player{i} has palette: {character_chosen[i]}; ";
+        }
+        print(s);
     }
 }
