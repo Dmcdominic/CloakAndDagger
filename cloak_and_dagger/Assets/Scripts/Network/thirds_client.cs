@@ -70,7 +70,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
     [SerializeField]
     client_var client;
 
-
+    bool in_game;
 
 
     void Start()
@@ -151,7 +151,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
                     party_list = new List<string>();
                 }
                 print(party_list.Aggregate(String.Concat));
-                try { party_event(new Party_Names(party_list.First(), party_list.Skip(1).ToList())); } catch(MissingReferenceException e) { print(e); }
+                try { if(!in_game) party_event(new Party_Names(party_list.First(), party_list.Skip(1).ToList())); } catch(MissingReferenceException e) { print(e); }
                 if (debug) { print($"recieved party_list"); }
                 break;
             case Custom_msg_type.LEAVE_PARTY:
@@ -200,6 +200,8 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
 
     bool send_message(Custom_msg_type type, string arg1, string arg2, int targetConnection, object body = null,bool reliable = true,bool large = false)
     {
+        if (type == Custom_msg_type.START_GAME) in_game = true;
+        if (type == Custom_msg_type.END_GAME) in_game = false;
         byte error = 0;
         Message_package msg_p = new Message_package();
         Message_obj msg = new Message_obj();
