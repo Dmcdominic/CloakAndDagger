@@ -155,12 +155,12 @@ public class win_con_ui : MonoBehaviour {
                     red.text  = $"{WCAP.game_Stats.team_Stats[1].payload_deliveries} ";
                     break;
                 case win_condition.regicide:
-                    blue.text = $"{WCAP.game_Stats.team_Stats[0].time_as_king} ";
-                    red.text  = $"{WCAP.game_Stats.team_Stats[1].time_as_king} ";
+                    blue.text = WCAP.game_Stats.team_Stats[0].time_as_king.ToString("N1");
+                    red.text = WCAP.game_Stats.team_Stats[1].time_as_king.ToString("N1");
                     break;
                 case win_condition.king_of_the_hill:
-                    blue.text = $"{WCAP.game_Stats.team_Stats[0].time_in_hill} ";
-                    red.text  = $"{WCAP.game_Stats.team_Stats[1].time_in_hill} ";
+                    blue.text = WCAP.game_Stats.team_Stats[0].time_in_hill.ToString("N1");
+                    red.text = WCAP.game_Stats.team_Stats[1].time_in_hill.ToString("N1");
                     break;
             }
             yield return null;
