@@ -130,6 +130,8 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
 
     void handle_message(Custom_msg_type _type, Message_obj msg, object message)
     {
+        if (_type == Custom_msg_type.START_GAME) in_game = true;
+        if (_type == Custom_msg_type.END_GAME) in_game = false;
         switch (_type)
         {
             case Custom_msg_type.CREATE_PLAYER:
@@ -200,8 +202,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
 
     bool send_message(Custom_msg_type type, string arg1, string arg2, int targetConnection, object body = null,bool reliable = true,bool large = false)
     {
-        if (type == Custom_msg_type.START_GAME) in_game = true;
-        if (type == Custom_msg_type.END_GAME) in_game = false;
+
         byte error = 0;
         Message_package msg_p = new Message_package();
         Message_obj msg = new Message_obj();
