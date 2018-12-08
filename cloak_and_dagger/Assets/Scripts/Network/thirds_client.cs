@@ -97,37 +97,40 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         Message_obj msg = new Message_obj();
         Message_package msg_p = new Message_package();
         handle_data_event = ScriptableObject.CreateInstance<handle_message_event>();
-
+        
         while (true)
         {
-            yield return null;
-            NetworkEventType _data =
-                NetworkTransport.ReceiveFromHost(host, out _conn, out _channel, _buffer, 2048, out data_size, out error);
-            switch (_data)
+            NetworkEventType _data = (byte)0;
+            while (_data != NetworkEventType.Nothing)
             {
-                case NetworkEventType.DataEvent:
-                    msg_p = unformat_bytes<Message_package>(_buffer);
-                    if (msg_p.message is Message_obj)
-                    {
-                        msg = (Message_obj)msg_p.message;
-                    }
-                    print($"received {msg_p.type}");
-                    handle_message(msg_p.type,msg,msg_p.message);
-                    handle_data_event.Invoke(new Tuple<Custom_msg_type, Message_obj>(msg_p.type, msg), msg_p.message);
-                    break;
-                case NetworkEventType.ConnectEvent:
-                    if(debug) print($"conected on channel: {_channel}, with error: {(NetworkError)error} on conn: {_conn}");
-                    if(_conn == conn_id) connected = true;
-                    connect();
-                    break;
-                case NetworkEventType.DisconnectEvent:
-                    if (debug) print($"didn't connect: {(NetworkError)error}");
-                    failure();
-                    break;
+                _data = NetworkTransport.ReceiveFromHost(host, out _conn, out _channel, _buffer, 2048, out data_size, out error);
+                switch (_data)
+                {
+                    case NetworkEventType.DataEvent:
+                        msg_p = unformat_bytes<Message_package>(_buffer);
+                        if (msg_p.message is Message_obj)
+                        {
+                            msg = (Message_obj)msg_p.message;
+                        }
+                        print($"received {msg_p.type}");
+                        handle_message(msg_p.type, msg, msg_p.message);
+                        handle_data_event.Invoke(new Tuple<Custom_msg_type, Message_obj>(msg_p.type, msg), msg_p.message);
+                        break;
+                    case NetworkEventType.ConnectEvent:
+                        if (debug) print($"conected on channel: {_channel}, with error: {(NetworkError)error} on conn: {_conn}");
+                        if (_conn == conn_id) connected = true;
+                        connect();
+                        break;
+                    case NetworkEventType.DisconnectEvent:
+                        if (debug) print($"didn't connect: {(NetworkError)error}");
+                        failure();
+                        break;
+                }
             }
+
+            yield return null;
         }
     }
-
     void handle_message(Custom_msg_type _type, Message_obj msg, object message)
     {
         if (_type == Custom_msg_type.START_GAME) in_game = true;
