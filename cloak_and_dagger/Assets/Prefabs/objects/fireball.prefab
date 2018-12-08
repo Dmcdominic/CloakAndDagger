@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 114998699817004056}
   - component: {fileID: 114991632823028022}
   - component: {fileID: 114921839629645788}
+  - component: {fileID: 114532561582672592}
   m_Layer: 0
   m_Name: fireball
   m_TagString: Fireball
@@ -60,7 +61,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1592376450841740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.51, y: 0.75, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4401603701555824}
@@ -112,8 +113,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1, y: 0.06}
-  m_Size: {x: 0.9, y: 0.2}
+  m_Offset: {x: 0.25, y: 0.06}
+  m_Size: {x: 0.6, y: 0.2}
   m_Direction: 1
 --- !u!95 &95424148839661606
 Animator:
@@ -197,6 +198,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   z_height: -2
+--- !u!114 &114532561582672592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1592376450841740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a4f4ef8331d8e418a8db77c663b2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle_effects_prefab: {fileID: 1385933416477332, guid: 1ca5f7cdca17e4f40b6ef56a1caf8975,
+    type: 2}
 --- !u!114 &114642336885906736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -214,6 +228,8 @@ MonoBehaviour:
   t0: {fileID: 11400000, guid: 57bb56410a2f79c4aaa77d261a3079f8, type: 2}
   sync_rate: 0
   trigger_destroy: {fileID: 11400000, guid: a7fd9b93908c39041add1b7194882863, type: 2}
+  incineration_prefab: {fileID: 1854626503747728, guid: a5303344e987e0047a5457699f5b623a,
+    type: 2}
 --- !u!114 &114753583559870718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,8 +242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   to_trigger_on_collision: {fileID: 11400000, guid: a7fd9b93908c39041add1b7194882863,
-    type: 2}
-  incineration_prefab: {fileID: 1854626503747728, guid: a5303344e987e0047a5457699f5b623a,
     type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   camera_Config: {fileID: 11400000, guid: 8c93fd8fdf0a3854baca4e567117d888, type: 2}

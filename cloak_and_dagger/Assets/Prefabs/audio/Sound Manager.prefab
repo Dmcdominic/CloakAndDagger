@@ -63,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1847623208171776}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 430, y: 155, z: -7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4294413303696074}
@@ -196,6 +196,7 @@ MonoBehaviour:
     - Dagger_reflect
     - Fire_hit_fire
     - Payload_delivered
+    - Bump
     m_values:
     - {fileID: 8300000, guid: 4cad5c4d300b2594084306002392cc50, type: 3}
     - {fileID: 8300000, guid: ff932e6849811cb4a9a1c9b82a2c9581, type: 3}
@@ -213,3 +214,4 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 32bdaea777ce734448edf07c07199cd4, type: 3}
     - {fileID: 8300000, guid: a018c83acd1311045ba30a45b5a92adc, type: 3}
     - {fileID: 8300000, guid: 6fc71ff36e660fe41b01bc0379191f32, type: 3}
+    - {fileID: 8300000, guid: 217e14efa419c2447b32467ff4cdecf0, type: 3}

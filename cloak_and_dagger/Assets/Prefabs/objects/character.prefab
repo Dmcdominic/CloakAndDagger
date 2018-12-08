@@ -872,6 +872,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   trigger: {fileID: 11400000, guid: f3ff7449ed3e34e4ba38bfc58aa2dadc, type: 2}
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
+  Sfx: {fileID: 114442754885530496, guid: 3f242b71025bcc94c9dca00b110b1e99, type: 2}
 --- !u!114 &114938384083110894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -920,9 +922,7 @@ MonoBehaviour:
     playerID: 0
     death_Type: 0
     killerID: 0
-    dagger_direction:
-      x: 0
-      y: 0
+    dagger_z_rotation: 0
   kill_out: {fileID: 11400000, guid: a8382b71a4b25b34c8e81f0433bfba56, type: 2}
   pre_local_death: {fileID: 11400000, guid: 1dde9f7150fc37e498a1171d1f71ab25, type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}

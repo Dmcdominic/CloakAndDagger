@@ -39,15 +39,18 @@ public class respawn_countdown : MonoBehaviour {
 			return;
 		}
 
-		if (!(win_Con_Config.win_Condition == win_condition.last_survivor) || game_Stats.player_Stats[(byte)id].lives_remaining > 0) {
+		on_bar = respawn_delay >= min_respawn_time_to_use_bar;
+		bool last_survivor = (win_Con_Config.win_Condition == win_condition.last_survivor);
+		if (!last_survivor || game_Stats.player_Stats[(byte)id].lives_remaining > 0) {
 			respawning = true;
 			on_respawn_anim_triggered = false;
 			return_from_bar_triggered = false;
 			text.text = Mathf.CeilToInt(respawn_time_left.val).ToString();
+		} else if (last_survivor) {
+			respawning = false;
 			on_bar = true;
 		}
 		animator.SetTrigger("on_death");
-		on_bar = on_bar || respawn_delay >= min_respawn_time_to_use_bar;
 		animator.SetBool("descend_to_bar", on_bar);
 		show_skull();
 	}
