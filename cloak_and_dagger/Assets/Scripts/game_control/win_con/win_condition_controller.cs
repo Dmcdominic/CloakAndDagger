@@ -221,7 +221,7 @@ public abstract class win_condition_controller : MonoBehaviour {
 			}
 		}
 
-		WCAP.trigger_on_game_over.Invoke();
+		WCAP.trigger_on_game_over.Invoke(); 
 		Destroy(gameObject);
 	}
 	protected void end_game_general(byte winning_team) {
