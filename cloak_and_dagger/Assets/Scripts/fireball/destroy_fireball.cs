@@ -8,6 +8,8 @@ public class destroy_fireball : sync_behaviour<unit> {
 
 	public int_event_object trigger_destroy;
 
+	public GameObject incineration_prefab;
+
 
 	private void Awake() {
 		if (trigger_destroy) {
@@ -15,9 +17,9 @@ public class destroy_fireball : sync_behaviour<unit> {
 		}
 	}
 
-	private void on_trigger_destroy(int daggerID) {
+	private void on_trigger_destroy(int fireballID) {
 		network_id network_Id = GetComponent<network_id>();
-		if (network_Id.val != daggerID) {
+		if (network_Id.val != fireballID) {
 			return;
 		}
         
@@ -30,7 +32,8 @@ public class destroy_fireball : sync_behaviour<unit> {
 	}
 
 	private void OnDestroy() {
-		// Todo - some interesting particle and lighting effects?
+		GameObject incineration = Instantiate(incineration_prefab);
+		incineration.transform.position = gameObject.transform.position;
 	}
 
 }

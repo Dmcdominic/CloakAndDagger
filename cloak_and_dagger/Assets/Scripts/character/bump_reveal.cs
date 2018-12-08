@@ -11,6 +11,12 @@ public class bump_reveal : MonoBehaviour {
     [SerializeField]
     int_float_event trigger;
 
+	[SerializeField]
+	int_var local_id;
+
+	[SerializeField]
+	Sound_manager Sfx;
+
 	private network_id network_Id;
 
 
@@ -20,7 +26,10 @@ public class bump_reveal : MonoBehaviour {
 
 	private void OnCollisionEnter2D(Collision2D collision) {
 		if (collision.gameObject.tag == "Player") {
-            trigger.Invoke(network_Id.val, 1);
+			if (collision.gameObject.GetComponent<network_id>().val == local_id.val) {
+				trigger.Invoke(network_Id.val, 1);
+				Sfx.sfx_trigger.Invoke("Bump");
+			}
 		}
 	}
 }

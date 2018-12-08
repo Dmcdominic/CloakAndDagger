@@ -63,7 +63,6 @@ public class dash : sync_behaviour<serializable_vec2> {
     {
         if (id != GetComponent<network_id>().val) return;
 
-
         // Blink to the target destination
         Vector3 displacement = _target_dest.val - _origin.val;
         if (displacement.magnitude > max_distance)
@@ -77,40 +76,30 @@ public class dash : sync_behaviour<serializable_vec2> {
         send_state((Vector2)transform.position);
 		GameObject trail = Instantiate(blink_trail_prefab,transform.position,Quaternion.identity);
         trail.GetComponent<move_between>().run(_origin.val, transform.position, 5, Time.deltaTime);
-        
-
     }
 
     public override void rectify(float f, serializable_vec2 v2)
     {
-		// Spawn light at origin
-		light_spawn_data light_data = new light_spawn_data(_origin.val, 2f);
+		// Spawn light wherever this player is currently
+		light_spawn_data light_data = new light_spawn_data(transform.position, 2f);
 		light_spawn_trigger.Invoke(light_data);
 
 		// Spawn particle effects
 		GameObject particles = Instantiate(particles_prefab);
-		particles.transform.position = _origin.val;
+		particles.transform.position = transform.position;
 
 		// Trigger sound effect
 		Sfx.sfx_trigger.Invoke("Dash");
 		
+		// Move this player to the new position
         transform.position = v2;
         stun_out.Invoke(gameObject_id.val,mini_stun);
     }
 
+	// Called when the local player blinks.
+	// Raycasts to prevent blinking into walls.
     bool blink(Vector2 origin,Vector2 delta)
     {
-        // Spawn light at origin
-        light_spawn_data light_data = new light_spawn_data(_origin.val, 2f);
-        light_spawn_trigger.Invoke(light_data);
-
-		// Spawn particle effects
-		GameObject particles = Instantiate(particles_prefab);
-		particles.transform.position = _origin.val;
-
-		// Trigger sound effect
-		Sfx.sfx_trigger.Invoke("Dash");
-
 		RaycastHit2D[] hits = new RaycastHit2D[1];
 
         transform.position = origin + delta;
@@ -118,8 +107,19 @@ public class dash : sync_behaviour<serializable_vec2> {
         {
             transform.position -= (Vector3)delta.normalized * .1f;
         }
-        
-        stun_out.Invoke(gameObject_id.val, mini_stun);
+		
+		// Spawn light at origin
+		light_spawn_data light_data = new light_spawn_data(origin, 2f);
+		light_spawn_trigger.Invoke(light_data);
+
+		// Spawn particle effects
+		GameObject particles = Instantiate(particles_prefab);
+		particles.transform.position = origin;
+
+		// Trigger sound effect
+		Sfx.sfx_trigger.Invoke("Dash");
+
+		stun_out.Invoke(gameObject_id.val, mini_stun);
 		return true;
     }
 
