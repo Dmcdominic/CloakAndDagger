@@ -114,14 +114,14 @@ public class win_con_ui : MonoBehaviour {
                         transform.GetChild(i).GetComponent<Text>().text +=
                              WCAP.game_Stats.team_Stats[WCAP.game_Stats.player_Stats[(byte)i].teamID].time_as_king.ToString("N1");
                         transform.GetChild(i).GetComponent<Text>().text += "/" +
-                            WCAP.win_Con_Config.float_options[winCon_float_option.time_to_win].ToString();
+                            WCAP.win_Con_Config.float_options[winCon_float_option.time_to_win].ToString("N1");
 
                         break;
                     case win_condition.king_of_the_hill:
                         transform.GetChild(i).GetComponent<Text>().text +=
                              WCAP.game_Stats.team_Stats[WCAP.game_Stats.player_Stats[(byte)i].teamID].time_in_hill.ToString("N1");
                         transform.GetChild(i).GetComponent<Text>().text += "/" +
-                            WCAP.win_Con_Config.float_options[winCon_float_option.time_to_win].ToString();
+                            WCAP.win_Con_Config.float_options[winCon_float_option.time_to_win].ToString("N1");
                         break;
                 }
             }
