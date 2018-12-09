@@ -24,16 +24,17 @@ public class destroy_fireball : sync_behaviour<unit> {
 		}
         
 		send_state(new unit());
-		Destroy(gameObject);
+		destroy_this();
 	}
 
 	public override void rectify(float t, unit state) {
-		Destroy(gameObject);
+		destroy_this();
 	}
 
-	private void OnDestroy() {
+	public void destroy_this() {
 		GameObject incineration = Instantiate(incineration_prefab);
 		incineration.transform.position = gameObject.transform.position;
+		Destroy(gameObject);
 	}
 
 }
