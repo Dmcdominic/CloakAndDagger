@@ -82,11 +82,9 @@ public class hill_script : MonoBehaviour {
         players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
         float wait_time = 
                 UnityEngine.Random.value * 5 - 2.5f + WCAP.win_Con_Config.float_options[winCon_float_option.hill_duration];
-        active = true;
-        effects.SetActive(true);
+
+        move_in.Invoke(0, 0, 0);
         yield return new WaitForSeconds(Mathf.Abs(wait_time));
-        active = false;
-        effects.SetActive(false);
         System.Random rnd = new System.Random();
         int i = rnd.Next(0, transform.parent.childCount);
         while(i == transform.GetSiblingIndex())
@@ -95,15 +93,17 @@ public class hill_script : MonoBehaviour {
         }
         transform.parent.GetChild(i).GetComponent<hill_script>().run();
         move_out.Invoke(0,0,i);
+        move_in.Invoke(0,0,i);
 
 
     }
 
 	// Update is called once per frame
 	void Update () {
-        if(players == null) players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
+        if(players == null || players.Count == 0) players = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
         if (active)
         {
+            print("active");
             foreach(GameObject player in players)
             {
                 if(Vector3.Distance(transform.position,player.transform.position) < radius)
