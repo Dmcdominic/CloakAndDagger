@@ -97,12 +97,14 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         Message_obj msg = new Message_obj();
         Message_package msg_p = new Message_package();
         handle_data_event = ScriptableObject.CreateInstance<handle_message_event>();
-        
+        int i = 0
         while (true)
         {
             NetworkEventType _data = (byte)0;
-            while (_data != NetworkEventType.Nothing)
+            i = 0;
+            while (_data != NetworkEventType.Nothing && i < 255)
             {
+                i++;
                 _data = NetworkTransport.ReceiveFromHost(host, out _conn, out _channel, _buffer, 2048, out data_size, out error);
                 switch (_data)
                 {

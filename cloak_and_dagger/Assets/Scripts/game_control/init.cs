@@ -47,6 +47,7 @@ public class init : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Application.runInBackground = true;
         start.e.AddListener((t) => StartCoroutine(go(t)));
 	}
 
