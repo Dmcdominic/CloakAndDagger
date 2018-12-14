@@ -6,6 +6,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine.SceneManagement;
 
+/*	
+ *	save_util:
+ *	A tool for saving and loading data to the local disk.
+ *	Includes options for both binary and json serialization.
+ *	Uses Unity's chosen persistent data path directory.
+ *	Created by Dominic Calkosz.
+ */
 public static class save_util {
 
 	// Path settings

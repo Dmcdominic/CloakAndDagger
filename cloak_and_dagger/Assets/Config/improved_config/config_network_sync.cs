@@ -5,6 +5,7 @@ using UnityEngine;
 /*	
  *	config_network_sync:
  *	An interface to sync config_obj SO's over the network.
+ *	Created by Dominic Calkosz.
  */
 public class config_network_sync : MonoBehaviour {
 

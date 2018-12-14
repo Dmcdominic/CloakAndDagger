@@ -6,6 +6,7 @@ using UnityEngine;
  *	config_obj:
  *	An SO (scriptable object) to store open ended config values.
  *	Useful for both player customization and active development.
+ *	Created by Dominic Calkosz.
  */
 [System.Serializable]
 [CreateAssetMenu(menuName = "config/config_obj")]
