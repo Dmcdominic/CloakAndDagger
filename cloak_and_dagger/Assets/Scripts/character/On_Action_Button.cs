@@ -147,7 +147,7 @@ public class On_Action_Button : MonoBehaviour {
 	}
 
 	// Returns false iff this player is carrying the payload AND payload carriers are prevented from the given action
-	private bool check_carrier_pass(winCon_bool_option winCon_Bool_Option) {
+	public bool check_carrier_pass(winCon_bool_option winCon_Bool_Option) {
 		return !(payload_Carrier.carrying && win_Con_Config.bool_options[winCon_Bool_Option]);
 	}
 }

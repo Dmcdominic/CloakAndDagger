@@ -13,12 +13,13 @@ public class init_fade_into_lobby : MonoBehaviour {
 	// Initialization
 	private void Awake() {
 		DontDestroyOnLoad(gameObject);
+		black_panel.gameObject.SetActive(true);
 		black_panel.CrossFadeColor(new Color(1, 1, 1, 0), fade_time, false, true);
 		StartCoroutine(destroy_after_fade());
 	}
 
 	IEnumerator destroy_after_fade() {
-		yield return new WaitForSeconds(fade_time + 0.3f);
+		yield return new WaitForSeconds(fade_time + 0.2f);
 		Destroy(gameObject);
 	}
 }

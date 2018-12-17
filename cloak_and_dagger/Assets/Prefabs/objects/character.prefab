@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114156292998170134}
   - component: {fileID: 114447421547217292}
   - component: {fileID: 114478431849710816}
+  - component: {fileID: 114677313062883174}
   - component: {fileID: 114686792641224136}
   - component: {fileID: 120163909426105612}
   m_Layer: 0
@@ -814,6 +815,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   config: {fileID: 11400000, guid: 039973cf0c0243d4d879ed91da1c803f, type: 2}
   output: {fileID: 11400000, guid: 4bbc87b548ed62b4c957d33abd733964, type: 2}
+--- !u!114 &114677313062883174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479639472354148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f807e2a67cfc1a45852d3b5210b8ec4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  win_Con_Config: {fileID: 11400000, guid: 4a15c59b8048876449a6497af431e6a7, type: 2}
+  local_id: {fileID: 11400000, guid: 7f22195c14abac3428ee218d85219b44, type: 2}
+  currently_trapped: {fileID: 11400000, guid: 2cff4d228214bce40b0c1e7db9a6de9f, type: 2}
+  is_dead: {fileID: 11400000, guid: 9fad67e37486e6f449ee3829119a152b, type: 2}
+  dagger_disabled: {fileID: 11400000, guid: bc79a25c2fecea24b9da1a171d9677ec, type: 2}
+  fireball_disabled: {fileID: 11400000, guid: 85666c35de195c945b0ee4b5ff00110b, type: 2}
+  blink_disabled: {fileID: 11400000, guid: 5cfe7c1669f98504391f6d644f30be12, type: 2}
+  reflect_disabled: {fileID: 11400000, guid: d298a7223d329c94eb4711b06ff69c38, type: 2}
+  torch_disabled: {fileID: 11400000, guid: 4fb794e750d8ee54991c2c721acd94dd, type: 2}
+  trap_disabled: {fileID: 11400000, guid: 751b362c3e7cfa14caa522eb569108ee, type: 2}
 --- !u!114 &114686792641224136
 MonoBehaviour:
   m_ObjectHideFlags: 1
