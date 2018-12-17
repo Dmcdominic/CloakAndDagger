@@ -16,6 +16,9 @@ public class respawn_manager : MonoBehaviour {
     [SerializeField]
     map_config map_Config;
 
+    [SerializeField]
+    int_var local_id;
+
 
 	// Use this for initialization
 	void Start () {
@@ -38,7 +41,8 @@ public class respawn_manager : MonoBehaviour {
             target = map_Config.next_spawn_point(id);
 			yield return null;
         }
-        go.transform.position = target;
+        if(id == local_id)
+            go.transform.position = target;
         go.SetActive(true);
 		respawn.Invoke(id);
     }

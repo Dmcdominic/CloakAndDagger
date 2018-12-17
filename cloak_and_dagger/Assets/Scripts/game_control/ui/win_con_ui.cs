@@ -34,10 +34,22 @@ public class win_con_ui : MonoBehaviour {
     GameObject red_wax;
     [SerializeField]
     GameObject Exit;
+    [SerializeField]
+    event_object end_game;
 
     // Use this for initialization
     void Start() {
         WCAP.trigger_on_game_start.e.AddListener(() => go() );
+        end_game.e.AddListener(clear);
+    }
+
+    void clear()
+    {
+        game_mode = "";
+        foreach(Text t in transform.parent.GetComponentsInChildren<Text>())
+        {
+            t.text = "";
+        }
     }
 
     void go()

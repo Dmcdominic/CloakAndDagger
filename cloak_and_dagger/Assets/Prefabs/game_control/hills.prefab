@@ -810,6 +810,7 @@ MonoBehaviour:
   WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
   effects: {fileID: 1173673387918944}
   radius: 3
+  dead: {fileID: 11400000, guid: 9fad67e37486e6f449ee3829119a152b, type: 2}
 --- !u!114 &114081357611959526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -846,6 +847,7 @@ MonoBehaviour:
   WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
   effects: {fileID: 1078978146976688}
   radius: 3
+  dead: {fileID: 11400000, guid: 9fad67e37486e6f449ee3829119a152b, type: 2}
 --- !u!114 &114234102179146790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -912,6 +914,7 @@ MonoBehaviour:
   WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
   effects: {fileID: 1212168341574030}
   radius: 3
+  dead: {fileID: 11400000, guid: 9fad67e37486e6f449ee3829119a152b, type: 2}
 --- !u!114 &114785999723844040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -933,6 +936,7 @@ MonoBehaviour:
   WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
   effects: {fileID: 1388011703378620}
   radius: 3
+  dead: {fileID: 11400000, guid: 9fad67e37486e6f449ee3829119a152b, type: 2}
 --- !u!114 &114787188621385328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -954,6 +958,7 @@ MonoBehaviour:
   WCAP: {fileID: 11400000, guid: 38744f52c1078b04192ea31fc82e09c4, type: 2}
   effects: {fileID: 1811957223665188}
   radius: 3
+  dead: {fileID: 11400000, guid: 9fad67e37486e6f449ee3829119a152b, type: 2}
 --- !u!120 &120081223529489242
 LineRenderer:
   m_ObjectHideFlags: 1

@@ -104,7 +104,7 @@ public class ui_manager : MonoBehaviour {
             party_menu.SetActive(true);
             title.SetActive(false);
             login_table.SetActive(false);
-
+            OnConnect();
         }
         else
         {
@@ -174,6 +174,8 @@ public class ui_manager : MonoBehaviour {
         StartCoroutine(notify_party_change(notify_parties   ));
 
     }
+
+
 
     public void sign_up()
     {

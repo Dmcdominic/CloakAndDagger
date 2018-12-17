@@ -62,7 +62,10 @@ public class WC_regicide : win_condition_controller
             king = 255;
             return;
         }
-
+        if(king == 255)
+        {
+            set_king(killing_team);
+        }
         if(king == dying_team)
         {
             un_set_king(dying_team);

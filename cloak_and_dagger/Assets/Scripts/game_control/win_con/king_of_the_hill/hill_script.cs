@@ -40,6 +40,10 @@ public class hill_script : MonoBehaviour {
 
     List<GameObject> players;
 
+    [SerializeField]
+    player_bool dead;
+
+
 
     int id;
 
@@ -109,7 +113,7 @@ public class hill_script : MonoBehaviour {
                 if(Vector3.Distance(transform.position,player.transform.position) < radius)
                 {
                     int player_id = player.GetComponent<network_id>().val;
-                    if (player_id == local_id)
+                    if (player_id == local_id && !dead[player_id])
                     {
                         score_out.Invoke(Time.time,Time.deltaTime,local_id);
                         score.Invoke(player_id, Time.deltaTime);
