@@ -24,14 +24,12 @@ public class update_disabled_icons : MonoBehaviour {
 	public bool_var trap_disabled;
 
 	private network_id network_Id;
-	private payload_carrier payload_Carrier;
 	private On_Action_Button on_Action_Button;
 
 
 	// Initialization
 	private void Awake() {
 		network_Id = GetComponent<network_id>();
-		payload_Carrier = GetComponent<payload_carrier>();
 		on_Action_Button = GetComponent<On_Action_Button>();
 	}
 

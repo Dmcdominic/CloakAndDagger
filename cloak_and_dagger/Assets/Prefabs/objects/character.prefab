@@ -990,12 +990,14 @@ MonoBehaviour:
       x: 0
       y: 0
     theta: 90
+    running: 0
   input_vec: {fileID: 11400000, guid: 4bbc87b548ed62b4c957d33abd733964, type: 2}
   gameplay_Config: {fileID: 11400000, guid: df151a98259385444a19455c27138ab8, type: 2}
   ingame_state: {fileID: 11400000, guid: 651e92a3b77baf94ea1cf6097bf34214, type: 2}
   is_stun: {fileID: 11400000, guid: b606f126309b3944fbf2ec7e7b3b09a2, type: 2}
   is_trapped: {fileID: 11400000, guid: 2cff4d228214bce40b0c1e7db9a6de9f, type: 2}
   dagger_in: {fileID: 11400000, guid: 61155ee5589bc0e46ab15225bb13c462, type: 2}
+  running_velo_threshhold: 5
 --- !u!120 &120163909426105612
 LineRenderer:
   m_ObjectHideFlags: 1

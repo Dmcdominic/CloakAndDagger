@@ -8,10 +8,8 @@ public class char_anim_helper : MonoBehaviour {
 	public player_event dagger_thrown;
 	public player_event fireball_thrown;
 
-	public float running_velo_threshhold;
-
 	private Animator animator;
-	private Rigidbody2D rb;
+	private pmove Pmove;
 
     [SerializeField]
     player_int character_chosen;
@@ -19,13 +17,9 @@ public class char_anim_helper : MonoBehaviour {
     int net_id;
 
 
-
 	private void Awake() {
 		animator = GetComponent<Animator>();
-		rb = GetComponentInParent<Rigidbody2D>();
-        
-        
-
+		Pmove = GetComponentInParent<pmove>();
 
 		if (dagger_thrown) {
 			dagger_thrown.e.AddListener(on_dagger_thrown);
@@ -47,9 +41,8 @@ public class char_anim_helper : MonoBehaviour {
     }
 
     private void Update() {
-		if (rb) {
-			bool running = rb.velocity.magnitude > running_velo_threshhold;
-			animator.SetBool("running", running);
+		if (Pmove) {
+			animator.SetBool("running", Pmove.running);
 		}
 	}
 

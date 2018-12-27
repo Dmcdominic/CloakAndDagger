@@ -39,12 +39,14 @@ public struct player_state
     public serializable_vec2 pos;
     public serializable_vec2 vel;
     public float theta;
+	public bool running;
 
-    public player_state(Vector2 pos, Vector2 vel, float theta)
+    public player_state(Vector2 pos, Vector2 vel, float theta, bool running)
     {
         this.pos = pos;
         this.vel = vel;
         this.theta = theta;
+		this.running = running;
     }
 }
 
@@ -72,7 +74,12 @@ public class pmove : sync_behaviour<player_state>
     [SerializeField]
     int_float_event dagger_in;
 
-    Rigidbody2D rb;
+	public float running_velo_threshhold;
+	[HideInInspector]
+	public bool running;
+
+
+	Rigidbody2D rb;
 
     Vector2 target_pos;
 
@@ -104,10 +111,12 @@ public class pmove : sync_behaviour<player_state>
         transform.eulerAngles = Vector3.forward * Mathf.SmoothDampAngle(
                                 transform.eulerAngles.z, target_theta,
                                 ref smooth_rot_vel, .06f);
-        if (!ingame_state.val || is_stun[gameObject_id.val] || is_trapped[gameObject_id.val])
+
+		running = rb.velocity.magnitude > running_velo_threshhold;
+		if (!ingame_state.val || is_stun[gameObject_id.val] || is_trapped[gameObject_id.val])
         {
             rb.velocity = Vector2.zero;
-            state = new player_state(transform.position, rb.velocity, transform.eulerAngles.z);
+            state = new player_state(transform.position, rb.velocity, transform.eulerAngles.z, running);
 
             return;
         }
@@ -124,7 +133,7 @@ public class pmove : sync_behaviour<player_state>
 
       
        
-        state = new player_state(transform.position, rb.velocity,transform.eulerAngles.z);
+        state = new player_state(transform.position, rb.velocity,transform.eulerAngles.z, running);
 
     }
 
@@ -136,6 +145,7 @@ public class pmove : sync_behaviour<player_state>
         target_pos = ps.pos;
         rb.velocity = ps.vel;
         transform.eulerAngles = Vector3.forward * ps.theta;
+		running = ps.running;
         
     }
     // Use this for initialization
@@ -143,7 +153,7 @@ public class pmove : sync_behaviour<player_state>
     {
         rb = transform.GetComponent<Rigidbody2D>();
         base.Start();
-        state = new player_state(transform.position, rb.velocity,transform.eulerAngles.z);
+        state = new player_state(transform.position, rb.velocity,transform.eulerAngles.z, false);
 
         dagger_in.e.AddListener(throw_dagger);
     }

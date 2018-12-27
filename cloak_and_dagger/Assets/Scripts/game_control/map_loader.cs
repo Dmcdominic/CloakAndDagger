@@ -8,7 +8,7 @@ public class map_loader : MonoBehaviour {
 	public string_event_object load_map;
 	public int_var maps_starting_build_index;
 
-	private Dictionary<string, AsyncOperation> loaded_scenes;
+	//private Dictionary<string, AsyncOperation> loaded_scenes;
 
 
 	private void Awake() {
@@ -16,7 +16,7 @@ public class map_loader : MonoBehaviour {
 	}
 
 	private void Start() {
-		loaded_scenes = new Dictionary<string, AsyncOperation>();
+		//loaded_scenes = new Dictionary<string, AsyncOperation>();
 		for (int build_index = maps_starting_build_index.val; build_index < SceneManager.sceneCountInBuildSettings; build_index++) {
 			//AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(build_index, LoadSceneMode.Additive); // Tried with and without additive
 			//asyncOperation.allowSceneActivation = false;

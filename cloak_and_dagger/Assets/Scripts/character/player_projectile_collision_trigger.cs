@@ -190,7 +190,7 @@ public class player_projectile_collision_trigger : sync_behaviour<death_event_da
 	}
 
 	private void spawn_incineration(death_event_data DD) {
-		GameObject incineration = Instantiate(incineration_prefab, transform.position, transform.rotation);
+		Instantiate(incineration_prefab, transform.position, transform.rotation);
 	}
 
 	private bool can_be_killed_by(int id) {

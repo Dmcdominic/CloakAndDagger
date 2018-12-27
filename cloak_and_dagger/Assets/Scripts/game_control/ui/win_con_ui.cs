@@ -9,7 +9,8 @@ public class win_con_ui : MonoBehaviour {
     [SerializeField]
     win_condition_assets_packet WCAP;
 
-    string game_mode = "";
+#pragma warning disable 0414
+	string game_mode = "";
 
 
     [SerializeField]
