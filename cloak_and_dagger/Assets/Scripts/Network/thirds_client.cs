@@ -276,7 +276,7 @@ public class thirds_client : MonoBehaviour, IProtagoras_Client<object>
         host = NetworkTransport.AddHost(topology, 0);
         byte error;
         //progatoras is running on 15150. my ip: "71.61.58.16" localhost: "127.0.0.1" or "2601:409:8501:a8ad:5002:e06:8b2c:bff"
-        conn_id = NetworkTransport.Connect(host, local ? "127.0.0.1" : "2601:409:8501:a8ad:5002:e06:8b2c:bff", 15150, 0, out error);
+        conn_id = NetworkTransport.Connect(host, local ? "127.0.0.1" : "18.218.100.211", 15150, 0, out error);
         if (debug) print($"connecting {(NetworkError)error}");
         StartCoroutine(Receive(success,failure));
         return (NetworkError)error == NetworkError.Ok;
