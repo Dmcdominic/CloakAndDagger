@@ -111,12 +111,12 @@ public class pmove : sync_behaviour<player_state>
         transform.eulerAngles = Vector3.forward * Mathf.SmoothDampAngle(
                                 transform.eulerAngles.z, target_theta,
                                 ref smooth_rot_vel, .06f);
-
-		running = rb.velocity.magnitude > running_velo_threshhold;
+		
 		if (!ingame_state.val || is_stun[gameObject_id.val] || is_trapped[gameObject_id.val])
         {
             rb.velocity = Vector2.zero;
-            state = new player_state(transform.position, rb.velocity, transform.eulerAngles.z, running);
+			running = rb.velocity.magnitude > running_velo_threshhold;
+			state = new player_state(transform.position, rb.velocity, transform.eulerAngles.z, running);
 
             return;
         }
@@ -131,9 +131,9 @@ public class pmove : sync_behaviour<player_state>
 
         rb.velocity = input_vec.val.normalized * config_movespeed;
 
-      
-       
-        state = new player_state(transform.position, rb.velocity,transform.eulerAngles.z, running);
+
+		running = rb.velocity.magnitude > running_velo_threshhold;
+		state = new player_state(transform.position, rb.velocity,transform.eulerAngles.z, running);
 
     }
 
